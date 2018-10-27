@@ -13,6 +13,7 @@ include 'userdata.php';
 $statement =$pdo->prepare("SELECT * FROM studylab WHERE email=:email AND passwort=:passwort");
 if($statement->execute(array(':email'=>$email, ':passwort'=>$passwort))) {
     if ($row=$statement->fetch()) {
+        //Leitet die Seite nach erfolgreichen Login weiter
         header("Location: index.php");
        $_SESSION["angemeldet"]=$row["id"];
     }
