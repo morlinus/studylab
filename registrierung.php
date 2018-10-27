@@ -44,30 +44,30 @@ if(isset($_GET['register'])) {
         $error = true;
     }
     if(strlen($name) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
+        echo 'Bitte einen Vornamen angeben<br>';
         $error = true;
     }
     if(strlen($nachname) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
+        echo 'Bitte einen Nachnamen angeben<br>';
         $error = true;
     }if(strlen($geburtsdatum) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
+        echo 'Bitte ein Geburtsdatum angeben<br>';
         $error = true;
     }
-    if(strlen($studiengang) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
-        $error = true;
-    }
+   // if(strlen($studiengang) == 0) {
+   //     echo 'Bitte einen Studiengang angeben<br>';
+   //     $error = true;
+   // }
     if(strlen($geschlecht) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
+        echo 'Bitte Geschlecht angeben<br>';
         $error = true;
     }
-    if(strlen($semester) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
-        $error = true;
-    }
+   // if(strlen($semester) == 0) {
+   //     echo 'Bitte Ihr aktuelles Semester angeben<br>';
+   //     $error = true;
+   // }
     if(strlen($status) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
+        echo 'Bitte Ihre Position angeben<br>';
         $error = true;
     }
 
