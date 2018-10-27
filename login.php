@@ -7,7 +7,6 @@ if(isset($_POST["email"]) AND isset($_POST["passwort"]))
     $passwort=$_POST["passwort"];
 }
 
-
 include 'userdata.php';
 
 $statement =$pdo->prepare("SELECT * FROM studylab WHERE email=:email AND passwort=:passwort");
@@ -21,7 +20,8 @@ if($statement->execute(array(':email'=>$email, ':passwort'=>$passwort))) {
     {
         echo "Melde dich an!";
     }
-} else {
+}
+else {
     echo "Datenbank-Fehler:";
     echo $statement->errorInfo()[2];
     echo $statement->queryString;
