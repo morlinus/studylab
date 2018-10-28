@@ -1,25 +1,26 @@
 <?php
 session_start();
 
-if(isset($_POST["email"]) AND isset($_POST["passwort"]))
+if(isset($_POST["benutzername"]) AND isset($_POST["passwort"]))
 {
-    $email=$_POST["email"];
+    $benutzername=$_POST["benutzername"];
     $passwort=$_POST["passwort"];
 }
 
 include 'userdata.php';
 
-$statement =$pdo->prepare("SELECT * FROM studylab WHERE email=:email AND passwort=:passwort");
-if($statement->execute(array(':email'=>$email, ':passwort'=>$passwort))) {
+$statement =$pdo->prepare("SELECT * FROM studylab WHERE benutzername=:benutzername AND passwort=:passwort");
+if($statement->execute(array(':benutzername'=>$benutzername, ':passwort'=>$passwort))) {
     if ($row=$statement->fetch()) {
         //Leitet die Seite nach erfolgreichen Login weiter
         header("Location: index.php");
-        $_SESSION["angemeldet"]=$row["id"];
+        $_SESSION["angemeldet"]=$row["benutzername"];
     }
+    /*
     else
     {
         echo "Melde dich an!";
-    }
+    }*/
 }
 else {
     echo "Datenbank-Fehler:";
@@ -37,8 +38,8 @@ else {
 <body>
 
 <form action="?login=1" method="post">
-    Email:<br>
-    <input type="email" size="40" maxlength="250" name="email"><br><br>
+    Benutzername:<br>
+    <input type="benutzername" size="40" maxlength="250" name="benutzername"><br><br>
 
     Dein Passwort:<br>
     <input type="passwort" size="40"  maxlength="250" name="passwort"><br>

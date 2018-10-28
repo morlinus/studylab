@@ -1,5 +1,6 @@
 <?php
-echo "Eingeloggt ist der Benutzer ".$_SESSION['angemeldet']
+session_start();
+echo "Eingeloggt ist der Benutzer ".$_SESSION['angemeldet'];
 ?>
 
 <!doctype html>
@@ -7,10 +8,11 @@ echo "Eingeloggt ist der Benutzer ".$_SESSION['angemeldet']
 <head>
     <meta charset="utf-8">
     <title>
-        Profil von: <?php echo "$benutzername"; ?>
+        Profil von: <?php echo $_SESSION['angemeldet']; ?>
     </title>
 </head>
 <body>
+<br>
 Schreibe einen Post:
 <form action="formular_abfrage.php" method="post">
         <textarea name="content" rows="10" cols="30">
