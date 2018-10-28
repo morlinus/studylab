@@ -9,7 +9,11 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
 </head>
 <body>
 
+
 <?php
+
+echo "registrieren";
+
 $showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
 
 if(isset($_GET['register'])) {
@@ -54,18 +58,18 @@ if(isset($_GET['register'])) {
         echo 'Bitte ein Geburtsdatum angeben<br>';
         $error = true;
     }
-   // if(strlen($studiengang) == 0) {
-   //     echo 'Bitte einen Studiengang angeben<br>';
-   //     $error = true;
-   // }
+   /* if(strlen($studiengang) == 0) {
+        echo 'Bitte einen Studiengang angeben<br>';
+        $error = true;
+   } */
     if(strlen($geschlecht) == 0) {
         echo 'Bitte Geschlecht angeben<br>';
         $error = true;
     }
-   // if(strlen($semester) == 0) {
-   //     echo 'Bitte Ihr aktuelles Semester angeben<br>';
-   //     $error = true;
-   // }
+   /* if(strlen($semester) == 0) {
+      echo 'Bitte Ihr aktuelles Semester angeben<br>';
+      $error = true;
+    } */
     if(strlen($status) == 0) {
         echo 'Bitte Ihre Position angeben<br>';
         $error = true;
@@ -88,7 +92,7 @@ if(isset($_GET['register'])) {
     if(!$error) {
        // $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT); //passwort hashen
 
-        $statement = $pdo->prepare("INSERT INTO studylab (email, passwort,benutzername, name, nachname, geburtsdatum, studiengang, geschlecht, semester, status) VALUES (:email, :passwort, :benutzername, :name, :nachname, :geburtsdatum, :studiengang, :geschlecht, :semester, :status)");
+        $statement = $pdo->prepare("INSERT INTO studylab (email, passwort, benutzername, name, nachname, geburtsdatum, studiengang, geschlecht, semester, status) VALUES (:email, :passwort, :benutzername, :name, :nachname, :geburtsdatum, :studiengang, :geschlecht, :semester, :status)");
         //$result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
 
