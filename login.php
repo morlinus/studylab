@@ -14,7 +14,7 @@ if($statement->execute(array(':email'=>$email, ':passwort'=>$passwort))) {
     if ($row=$statement->fetch()) {
         //Leitet die Seite nach erfolgreichen Login weiter
         header("Location: index.php");
-       $_SESSION["angemeldet"]=$row["id"];
+        $_SESSION["angemeldet"]=$row["id"];
     }
     else
     {

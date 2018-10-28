@@ -1,7 +1,3 @@
-<?php
-
-session_start();
-?>
 
 <!doctype html>
 <html lang="de">
@@ -19,7 +15,7 @@ session_start();
     </style>
 
 </head>
-<div id="header"></div>
+<div id="header">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">StudiLAB</a>
@@ -45,6 +41,7 @@ session_start();
 </nav>
 
 <div id="main">
+
     <?php
 
     if (isset($_SESSION["angemeldet"]))
@@ -57,4 +54,5 @@ session_start();
 
     ?>
 </div>
+
 </html>

@@ -1,15 +1,7 @@
 <?php
-
-session_start();
-include 'userdata.php';
-
-if(!isset($_SESSION["angemeldet"]))
-{
-    echo"nicht angemeldet.";
-    die();
-}
-
+echo "Eingeloggt ist der Benutzer ".$_SESSION['angemeldet']
 ?>
+
 <!doctype html>
 <html lang="de">
 <head>
