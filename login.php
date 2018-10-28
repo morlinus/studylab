@@ -43,7 +43,9 @@ else {
     Dein Passwort:<br>
     <input type="passwort" size="40"  maxlength="250" name="passwort"><br>
 
-    <input type="submit" value="Abschicken">
+    <input type="submit" value="Abschicken"><br><br>
+
+    Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a>!
 </form>
 </body>
 </html>
