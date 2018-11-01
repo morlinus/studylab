@@ -18,7 +18,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 <style>
-
+ .container{
+     background-color: lightgrey ;
+     margin-top: 30px;
+     width: 300px;
+ }
 </style>
 
 <?php
@@ -61,9 +65,10 @@ else {
 funktioniert aber nicht zusammen mit dem Login-Prozess-->
 <body>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-
+        <div class="col">
+            <br>
         <form method="post" class="navbar-form navbar-left" action="do_login.php">
             <div class="form-group">
                 <label for="exampleInputBenutzer1">Benutzername</label>
@@ -74,10 +79,10 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
                 <label for="exampleInputPasswort1">Passwort</label>
                 <input type="text" name="passwort" class="form-control" id="exampleInputPasswort1" placeholder="Passwort">
             </div>
-            <button type="submit" class="btn btn-primary">Abschicken</button>
-            Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a>
+            <button type="submit" class="btn btn-primary">Abschicken</button><br><br>
+            Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a><br><br>
     </div>
-
+    </div>
 </div>
 
 <!-- vorheriges Form -->
