@@ -1,25 +1,28 @@
-<?php
-
-session_start();
-?>
-
 <!doctype html>
 <html lang="de">
 <head>
-    <meta charset="utf-8">
 
+    <meta charset="utf-8">
+<!-- Fügt den Namen der eingeloggten Person in den Titel ein -->
+<title>Startseite von <?php session_start();
+    echo $_SESSION['angemeldet']; ?>
+</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user- scalable=yes">
 
+    <!--verschiebt den Conatiner an den rechten Seitenrand -->
     <style>
-        /* stylesheet*/
+       .pull-right {
+           float: right; !important;
+           margin-right: 10px;
+       }
     </style>
 
 </head>
-<div id="header"></div>
+<div id="header">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">StudiLAB</a>
@@ -28,6 +31,9 @@ session_start();
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">Startseite</a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/login.php">Login</a>
             </li>
@@ -43,18 +49,31 @@ session_start();
         </ul>
     </div>
 </nav>
-
-<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+<br>
     <?php
-
+    session_start();
     if (isset($_SESSION["angemeldet"]))
     {
-        echo "angemeldet.";
+        echo "Hallo"." " .$_SESSION["angemeldet"];
     }
     else {
-        echo "nicht angemeldet.";
+
+        header("Location:login.php");
     }
 
     ?>
 </div>
+            <div class="container">
+                <div class="row">
+                    <div class="pull-right">
+                        Schreibe einen Post:
+                        <form action="formular_abfrage.php" method="post">
+        <textarea name="content" rows="10" cols="80">
+        </textarea><br>
+                            <input type="submit">
+                    </div>
+
 </html>
