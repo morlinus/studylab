@@ -8,7 +8,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user- scalable=yes">
-
 <style>
 
 </style>
@@ -48,7 +47,7 @@
         </div>
     </nav>
 </div>
-
+<br>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -63,8 +62,11 @@
             }
 ?>
             </div>
+
+        <div class="container">
+            <div class="row">
         <div class="col-10">
-            Schreibe einen Post:
+
             <form action="formular_abfrage.php" method="post">
         <textarea name="content" rows="10" cols="80">
         </textarea><br>
@@ -75,6 +77,7 @@
 </div>
         <body>
 <br>
+
 </body>
 
 </html>
