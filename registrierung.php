@@ -6,6 +6,52 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
 <html>
 <head>
     <title>Registrierung</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+            $( "#format" ).on( "change", function() {
+                $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+            });
+        } );
+
+
+        $( function() {
+            var availableTags = [
+                "Online- Medien- Management",
+                "Informationsdesign",
+                "Bibliothekswissenschaften",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+        } );
+
+    </script>
 </head>
 <body>
 
@@ -110,35 +156,88 @@ if($showFormular) {
 
     <form action="?register=1" method="post">
         Vorname:<br>
-        <input type="name" size="40" maxlength="250" name="name"><br><br>
+        <input type="name" size="40" maxlength="200" name="name"><br><br>
         Nachname:<br>
-        <input type="nachname" size="40" maxlength="250" name="nachname"><br><br>
+        <input type="nachname" size="40" maxlength="200" name="nachname"><br><br>
 
         Benutzername: <br>
-        <input type="benutzername" size 40 maxlength="50" name="benutzername"><br><br>
+        <input type="benutzername" size="40" maxlength="200" name="benutzername"><br><br>
         E-Mail:<br>
-        <input type="email" size="40" maxlength="250" name="email"><br><br>
+        <input type="email" size="40" maxlength="200" name="email"><br><br>
 
         Geburtsdatum: <br>
-        <input type="geburtsdatum" size 40 maxlength="50" name="geburtsdatum"><br><br>
+      <input type="geburtsdatum" id="datepicker" value="yy-mm-dd" size = "40" maxlength="200" name="geburtsdatum"><br><br>
 
-        Studiengang: <br>
-        <input type="studiengang" size 40 maxlength="50" name="studiengang"><br><br>
+        <!-- Studiengang: <br>
+        <input type="studiengang" size="40" maxlength="200" name="studiengang"><br><br>
+-->
+        Studiengang:
+        <div class="ui-widget">
+            <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang">
+        </div>
+        <br><br>
+        <!--
+                Geschlecht: <br>
+                <input type="geschlecht" size 40 maxlength="50" name="geschlecht"><br><br>
 
-        Geschlecht: <br>
-        <input type="geschlecht" size 40 maxlength="50" name="geschlecht"><br><br>
+
+                 Geschlecht: <br>
+
+                    <label for="männl">Männlich: </label>
+                    <input type="radio" name="geschlecht" id="männl" value="männlich">
+
+                    <label for="weibl">Weiblich: </label>
+                    <input type="radio" name="geschlecht" id="weibl" value="weiblich">
+                    <br><br> -->
+
+        <table>
+            <tr>
+                <td>Geschlecht :</td>
+                <td>
+                    <input type="radio" name="geschlecht" value="w" required>Männlich
+                    <input type="radio" name="geschlecht" value="m" required>Weiblich
+                </td>
+            </tr>
+        </table>
+        <br><br>
 
         Semester: <br>
-        <input type="semester" size 40 maxlength="50" name="semester"><br><br>
+        <input type="semester" size = "40" maxlength="200" name="semester"><br><br>
+
+       <!--  Position: <br>
+        <input type="status" size = "40" maxlength="200" name="status"><br><br>
 
         Position: <br>
-        <input type="status" size 40 maxlength="50" name="status"><br><br>
+        <div class="widget">
+            <input type="status" value="Student" name ="status">
+            <input type="status" value="Professor" name ="status">
+
+        </div>
+        Position:
+        <br>
+        <select name="status" required>
+            <option selected hidden value="">Student</option>
+            <option value="Professor">Professor</option>
+            <option value="Student">Student</option>
+        </select>
+        <br><br> -->
+
+        <table>
+            <tr>
+                <td>Position :</td>
+                <td>
+                    <input type="radio" name="status" value="s" required>Student
+                    <input type="radio" name="status" value="p" required>Professor
+                </td>
+            </tr>
+        </table>
+        <br><br>
 
         Dein Passwort:<br>
-        <input type="password" size="40"  maxlength="250" name="passwort"><br>
+        <input type="password" size="40"  maxlength="200" name="passwort"><br>
 
         Passwort wiederholen:<br>
-        <input type="password" size="40" maxlength="250" name="passwort2"><br><br>
+        <input type="password" size="40" maxlength="200" name="passwort2"><br><br>
 
         <input type="submit" value="Abschicken">
     </form>
