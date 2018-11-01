@@ -66,14 +66,15 @@
 
     ?>
 </div>
-            <div class="container">
-                <div class="row">
-                    <div class="pull-right">
-                        Schreibe einen Post:
-                        <form action="formular_abfrage.php" method="post">
-        <textarea name="content" rows="10" cols="80">
-        </textarea><br>
-                            <input type="submit">
-                    </div>
+            <div class="container-fluid">
+            <div class="row">
+                <div class="col-10">
+                    <form action="formular_abfrage.php" method="post">
+                        <textarea class="form-control" rows="3"></textarea><br>
+                        <input class="btn btn-primary" type="submit" value="Posten">
+
+                </div>
+            </div>
+        </div>
 
 </html>

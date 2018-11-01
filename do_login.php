@@ -16,18 +16,20 @@ if($statement->execute(array(':benutzername'=>$benutzername, ':passwort'=>$passw
         header("Location: index.php");
         $_SESSION["angemeldet"]=$row["benutzername"];
     }
-    /*
         else
         {
-            echo "Melde dich an!";
+            header("Location: login.php");
         }
-    */
+
 }
+
 else {
     echo "Datenbank-Fehler:";
     echo $statement->errorInfo()[2];
     echo $statement->queryString;
-    die();
-}
+    die(); }
 
-?>
+
+    ?>
+
+
