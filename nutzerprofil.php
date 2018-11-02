@@ -75,7 +75,7 @@ LEFT JOIN studylab ON content.userid = studylab.id
 WHERE beitragsid = 1");
             $statement->execute(array('beitragsid' => 1));
             while($content = $statement->fetch()) {
-                echo $content['benutzername']." schrieb:<br />";
+                 echo "<br />".$content['benutzername']." schrieb:<br />";
                 echo $content['text']."<br /><br />";
             }
             ?>
@@ -86,7 +86,7 @@ WHERE beitragsid = 1");
         <div class="col-10">
             Schreibe einen Post:
             <br><br><form action="formular_abfrage.php" method="post">
-                <textarea class="form-control" rows="3"></textarea><br>
+                <textarea name="content" class="form-control" rows="3"></textarea><br>
                 <input class="btn btn-primary" type="submit" value="Posten">
 
         </div>
