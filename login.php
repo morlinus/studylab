@@ -77,7 +77,7 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
             </div>
             <div class="form-group">
                 <label for="exampleInputPasswort1">Passwort</label>
-                <input type="text" name="passwort" class="form-control" id="exampleInputPasswort1" placeholder="Passwort">
+                <input type="password" name="passwort" class="form-control" id="exampleInputPasswort1" placeholder="Passwort">
             </div>
             <button type="submit" class="btn btn-primary">Abschicken</button><br><br>
             Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a><br><br>
