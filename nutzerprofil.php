@@ -19,6 +19,8 @@
        float: right; !important;
         width: 350px;
     }
+
+
 </style>
 <body>
 <!-- Optional JavaScript -->
@@ -58,27 +60,28 @@
 <div class="container">
     <div class="row">
         <div class="col">
+
             <?php
             session_start();
-            if (isset($_SESSION["angemeldet"]))
-            {
-                echo "Eingeloggt ist der Benutzer ".$_SESSION['angemeldet'];
+            if (isset($_SESSION["angemeldet"])) {
+                echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
+?>
+            <div class="posting">
+                <?php
+
+                include "userdata.php";
+                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id");
+                $statement->execute(array('beitragsid' => 1));
+                while ($content = $statement->fetch()) {
+                    echo "<br />" . $content['benutzername'] . " schrieb:<br />";
+                    echo $content['text'] . "<br /><br />";
+                }
             }
             else {
                 echo "nicht angemeldet.";
             }
-
-            include "userdata.php"
-;
-            $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content
-LEFT JOIN studylab ON content.userid = studylab.id
-WHERE beitragsid = 1");
-            $statement->execute(array('beitragsid' => 1));
-            while($content = $statement->fetch()) {
-                 echo "<br />".$content['benutzername']." schrieb:<br />";
-                echo $content['text']."<br /><br />";
-            }
             ?>
+            </div>
             </div>
 
         <div class="container-fluid">
@@ -91,6 +94,7 @@ WHERE beitragsid = 1");
 
         </div>
     </div>
+
 </div>
         <body>
 <br>
