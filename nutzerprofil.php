@@ -90,6 +90,7 @@
             Schreibe einen Post:
             <br><br><form action="formular_abfrage.php" method="post">
                 <textarea name="content" class="form-control" rows="3"></textarea><br>
+                <textarea name="id" class="form-control" rows="3">/textarea>
                 <input class="btn btn-primary" type="submit" value="Posten">
 
         </div>
