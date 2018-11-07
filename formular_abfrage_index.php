@@ -17,8 +17,4 @@ $content= $_POST["content"];
 
 $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text)");
 $statement->execute(array(':text'=>$content, ':userid'=>$id));
-header ("Location:nutzerprofil.php");
-
-
-
-
+header ("Location:index.php");

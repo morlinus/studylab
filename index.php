@@ -4,9 +4,7 @@
 
     <meta charset="utf-8">
 <!-- Fügt den Namen der eingeloggten Person in den Titel ein -->
-<title>Startseite von <?php session_start();
-    echo $_SESSION['angemeldet']; ?>
-</title>
+<title>Startseite</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -69,11 +67,37 @@
             <div class="container-fluid">
             <div class="row">
                 <div class="col-10">
-                    <form action="formular_abfrage.php" method="post">
-                        <textarea class="form-control" rows="3"></textarea><br>
+                    <form action="formular_abfrage_index.php" method="post">
+                        <textarea name="content" class="form-control" rows="3"></textarea><br>
                         <input class="btn btn-primary" type="submit" value="Posten">
 
                 </div>
+            </div>
+        </div>
+            <br>
+            <br>
+            <?php session_start();
+            if (isset($_SESSION["angemeldet"])) {
+            echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
+            ?><br>
+<br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4"
+                <?php
+
+                include "userdata.php";
+                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id");
+                $statement->execute(array('beitragsid' => 1));
+                while ($content = $statement->fetch()) {
+                    echo "<br />" . $content['benutzername'] . " schrieb:<br />";
+                    echo $content['text'] . "<br /><br />";
+                }
+                }
+                else {
+                    echo "nicht angemeldet.";
+                }
+                ?>
             </div>
         </div>
 
