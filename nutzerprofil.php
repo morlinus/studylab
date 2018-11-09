@@ -63,6 +63,7 @@
 
             <?php
             session_start();
+            $id=$_SESSION["id"];
             if (isset($_SESSION["angemeldet"])) {
                 echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
 ?>
@@ -70,7 +71,7 @@
                 <?php
 
                 include "userdata.php";
-                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id");
+                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $id");
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
                     echo "<br />" . $content['benutzername'] . " schrieb:<br />";
@@ -90,7 +91,6 @@
             Schreibe einen Post:
             <br><br><form action="formular_abfrage.php" method="post">
                 <textarea name="content" class="form-control" rows="3"></textarea><br>
-                <textarea name="id" class="form-control" rows="3">/textarea>
                 <input class="btn btn-primary" type="submit" value="Posten">
 
         </div>
