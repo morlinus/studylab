@@ -1,6 +1,15 @@
+.navbar{
+    height: 10%;
+    width: 100%;
+}
+
+.navbar-brand{
+    color: white;
+    font-weight: bold;
+}
+
 .container{
     width: 100%;
-
 }
 
 .studylab-nav-inhalt{
@@ -78,6 +87,7 @@
 }
 
 .page-footer{
+    background-color: lightgray;
     color: white;
     position: absolute;
     bottom: 0px;
