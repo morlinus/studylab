@@ -16,8 +16,8 @@ if($statement->execute(array(':benutzername'=>$benutzername, ':passwort' => $pas
     if ($row=$statement->fetch()) {
         //Leitet die Seite nach erfolgreichen Login weiter
         header("Location: index.php");
-        $_SESSION["angemeldet"]=$row["benutzername"];
-
+        $_SESSION["angemeldet"]=$row['benutzername'];
+        $_SESSION["id"]=$row['id'];
     }
         else
         {

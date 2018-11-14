@@ -71,13 +71,13 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
             <br>
         <form method="post" class="navbar-form navbar-left" action="do_login.php">
             <div class="form-group">
-                <label for="exampleInputBenutzer1">Benutzername</label>
-                <input type="text" name="benutzername" class="form-control" id="exampleInputBenutzername1" aria-describedby="BenutzernameHelp" placeholder="Benutzername">
+                <label for="Benutzer1">Benutzername</label>
+                <input type="text" name="benutzername" class="form-control" id="Benutzername1" aria-describedby="BenutzernameHelp" placeholder="Benutzername">
                 <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
-                <label for="exampleInputPasswort1">Passwort</label>
-                <input type="password" name="passwort" class="form-control" id="exampleInputPasswort1" placeholder="Passwort">
+                <label for="Passwort1">Passwort</label>
+                <input type="password" name="passwort" class="form-control" id="Passwort1" placeholder="Passwort">
             </div>
             <button type="submit" class="btn btn-primary">Abschicken</button><br><br>
             Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a><br><br>

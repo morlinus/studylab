@@ -5,7 +5,8 @@
     <title>Bild Upload</title>
 </head>
 <body>
-<h1>Bild hochladen</font></h1>
+<h1>Du wurdest erfolfgreich Registriert</font></h1>
+<h2>Nun wähle ein Profilbild aus</h2>
 
 <!-- "enctype" beschreibt wie die Datei encoded werden soll -->
 <?php
