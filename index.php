@@ -17,6 +17,15 @@
            float: right; !important;
            margin-right: 10px;
        }
+
+       .page-footer{
+           background-color: lightgray;
+           color: white;
+           position: absolute;
+           bottom: 0px;
+           width: 100%;
+       }
+
     </style>
 
 </head>
@@ -100,5 +109,7 @@
                 ?>
             </div>
         </div>
+
+
 
 </html>
