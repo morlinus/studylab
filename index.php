@@ -6,29 +6,16 @@
 <!-- Fügt den Namen der eingeloggten Person in den Titel ein -->
 <title>Startseite</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link href="studylab.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user- scalable=yes">
 
     <!--verschiebt den Conatiner an den rechten Seitenrand -->
-    <style>
-       .pull-right {
-           float: right; !important;
-           margin-right: 10px;
-       }
-
-       .page-footer{
-           background-color: lightgray;
-           color: white;
-           position: absolute;
-           bottom: 0px;
-           width: 100%;
-       }
-
-    </style>
 
 </head>
+<body>
 <div id="header">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -111,5 +98,5 @@
         </div>
 
 
-
+</body>
 </html>

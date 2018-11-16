@@ -12,6 +12,11 @@
     width: 100%;
 }
 
+.container-fluid{
+    float: right; !important;
+    width: 350px;
+}
+
 .studylab-nav-inhalt{
     position: relative;
     display: inline-block;
@@ -93,3 +98,4 @@
     bottom: 0px;
     width: 100%;
 }
+
