@@ -54,6 +54,8 @@
     </nav>
 </div>
 <br>
+
+<a href="profil_bearbeitung.php">Profil bearbeiten</a>
 <div class="container">
     <div class="row">
         <div class="col">
