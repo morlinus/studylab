@@ -20,6 +20,14 @@
         width: 350px;
     }
 
+    .page-footer{
+        background-color: lightgray;
+        color: white;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
 
 </style>
 <body>
@@ -54,6 +62,9 @@
                 </li>
             </ul>
         </div>
+
+        <p class="navbar-text pull-right">Angemeldet als - <a href="#" class="navbar-link">Nutzer</a></p>
+
     </nav>
 </div>
 <br>
@@ -99,6 +110,19 @@
     </div>
 
 </div>
+
+
+        <footer class="page-footer navbar-inverse">
+
+
+            <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                <a href="https://mdbootstrap.com/education/bootstrap/">StudyLAB.com</a>
+            </div>
+
+
+        </footer>
+
+
         <body>
 <br>
 

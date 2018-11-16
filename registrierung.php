@@ -144,6 +144,7 @@ if(isset($_GET['register'])) {
 
         if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+            header("Location: bildupload.php");
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
@@ -167,6 +168,8 @@ if($showFormular) {
 
         Geburtsdatum: <br>
       <input type="geburtsdatum" id="datepicker" value="yy-mm-dd" size = "40" maxlength="200" name="geburtsdatum"><br><br>
+
+        // <option id=fomat value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
 
         <!-- Studiengang: <br>
         <input type="studiengang" size="40" maxlength="200" name="studiengang"><br><br>

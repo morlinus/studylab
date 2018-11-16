@@ -19,10 +19,18 @@
 </body>
 <style>
  .container{
-     background-color: lightgrey ;
+     background-color: lightgrey;
      margin-top: 30px;
      width: 300px;
  }
+    .background {
+        background-color: red;
+        height: 100vh;
+        width: 100vh;
+    }
+.container-fluid-main {
+
+}
 </style>
 
 <?php
@@ -65,7 +73,14 @@ else {
 funktioniert aber nicht zusammen mit dem Login-Prozess-->
 <body>
 
-<div class="container">
+<div class="container-fluid-main">
+<div class="row height-100 mx-auto align-items-center">
+<div class = "height-100 background col-lg-6 col-sm-12">
+</div>
+
+
+<div class=" col-lg-6 col-sm-12">
+    <div class="container">
     <div class="row">
         <div class="col">
             <br>
@@ -83,6 +98,9 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
             Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a><br><br>
     </div>
     </div>
+    </div>
+</div>
+</div>
 </div>
 
 <!-- vorheriges Form -->
