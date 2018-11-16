@@ -23,8 +23,8 @@
      margin-top: 30px;
      width: 300px;
  }
-    .background {
-        background-color: red;
+    .background-startseite {
+        background-color: dimgrey;
         height: 100vh;
         width: 100vh;
     }
@@ -75,7 +75,7 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
 
 <div class="container-fluid-main">
 <div class="row height-100 mx-auto align-items-center">
-<div class = "height-100 background col-lg-6 col-sm-12">
+<div class = "height-100 background-startseite col-lg-6 col-sm-12">
 </div>
 
 
