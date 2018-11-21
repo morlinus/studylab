@@ -19,6 +19,13 @@ include 'userdata.php';
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
     $( function() {
+                $( "#datepicker" ).datepicker();
+                $( "#format" ).on( "change", function() {
+                    $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+                });
+            } );
+    
+    $( function() {
 var availableTags = [
 "Online- Medien- Management",
 "Informationsdesign",
@@ -80,22 +87,84 @@ source: availableTags
     session_start();
     $_SESSION["angemeldet"];
     $id=$_SESSION["id"];
+    $passwort=$_SESSION["passwort"];
     include 'userdata.php';
 
 $statement = $pdo->prepare("SELECT * FROM studylab WHERE id=$id");
 if($statement->execute()) {
     while($row=$statement->fetch()) {
 
-        ?><html><br><?php echo "Benutzername:".' '.$row['benutzername']; ?><form action="aendern.php" method="post">
-        <?php echo "Name:".' '.$row['name']; ?><br><input type="name" size="40" maxlength="200" name="name"><br><br>
-        <?php echo "Nachname:".' '.$row['nachname']; ?><br><input type="nachname" size="40" maxlength="200" name="name"><br><br>
-        <?php echo "Geburtstdatum:".' '.$row['geburtsdatum']; ?><br><br>
-        <?php echo "Studiengang:".' '.$row['studiengang']; ?><br><input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"><br><br>
-        <?php echo "Geschlecht:".' '.$row['geschlecht']; ?><br><br>
-        <?php echo "E-Mail:".' '.$row['email']; ?><br><input type="email" size="40" maxlength="200" name="name"><br><br>
-        <?php echo "Semester:".' '.$row['semester']; ?><br><input type="semester" size="40" maxlength="200" name="name"><br><br>
-        <?php echo "Status:".' '.$row['status']; ?><br><input type="status" size="40" maxlength="200" name="name"><br><br>
-            <input type="submit" value="Änderungen speichern"></form></html>
+        ?>
+        <html>
+        <br>
+        <form action="aendern.php" method="post">
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" autocomplete="off" size="40" maxlength="200" name="name" value="<?php echo $row['name'];?>"/>
+                </td><br><br>
+                <td>
+                    Nachname:
+                </td>
+                <td>
+                    <input type="text" autocomplete="off" size="40" maxlength="200" name="nachname" value="<?php echo $row['nachname'];?>"/>
+                </td><br><br>
+                <td>
+                    Benutzername:
+                </td>
+                <td>
+                     <input type="text" autocomplete="off" size="40" maxlength="200" name="benutzername" value="<?php echo $row['benutzername'];?>"/>
+                </td> <br><br>
+                <td>
+                    Geburtsdatum:
+                </td>
+                <td>
+                    <!-- Der Datepicker funktioniert hier noch nicht -->
+                    <input type="geburtsdatum" id="datepicker" value="<?php echo $row['geburtsdatum'];?>" size = "40" maxlength="200" name="geburtsdatum">
+                </td>    <br><br>
+                <td>
+                    Studiengang:
+                </td>
+                <td>
+                    <input type="text" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['studiengang'];?>"/>
+                </td>    <br><br>
+                <td>
+                    Geschlecht: <?php echo $row['geschlecht'];?>
+                </td>  <br><br> 
+                <td>
+                    E-Mail:
+                </td>
+                    <input type="text" autocomplete="off" size="40" maxlength="200" name="email" value="<?php echo $row['email'];?>"/>
+                <td>  <br><br>
+                <td>
+                    Semester:
+                </td>
+                <td>
+                    <input type="text" autocomplete="off" size="40" maxlength="200" name="semester" value="<?php echo $row['semester'];?>"/>
+                </td>  <br><br>
+                <td>
+                    Status:
+                </td>
+                <td>
+                    <input type="text" autocomplete="off" size="40" maxlength="200" name="status" value="<?php echo $row['status'];?>"/>
+                </td> <br><br>
+                <td>
+                <td> Passwort ändern: </td>        <br><br>
+
+
+                    altes Passwort:<input type="password" name="passwort_alt" />  <br><br>
+
+                    neues Passwort:<input type="password" name="passwort_neu" />    <br><br> 
+                </td>
+                <td>
+                    <input type="submit" value="Änderungen speichern" name="submit">
+                </td>
+            </tr>
+        </form>
+    </html>
+                                                       
 <?php
 
     }
