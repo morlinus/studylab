@@ -18,7 +18,7 @@ if($statement->execute(array(':benutzername'=>$benutzername, ':passwort' => $pas
         header("Location: index.php");
         $_SESSION["angemeldet"]=$row['benutzername'];
         $_SESSION["id"]=$row['id'];
-        $_SESSION["passwort"]=$row['passwort'];
+        /*$_SESSION["passwort"]=$row['passwort']; */
     }
         else
         {
