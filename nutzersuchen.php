@@ -26,7 +26,7 @@ include 'header.php';
 
 if (isset($_POST['suchen'])) {
 
-    echo "Suchrgebnisse: <br>";
+    echo "Suchergebnisse: <br>";
 
 
     $benutzername = $_POST['nutzersuchen'];
