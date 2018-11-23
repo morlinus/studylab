@@ -52,18 +52,18 @@ include_once 'header.php';
                 ?>
             </div>
 
-            <div class="col-sm-3">
+
+
+        </div>
+
+        <div class="col-sm-3">
                 <!-- Der User kann hier einen Post schreiben -->
                 Schreibe einen Post:
                 <form action="formular_abfrage.php" method="post">
                     <textarea name="content" class="form-control" rows="3"></textarea><br>
                     <input class="btn btn-primary" type="submit" value="Posten">
 
-            </div>
-
         </div>
-
-
 
     </div>
 </div>
