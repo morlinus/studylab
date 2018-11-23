@@ -1,4 +1,5 @@
 <?php
+// bindet den Header in die Seite ein
 include_once 'header.php';
 ?>
 
@@ -14,13 +15,14 @@ include_once 'header.php';
             <div class="col-md-4">
 <br>
     <?php
+    // schaut durch die Session, ob der Nutzer angemeldet ist
     session_start();
     if (isset($_SESSION["angemeldet"]))
     {
         echo "Hallo"." " .$_SESSION["angemeldet"];
     }
     else {
-
+        // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
         header("Location:login.php");
     }
 
@@ -29,6 +31,7 @@ include_once 'header.php';
             <div class="container-fluid">
             <div class="row">
                 <div class="col-10">
+                    <!-- Dies ist die Form, damit der User einen Post schreiben kann -->
                     <form action="formular_abfrage_index.php" method="post">
                         <textarea name="content" class="form-control" rows="3"></textarea><br>
                         <input class="btn btn-primary" type="submit" value="Posten">
@@ -38,27 +41,27 @@ include_once 'header.php';
         </div>
             <br>
             <br>
-            <?php session_start();
+            <?php
+            // startet die Session, um zu erkennen, welcher Nutzer eingeloggt ist und vom wem er die Inhalte auf der Startseite anzeigen soll
+            session_start();
             if (isset($_SESSION["angemeldet"])) {
             echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
             ?><br>
-<br><br>
+            <br><br>
             <div class="container">
                 <div class="row">
                     <div class="col-4"
-                <?php
-
-                include "userdata.php";
-                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id");
-                $statement->execute(array('beitragsid' => 1));
-                while ($content = $statement->fetch()) {
-                    echo "<br />" . $content['benutzername'] . " schrieb:<br />";
-                    echo $content['text'] . "<br /><br />";
-                }
-                }
-                else {
-                    echo "nicht angemeldet.";
-                }
+                    <?php
+                    // stellt die Verbindung zur Datenbank her
+                    include "userdata.php";
+                    // zeigt die Post aus der Datenbank an - muss noch so erweitert werde, dass nur die Post von sich selbst und den Leuten, denen man folgt angezeigt wird
+                    $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id");
+                    $statement->execute(array('beitragsid' => 1));
+                    while ($content = $statement->fetch()) {
+                        echo "<br />" . $content['benutzername'] . " schrieb:<br />";
+                        echo $content['text'] . "<br /><br />";
+                    }
+                    }
                 ?>
             </div>
         </div>

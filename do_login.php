@@ -1,27 +1,31 @@
 <?php
+// startet die Session
 session_start();
-
 if(isset($_POST["benutzername"]) AND isset($_POST["passwort"]))
 {
     $benutzername=$_POST["benutzername"];
     $passwort=$_POST["passwort"];
 }
 
+// stellt die Verbindung zur Datenbank her
 include 'userdata.php';
-$passwort_hash = password_hash($passwort, PASSWORD_DEFAULT); //passwort wird gehasht
+// Passwort wird gehast
+$passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
+// kontrolliert, ob der Benutzer und das Passwort mit den Daten aus der Datenbank übereinstimmen
 $statement =$pdo->prepare("SELECT * FROM studylab WHERE benutzername=:benutzername AND passwort=:passwort");
 if($statement->execute(array(':benutzername'=>$benutzername, ':passwort' => $passwort)))
 {
     if ($row=$statement->fetch()) {
         //Leitet die Seite nach erfolgreichen Login weiter
         header("Location: index.php");
+        // übergibt in der Session den Benutzernamen und die ID des Users
         $_SESSION["angemeldet"]=$row['benutzername'];
         $_SESSION["id"]=$row['id'];
-        /*$_SESSION["passwort"]=$row['passwort']; */
     }
         else
         {
+            // wenn der Login nicht funktioniert, dann wir er wieder auf die Login-Seite weitergeleitet
             header("Location: login.php");
         }
 
