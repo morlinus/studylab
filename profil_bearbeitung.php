@@ -30,7 +30,7 @@ var availableTags = [
 "Online- Medien- Management",
 "Informationsdesign",
 "Bibliothekswissenschaften",
-"BASIC",
+"Anni Wissenschaften",
 "C",
 "C++",
 "Clojure",
