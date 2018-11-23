@@ -1,0 +1,13 @@
+.container{
+    background-color: lightgrey;
+    margin-top: 30px;
+    width: 300px;
+}
+.background-startseite {
+    background-color: dimgrey;
+    height: 100vh;
+    width: 100vh;
+}
+.container-fluid-main {
+
+}

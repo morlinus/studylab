@@ -1,3 +1,9 @@
+<?php
+session_start();
+include_once 'header.php';
+?>
+
+
 <html>
 <body>
 <head>

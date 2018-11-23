@@ -33,7 +33,7 @@ include 'userdata.php';
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <a class="navbar-brand" href="#">StudiLAB</a>
+            <a class="navbar-brand" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">StudiLAB</a>
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">Startseite</a>
@@ -55,9 +55,9 @@ include 'userdata.php';
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Profil bearbeiten</a><br/>
-                    <a class="dropdown-item" href="#">Profilbild bearbeiten</a><br/>
-                    <a class="dropdown-item" href="#">Logout</a><br/>
+                    <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a><br/>
+                    <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a><br/>
+                    <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
                 </div>
 
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" href="#" alt="Nutzerprofilbild" class="rounded-circle">
