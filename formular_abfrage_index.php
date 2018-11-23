@@ -1,9 +1,11 @@
 <?php
+// Dies ist die gleiche Formular-Abfrage für die Postings-Funktion nur für die Startseite
 
 session_start();
+// stellt die Verbindung zur Datenbank her
 include 'userdata.php';
 
-
+// übergibt die User ID durch die Session
 $id = $_SESSION["id"];
 
 
@@ -13,6 +15,7 @@ if(!isset($_SESSION["angemeldet"]))
     die();
 }
 
+// übernimmt den Content aus dem Formular der Index.php und fügt die Daten dann in die Datenbank ein
 $content= $_POST["content"];
 
 $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text)");
