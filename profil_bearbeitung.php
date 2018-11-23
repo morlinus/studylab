@@ -47,8 +47,6 @@ source: availableTags
 });
 </script>
 
-
-
 <?php
     session_start();
     $_SESSION["angemeldet"];
