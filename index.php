@@ -30,7 +30,7 @@ include_once 'header.php';
 </div>
             <div class="container-fluid">
             <div class="row">
-                <div class="col-10">
+                <div class="col-6">
                     <!-- Dies ist die Form, damit der User einen Post schreiben kann -->
                     <form action="formular_abfrage_index.php" method="post">
                         <textarea name="content" class="form-control" rows="3"></textarea><br>

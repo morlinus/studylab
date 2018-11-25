@@ -24,47 +24,47 @@ include 'userdata.php';
 <body>
 
 
-
 <div id="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <a class="navbar-brand" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">StudiLAB</a>
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">Startseite</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzerprofil.php">Profil</a>
-                </li>
-            </ul>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Suche" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suche</button>
-            </form>
-
-
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Nutzer
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a><br/>
-                    <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a><br/>
-                    <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
+        <div class="container-fluid">
+                <div class="col-6">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <a class="navbar-brand" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">StudiLAB</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">Startseite</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzerprofil.php">Profil</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" href="#" alt="Nutzerprofilbild" class="rounded-circle">
 
-            </div>
+                <div class="col-6">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzersuchen.php">Suche</button>
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Nutzer
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a><br/>
+                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a><br/>
+                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
+                    </div>
+
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" href="#" alt="Nutzerprofilbild" class="rounded-circle">
+
+                </div>
+                </div>
 
         </div>
-
-
     </nav>
 
 </div>
