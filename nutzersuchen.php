@@ -1,63 +1,96 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: linusmorlinghaus
- * Date: 21.11.18
- * Time: 12:16
- */
-include 'header.php';
-    session_start();
-    if (isset($_SESSION["angemeldet"]))
-    {
-        echo "Hallo"." " .$_SESSION["angemeldet"].", nach welchem Nutzer möchtest du suchen?";
-    }
-    else {
-
-        header("Location:login.php");
-    }
+// bindet den Header in die Seite ein
+include_once 'header.php';
 ?>
 
-<form action="nutzersuchen.php" method="post">
-    <input type="text" name="nutzersuchen" value="">
-    <input type="submit" name="suchen" value="Suchen">
-</form>
+<!doctype html>
+<html lang="de">
+<head>
+    <title>Suche</title>
+</head>
 
-<?php
+<body>
 
-if (isset($_POST['suchen'])) {
+    <div class="container-fluid">
+        <div class="row">
 
-    echo "Suchergebnisse: <br>";
+            <div class="col-3">
 
 
-    $benutzername = $_POST['nutzersuchen'];
+            </div>
 
-// $headline = $_POST['beitragsuchen'];
-
-    $benutzersuche = $pdo->prepare("SELECT * FROM studylab WHERE benutzername LIKE '%$benutzername%'");
-
-    if ($benutzersuche->execute()) {
-
-        while ($row = $benutzersuche->fetch()) {
-
-            // echo $row ['benutzername'];
-
-            $nutzerid = $row['nutzerid'];
+            <div class="col-6">
 
 
 
-            echo '<table>';
-            echo '<a href="nutzerprofil.php?nutzerid='.$nutzerid.'">' . $row['benutzername'];
-            echo '<table>';
+                <?php
+                    session_start();
+                    if (isset($_SESSION["angemeldet"]))
+                    {
+                        echo "Hallo"." " .$_SESSION["angemeldet"].", nach welchem Nutzer möchtest du suchen?";
+                    }
+                    else {
 
-        }
-    }
+                        header("Location:login.php");
+                    }
+                ?>
+
+                <form class="form-inline my-2 my-lg-0" action="nutzersuchen.php" method="post">
+                    <input class="form-control mr-sm-2" type="text" placeholder="" name="nutzersuchen" value="">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="suchen" value="Suchen">Suchen</button>
+                </form>
+
+                <?php
+
+                if (isset($_POST['suchen'])) {
+
+                    echo "Suchergebnisse: <br>";
 
 
-else {
-        echo "Nutzer nicht gefunden";
-    }
+                    $benutzername = $_POST['nutzersuchen'];
 
-}
+                // $headline = $_POST['beitragsuchen'];
 
-?>
+                    $benutzersuche = $pdo->prepare("SELECT * FROM studylab WHERE benutzername LIKE '%$benutzername%'");
 
+                    if ($benutzersuche->execute()) {
+
+                        while ($row = $benutzersuche->fetch()) {
+
+                            // echo $row ['benutzername'];
+
+                            $nutzerid = $row['nutzerid'];
+
+
+
+                            echo '<table>';
+                            echo '<a href="nutzerprofil.php?nutzerid='.$nutzerid.'">' . $row['benutzername'];
+                            echo '<table>';
+
+                        }
+                    }
+
+
+                else {
+                        echo "Nutzer nicht gefunden";
+                    }
+
+                }
+
+                ?>
+
+                </form>
+            </div>
+
+            <div class="col-3">
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

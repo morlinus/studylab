@@ -23,6 +23,7 @@ include_once 'header.php';
 
         <div class="col-sm-3">
             <h1>Profildaten</h1>
+            <button type="button" class="btn btn-success">Folgen</button>
         </div>
 
         <div class="col-sm-6">
@@ -33,7 +34,8 @@ include_once 'header.php';
             if (isset($_SESSION["angemeldet"])) {
             echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
             ?>
-            <div class="">
+
+
                 <?php
                 // Zeigt die Postings des User an
                 // Stellt die Verbindung zur Datenbank her
@@ -50,9 +52,6 @@ include_once 'header.php';
                     echo "nicht angemeldet.";
                 }
                 ?>
-            </div>
-
-
 
         </div>
 
