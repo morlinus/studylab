@@ -1,15 +1,30 @@
 <?php
+
+// schaut durch die Session, ob der Nutzer angemeldet ist
+session_start();
+if (isset($_SESSION["angemeldet"]))
+{
+
+}
+else {
+    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
+    header("Location:login.php");
+}
+
 // bindet den Header in die Seite ein
 include_once 'header.php';
+
 ?>
+
 
 <!doctype html>
 <html lang="de">
 <head>
 <title>Startseite</title>
+
+
 </head>
 <body>
-
 
     <div class="container-fluid">
         <div class="row">
@@ -19,29 +34,7 @@ include_once 'header.php';
 
             <div class="col-6">
 
-                <?php
-                // startet die Session, um zu erkennen, welcher Nutzer eingeloggt ist und vom wem er die Inhalte auf der Startseite anzeigen soll
-                session_start();
-                if (isset($_SESSION["angemeldet"])) {
-                echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
-                ?>
-                <br>
-                <br>
 
-
-                <?php
-                // schaut durch die Session, ob der Nutzer angemeldet ist
-                session_start();
-                if (isset($_SESSION["angemeldet"]))
-                {
-                    echo "Hallo"." " .$_SESSION["angemeldet"];
-                }
-                else {
-                    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
-                    header("Location:login.php");
-                }
-
-                ?>
                 <br>
                 <br>
 
@@ -66,7 +59,7 @@ include_once 'header.php';
                     while ($content = $statement->fetch()) {
                         echo "<br />" . $content['benutzername'] . " schrieb:<br />";
                         echo $content['text'] . "<br /><br />";
-                    }
+
                     }
                     ?>
             </div>

@@ -37,7 +37,7 @@ include_once 'header.php';
 
                 <form class="form-inline my-2 my-lg-0" action="nutzersuchen.php" method="post">
                     <input class="form-control mr-sm-2" type="text" placeholder="" name="nutzersuchen" value="">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="suchen" value="Suchen">Suchen</button>
+                    <button class="btn my-2 my-sm-0" type="submit" name="suchen" value="Suchen">Suchen</button>
                 </form>
 
                 <?php
