@@ -8,7 +8,6 @@ include_once 'header.php';
 <meta charset="utf-8">
 <head>
     <title>
-        <!-- übernimmt den Namen des eingeloggten Nutzer ins den Titel der Seite -->
         Profil von: <?php session_start();
         echo $_SESSION['angemeldet']; ?>
     </title>
