@@ -48,7 +48,8 @@ include 'userdata.php';
 
                 <div class="col-6">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzersuchen.php">Suche</button>
+                    <a class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzersuchen.php">Suche</a>
+                    <a class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/benachrichtigung.php">Benachrichtigung</a>
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Nutzer
                     </a>
@@ -59,7 +60,7 @@ include 'userdata.php';
                         <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
                     </div>
 
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" href="#" alt="Nutzerprofilbild" class="rounded-circle">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" alt="Nutzerprofilbild" class="rounded-circle">
 
                 </div>
                 </div>
@@ -73,7 +74,7 @@ include 'userdata.php';
 
 <footer class="page-footer navbar-inverse">
 
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <div class="footer text-center py-3">© 2018 Copyright:
         <a href="#">StudiLAB.com</a>
         <a href="https://mars.iuk.hdm-stuttgart.de/~as325/impressum.html">Impressum</a>
     </div>

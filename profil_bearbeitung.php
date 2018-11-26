@@ -9,135 +9,191 @@ include_once 'header.php';
 
 <body>
 
-<script>
-    $( function() {
-                $( "#datepicker" ).datepicker();
-                $( "#format" ).on( "change", function() {
-                    $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+
+
+            <div class="col-6">
+
+                <script>
+                    $( function() {
+                                $( "#datepicker" ).datepicker();
+                                $( "#format" ).on( "change", function() {
+                                    $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+                                });
+                            } );
+
+                    $( function() {
+                var availableTags = [
+                "Online- Medien- Management",
+                "Informationsdesign",
+                "Bibliothekswissenschaften",
+                "Anni Wissenschaften",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+                ];
+                $( "#tags" ).autocomplete({
+                source: availableTags
                 });
-            } );
-    
-    $( function() {
-var availableTags = [
-"Online- Medien- Management",
-"Informationsdesign",
-"Bibliothekswissenschaften",
-"Anni Wissenschaften",
-"C",
-"C++",
-"Clojure",
-"COBOL",
-"ColdFusion",
-"Erlang",
-"Fortran",
-"Groovy",
-"Haskell",
-"Java",
-"JavaScript",
-"Lisp",
-"Perl",
-"PHP",
-"Python",
-"Ruby",
-"Scala",
-"Scheme"
-];
-$( "#tags" ).autocomplete({
-source: availableTags
-});
-</script>
+                </script>
 
-<?php
-    session_start();
-    $_SESSION["angemeldet"];
-    $id=$_SESSION["id"];
-    $passwort=$_SESSION["passwort"];
-    include 'userdata.php';
+                <?php
+                    session_start();
+                    $_SESSION["angemeldet"];
+                    $id=$_SESSION["id"];
+                    $passwort=$_SESSION["passwort"];
+                    include 'userdata.php';
 
-$statement = $pdo->prepare("SELECT * FROM studylab WHERE id=$id");
-if($statement->execute()) {
-    while($row=$statement->fetch()) {
+                $statement = $pdo->prepare("SELECT * FROM studylab WHERE id=$id");
+                if($statement->execute()) {
+                    while($row=$statement->fetch()) {
 
-        ?>
-        <html>
-        <br>
-        <form action="aendern.php" method="post">
-            <tr>
-                <td>
-                    Name:
-                </td>
-                <td>
-                    <input type="text" autocomplete="off" size="40" maxlength="200" name="name" value="<?php echo $row['name'];?>"/>
-                </td><br><br>
-                <td>
-                    Nachname:
-                </td>
-                <td>
-                    <input type="text" autocomplete="off" size="40" maxlength="200" name="nachname" value="<?php echo $row['nachname'];?>"/>
-                </td><br><br>
-                <td>
-                    Benutzername:
-                </td>
-                <td>
-                     <input type="text" autocomplete="off" size="40" maxlength="200" name="benutzername" value="<?php echo $row['benutzername'];?>"/>
-                </td> <br><br>
-                <td>
-                    Geburtsdatum:
-                </td>
-                <td>
-                    <!-- Der Datepicker funktioniert hier noch nicht -->
-                    <input type="geburtsdatum" id="datepicker" value="<?php echo $row['geburtsdatum'];?>" size = "40" maxlength="200" name="geburtsdatum">
-                </td>    <br><br>
-                <td>
-                    Studiengang:
-                </td>
-                <td>
-                    <input type="text" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['studiengang'];?>"/>
-                </td>    <br><br>
-                <td>
-                    Geschlecht: <?php echo $row['geschlecht'];?>
-                </td>  <br><br> 
-                <td>
-                    E-Mail:
-                </td>
-                    <input type="text" autocomplete="off" size="40" maxlength="200" name="email" value="<?php echo $row['email'];?>"/>
-                <td>  <br><br>
-                <td>
-                    Semester:
-                </td>
-                <td>
-                    <input type="text" autocomplete="off" size="40" maxlength="200" name="semester" value="<?php echo $row['semester'];?>"/>
-                </td>  <br><br>
-                <td>
-                    Status:
-                </td>
-                <td>
-                    <input type="text" autocomplete="off" size="40" maxlength="200" name="status" value="<?php echo $row['status'];?>"/>
-                </td> <br><br>
-                <td>
-                <td> Passwort ändern: </td>        <br><br>
+                        ?>
+                        <html>
+                        <br>
+                        <div class="profil-bearbeitung">
+                        <form action="aendern.php" method="post">
+                                <label for="Inhalt">Name:</label>
+                                <br>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="name" value="<?php echo $row['name'];?>"/>
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Nachname:</label>
+                                <br>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="nachname" value="<?php echo $row['nachname'];?>"/>
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Benutzername:</label>
+                                <br>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="benutzername" value="<?php echo $row['benutzername'];?>"/>
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Geburtsdatum:</label>
+                                <br>
+                                <!-- Der Datepicker funktioniert hier noch nicht -->
+                                <input type="geburtsdatum" class="form-control" id="datepicker"  size = "40" maxlength="200" name="geburtsdatum"value="<?php echo $row['geburtsdatum'];?>">
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Studiengang:</label>
+                                <br>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['studiengang'];?>"/>
+
+                            <!-- Hier bin ich mir nicht sicher wie man die PHP-Datei einbindet -->
+                            <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
+                                <option>Audiovisuelle Medien</option>
+                                <option>Crossmedia-Redaktion/Public Relations</option>
+                                <option>Deutsch-Chinesischer Studiengang Medien und Technologie</option>
+                                <option>Informationsdesign</option>
+                                <option>Informationswissenschaften</option>
+                                <option>Integriertes Produktdesign</option>
+                                <option>Mediapublishing</option>
+                                <option>Medieninformatik</option>
+                                <option>Medienwirtschaft</option>
+                                <option>Mobile Medien</option>
+                                <option>Online-Medien-Management</option>
+                                <option>Print Media Technologies</option>
+                                <option>Verpackungstechnik</option>
+                                <option>Werbung und Marktkommunikation</option>
+                                <option>Wirtschaftsinformatik und digitale Medien</option>
+                                <option>Wirtschaftsingenieurwesen Medien</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Geschlecht:</label>
+                                <br>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['geschlecht'];?>"/>
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">E-Mail Addresse</label>
+                                <input type="email" class="form-control" id="Inhalt" value="<?php echo $row['email'];?>">
+                        </div>
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Semester:</label>
+                                <!-- Hier bin ich mir nicht sicher wie man die PHP-Datei einbindet -->
+                                <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                </select>
+                        </div>
+
+                        <!--
+                                <td>
+                                    Semester:
+                                </td>
+                                <td>
+                                    <input type="text" autocomplete="off" size="40" maxlength="200" name="semester" value="<?php echo $row['semester'];?>"/>
+                                </td>  <br><br>
+
+                        -->
+                        <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Status:</label>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['status'];?>"/>
+                        </div>
+                         <br>
+                        <div class="profil-bearbeitung">
+                                <label for="Inhalt">Passwort ändern:</label>
+                                <br>
+                                altes Passwort:<input type="password" class="form-control" name="passwort_alt" />  <br><br>
+
+                                neues Passwort:<input type="password" class="form-control" name="passwort_neu" />  <br><br>
+                        </div>
+
+                                <form class="form-inline my-2 my-lg-0" action="aendern.php" method="post">
+                                    <button class="btn my-2 my-sm-0" type="submit" name="submit" value="Änderungen speichern">Änderungen speichern</button>
+                                </form>
 
 
-                    altes Passwort:<input type="password" name="passwort_alt" />  <br><br>
+                        </html>
 
-                    neues Passwort:<input type="password" name="passwort_neu" />    <br><br> 
-                </td>
-                <td>
-                    <input type="submit" value="Änderungen speichern" name="submit">
-                </td>
-            </tr>
-        </form>
-    </html>
-                                                       
-<?php
+                <?php
 
-    }
-} else {
-    echo 'Datenbank-Fehler:';
-    echo $statement->errorInfo()[2];
-    echo $statement->queryString;
-    die();
-}
-?>
+                    }
+                } else {
+                    echo 'Datenbank-Fehler:';
+                    echo $statement->errorInfo()[2];
+                    echo $statement->queryString;
+                    die();
+                }
+                ?>
+            </div>
+
+            <div class="col-3">
+
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
