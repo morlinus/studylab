@@ -62,7 +62,7 @@ include 'userdata.php';
                         <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
                     </div>
 
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" alt="Nutzerprofilbild" class="rounded-circle">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" alt="Nutzerprofilbild" class="profilbild-navbar">
 
                 </div>
                 </div>
@@ -72,16 +72,6 @@ include 'userdata.php';
 
 </div>
 
-
-
-<footer class="page-footer navbar-inverse">
-
-    <div class="footer text-center py-3">© 2018 Copyright:
-        <a href="#">StudiLAB.com</a>
-        <a href="https://mars.iuk.hdm-stuttgart.de/~as325/impressum.html">Impressum</a>
-    </div>
-
-</footer>
-
 </body>
+
 </html>

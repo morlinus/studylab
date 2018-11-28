@@ -46,8 +46,7 @@ include_once 'header.php';
                     <input class="btn btn-primary" type="submit" value="Posten">
                     <br>
                     <br>
-
-
+                </form>
 
 
                     <?php
@@ -62,10 +61,18 @@ include_once 'header.php';
 
                     }
                     ?>
+
+
             </div>
 
         </div>
     </div>
 
 </body>
+
+<?php
+session_start();
+include_once 'footer.php';
+?>
+
 </html>
