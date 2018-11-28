@@ -17,15 +17,19 @@ include_once 'header.php';
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 
-        <div class="col-sm-3">
+        <div class="col-3">
             <h1>Profildaten</h1>
-            <button type="button" class="btn btn-success">Folgen</button>
+            <div class="profilbild-folgen">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" alt="Nutzerprofilbild" class="profilbild">
+                <button type="button" class="btn btn-success">Folgen</button>
+            </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-6">
+
             <?php
             //startet die Session und übernimmt die ID des Nutzers, die beim Login übergeben wurde
             session_start();
@@ -33,7 +37,6 @@ include_once 'header.php';
             if (isset($_SESSION["angemeldet"])) {
             echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
             ?>
-
 
                 <?php
                 // Zeigt die Postings des User an
@@ -51,10 +54,9 @@ include_once 'header.php';
                     echo "nicht angemeldet.";
                 }
                 ?>
-
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-3">
                 <!-- Der User kann hier einen Post schreiben -->
                 Schreibe einen Post:
                 <form action="formular_abfrage.php" method="post">
@@ -65,8 +67,11 @@ include_once 'header.php';
 
     </div>
 </div>
-
-
 <body/>
+
+<?php
+session_start();
+include_once 'footer.php';
+?>
 
 </html>

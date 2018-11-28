@@ -1,3 +1,7 @@
+html, body{
+    height: 100%;
+}
+
 .navbar{
     height: 10%;
     width: 100%;
@@ -8,16 +12,16 @@
     font-weight: bold;
 }
 
-
 .container-fluid{
+    min-height: 100%;
     width: 100%;
-    padding: 15px;
+    padding: 20px;
 }
 
 .studylab-nav-inhalt{
     position: relative;
     display: inline-block;
-    padding: 10px ;
+    padding: 5px ;
     font-weight: 300;
     color: white;
     text-decoration: none;
@@ -82,7 +86,7 @@
     font-weight: bold;
 }
 
-.rounded-circle{
+.profilbild-navbar{
     padding: 5px;
     position: relative;
     height: 50px;
@@ -90,26 +94,35 @@
     border-radius: 50%;
 }
 
+.profilbild{
+    padding: 10px;
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
 .page-footer{
     background-color: lightgray;
     color: white;
-    position: fixed;
-    left:0px;
-    bottom: 0px;
+    position: relative;
     width: 100%;
     height: 5vh;
+    clear: both;
 }
 
 
-.col-sm-6 {
+.col-6 {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%;
 }
 
-.col-sm-3 {
+.col-3 {
     -ms-flex: 0 0 25%;
     flex: 0 0 25%;
     max-width: 25%;
 }
+
+
 
