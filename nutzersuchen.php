@@ -59,12 +59,12 @@ include_once 'header.php';
 
                             // echo $row ['benutzername'];
 
-                            $nutzerid = $row['nutzerid'];
+                            $studilab = $row['id'];
 
 
 
                             echo '<table>';
-                            echo '<a href="nutzerprofil.php?nutzerid='.$nutzerid.'">' . $row['benutzername'];
+                            echo '<a href="profil_folgen2.php?studilab='.$studilab.'">' . $row['benutzername'];
                             echo '<table>';
 
                         }
