@@ -21,18 +21,8 @@ $content= $_POST["content"];
 // bereitet die Datenbank vor
 $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text)");
 // fügt die Inhalte in die Datenbank ein
-if ($statement->execute(array(':text'=>$content, ':userid'=>$id))) {
-    if ($row = $statement->fetch()) {
+$statement->execute(array(':text'=>$content, ':userid'=>$id));
 
-        $_SESSION["benutzerid"] = $row['userid'];
-        $_SESSION["beitragsid"] = $row['id'];
-    }
-    else {
-
-        header("Location: nutzerprofil.php");
-
-    }
-}
 
 // leitet den Nutzer nach dem Post wieder auf die Nutzerprofil.php zurück
 header ("Location:nutzerprofil.php");
