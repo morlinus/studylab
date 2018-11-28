@@ -11,7 +11,22 @@ include_once 'header.php';
         Profil von: <?php session_start();
         echo $_SESSION['angemeldet']; ?>
     </title>
+<style type="text/css">
+    .content{
+        width: 80%;
+        margin:100px auto;
+        border: 1px solid #cbcbcb;
+        border-radius: 20px;
+    }
+    .post{
+        width: 95%;
+        margin: 10px auto;
+        border: 1px solid #cbcbcb;
+        padding: 10px;
+        border-radius: 20px;
+    }
 
+</style>
 
 </head>
 
@@ -35,7 +50,7 @@ include_once 'header.php';
             session_start();
             $id=$_SESSION["id"];
             if (isset($_SESSION["angemeldet"])) {
-            echo "Eingeloggt ist der Benutzer " . $_SESSION['angemeldet'];
+
             ?>
 
                 <?php
@@ -43,17 +58,28 @@ include_once 'header.php';
                 // Stellt die Verbindung zur Datenbank her
                 include "userdata.php";
                 // wählt aus der Datenbank die entsprechenden Beiträge aus
-                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $id");
+                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $id ORDER BY content.id DESC");
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
+                    ?>
+                    <div class="content">
+                        <div class="post">
+                            <?php
                     echo "<br />" . $content['benutzername'] . " schrieb:<br />";
                     echo $content['text'] . "<br /><br />";
 
                     ?>
                     <form action="socialfuntktionen.php" method="post">
-                        <input type="submit" name="like" value="Gefällt mir!">
-                        <input type="submit" name="kommentar" value="Kommentieren">
+                        <input class="btn btn-primary" type="button" name="like" value="Gefällt mir!">
                     </form>
+                            <br>
+                    <form action="kommentieren.php" method="post">
+                        <textarea name="Kommentar" class="form-control" placeholder="Kommentieren" rows="1"></textarea><br>
+                        <input class="btn btn-primary" type="submit" name="Kommentieren" value="Kommentieren"></submit>
+                    </form>
+                            <br>
+                        </div>
+                        </div>
 
                         <?php
                 }
