@@ -28,7 +28,9 @@ if ($statement->execute(array(':text'=>$content, ':userid'=>$id))) {
         $_SESSION["beitragsid"] = $row['id'];
     }
     else {
+
         header("Location: nutzerprofil.php");
+
     }
 }
 

@@ -48,6 +48,14 @@ include_once 'header.php';
                 while ($content = $statement->fetch()) {
                     echo "<br />" . $content['benutzername'] . " schrieb:<br />";
                     echo $content['text'] . "<br /><br />";
+
+                    ?>
+                    <form action="socialfuntktionen.php" method="post">
+                        <input type="submit" name="like" value="Gefällt mir!">
+                        <input type="submit" name="kommentar" value="Kommentieren">
+                    </form>
+
+                        <?php
                 }
                 }
                 else {
@@ -67,7 +75,7 @@ include_once 'header.php';
 
     </div>
 </div>
-<body/>
+</body>
 
 <?php
 session_start();
