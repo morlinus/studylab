@@ -5,13 +5,12 @@
  * Date: 27.11.18
  * Time: 19:02
  */
+ob_start();
 include_once "header.php";
 
 $profile_id=$_GET['studilab'];
 $follower=$_SESSION["angemeldet"];
 $followerid = $_SESSION["id"];
-echo $followerid;
-echo $profile_id;
 
 // Profildaten von dem fremden Nutzer aufrufen
 $nutzersuche = $pdo->prepare("SELECT * FROM studylab WHERE id = $profile_id");
@@ -31,9 +30,7 @@ if ($nutzersuche->execute()) {
             <div> Benutzername: <?php echo  $benutzername; ?> </div>
             <div> Studiengang: <?php echo  $studiengang; ?> </div>
 
-        </div>
-
-        <?php
+        </div><?php
     }
 }
 
@@ -54,39 +51,40 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
         if (isset($_POST['follow'])) {
             $follow = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$profile_id', '$followerid') ");
             if ($follow->execute()) {
-                // echo "followed";
+                echo "followed";
                 header("location:profil_folgen2.php?studilab=$profile_id");
+
             }
         }
     }
     else {
-        ?>
-        <!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
+        ?><!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
         <form action="profil_folgen2.php?studilab=<?php echo $profile_id; ?>" method="post">
             <input type="submit" name="unfollow" value="Unfollow">
-        </form>
-        <?php
-
+        </form><?php
          // entfolgen Befehl
         if (isset($_POST['unfollow'])) {
             $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");
             if ($unfollow->execute()) {
                 echo "unfollowed";
                 header("location:profil_folgen2.php?studilab=$profile_id");
+
             }
         }
 
+
+    }
+
+}
+
+
+if($no > 0) {
+//wenn dem Benutzer gefolgt wird, werden aus der Datenbank die entsprechenden Beiträge ausgewählt
+    $beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profile_id");
+    $beiträge->execute(array('beitragsid' => 1));
+    while ($content = $beiträge->fetch()) {
+        echo "<br />" . $content['benutzername'] . " schrieb:<br />";
+        echo $content['text'] . "<br /><br />";
     }
 }
-
-// wenn dem Benutzer gefolgt wird, werden aus der Datenbank die entsprechenden Beiträge ausgewählt
-$beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profile_id");
-$beiträge->execute(array('beitragsid' => 1));
-while ($content = $beiträge->fetch()) {
-    echo "<br />" . $content['benutzername'] . " schrieb:<br />";
-    echo $content['text'] . "<br /><br />";
-}
-
-?>
-
-
+ob_end_flush();
