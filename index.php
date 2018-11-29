@@ -40,6 +40,29 @@ include_once 'header.php';
     </style>
 
 </head>
+<script type="text/javascript">
+    function post(){
+        var comment = document.getElementById("comment").value;
+        if(comment)
+        {
+            $.ajax
+            ({
+                type: 'post',
+                url: 'index.php',
+                data:
+                    {
+                        user_comm:comment,
+                    },
+                success: function (response)
+                {
+                    document.getElementById("all_comments").innerHTML=responce+document.getElementById("all_comments").innerHTML;
+                    document.getElementById("comment").value="";
+                }
+            });
+        }
+        return false;
+    }
+</script>
 <body>
 
     <div class="container-fluid">
@@ -76,9 +99,11 @@ include_once 'header.php';
                         $empfaenger_id=$row['userid'];
                         $post_id=$row['id'];
                         /*
+                        session_start();
                         $_SESSION['empfaenger_id']=$row['userid'];
                         $_SESSION['post_id']=$row['id'];
-                        */
+*/
+
 
                     }
                     while ($content = $statement->fetch()) {
@@ -96,21 +121,23 @@ include_once 'header.php';
 
                 <br>
 
-                <form method="post" id="kommentar_form">
-                    <textarea name="comment" class="form-control" placeholder="Kommentieren" rows="1"></textarea><br>
-                    <input type="hidden" name="kommentar_id" id="kommentar_id" value="0"/>
-                    <input class="btn btn-primary" type="submit" name="kommentar" value="Kommentieren" id="submit"/>
+                <form method="post" action="" onsubmit="return post();">
+                    <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1"></textarea><br>
+                    <input class="btn btn-primary" type="submit" name="kommentar" value="Kommentieren"/>
                 </form>
 
-                                    <span id="kommentar_nachricht"></span>
-                                </br>
-                                    <div id="zeigen_kommentar"></div>
+                                <!--
+                                <span id="kommentar_nachricht"></span>
+
+                                    <span id="zeigen_kommentar"></span>
+                                    -->
 
 
 
 
 
                                 <?php
+
 
                                 session_start();
                                 $id=$_SESSION["id"];
@@ -124,7 +151,7 @@ include_once 'header.php';
 
 
                                 }
-
+                                
                                 ?>
 
 
@@ -144,25 +171,17 @@ include_once 'header.php';
 
 </body>
 
+<!--
 <script>
     $(document).ready(function(){
 
         $('#kommentar_form').on('kommentar',function(event){
             event.preventDefault();
-            var form_data = $(this).serialize();
-            $ajax({
+            var form_data = $ajax({
                 url: "index.php",
-                method: "POST",
+                type: "POST",
                 data:form_data,
-                dataType:JSON
-                success:function(data)
-                {
-                    if(data.error != ' ')
-                    {
-                        $('#kommentar_form')[0].reset();
-                        $('#kommentar_form').html(data.error);
-                    }
-                }
+
             })
         });
         lade_kommentar();
@@ -186,6 +205,7 @@ include_once 'header.php';
     });
 
 </script>
+-->
 <?php
 session_start();
 include_once 'footer.php';
