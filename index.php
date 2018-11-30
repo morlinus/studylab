@@ -21,23 +21,6 @@ include_once 'header.php';
 <html lang="de">
 <head>
 <title>Startseite</title>
-    <style type="text/css">
-        .content{
-            width: 80%;
-            margin:100px auto;
-            border: 1px solid #cbcbcb;
-            border-radius: 20px;
-        }
-        .post{
-            width: 95%;
-            margin: 10px auto;
-            border: 1px solid #cbcbcb;
-            padding: 10px;
-            border-radius: 20px;
-        }
-
-
-    </style>
 
 </head>
 <body>
