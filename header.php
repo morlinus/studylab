@@ -2,6 +2,14 @@
 session_start();
 
 include 'userdata.php';
+
+$id=$_SESSION ["id"];
+$bild = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id");
+$bild ->execute();
+while($row = $bild->fetch()){
+// echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
+// <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
+
 ?>
 
 
@@ -25,7 +33,6 @@ include 'userdata.php';
 </head>
 
 <body>
-
 
 <div id="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -63,7 +70,14 @@ include 'userdata.php';
                         <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
                     </div>
 
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" alt="Nutzerprofilbild" class="profilbild-navbar">
+                    <?php
+                    echo ("<img src='data:".$row['format'].";base64,".base64_encode($row['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                    }
+
+                    ?>
+
+
+                    
 
                 </div>
                 </div>

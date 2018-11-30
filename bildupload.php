@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'header.php';
+//include_once 'header.php';
 ?>
 
 
@@ -27,15 +27,19 @@ include_once 'header.php';
                 <!-- "enctype" beschreibt wie die Datei encoded werden soll -->
                 <?php
                 // Stellt die Verbindung zur Datenbank her und fügt die Datei in die Datenbank ein
+
+
                 include "userdata.php";
                 if (isset($_POST['submit'])){
                     $name = $_FILES['myfile']['name'];
                     $typ = $_FILES ['myfile']['type'];
+                    $id = $_SESSION ["id"];
                     $datei = file_get_contents($_FILES['myfile']['tmp_name']);
-                    $statement = $pdo->prepare("INSERT INTO bilduplad VALUES('',?,?,?)");
+                    $statement = $pdo->prepare("INSERT INTO bilduplad VALUES('',?,?,?,?)");
                     $statement->bindParam(1,$name);
                     $statement->bindParam(2,$typ);
                     $statement->bindParam(3,$datei);
+                    $statement->bindParam(4,$id);
                     $statement->execute();
                 }
                 ?>
@@ -54,11 +58,11 @@ include_once 'header.php';
                     $stat = $pdo->prepare("SELECT * FROM bilduplad");
                     $stat->execute();
                     while($row = $stat->fetch()){
-                        echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
-                    <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
+                        echo "<a target='_blank' href='bild_abrufen.php?".$row['user_id']."'>"."</a><br/>
+                    <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/>";
                     }
                     ?>
-                </div>
+
             </div>
 
             <div class="col-3">
