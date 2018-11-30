@@ -14,6 +14,23 @@ else {
 // bindet den Header in die Seite ein
 include_once 'header.php';
 
+
+$id=$_SESSION["id"];
+
+
+if(isset($_POST['kommentar'])) {
+
+    $comment=$_POST['comment'];
+    $post_id=$_POST['post_id'];
+
+    $statement = $pdo->prepare("INSERT INTO kommentare (id, sender_id, post_id, kommentar) VALUES (' ',:sender_id, :post_id,:kommentar)");
+    if (!$statement->execute(array('sender_id'=>$id, 'post_id'=>$post_id, 'kommentar'=>$comment)))
+    {
+        echo "Fehler";
+    }
+
+}
+
 ?>
 
 
@@ -22,13 +39,13 @@ include_once 'header.php';
 <head>
 <title>Startseite</title>
     <style type="text/css">
-        .content{
+        .Inhalt{
             width: 80%;
             margin:100px auto;
             border: 1px solid #cbcbcb;
             border-radius: 20px;
         }
-        .post{
+        .Beitrag{
             width: 95%;
             margin: 10px auto;
             border: 1px solid #cbcbcb;
@@ -40,29 +57,7 @@ include_once 'header.php';
     </style>
 
 </head>
-<script type="text/javascript">
-    function post(){
-        var comment = document.getElementById("comment").value;
-        if(comment)
-        {
-            $.ajax
-            ({
-                type: 'post',
-                url: 'index.php',
-                data:
-                    {
-                        user_comm:comment,
-                    },
-                success: function (response)
-                {
-                    document.getElementById("all_comments").innerHTML=responce+document.getElementById("all_comments").innerHTML;
-                    document.getElementById("comment").value="";
-                }
-            });
-        }
-        return false;
-    }
-</script>
+
 <body>
 
     <div class="container-fluid">
@@ -94,70 +89,34 @@ include_once 'header.php';
                     // zeigt die Post aus der Datenbank an - muss noch so erweitert werde, dass nur die Post von sich selbst und den Leuten, denen man folgt angezeigt wird
                     $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id ORDER BY content.id DESC");
                     $statement->execute(array('beitragsid' => 1));
-                    if ($row = $statement->fetch()){
-
-                        $empfaenger_id=$row['userid'];
-                        $post_id=$row['id'];
-                        /*
-                        session_start();
-                        $_SESSION['empfaenger_id']=$row['userid'];
-                        $_SESSION['post_id']=$row['id'];
-*/
-
-
-                    }
                     while ($content = $statement->fetch()) {
                         ?>
-                        <div class="content">
-                            <div class="post">
+                        <div class="Inhalt">
+                            <div class="Beitrag">
                                 <?php
 
                         echo "<br />" . $content['benutzername'] . " schrieb:<br />";
                         echo $content['text'] . "<br /><br />";
-                    ?>
-                <form action="socialfuntktionen.php" method="post">
-                    <input class="btn btn-primary" type="button" name="like" value="Gefällt mir!">
+?>
+                                <form method="post" action="" onsubmit="return post();">
+                    <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
+                    <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
+
+                    <input type="submit" class="btn btn-primary" value="Kommentieren"/>
+
+
                 </form>
+                               <?php
+                                /*
+                               $statement=$pdo->prepare("SELECT kommentare.*, studylab.bentuzername FROM kommentare LEFT JOIN studylab ON kommentare.senderid=studylab.id ORDER BY kommentare.id DESC");
+                               $statement->execute(array('beitragsid'=>1));
+                               while($komm=$statement->fetch()) {
+                                   echo $komm['benutzername'];
+                                   echo $komm['kommentar'];
 
-                <br>
+                               } */?>
 
-                <form method="post" action="" onsubmit="return post();">
-                    <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1"></textarea><br>
-                    <input class="btn btn-primary" type="submit" name="kommentar" value="Kommentieren"/>
-                </form>
-
-                                <!--
-                                <span id="kommentar_nachricht"></span>
-
-                                    <span id="zeigen_kommentar"></span>
-                                    -->
-
-
-
-
-
-                                <?php
-
-
-                                session_start();
-                                $id=$_SESSION["id"];
-
-                                $comment=$_POST["comment"];
-
-                                if(isset($_POST['kommentar'])) {
-
-                                    $statement = $pdo->prepare("INSERT INTO kommentare (id, sender_id, empfaenger_id, post_id, kommentar) VALUES (NULL,:sender_id, :empfaenger_id, :post_id,:kommentar)");
-                                    $statement->execute(array('sender_id' => $id, 'empfaenger_id'=>$empfaenger_id, 'post_id'=>$post_id, ':kommentar' => $comment));
-
-
-                                }
-                                
-                                ?>
-
-
-
-                <br>
-            </div>
+                            </div>
         </div>
 <?php
                     }
@@ -170,42 +129,29 @@ include_once 'header.php';
     </div>
 
 </body>
-
-<!--
-<script>
-    $(document).ready(function(){
-
-        $('#kommentar_form').on('kommentar',function(event){
-            event.preventDefault();
-            var form_data = $ajax({
-                url: "index.php",
-                type: "POST",
-                data:form_data,
-
-            })
-        });
-        lade_kommentar();
-
-        function lade_kommentar()
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function post(){
+        var comment = document.getElementById("comment").value;
+        if(comment)
         {
-            $ajax({
-                url:"lade_kommentare.php",
-                method:"POST",
-                success: function(data)
+            $.ajax
+            ({
+                type: 'post',
+                url: 'index.php',
+                data:
+                    {
+                        comment:comment,
+                    },
+                success: function (response)
                 {
-                    $('zeigen_kommentar').hmtl(data);
+                    document.getElementById("comment").value="";
                 }
-            })
+            });
         }
-        $(document).on('click', '.reply', function(){
-            var kommentar_id =$(this).attr("id");
-            $('#kommentar_id').val(kommentar_id);
-            $('kommentar_name').focus();
-        })
-    });
-
+        return false;
+    }
 </script>
--->
 <?php
 session_start();
 include_once 'footer.php';
