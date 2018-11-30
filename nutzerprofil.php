@@ -58,7 +58,7 @@ include_once 'header.php';
                 // Stellt die Verbindung zur Datenbank her
                 include "userdata.php";
                 // wählt aus der Datenbank die entsprechenden Beiträge aus
-                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $id ORDER BY content.id DESC");
+                $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid=$id ORDER BY content.id DESC");
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
                     ?>
