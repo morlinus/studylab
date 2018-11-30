@@ -3,10 +3,10 @@ session_start();
 
 include 'userdata.php';
 
-$id=$_SESSION ["id"];
-$bild = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id");
-$bild ->execute();
-while($row = $bild->fetch()){
+$id_header=$_SESSION ["id"];
+$bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+$bild_header ->execute();
+while($row_header = $bild_header->fetch()){
 // echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
 // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
@@ -71,7 +71,7 @@ while($row = $bild->fetch()){
                     </div>
 
                     <?php
-                    echo ("<img src='data:".$row['format'].";base64,".base64_encode($row['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                    echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                     }
 
                     ?>
