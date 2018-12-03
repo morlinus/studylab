@@ -81,7 +81,7 @@ if(isset($_POST['kommentar'])) {
                     // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
                     ?>
-                        <div class="inhalt">
+
                             <div class="beitrag">
 
                                 <?php
@@ -115,7 +115,6 @@ if(isset($_POST['kommentar'])) {
                     }
                     ?>
 
-                        </div>
 
             </div>
         </div>

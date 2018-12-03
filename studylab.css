@@ -84,26 +84,6 @@ html, body{
     color: darkgrey;
 }
 
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: right;
-    min-width: 10rem;
-    padding: .5rem 0;
-    margin: .125rem 0 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-}
-
 .btn{
     color: white;
 }
@@ -152,6 +132,7 @@ html, body{
     max-width: 25%;
 }
 
+
 .row{
     margin: 20px;
 }
@@ -163,10 +144,11 @@ html, body{
     border-radius: 20px;
 }
 .beitrag{
+    width: 100%;
     padding: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
     position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
     transfrom: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 10px;
