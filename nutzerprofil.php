@@ -1,6 +1,13 @@
 <?php
 // bindet die header.php ein und damit den Header der Seite
 include_once 'header.php';
+
+$id_header=$_SESSION ["id"];
+$bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+$bild_header ->execute();
+while($row_header = $bild_header->fetch()){
+// echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
+// <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 ?>
 
 <!doctype html>
@@ -11,22 +18,6 @@ include_once 'header.php';
         Profil von: <?php session_start();
         echo $_SESSION['angemeldet']; ?>
     </title>
-<style type="text/css">
-    .content{
-        width: 80%;
-        margin:100px auto;
-        border: 1px solid #cbcbcb;
-        border-radius: 20px;
-    }
-    .post{
-        width: 95%;
-        margin: 10px auto;
-        border: 1px solid #cbcbcb;
-        padding: 10px;
-        border-radius: 20px;
-    }
-
-</style>
 
 </head>
 
@@ -38,7 +29,11 @@ include_once 'header.php';
         <div class="col-3">
             <h1>Profildaten</h1>
             <div class="profilbild-folgen">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/PICA.jpg/440px-PICA.jpg" alt="Nutzerprofilbild" class="profilbild">
+                <?php
+                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                }
+
+                ?>
                 <button type="button" class="btn btn-success">Folgen</button>
             </div>
         </div>
@@ -62,10 +57,10 @@ include_once 'header.php';
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
                     ?>
-                    <div class="content">
-                        <div class="post">
+
+                        <div class="beitrag">
                             <?php
-                    echo "<br />" . $content['benutzername'] . " schrieb:<br />";
+                    echo "<br />" . $content['benutzername'] . ":<br />";
                     echo $content['text'] . "<br /><br />";
 
                     ?>
@@ -79,7 +74,7 @@ include_once 'header.php';
                     </form>
                             <br>
                         </div>
-                        </div>
+
 
                         <?php
                 }

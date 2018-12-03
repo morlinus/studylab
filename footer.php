@@ -23,7 +23,7 @@ include 'userdata.php';
 
 <footer class="page-footer navbar-inverse">
 
-    <div class="footer text-center py-3">© 2018 Copyright:
+    <div class="footer text-center">© 2018 Copyright:
         <a href="#">StudiLAB.com</a>
         <a href="https://mars.iuk.hdm-stuttgart.de/~as325/impressum.html">Impressum</a>
     </div>

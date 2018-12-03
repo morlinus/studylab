@@ -38,24 +38,6 @@ if(isset($_POST['kommentar'])) {
 <html lang="de">
 <head>
 <title>Startseite</title>
-    <style type="text/css">
-        .Inhalt{
-            width: 80%;
-            margin:100px auto;
-            border: 1px solid #cbcbcb;
-            border-radius: 20px;
-        }
-        .Beitrag{
-            width: 95%;
-            margin: 10px auto;
-            border: 1px solid #cbcbcb;
-            padding: 10px;
-            border-radius: 20px;
-        }
-
-
-    </style>
-
 </head>
 
 <body>
@@ -90,22 +72,34 @@ if(isset($_POST['kommentar'])) {
                     $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id ORDER BY content.id DESC");
                     $statement->execute(array('beitragsid' => 1));
                     while ($content = $statement->fetch()) {
-                        ?>
-                        <div class="Inhalt">
-                            <div class="Beitrag">
+
+                    $id_header=$_SESSION ["id"];
+                    $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+                    $bild_header ->execute();
+                    while($row_header = $bild_header->fetch()){
+                    // echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
+                    // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
+
+                    ?>
+                        <div class="inhalt">
+                            <div class="beitrag">
+
                                 <?php
+                                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                }
+                                ?>
 
-                        echo "<br />" . $content['benutzername'] . " schrieb:<br />";
-                        echo $content['text'] . "<br /><br />";
-?>
+                                <?php
+                                echo "<br />" . $content['benutzername'] . ":<br />";
+                                echo $content['text'] . "<br /><br />";
+                                ?>
+
                                 <form method="post" action="" onsubmit="return post();">
-                    <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
-                    <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
+                                    <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
+                                    <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
 
-                    <input type="submit" class="btn btn-primary" value="Kommentieren"/>
-
-
-                </form>
+                                    <input type="submit" class="btn btn-primary" value="Kommentieren"/>
+                                </form>
                                <?php
                                 /*
                                $statement=$pdo->prepare("SELECT kommentare.*, studylab.bentuzername FROM kommentare LEFT JOIN studylab ON kommentare.senderid=studylab.id ORDER BY kommentare.id DESC");
@@ -117,18 +111,19 @@ if(isset($_POST['kommentar'])) {
                                } */?>
 
                             </div>
-        </div>
-<?php
+                    <?php
                     }
                     ?>
 
+                        </div>
 
             </div>
-
         </div>
     </div>
 
 </body>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     function post(){
@@ -152,6 +147,7 @@ if(isset($_POST['kommentar'])) {
         return false;
     }
 </script>
+
 <?php
 session_start();
 include_once 'footer.php';
