@@ -85,12 +85,16 @@ if(isset($_POST['kommentar'])) {
                             <div class="beitrag">
 
                                 <?php
+                        $beitragsersteller = $content['userid'];
                                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                 }
                                 ?>
 
                                 <?php
-                                echo "<br />" . $content['benutzername'] . ":<br />";
+                                //echo "<br />" . $content['benutzername'] . ":<br />";
+                                echo '<a href="profil_folgen2.php?studilab='.$beitragsersteller.'">' . $content['benutzername'] .'</a>';
+                               
+                                echo "<br>";
                                 echo $content['text'] . "<br /><br />";
                                 ?>
 

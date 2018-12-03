@@ -158,30 +158,38 @@ if($showFormular) {
     <form action="?register=1" method="post">
 
         <div class="eingabefeld">
-        <input type="name" size="40" maxlength="200" name="name" placeholder="Name"><br><br>.-
-       <label>Vorname</label>
+        <input type="name" size="40" maxlength="200" name="name" placeholder="Name">
         </div>
 
-        Nachname:<br>
-        <input type="nachname" size="40" maxlength="200" name="nachname"><br><br>
+        <div class="eingabefeld">
+        <input type="nachname" size="40" maxlength="200" name="nachname" placeholder="Nachname">
+        </div>
 
-        Benutzername: <br>
-        <input type="benutzername" size="40" maxlength="200" name="benutzername"><br><br>
-        E-Mail:<br>
-        <input type="email" size="40" maxlength="200" name="email"><br><br>
+        <div class="eingabefeld">
+        <input type="benutzername" size="40" maxlength="200" name="benutzername" placeholder="Benutzername">
+        </div>
 
-        Geburtsdatum: <br>
-      <input type="geburtsdatum" id="datepicker" value="yy-mm-dd" size = "40" maxlength="200" name="geburtsdatum"><br><br>
+        <div class="eingabefeld">
+        <input type="email" size="40" maxlength="200" name="email"placeholder="E-Mail">
+        </div>
 
-        // <option id=fomat value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+        <div class="eingabefeld">
+      <input type="geburtsdatum" id="datepicker" value="yy-mm-dd" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
+        </div>
+
+        <!--
+        <div class="eingabefeld">
+        <option id=fomat value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+        </div> -->
 
         <!-- Studiengang: <br>
         <input type="studiengang" size="40" maxlength="200" name="studiengang"><br><br>
 -->
-        Studiengang:
+        <div class="eingabefeld">
         <div class="ui-widget">
-            <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang">
+            <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"placeholder="Studiengang">
         </div>
+            </div>
         <br><br>
         <!--
                 Geschlecht: <br>
@@ -208,8 +216,9 @@ if($showFormular) {
         </table>
         <br><br>
 
-        Semester: <br>
+        <div class="eingabefeld">
         <input type="semester" size = "40" maxlength="200" name="semester"><br><br>
+        </div>
 
        <!--  Position: <br>
         <input type="status" size = "40" maxlength="200" name="status"><br><br>
@@ -240,11 +249,13 @@ if($showFormular) {
         </table>
         <br><br>
 
-        Dein Passwort:<br>
-        <input type="password" size="40"  maxlength="200" name="passwort"><br>
+        <div class="eingabefeld">
+        <input type="password" size="40"  maxlength="200" name="passwort" placeholder="Passwort eingeben"><br>
+        </div>
 
-        Passwort wiederholen:<br>
-        <input type="password" size="40" maxlength="200" name="passwort2"><br><br>
+        <div class="eingabefeld">
+        <input type="password" size="40" maxlength="200" name="passwort2" placeholder="Passwort wiederholen"><br><br>
+        </div>
 
         <input type="submit" value="Abschicken">
     </form>
