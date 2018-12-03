@@ -54,6 +54,7 @@ session_start();
 
                 <div class="bilder">
                     <?php
+                    /*
                     // zeigt die Bilder aus der Datenbank an
                     $stat = $pdo->prepare("SELECT * FROM bilduplad");
                     $stat->execute();
@@ -61,6 +62,7 @@ session_start();
                         echo "<a target='_blank' href='bild_abrufen.php?".$row['user_id']."'>"."</a><br/>
                     <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/>";
                     }
+                    */
                     ?>
 
             </div>

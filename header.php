@@ -64,6 +64,7 @@ while($row_header = $bild_header->fetch()){
                         Nutzer
                     </a>
 
+
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a><br/>
                         <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a><br/>

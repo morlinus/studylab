@@ -73,10 +73,11 @@ if(isset($_POST['kommentar'])) {
                     $statement->execute(array('beitragsid' => 1));
                     while ($content = $statement->fetch()) {
 
-                    $id_header=$_SESSION ["id"];
-                    $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
-                    $bild_header ->execute();
-                    while($row_header = $bild_header->fetch()){
+                        //Holt das Bild von dem User, der den betrag gepostet hat, aus der Datenbank
+                    $id_index= $content ["userid"];
+                    $bild_index = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_index");
+                    $bild_index ->execute();
+                    while($row_index = $bild_index->fetch()){
                     // echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
                     // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
@@ -85,16 +86,18 @@ if(isset($_POST['kommentar'])) {
                             <div class="beitrag">
 
                                 <?php
+                        //Benutzerbild wird im Beitrag angezeigt
                         $beitragsersteller = $content['userid'];
-                                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                echo ("<img src='data:".$row_index['format'].";base64,".base64_encode($row_index['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                 }
                                 ?>
 
                                 <?php
-                                //echo "<br />" . $content['benutzername'] . ":<br />";
+                                //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                                 echo '<a href="profil_folgen2.php?studilab='.$beitragsersteller.'">' . $content['benutzername'] .'</a>';
-                               
+
                                 echo "<br>";
+                                //Der Post Inhalt wird ausgegeben
                                 echo $content['text'] . "<br /><br />";
                                 ?>
 
