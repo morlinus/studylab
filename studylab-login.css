@@ -1,13 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/Suspicious-12.jpg);
+    background-size: cover;
+}
+
 .container{
     background-color: lightgrey;
     margin-top: 30px;
     width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
 }
 .background-startseite {
-    background-color: dimgrey;
+    background: rgba(0,0,0,0.3);
     height: 100vh;
     width: 100vh;
 }
-.container-fluid-main {
 
+.background-startseite h3 {
+    top: 50%;
+    left: 50%;
+    color: white;
+    text-align: center;
+}
+.background-recht {
+    height: 100vh;
+    width: 100vh;
+
+}
+.container-fluid-main {
+    color: white;
+    text-align: center;
+}
+.login {
+
+}
+
+.fenster {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 400px;
+    transfrom: translate(-50%, -50%);
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
+
+}
+
+.fenster h2 {
+    color: white;
+    text-align: center;
+}
+.fensterlog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transfrom: translate(-50%, -50%);
+    padding: 40px;
+    background: rgba(0,0,0,0.7);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
+    border-radius: 20px;
+
+}
+.eingabefeld {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 17px;
+    color: #fff;
+    border: none;
+    margin-bottom: 30px;
+    border-bottom: 1px;
+    outline: none;
+    background: transparent;
+
+}
+
+.eingabefeld input {
+    width: 100%;
+    padding: 11px 0;
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+
+
+}
+
+.eingabefeld label {
+    position: absolute;
+    top: 0;
+    left:0;
+    padding: 11px 0;
+    font-size: 17px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.eingabefeld input:focus ~ label,
+.eingabefeld input:valid ~ label
+{
+    top: -18px;
+    left: 0;
+    color: black;
+    font-size: 11px;
 }

@@ -12,6 +12,7 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="studylab-login.css" rel="stylesheet">
     <script>
         $( function() {
             $( "#datepicker" ).datepicker();
@@ -57,8 +58,6 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
 
 
 <?php
-
-echo "registrieren";
 
 $showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
 
@@ -154,10 +153,15 @@ if(isset($_GET['register'])) {
 
 if($showFormular) {
     ?>
-
+<div class="fenster">
+    <h2>Registrieren</h2>
     <form action="?register=1" method="post">
-        Vorname:<br>
-        <input type="name" size="40" maxlength="200" name="name"><br><br>
+
+        <div class="eingabefeld">
+        <input type="name" size="40" maxlength="200" name="name" placeholder="Name"><br><br>.-
+       <label>Vorname</label>
+        </div>
+
         Nachname:<br>
         <input type="nachname" size="40" maxlength="200" name="nachname"><br><br>
 
@@ -244,6 +248,8 @@ if($showFormular) {
 
         <input type="submit" value="Abschicken">
     </form>
+
+</div>
 
     <?php
 } //Ende von if($showFormular)

@@ -24,28 +24,32 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
 <div class="container-fluid-main">
 <div class="row height-100 mx-auto align-items-center">
 <div class = "height-100 background-startseite col-lg-6 col-sm-12">
+
+    <h3>Hier steht dann eine interessante Beschreibung der Website</h3>
 </div>
 
 <!-- Login-Form -->
-<div class=" col-lg-6 col-sm-12">
-    <div class="container">
-    <div class="row">
-        <div class="col">
-            <br>
-        <form method="post" class="navbar-form navbar-left" action="do_login.php">
-            <div class="form-group">
-                <label for="Benutzer1">Benutzername</label>
-                <input type="text" name="benutzername" class="form-control" id="Benutzername1" aria-describedby="BenutzernameHelp" placeholder="Benutzername">
-                <small id="emailHelp" class="form-text text-muted"></small>
+<div class="background-recht col-lg-6 col-sm-12">
+    <div class="fenster">
+        <h2>StudiLAB</h2>
+        <br>
+
+        <form method="post" action="do_login.php">
+
+            <div class="eingabefeld">
+                <input type="text" name="benutzername"  id="Benutzername1" aria-describedby="BenutzernameHelp" placeholder="Benutzername">
+                <!--  <label for="Benutzer1">Benutzername</label> -->
+
+                 <small id="emailHelp" class="form-text text-muted"></small>
+             </div>
+
+             <div class="eingabefeld">
+                 <input type="password" name="passwort"  id="Passwort1" placeholder="Passwort">
+               <!--  <label for="Passwort1">Passwort</label> -->
             </div>
-            <div class="form-group">
-                <label for="Passwort1">Passwort</label>
-                <input type="password" name="passwort" class="form-control" id="Passwort1" placeholder="Passwort">
-            </div>
-            <button type="submit" class="btn btn-primary">Abschicken</button><br><br>
-            Noch nicht angemeldet? Dann <a href="registrierung.php">Registrieren</a><br><br>
-    </div>
-    </div>
+
+            <button type="submit" class="btn btn-primary">Einloggen</button><br><br>
+            Noch nicht angemeldet? <a href="registrierung.php">Registrieren</a><br><br>
     </div>
 </div>
 </div>
