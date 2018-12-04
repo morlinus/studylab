@@ -58,7 +58,6 @@ if(isset($_POST['kommentar'])) {
             background: rgba(0,0,0,0.2);
         }
 
-        .hidden { display: none; }
     </style>
 </head>
 
@@ -103,7 +102,7 @@ if(isset($_POST['kommentar'])) {
                     echo $content['text'] . "<br /><br />";
                     ?>
 
-                    <form method="post" action="" onsubmit="return post();">
+                    <form method="post" action="" onsubmit="return post();" id="kommentarform">
                         <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
                         <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
                         <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar"/>
@@ -115,7 +114,7 @@ if(isset($_POST['kommentar'])) {
 
                     <?php
                     $post_id=$content['id'];
-                    $kommentare=$pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id");
+                    $kommentare=$pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                     $kommentare->execute();
                     while($komm=$kommentare->fetch()) {
                         ?>
@@ -138,13 +137,9 @@ if(isset($_POST['kommentar'])) {
                 }
 
                 ?>
-
-
-
         </div>
     </div>
 </div>
-
         <div class="col-3">
                 <!-- Der User kann hier einen Post schreiben -->
                 Schreibe einen Post:
@@ -153,7 +148,6 @@ if(isset($_POST['kommentar'])) {
                     <input class="btn btn-primary" type="submit" value="Posten">
 
         </div>
-
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -183,6 +177,8 @@ if(isset($_POST['kommentar'])) {
         }
         return false;
     }
+
+
 </script>
 
 <?php
