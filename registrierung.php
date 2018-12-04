@@ -143,7 +143,7 @@ if(isset($_GET['register'])) {
 
         if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-            header("Location: bildupload.php");
+            header("Location: bildupload.php?studilab=$benutzername");
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
@@ -158,11 +158,7 @@ if($showFormular) {
     <form action="?register=1" method="post">
 
         <div class="eingabefeld">
-        <input type="name" size="40" maxlength="200" name="name" placeholder="Name">
-        </div>
-
-        <div class="eingabefeld">
-        <input type="nachname" size="40" maxlength="200" name="nachname" placeholder="Nachname">
+        <input type="name" size="40" maxlength="200" name="name" placeholder="Name"> <input type="nachname" size="40" maxlength="200" name="nachname" placeholder="Nachname">
         </div>
 
         <div class="eingabefeld">

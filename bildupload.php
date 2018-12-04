@@ -1,6 +1,16 @@
 <?php
-session_start();
 //include_once 'header.php';
+include "userdata.php";
+$benutzername_id=$_GET['studilab'];
+
+$suchnutzer = $pdo->prepare("SELECT * FROM studylab WHERE benutzername = '$benutzername_id'");
+$suchnutzer->execute();
+$row_get = $suchnutzer->fetch();
+
+        $regid = $row_get ['id'];
+
+echo $regid;
+echo $benutzername_id
 ?>
 
 
@@ -29,17 +39,22 @@ session_start();
                 // Stellt die Verbindung zur Datenbank her und fügt die Datei in die Datenbank ein
 
 
-                include "userdata.php";
+                echo $regid;
+                echo $benutzername_id;
+
+
                 if (isset($_POST['submit'])){
                     $name = $_FILES['myfile']['name'];
                     $typ = $_FILES ['myfile']['type'];
-                    $id = $_SESSION ["id"];
+                   // $id = $_SESSION ["id"];
+
+
                     $datei = file_get_contents($_FILES['myfile']['tmp_name']);
                     $statement = $pdo->prepare("INSERT INTO bilduplad VALUES('',?,?,?,?)");
                     $statement->bindParam(1,$name);
                     $statement->bindParam(2,$typ);
                     $statement->bindParam(3,$datei);
-                    $statement->bindParam(4,$id);
+                    $statement->bindParam(4,$regid);
                     $statement->execute();
                 }
                 ?>
