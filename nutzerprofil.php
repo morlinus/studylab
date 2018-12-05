@@ -68,16 +68,39 @@ if(isset($_POST['kommentar'])) {
     <div class="row">
 
         <div class="col-3">
-            <h1>Profildaten</h1>
-            <div class="profilbild-folgen">
+
+
+
+
+            <div class="profilbildplusfolgen">
                 <?php
-                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
                 }
                 ?>
 
                 <button type="button" class="btn btn-success">Folgen</button>
             </div>
+            <br>
+<div class="shadow-sm p-3 mb-5 bg-white rounded">
+            <?php
+            $id=$_SESSION["id"];
+            $profil=$pdo->prepare("SELECT * FROM studylab WHERE id=$id");
+            $profil->execute();
+            while($daten = $profil->fetch()){
+
+                ?>
+                <h6>Benutzername:</h6> <?php echo $daten['benutzername'] . "<br /><br />"; ?>
+                <h6>Name:</h6> <?php echo $daten['name'] . " ". $daten['nachname'] . "<br /><br />"; ?>
+                <h6>Geburtstag:</h6> <?php echo $daten['geburtsdatum'] . "<br /><br />"; ?>
+                <h6>Studiengang:</h6> <?php echo $daten['studiengang'] . " ". "(Semester: ".$daten['semester'].")"; ?>
+
+
+                <?php
+            }
+            ?>
+</div>
         </div>
+
 
         <div class="col-6">
 
@@ -93,15 +116,15 @@ if(isset($_POST['kommentar'])) {
                 $bild_header ->execute();
                 ?>
 
-                <div class="inhalt">
-                <div class="beitrag">
+
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
                     <?php
                 while($row_header = $bild_header->fetch()){
                             echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                            }
-                    echo "<br />" . $content['benutzername'] . ":<br />";
+                            } ?> <h5> <?php echo $content['benutzername'] . ":<br />"; ?></h5> <?php
                     echo $content['text'] . "<br /><br />";
                     ?>
+
 
                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
                         <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
@@ -109,7 +132,6 @@ if(isset($_POST['kommentar'])) {
                         <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar"/>
                     </form>
                     <br>
-
                     <input type="button" name="kommentarezeigen" class="btn btn-primary" onclick="kommentare()" value="Kommentare zeigen"/>
                     <div id="zeigeKommentare" style="display:none;" class="kommentare ">
 
@@ -131,7 +153,7 @@ if(isset($_POST['kommentar'])) {
                     ?>
                     </div>
                 </div>
-                </div>
+
 
                 <?php
 
@@ -141,12 +163,13 @@ if(isset($_POST['kommentar'])) {
         </div>
 
         <div class="col-3">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
             <!-- Der User kann hier einen Post schreiben -->
             Schreibe einen Post:
             <form action="formular_abfrage.php" method="post">
                 <textarea name="content" class="form-control" rows="3"></textarea><br>
                 <input class="btn btn-primary" type="submit" value="Posten">
-
+            </form>
         </div>
 
     </div>
