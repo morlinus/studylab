@@ -16,6 +16,7 @@ include_once 'header.php';
 
 
 $id=$_SESSION["id"];
+$angmeldet_index = $_SESSION ["angemeldet"];
 
 
 if(isset($_POST['kommentar'])) {
@@ -75,7 +76,7 @@ if(isset($_POST['kommentar'])) {
 
 
                     <?php
-                    // Hier wird ausgelsen wem der angemdlete Nutzer folgt
+                    // Hier wird ausgelsen wem der angemeldete Nutzer folgt
                     $folgt= $pdo -> prepare ("SELECT * FROM folgen WHERE follower_id = $id");
                     $folgt -> execute (array ('follower_id' => 1 ));
                     while ($gefolgtenutzer = $folgt -> fetch ()) {
@@ -84,67 +85,85 @@ if(isset($_POST['kommentar'])) {
                     // zeigt die eignen Posts aus der Datenbank an und die von den gefolgten nutzern
                     $statement = $pdo->prepare("SELECT content.*, studylab.* FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $nutzerids OR userid = $id ORDER BY content.id DESC");
                     $statement->execute(array('beitragsid' => 1));
+
+                    $dbtest = $statement -> rowcount ();
+                    echo $dbtest;
+
                     }
-                    while ($content = $statement->fetch()) {
 
-                        //Holt das Bild von dem User, der den betrag gepostet hat, aus der Datenbank
-                    $id_index= $content ["userid"];
-                    $bild_index = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_index");
-                    $bild_index ->execute();
-                    while($row_index = $bild_index->fetch()){
-                    // echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
-                    // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
+                    if ($dbtest > 0) {
+                        while ($content = $statement->fetch()) {
 
-                    ?>
-                            <div class="beitrag">
+                            //Holt das Bild von dem User, der den betrag gepostet hat, aus der Datenbank
+                            $id_index = $content ["userid"];
+                            $bild_index = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_index");
+                            $bild_index->execute();
+                            while ($row_index = $bild_index->fetch()) {
+
+                                ?>
+                                <div class="beitrag">
 
                                 <?php
-                        //Benutzerbild wird im Beitrag angezeigt
-                        $beitragsersteller = $content['userid'];
-                                echo ("<img src='data:".$row_index['format'].";base64,".base64_encode($row_index['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                //Benutzerbild wird im Beitrag angezeigt
+                                $beitragsersteller = $content['userid'];
+                                echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            }
+                            ?>
+
+                            <?php
+                            //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                            echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
+
+                            echo "<br>";
+                            //Der Post Inhalt wird ausgegeben
+                            echo $content['text'] . "<br /><br />";
+                            ?>
+
+                            <form method="post" action="" onsubmit="return post();" id="kommentarform">
+                                <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1"
+                                          class="form-control"></textarea><br>
+                                <input type="hidden" value="<?php echo $content['id']; ?>" name="post_id"
+                                       class="form-control">
+                                <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar"
+                                       id="kommentieren"/>
+                            </form>
+                            <br>
+
+                            <input type="button" name="kommentarezeigen" class="btn btn-primary" onclick="kommentare()"
+                                   value="Kommentare zeigen"/>
+                            <div id="zeigeKommentare" style="display:none;" class="kommentare ">
+                                <?php
+                                $post_id = $content['id'];
+                                $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
+                                $kommentare->execute();
+                                while ($komm = $kommentare->fetch()) {
+                                    ?>
+                                    <div class="kommentar">
+                                        <?php
+
+                                        echo $komm['Zeit'] . "<br/>";
+                                        echo $komm['benutzername'] . ":<br />";
+                                        echo $komm['kommentar'];
+                                        ?>
+                                    </div>
+                                    <?php
                                 }
                                 ?>
 
-                                <?php
-                                //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
-                                echo '<a class="benutzername-post" href="profil_folgen2.php?studylab='.$beitragsersteller.'">' . $content['benutzername'] .'</a>';
-
-                                echo "<br>";
-                                //Der Post Inhalt wird ausgegeben
-                                echo $content['text'] . "<br /><br />";
-                                ?>
-
-                                <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                                    <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
-                                    <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
-                                    <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar" id="kommentieren"/>
-                                </form>
-                                <br>
-
-                                <input type="button" name="kommentarezeigen" class="btn btn-primary" onclick="kommentare()" value="Kommentare zeigen"/>
-                                <div id="zeigeKommentare" style="display:none;" class="kommentare ">
-                               <?php
-                               $post_id=$content['id'];
-                               $kommentare=$pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
-                               $kommentare->execute();
-                               while($komm=$kommentare->fetch()) {
-                                   ?>
-                                   <div class="kommentar">
-                                       <?php
-
-                                       echo $komm['Zeit'] . "<br/>";
-                                       echo $komm['benutzername'] . ":<br />";
-                                       echo $komm['kommentar'];
-                                       ?>
-                                   </div>
-                                   <?php
-                               }
-                               ?>
-
                             </div>
                             </div>
 
+                            <?php
+                        }
+                    }
+                    else {
+                    ?>
+                <div class="beitrag">
                     <?php
+                        echo "Herzlich Willkommen $angmeldet_index, du kannst Nutzer über die Suchenfunktion finden, um deren Beiträge zu sehen oder selber Beiträge verfassen.";
+                    ?>
+                </div>
+                        <?php
                     }
                     ?>
 
