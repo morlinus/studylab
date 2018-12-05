@@ -66,6 +66,14 @@ if(isset($_POST['kommentar'])) {
                 </form>
 
 
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" action="formular_abfrage_index.php" method="post">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <input class="btn btn-secondary" type="submit" value="Posten">
+                        <button type="button" class="btn btn-secondary"><img src="file:///Users/bettinawissler/Downloads/baseline-photo_library-24px.svg" height="50" width="120"></button>
+                    </div>
+                </div>
+
+
                     <?php
                     // zeigt die Post aus der Datenbank an
                     $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id ORDER BY content.id DESC");

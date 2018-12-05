@@ -132,6 +132,29 @@ html, body{
     box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
 }
 
+.btn-follow{
+    color: white;
+    background-color: #e41035;
+    border-color: #e41035;
+    font-weight: 400;
+    border: 0px;
+}
+
+.btn-primary-follow{
+    background-color: #e41035;
+    border-color: #e41035;
+}
+
+.input{
+    color: white;
+}
+
+.folgenbutton{
+    flex-direction: row;
+    float: right;
+    margin-bottom: 5px;
+}
+
 .profilbild-navbar{
     padding: 5px;
     position: relative;

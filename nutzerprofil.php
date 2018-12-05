@@ -79,24 +79,24 @@ if(isset($_POST['kommentar'])) {
                 ?>
             </div>
             <br>
-<div class="shadow-sm p-3 mb-5 bg-white rounded">
-            <?php
-            $id=$_SESSION["id"];
-            $profil=$pdo->prepare("SELECT * FROM studylab WHERE id=$id");
-            $profil->execute();
-            while($daten = $profil->fetch()){
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                        <?php
+                        $id=$_SESSION["id"];
+                        $profil=$pdo->prepare("SELECT * FROM studylab WHERE id=$id");
+                        $profil->execute();
+                        while($daten = $profil->fetch()){
 
-                ?>
-                <h6>Benutzername:</h6> <?php echo $daten['benutzername'] . "<br /><br />"; ?>
-                <h6>Name:</h6> <?php echo $daten['name'] . " ". $daten['nachname'] . "<br /><br />"; ?>
-                <h6>Geburtstag:</h6> <?php echo $daten['geburtsdatum'] . "<br /><br />"; ?>
-                <h6>Studiengang:</h6> <?php echo $daten['studiengang'] . " ". "(Semester: ".$daten['semester'].")"; ?>
+                            ?>
+                            <h6>Benutzername:</h6> <?php echo $daten['benutzername'] . "<br /><br />"; ?>
+                            <h6>Name:</h6> <?php echo $daten['name'] . " ". $daten['nachname'] . "<br /><br />"; ?>
+                            <h6>Geburtstag:</h6> <?php echo $daten['geburtsdatum'] . "<br /><br />"; ?>
+                            <h6>Studiengang:</h6> <?php echo $daten['studiengang'] . " ". "(Semester: ".$daten['semester'].")"; ?>
 
 
-                <?php
-            }
-            ?>
-</div>
+                            <?php
+                        }
+                        ?>
+            </div>
         </div>
 
 
@@ -168,9 +168,11 @@ if(isset($_POST['kommentar'])) {
                 <textarea name="content" class="form-control" rows="3"></textarea><br>
                 <input class="btn btn-primary" type="submit" value="Posten">
             </form>
-        </div>
+            </div>
 
-    </div>
+        </div>
+</div>
+
 </div>
 
 
