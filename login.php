@@ -31,7 +31,7 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
 <!-- Login-Form -->
 <div class="background-recht col-lg-6 col-sm-12">
     <div class="fenster">
-        <img src="Studylab.png" height="100" width="250">
+        <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="100" width="250">
         <br>
 
         <form method="post" action="do_login.php">

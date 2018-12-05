@@ -49,7 +49,7 @@ while($row_header = $bild_header->fetch()){
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <a class="navbar-brand" href="index.php"><img src="Studylab.png" height="50" width="120"></a>
+                        <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
                                 <a class="nav-link" href="index.php">Startseite</a>
