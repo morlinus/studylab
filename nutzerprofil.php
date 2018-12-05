@@ -77,8 +77,6 @@ if(isset($_POST['kommentar'])) {
                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
                 }
                 ?>
-
-                <button type="button" class="btn btn-success">Folgen</button>
             </div>
             <br>
 <div class="shadow-sm p-3 mb-5 bg-white rounded">
