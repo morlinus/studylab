@@ -38,6 +38,20 @@ if(isset($_POST['kommentar'])) {
 <html lang="de">
 <head>
 <title>Startseite</title>
+
+    <style>
+        .kommentar{
+        padding: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        position: relative;
+        transfrom: translate(-50%, -50%);
+        box-sizing: border-box;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background: rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 
 <body>
@@ -66,9 +80,7 @@ if(isset($_POST['kommentar'])) {
 
 
                     <?php
-                    // stellt die Verbindung zur Datenbank her
-                    include "userdata.php";
-                    // zeigt die Post aus der Datenbank an - muss noch so erweitert werde, dass nur die Post von sich selbst und den Leuten, denen man folgt angezeigt wird
+                    // zeigt die Post aus der Datenbank an
                     $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id ORDER BY content.id DESC");
                     $statement->execute(array('beitragsid' => 1));
                     while ($content = $statement->fetch()) {
@@ -82,7 +94,6 @@ if(isset($_POST['kommentar'])) {
                     // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
                     ?>
-
                             <div class="beitrag">
 
                                 <?php
@@ -101,23 +112,36 @@ if(isset($_POST['kommentar'])) {
                                 echo $content['text'] . "<br /><br />";
                                 ?>
 
-                                <form method="post" action="" onsubmit="return post();">
+                                <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                     <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
                                     <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
-
-                                    <input type="submit" class="btn btn-primary" value="Kommentieren"/>
+                                    <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar" id="kommentieren"/>
                                 </form>
-                               <?php
-                                /*
-                               $statement=$pdo->prepare("SELECT kommentare.*, studylab.bentuzername FROM kommentare LEFT JOIN studylab ON kommentare.senderid=studylab.id ORDER BY kommentare.id DESC");
-                               $statement->execute(array('beitragsid'=>1));
-                               while($komm=$statement->fetch()) {
-                                   echo $komm['benutzername'];
-                                   echo $komm['kommentar'];
+                                <br>
 
-                               } */?>
+                                <input type="button" name="kommentarezeigen" class="btn btn-primary" onclick="kommentare()" value="Kommentare zeigen"/>
+                                <div id="zeigeKommentare" style="display:none;" class="kommentare ">
+                               <?php
+                               $post_id=$content['id'];
+                               $kommentare=$pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
+                               $kommentare->execute();
+                               while($komm=$kommentare->fetch()) {
+                                   ?>
+                                   <div class="kommentar">
+                                       <?php
+
+                                       echo $komm['Zeit'] . "<br/>";
+                                       echo $komm['benutzername'] . ":<br />";
+                                       echo $komm['kommentar'];
+                                       ?>
+                                   </div>
+                                   <?php
+                               }
+                               ?>
 
                             </div>
+                            </div>
+
                     <?php
                     }
                     ?>
@@ -132,6 +156,11 @@ if(isset($_POST['kommentar'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+    function kommentare() {
+        document.getElementById('zeigeKommentare').style.display = "block";
+    }
+
     function post(){
         var comment = document.getElementById("comment").value;
         if(comment)
