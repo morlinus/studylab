@@ -44,13 +44,13 @@ while($row_header = $bild_header->fetch()){
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <a class="navbar-brand" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">StudiLAB</a>
+                        <a class="navbar-brand" href="index.php">StudiLAB</a>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">Startseite</a>
+                                <a class="nav-link" href="index.php">Startseite</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzerprofil.php">Profil</a>
+                                <a class="nav-link" href="nutzerprofil.php">Profil</a>
                             </li>
                         </ul>
                     </div>
@@ -60,17 +60,17 @@ while($row_header = $bild_header->fetch()){
 
                 <div class="col-6">
                 <div class="dropdown">
-                    <a class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzersuchen.php">Suche</a>
-                    <a class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/benachrichtigung.php">Benachrichtigung</a>
+                    <a class="btn btn-outline-secondary" href="nutzersuchen.php">Suche</a>
+                    <a class="btn btn-outline-secondary" href="benachrichtigung.php">Benachrichtigung</a>
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Nutzer
                     </a>
 
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a><br/>
-                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a><br/>
-                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
+                        <a class="dropdown-item" href="profil_bearbeitung.php">Profil bearbeiten</a><br/>
+                        <a class="dropdown-item" href="bildupload.php">Profilbild bearbeiten</a><br/>
+                        <a class="dropdown-item" href="logout.php">Logout</a><br/>
                     </div>
 
                     <?php
