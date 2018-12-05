@@ -68,7 +68,7 @@ if ($passwort == $passwort_alt)
 $statement->execute(array($_POST["passwort_neu"]));
 }
 else
-{echo "Das Passwort war falsch.
+{echo "Das Passwort ist falsch.
 	<br /><a href=\"profil_bearbeitung.php\">Zur&uuml;ck</a>";}
 
 
