@@ -15,11 +15,11 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
     <link href="studylab-login.css" rel="stylesheet">
     <script>
         $( function() {
-            $( "#datepicker" ).datepicker();
-            $( "#format" ).on( "change", function() {
-                $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+            $( "#datepicker" ).datepicker({
+                dateFormat: 'yy-mm-dd'
             });
         } );
+
 
 
         $( function() {
@@ -152,6 +152,7 @@ if(isset($_GET['register'])) {
 }
 
 if($showFormular) {
+
     ?>
 <div class="fenster">
     <h2>Registrieren</h2>
@@ -170,7 +171,7 @@ if($showFormular) {
         </div>
 
         <div class="eingabefeld">
-      <input type="geburtsdatum" id="datepicker" value="yy-mm-dd" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
+      <input type="geburtsdatum" id="datepicker" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
         </div>
 
         <!--
@@ -205,8 +206,8 @@ if($showFormular) {
             <tr>
                 <td>Geschlecht :</td>
                 <td>
-                    <input type="radio" name="geschlecht" value="w" required>Männlich
-                    <input type="radio" name="geschlecht" value="m" required>Weiblich
+                    <input type="radio" name="geschlecht" value="Männlich" required>Männlich
+                    <input type="radio" name="geschlecht" value="Weiblich" required>Weiblich
                 </td>
             </tr>
         </table>
@@ -238,8 +239,8 @@ if($showFormular) {
             <tr>
                 <td>Position :</td>
                 <td>
-                    <input type="radio" name="status" value="s" required>Student
-                    <input type="radio" name="status" value="p" required>Professor
+                    <input type="radio" name="status" value="Student" required>Student
+                    <input type="radio" name="status" value="Professor" required>Professor
                 </td>
             </tr>
         </table>
