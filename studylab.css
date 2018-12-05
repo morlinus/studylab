@@ -202,3 +202,19 @@ html, body{
     font-weight: 500;
     color: #212529;
 }
+
+.suchergebnisse{
+    font-weight: bold;
+}
+
+.kommentar{
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position: relative;
+    transfrom: translate(-50%, -50%);
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.2);
+}

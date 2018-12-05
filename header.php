@@ -4,6 +4,11 @@ session_start();
 include 'userdata.php';
 
 $id_header=$_SESSION ["id"];
+
+$benutzername_header = $pdo->prepare("SELECT * FROM studylab WHERE id = '$id_header' ");
+$benutzername_header->execute();
+$benutzer_name = $benutzername_header->fetch();
+
 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header ->execute();
 while($row_header = $bild_header->fetch()){
@@ -63,7 +68,9 @@ while($row_header = $bild_header->fetch()){
                     <a class="btn btn-outline-secondary" href="nutzersuchen.php">Suche</a>
                     <a class="btn btn-outline-secondary" href="benachrichtigung.php">Benachrichtigung</a>
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Nutzer
+                        <?php
+                        echo $benutzer_name['benutzername'];
+                        ?>
                     </a>
 
 

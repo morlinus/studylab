@@ -16,7 +16,6 @@ include_once 'header.php';
 
             <div class="col-3">
 
-
             </div>
 
             <div class="col-6">
@@ -48,9 +47,11 @@ include_once 'header.php';
 
                 if (isset($_POST['suchen'])) {
 
-                    echo "Suchergebnisse: <br>";
+                ?>
 
+                    <h5> <?php echo "Suchergebnisse: <br>";?> </h5>
 
+                <?php
                     $benutzername = $_POST['nutzersuchen'];
 
                 // $headline = $_POST['beitragsuchen'];
@@ -68,7 +69,7 @@ include_once 'header.php';
 
 
                             echo '<table>';
-                            echo '<a href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'];
+                            echo '<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>';
                             echo '<table>';
 
                         }
