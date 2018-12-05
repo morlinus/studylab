@@ -39,19 +39,6 @@ if(isset($_POST['kommentar'])) {
 <head>
 <title>Startseite</title>
 
-    <style>
-        .kommentar{
-        padding: 20px;
-        margin-bottom: 10px;
-        margin-top: 10px;
-        position: relative;
-        transfrom: translate(-50%, -50%);
-        box-sizing: border-box;
-        border-radius: 10px;
-        box-sizing: border-box;
-        background: rgba(0,0,0,0.2);
-        }
-    </style>
 </head>
 
 <body>
