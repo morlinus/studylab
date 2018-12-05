@@ -64,7 +64,7 @@ include_once 'header.php';
 
 
                             echo '<table>';
-                            echo '<a href="profil_folgen2.php?studilab='.$studilab.'">' . $row['benutzername'];
+                            echo '<a href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'];
                             echo '<table>';
 
                         }

@@ -8,7 +8,7 @@
 ob_start();
 include_once "header.php";
 
-$profile_id=$_GET['studilab'];
+$profile_id=$_GET['studylab'];
 $follower=$_SESSION["angemeldet"];
 $followerid = $_SESSION["id"];
 
@@ -52,7 +52,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
             $follow = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$profile_id', '$followerid') ");
             if ($follow->execute()) {
                 echo "followed";
-                header("location:profil_folgen2.php?studilab=$profile_id");
+                header("location:profil_folgen2.php?studylab=$profile_id");
 
             }
         }
@@ -67,7 +67,7 @@ if ($profile_id!=$_SESSION["angemeldet"]) {
             $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");
             if ($unfollow->execute()) {
                 echo "unfollowed";
-                header("location:profil_folgen2.php?studilab=$profile_id");
+                header("location:profil_folgen2.php?studylab=$profile_id");
 
             }
         }

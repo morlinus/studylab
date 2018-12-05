@@ -73,8 +73,8 @@ if(isset($_POST['kommentar'])) {
                 <?php
                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                 }
-
                 ?>
+
                 <button type="button" class="btn btn-success">Folgen</button>
             </div>
         </div>
@@ -91,7 +91,8 @@ if(isset($_POST['kommentar'])) {
                 $id_header=$_SESSION ["id"];
                 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
                 $bild_header ->execute();
-?>
+                ?>
+
                 <div class="inhalt">
                 <div class="beitrag">
                     <?php
@@ -132,22 +133,25 @@ if(isset($_POST['kommentar'])) {
                 </div>
                 </div>
 
-                        <?php
+                <?php
 
                 }
 
                 ?>
         </div>
-    </div>
-</div>
+
         <div class="col-3">
-                <!-- Der User kann hier einen Post schreiben -->
-                Schreibe einen Post:
-                <form action="formular_abfrage.php" method="post">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <input class="btn btn-primary" type="submit" value="Posten">
+            <!-- Der User kann hier einen Post schreiben -->
+            Schreibe einen Post:
+            <form action="formular_abfrage.php" method="post">
+                <textarea name="content" class="form-control" rows="3"></textarea><br>
+                <input class="btn btn-primary" type="submit" value="Posten">
 
         </div>
+
+    </div>
+</div>
+
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

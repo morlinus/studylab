@@ -1,9 +1,16 @@
 <?php
 session_start();
 
+// stellt die Verbindung zur Datenbank her
 include 'userdata.php';
-
 $id_header=$_SESSION ["id"];
+
+// zeigt den Namen des eingeloggten Nutzers aus der Datenbank im Header an
+$benutzer_header = $pdo->prepare("SELECT * FROM studylab WHERE id ='$id_header'");
+$benutzer_header->execute();
+$benutzername_header = $benutzer_header->fetch();
+
+
 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header ->execute();
 while($row_header = $bild_header->fetch()){
@@ -34,18 +41,18 @@ while($row_header = $bild_header->fetch()){
 
 <body>
 
-<div id="header">
+
+<div class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <div class="container-fluid">
-                <div class="col-6">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+
+                <div class="navbar-links">
+                <div class="col-6-header">
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <a class="navbar-brand" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">StudiLAB</a>
                         <ul class="navbar-nav">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="https://mars.iuk.hdm-stuttgart.de/~as325/index.php">Startseite</a>
                             </li>
                             <li class="nav-item">
@@ -54,32 +61,44 @@ while($row_header = $bild_header->fetch()){
                         </ul>
                     </div>
                 </div>
+                </div>
 
 
-                <div class="col-6">
-                <div class="dropdown">
+                <div class="navbar-rechts">
+                <div class="col-6-header">
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
                     <a class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/nutzersuchen.php">Suche</a>
                     <a class="btn btn-outline-secondary" href="https://mars.iuk.hdm-stuttgart.de/~as325/benachrichtigung.php">Benachrichtigung</a>
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Nutzer
-                    </a>
 
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a><br/>
-                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a><br/>
-                        <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a><br/>
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                <?php
+                                echo $benutzername_header['benutzername'];
+                                ?>
+
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/profil_bearbeitung.php">Profil bearbeiten</a>
+                                <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/bildupload.php">Profilbild bearbeiten</a>
+                                <a class="dropdown-item" href="https://mars.iuk.hdm-stuttgart.de/~as325/logout.php">Logout</a>
+                            </div>
+
+                            <?php
+                            echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            }
+
+                            ?>
+                        </div>
+
                     </div>
 
-                    <?php
-                    echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                    }
-
-                    ?>
-
                 </div>
                 </div>
-
         </div>
     </nav>
 

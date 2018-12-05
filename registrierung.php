@@ -143,7 +143,7 @@ if(isset($_GET['register'])) {
 
         if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-            header("Location: bildupload.php?studilab=$benutzername");
+            header("Location: bildupload.php?studylab=$benutzername");
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
