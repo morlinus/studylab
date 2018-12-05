@@ -67,9 +67,16 @@ if(isset($_POST['kommentar'])) {
 
 
                     <?php
-                    // zeigt die Post aus der Datenbank an
-                    $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id ORDER BY content.id DESC");
+                    // Hier wird ausgelsen wem der angemdlete Nutzer folgt
+                    $folgt= $pdo -> prepare ("SELECT * FROM folgen WHERE follower_id = $id");
+                    $folgt -> execute (array ('follower_id' => 1 ));
+                    while ($gefolgtenutzer = $folgt -> fetch ()) {
+                        $nutzerids = $gefolgtenutzer ["user_id"];
+
+                    // zeigt die eignen Posts aus der Datenbank an und die von den gefolgten nutzern
+                    $statement = $pdo->prepare("SELECT content.*, studylab.* FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $nutzerids OR userid = $id ORDER BY content.id DESC");
                     $statement->execute(array('beitragsid' => 1));
+                    }
                     while ($content = $statement->fetch()) {
 
                         //Holt das Bild von dem User, der den betrag gepostet hat, aus der Datenbank
