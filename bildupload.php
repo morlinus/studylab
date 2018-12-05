@@ -1,7 +1,7 @@
 <?php
 //include_once 'header.php';
 include "userdata.php";
-$benutzername_id=$_GET['studilab'];
+$benutzername_id=$_GET['studylab'];
 
 $suchnutzer = $pdo->prepare("SELECT * FROM studylab WHERE benutzername = '$benutzername_id'");
 $suchnutzer->execute();

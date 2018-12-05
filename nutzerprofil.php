@@ -58,26 +58,6 @@ if(isset($_POST['kommentar'])) {
             background: rgba(0,0,0,0.2);
         }
 
-        #alert_popover{
-            display:block;
-            position: absolute
-            bottom: 50px;
-            left: 50px;
-        }
-
-        .wrapper{
-            display: table-cell;
-            vertical-align: bottom;
-            height: auto
-            width: 200px;
-        }
-
-        .alert_default{
-            color:#333333;
-            background-color: #f2f2f2;
-            border-color:#cccccc;
-        }
-
     </style>
 </head>
 
@@ -93,8 +73,8 @@ if(isset($_POST['kommentar'])) {
                 <?php
                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                 }
-
                 ?>
+
                 <button type="button" class="btn btn-success">Folgen</button>
             </div>
         </div>
@@ -111,7 +91,8 @@ if(isset($_POST['kommentar'])) {
                 $id_header=$_SESSION ["id"];
                 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
                 $bild_header ->execute();
-?>
+                ?>
+
                 <div class="inhalt">
                 <div class="beitrag">
                     <?php
@@ -125,7 +106,7 @@ if(isset($_POST['kommentar'])) {
                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
                         <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
                         <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
-                        <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar" id="kommentieren"/>
+                        <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar"/>
                     </form>
                     <br>
 
@@ -141,8 +122,7 @@ if(isset($_POST['kommentar'])) {
                         <div class="kommentar">
                             <?php
 
-                        echo $komm['Zeit'] . ":<br/>";
-                            echo $komm['benutzername'] . ":<br />";
+                        echo $komm['benutzername'] . ":<br />";
                     echo $komm['kommentar'];
                     ?>
                         </div>
@@ -153,30 +133,25 @@ if(isset($_POST['kommentar'])) {
                 </div>
                 </div>
 
-                        <?php
+                <?php
 
                 }
 
                 ?>
         </div>
-    </div>
-</div>
+
         <div class="col-3">
-                <!-- Der User kann hier einen Post schreiben -->
-                Schreibe einen Post:
-                <form action="formular_abfrage.php" method="post">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <input class="btn btn-primary" type="submit" value="Posten">
+            <!-- Der User kann hier einen Post schreiben -->
+            Schreibe einen Post:
+            <form action="formular_abfrage.php" method="post">
+                <textarea name="content" class="form-control" rows="3"></textarea><br>
+                <input class="btn btn-primary" type="submit" value="Posten">
 
         </div>
 
-<div id="alert_popover">
-<div class="wrapper">
-    <div class="content">
-
     </div>
 </div>
-</div>
+
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -207,43 +182,6 @@ if(isset($_POST['kommentar'])) {
         return false;
     }
 
-    $(document).ready(function(){
-        setInterval(function(){
-            load_last_notification();
-        }, 10000);
-        function load_last_notification()
-        {
-            $.ajax ({
-                url: "fetch.php",
-                mehtod:"POST",
-                success: function(data)
-                {
-                    $('.content').html(data);
-                }
-            })
-        }
-        $('kommentarform').on('submit', function(event){
-            event.preventDefault();
-            if ($('#comment').val() != "")
-            {
-                var form_Data =$(this).serialize();
-                $.ajax({
-                    url:"nuterprofil.php",
-                    method:"POST",
-                    data:form_data,
-                    sucess:function(data)
-                    {
-                        $('#kommentarform')[0].reset();
-                    }
-                })
-            }
-            else
-                {
-                alert("Eingabe notwendig")
-            }
-
-        });
-    });
 
 </script>
 

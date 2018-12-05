@@ -105,7 +105,7 @@ if(isset($_POST['kommentar'])) {
 
                                 <?php
                                 //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
-                                echo '<a href="profil_folgen2.php?studilab='.$beitragsersteller.'">' . $content['benutzername'] .'</a>';
+                                echo '<a href="profil_folgen2.php?studylab='.$beitragsersteller.'">' . $content['benutzername'] .'</a>';
 
                                 echo "<br>";
                                 //Der Post Inhalt wird ausgegeben
