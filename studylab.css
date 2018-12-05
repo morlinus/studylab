@@ -172,3 +172,33 @@ html, body{
     border-radius: 10px;
     background: rgba(0,0,0,0.2);
 }
+
+.benutzername-post{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    font-weight: 500;
+}
+
+.benutzername-post:hover{
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
+}
+
+.suchfeld{
+    margin-top: 5px;
+}
+
+.suchen-ergebnisse{
+    text-decoration: none;
+    color: #212529;
+    font-size: medium;
+    font-weight: 400;
+}
+
+.suchen-ergebnisse:hover{
+    text-decoration: none;
+    font-weight: 500;
+    color: #212529;
+}
