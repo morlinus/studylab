@@ -1,6 +1,6 @@
 html, body{
     height: 100%;
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 
 .header{
@@ -99,12 +99,37 @@ html, body{
 
 .btn{
     color: white;
+    background-color: #e41035;
     margin-right: 10px;
+    border-color: #e41035;
 }
 
 .btn:hover{
     color: white;
+    background-color: #e41035;
     font-weight: bold;
+    border-color: #e41035;
+}
+
+.btn:focus, .btn.focus{
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+}
+
+.btn.disabled, .btn:disabled {
+    color: #6c757d;
+    background-color: transparent;
+}
+
+.btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active,
+.show > .btn.dropdown-toggle {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn:not(:disabled):not(.disabled):active:focus, .btn:not(:disabled):not(.disabled).active:focus,
+.show > .btn.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
 }
 
 .profilbild-navbar{
@@ -120,6 +145,14 @@ html, body{
     position: relative;
     height: 150px;
     width: 150px;
+    border-radius: 50%;
+}
+
+.profilbild-folgen{
+    padding: 10px;
+    position: relative;
+    height: 250px;
+    width: 250px;
     border-radius: 50%;
 }
 
@@ -168,7 +201,18 @@ html, body{
     margin-top: 20px;
     margin-bottom: 20px;
     transfrom: translate(-50%, -50%);
-    box-sizing: border-box;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+    background-color: white;
+
+}
+
+.shadow p-3 mb-5 bg-white rounded{
+    border-radius: 10px;
+}
+
+.benutzerdaten{
+    padding: 20px;
     border-radius: 10px;
     background: rgba(0,0,0,0.2);
 }
