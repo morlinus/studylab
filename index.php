@@ -38,6 +38,20 @@ if(isset($_POST['kommentar'])) {
 <html lang="de">
 <head>
 <title>Startseite</title>
+
+    <style>
+        .kommentar{
+        padding: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        position: relative;
+        transfrom: translate(-50%, -50%);
+        box-sizing: border-box;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background: rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 
 <body>
@@ -116,7 +130,7 @@ if(isset($_POST['kommentar'])) {
                                    <div class="kommentar">
                                        <?php
 
-                                       echo $komm['Zeit'] . ":<br/>";
+                                       echo $komm['Zeit'] . "<br/>";
                                        echo $komm['benutzername'] . ":<br />";
                                        echo $komm['kommentar'];
                                        ?>
@@ -142,6 +156,11 @@ if(isset($_POST['kommentar'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+    function kommentare() {
+        document.getElementById('zeigeKommentare').style.display = "block";
+    }
+
     function post(){
         var comment = document.getElementById("comment").value;
         if(comment)
