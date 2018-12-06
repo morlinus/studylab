@@ -1,7 +1,7 @@
 <?php
-include_once "header.php";
-
 ob_start();
+
+include_once "header.php";
 
 $profile_id=$_GET['studylab'];
 $follower=$_SESSION["angemeldet"];
@@ -11,8 +11,6 @@ $followerid = $_SESSION["id"];
 $bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id'");
 $bild_folgen->execute();
 $row_folgen = $bild_folgen->fetch();
-
-
 
 ?>
 
@@ -39,8 +37,6 @@ $row_folgen = $bild_folgen->fetch();
 
                 echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
                 ?>
-
-
             </div>
 
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
@@ -58,7 +54,7 @@ $row_folgen = $bild_folgen->fetch();
                 ?>
 
                 <div class="folgenbutton">
-                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studilab=<?php echo $profile_id; ?>" method="post">
+                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profile_id; ?>" method="post">
                     <input class="btn-follow btn-primary-follow" type="submit" name="follow" value="Follow">
                 </form>
                 </div>
@@ -77,7 +73,7 @@ $row_folgen = $bild_folgen->fetch();
                 else {
                 ?><!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
                 <div class="entfolgenbutton">
-                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studilab=<?php echo $profile_id; ?>" method="post">
+                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profile_id; ?>" method="post">
                     <input class="btn btn-primary" type="submit" name="unfollow" value="Unfollow">
                 </form>
                 </div>
@@ -142,7 +138,7 @@ $row_folgen = $bild_folgen->fetch();
                     echo $content['text'] . "<br /><br />";
                 }
             }
-            ob_end_flush();
+
             ?>
 
             </div>
@@ -160,6 +156,8 @@ $row_folgen = $bild_folgen->fetch();
 <?php
 session_start();
 include_once 'footer.php';
+
+ob_end_flush();
 ?>
 
 </html>
