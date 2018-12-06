@@ -7,6 +7,13 @@ $profile_id=$_GET['studylab'];
 $follower=$_SESSION["angemeldet"];
 $followerid = $_SESSION["id"];
 
+
+$bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id'");
+$bild_folgen->execute();
+$row_folgen = $bild_folgen->fetch();
+
+
+
 ?>
 
 <!doctype html>
@@ -27,6 +34,11 @@ $followerid = $_SESSION["id"];
 
             <div class="profilbildplusfolgen">
 
+                <?php
+                //Benutzerbild wird im Profil angezeigt
+
+                echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
+                ?>
 
 
             </div>

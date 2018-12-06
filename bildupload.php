@@ -56,6 +56,8 @@ echo $benutzername_id
                     $statement->bindParam(3,$datei);
                     $statement->bindParam(4,$regid);
                     $statement->execute();
+
+                    header ("location:login.php");
                 }
                 ?>
 
@@ -88,10 +90,6 @@ echo $benutzername_id
 
         </div>
     </div>
-
-
-
-
 </body>
 
 <?php
