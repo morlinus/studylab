@@ -68,9 +68,10 @@ include_once 'header.php';
 
 
 
-                            echo '<table>';
+                            echo '<ul class="suchen-tabelle">';
                             echo '<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>';
-                            echo '<table>';
+                            echo '</ul>';
+
 
                         }
                     }
@@ -99,3 +100,4 @@ include_once 'header.php';
 
 </body>
 </html>
+

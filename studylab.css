@@ -277,6 +277,18 @@ group>.btn:not(:first-child) {
     margin-top: 5px;
 }
 
+.suchen-tabelle{
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transfrom: translate(-50%, -50%);
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+    background-color: white;
+}
+
 .suchen-ergebnisse{
     text-decoration: none;
     color: #212529;
@@ -292,6 +304,7 @@ group>.btn:not(:first-child) {
 
 .suchergebnisse{
     font-weight: bold;
+
 }
 
 .kommentar{
