@@ -27,7 +27,7 @@ $followerid = $_SESSION["id"];
 
             <div class="profilbildplusfolgen">
 
-                <h4>Profilbild</h4>
+
 
             </div>
 
@@ -64,9 +64,12 @@ $followerid = $_SESSION["id"];
                 }
                 else {
                 ?><!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
+                <div class="entfolgenbutton">
                 <form class="btn btn-outline-secondary" action="profil_folgen2.php?studilab=<?php echo $profile_id; ?>" method="post">
                     <input class="btn btn-primary" type="submit" name="unfollow" value="Unfollow">
-                </form><?php
+                </form>
+                </div>
+                    <?php
                 // entfolgen Befehl
                 if (isset($_POST['unfollow'])) {
                     $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");

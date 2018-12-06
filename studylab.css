@@ -145,11 +145,31 @@ html, body{
     border-color: #e41035;
 }
 
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+    height: 40px;
+}
+
+group>.btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 40px;
+}
+
 .input{
     color: white;
 }
 
 .folgenbutton{
+    flex-direction: row;
+    float: right;
+    margin-bottom: 5px;
+}
+
+.entfolgenbutton{
     flex-direction: row;
     float: right;
     margin-bottom: 5px;

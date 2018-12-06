@@ -61,18 +61,16 @@ if(isset($_POST['kommentar'])) {
                 <!-- Dies ist die Form, damit der User einen Post schreiben kann -->
                 <form action="formular_abfrage_index.php" method="post">
                     <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <input class="btn btn-primary" type="submit" value="Posten">
+                    <div class="btn-toolbar"  action="formular_abfrage_index.php" method="post" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                            <input class="btn btn-secondary" type="submit" value="Posten">
+                            <button type="button" class="btn btn-secondary"><img src="https://mars.iuk.hdm-stuttgart.de/~bw038/baseline-collections-24px.svg"></button>
+                        </div>
+                    </div>
                     <br>
                     <br>
                 </form>
 
-
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" action="formular_abfrage_index.php" method="post">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <input class="btn btn-secondary" type="submit" value="Posten">
-                        <button type="button" class="btn btn-secondary"><img src="file:///Users/bettinawissler/Downloads/baseline-photo_library-24px.svg" height="50" width="120"></button>
-                    </div>
-                </div>
 
 
                     <?php
@@ -104,9 +102,9 @@ if(isset($_POST['kommentar'])) {
                                 <div class="beitrag">
 
                                 <?php
-                                //Benutzerbild wird im Beitrag angezeigt
-                                $beitragsersteller = $content['userid'];
-                                echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            //Benutzerbild wird im Beitrag angezeigt
+                            $beitragsersteller = $content['userid'];
+                            echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             }
                             ?>
 
