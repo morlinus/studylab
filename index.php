@@ -109,8 +109,15 @@ while($nachricht=$benachrichtigung->fetch()) {
 
                     }
 
+
                     if ($dbtest > 0) {
                         while ($content = $statement->fetch()) {
+                            $postid = $content ["id"];
+
+                            $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$postid");
+                            $beitrags_bild -> execute();
+                            $bilder = $beitrags_bild -> fetch();
+                            $dbabgleich = $bilder ["post_id"];
 
                             //Holt das Bild von dem User, der den betrag gepostet hat, aus der Datenbank
                             $id_index = $content ["userid"];
@@ -131,6 +138,14 @@ while($nachricht=$benachrichtigung->fetch()) {
                             <?php
                             //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                             echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
+                            echo "<br>";
+
+                            //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                            if ($postid = $dbabgleich) {
+                                echo "<div class='bild-class'>";
+                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Nutzerprofilbild' class='beitragsbild'>");
+                                echo "</div>";
+                            }
 
                             echo "<br>";
                             //Der Post Inhalt wird ausgegeben

@@ -191,6 +191,18 @@ group>.btn:not(:first-child) {
     border-radius: 50%;
 }
 
+.beitragsbild{
+    padding: 5px;
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.bild-class {
+    padding: 20px;
+}
+
 .profilbild-folgen{
     padding: 10px;
     position: relative;
