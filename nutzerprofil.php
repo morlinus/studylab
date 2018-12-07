@@ -112,7 +112,6 @@ if(isset($_POST['kommentar'])) {
                 $bild_header ->execute();
                 ?>
 
-
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                     <?php
                 while($row_header = $bild_header->fetch()){
@@ -121,14 +120,14 @@ if(isset($_POST['kommentar'])) {
                     echo $content['text'] . "<br /><br />";
                     ?>
 
-                    <div id="zeigeKommentare"  class="kommentare ">
+
                         <?php
                         $post_id = $content['id'];
                         $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                         $kommentare->execute();
                         while ($komm = $kommentare->fetch()) {
                             ?>
-                            <div class="shadow-sm p-3 mb-5 bg-light rounded">
+                            <div class="beitrag">
 
                                 <?php
 
@@ -141,32 +140,30 @@ if(isset($_POST['kommentar'])) {
                             <?php
                         }
                         ?>
-
-                    </div>
                 </div>
+
 
                         <?php
                     }
                     ?>
+
                     </div>
+        <div class="col-3">
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <!-- Der User kann hier einen Post schreiben -->
+                Schreibe einen Post:
+                <form action="formular_abfrage.php" method="post">
+                    <textarea name="content" class="form-control" rows="3"></textarea><br>
+                    <input class="btn btn-primary" type="submit" value="Posten">
+                </form>
+            </div>
+
+        </div>
                 </div>
 
         </div>
 
-        <div class="col-3">
-            <div class="shadow-sm p-3 mb-5 bg-white rounded">
-            <!-- Der User kann hier einen Post schreiben -->
-            Schreibe einen Post:
-            <form action="formular_abfrage.php" method="post">
-                <textarea name="content" class="form-control" rows="3"></textarea><br>
-                <input class="btn btn-primary" type="submit" value="Posten">
-            </form>
-            </div>
 
-        </div>
-</div>
-
-</div>
 
 
 </body>
