@@ -107,6 +107,12 @@ if(isset($_POST['kommentar'])) {
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
 
+                    $postid = $content ["id"];
+                    $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$postid");
+                    $beitrags_bild -> execute();
+                    $bilder = $beitrags_bild -> fetch();
+                    $dbabgleich = $bilder ["post_id"];
+
                 $id_header=$_SESSION ["id"];
                 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
                 $bild_header ->execute();
@@ -118,6 +124,14 @@ if(isset($_POST['kommentar'])) {
                 while($row_header = $bild_header->fetch()){
                             echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             } ?> <h5> <?php echo $content['benutzername'] . ":<br />"; ?></h5> <?php
+
+                        //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                        if ($postid = $dbabgleich) {
+                            echo"<br>";
+                            echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
+                            echo"<br>";
+                            echo "<br>";
+                        }
                     echo $content['text'] . "<br /><br />";
                     ?>
                     </div>
