@@ -119,8 +119,9 @@ if(isset($_POST['kommentar'])) {
 
                             //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                             if ($postid = $dbabgleich) {
+                                echo"<br>";
                                 echo "<div class='bild-class'>";
-                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Nutzerprofilbild' class='beitragsbild'>");
+                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                                 echo "</div>";
                             }
 
