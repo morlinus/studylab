@@ -30,7 +30,7 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
 
 <!-- Login-Form -->
 <div class="background-recht col-lg-6 col-sm-12">
-    <div class="fenster">
+    <div class="fenster"">
         <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="100" width="250">
         <br>
 
