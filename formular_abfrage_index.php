@@ -18,6 +18,7 @@ if(!isset($_SESSION["angemeldet"]))
 // übernimmt den Content aus dem Formular der Index.php und fügt die Daten dann in die Datenbank ein
 $content= $_POST["content"];
 
-$statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text)");
-$statement->execute(array(':text'=>$content, ':userid'=>$id));
-header ("Location:index.php");
+    $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text)");
+    $statement->execute(array(':text' => $content, ':userid' => $id));
+
+header("Location:index.php");

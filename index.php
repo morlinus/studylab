@@ -64,7 +64,7 @@ if(isset($_POST['kommentar'])) {
                     <div class="btn-toolbar"  action="formular_abfrage_index.php" method="post" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
-                            <button type="button" class="btn btn-secondary"><img src="https://mars.iuk.hdm-stuttgart.de/~bw038/baseline-collections-24px.svg"></button>
+                            <button type="button" class="btn btn-secondary"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/baseline-collections-24px.png" width="20%" height="20%"></button>
                         </div>
                     </div>
                     <br>
@@ -116,19 +116,18 @@ if(isset($_POST['kommentar'])) {
                             echo $content['text'] . "<br /><br />";
                             ?>
 
+
                             <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                                <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1"
+                                <textarea id="<?php echo $content['id'];?>" name="comment" placeholder="Kommentieren" rows="1"
                                           class="form-control"></textarea><br>
                                 <input type="hidden" value="<?php echo $content['id']; ?>" name="post_id"
                                        class="form-control">
                                 <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar"
-                                       id="kommentieren"/>
+                                       id="kommentarbtn"/>
                             </form>
                             <br>
 
-                            <input type="button" name="kommentarezeigen" class="btn btn-primary" onclick="kommentare()"
-                                   value="Kommentare zeigen"/>
-                            <div id="zeigeKommentare" style="display:none;" class="kommentare ">
+                            <div id="zeigeKommentare"  class="kommentare ">
                                 <?php
                                 $post_id = $content['id'];
                                 $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
@@ -175,14 +174,13 @@ if(isset($_POST['kommentar'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-    function kommentare() {
-        document.getElementById('zeigeKommentare').style.display = "block";
-    }
-
     function post(){
         var comment = document.getElementById("comment").value;
+
         if(comment)
         {
+            var postid = sessionStorage.getItem('post_id');
+
             $.ajax
             ({
                 type: 'post',
@@ -198,6 +196,7 @@ if(isset($_POST['kommentar'])) {
             });
         }
         return false;
+
     }
 </script>
 
