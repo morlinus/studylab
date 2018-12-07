@@ -14,7 +14,6 @@ else {
 // bindet den Header in die Seite ein
 include_once 'header.php';
 
-
 $id=$_SESSION["id"];
 $angmeldet_index = $_SESSION ["angemeldet"];
 
@@ -34,7 +33,6 @@ if(isset($_POST['kommentar'])) {
 
 ?>
 
-
 <!doctype html>
 <html lang="de">
 <head>
@@ -43,7 +41,26 @@ if(isset($_POST['kommentar'])) {
 </head>
 
 <body>
+<?php
+$benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.benutzername FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id");
+$benachrichtigung->execute();
 
+while($nachricht=$benachrichtigung->fetch()) {
+    ?>
+
+    <div class="alert alert-success alert-dismissible" >
+            <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
+        <strong><?php echo $nachricht['benutzername'];?></strong> Hat einen neuen Beitrag gepostet.
+    </div>
+
+    <?php
+    $update=$pdo->prepare("UPDATE benachrichtigung SET $angmeldet_index = ?");
+    $update->execute(array('read'));
+    ?>
+
+    <?php
+}
+?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-3">
@@ -61,16 +78,15 @@ if(isset($_POST['kommentar'])) {
                 <!-- Dies ist die Form, damit der User einen Post schreiben kann -->
                 <form action="formular_abfrage_index.php" method="post">
                     <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <div class="btn-toolbar"  action="formular_abfrage_index.php" method="post" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
                             <button type="button" class="btn btn-secondary"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/baseline-collections-24px.png" width="20%" height="20%"></button>
                         </div>
                     </div>
-                    <br>
-                    <br>
                 </form>
-
+                <br>
+                <br>
 
 
                     <?php
@@ -168,11 +184,23 @@ if(isset($_POST['kommentar'])) {
         </div>
     </div>
 
+
+
+
 </body>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+        $("#update").click(function(){
+            $.ajax({
+                url: "index.php",
+                type: "POST",
+            });
+        });
+    });
 
     function post(){
         var comment = document.getElementById("comment").value;
