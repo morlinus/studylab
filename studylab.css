@@ -242,11 +242,8 @@ group>.btn:not(:first-child) {
     padding: 20px;
     position: relative;
     margin-top: 20px;
-    margin-bottom: 20px;
-    transfrom: translate(-50%, -50%);
-    border-radius: 10px;
-    background: rgba(0,0,0,0.2);
-    background-color: white;
+    background-color: #e41035;
+    background: rgba(255, 21, 52, 0.07);
 
 }
 
@@ -279,7 +276,7 @@ group>.btn:not(:first-child) {
     position: relative;
     margin-top: 5px;
     margin-bottom: 5px;
-    transfrom: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     border-radius: 10px;
     background: rgba(0,0,0,0.2);
     background-color: white;
@@ -308,7 +305,7 @@ group>.btn:not(:first-child) {
     margin-bottom: 10px;
     margin-top: 10px;
     position: relative;
-    transfrom: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 10px;
     box-sizing: border-box;
