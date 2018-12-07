@@ -63,7 +63,7 @@ $row_folgen = $bild_folgen->fetch();
                     $follow = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$profile_id', '$followerid') ");
                     if ($follow->execute()) {
                         echo "followed";
-                        $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11)");
+                        $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11) NOT NULL");
                         $insert_ben -> execute ();
                         header("location:profil_folgen2.php?studylab=$profile_id");
 

@@ -56,16 +56,17 @@ if(isset($_POST['kommentar'])) {
 
 
 
-                <!-- Dies ist die Form, damit der User einen Post schreiben kann -->
-                <form action="formular_abfrage_index.php" method="post">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
+                <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
+                <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
+                    <textarea name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
-                            <button type="button" class="btn btn-secondary"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/baseline-collections-24px.png" width="20%" height="20%"></button>
+                            <input type="file" name="myfile"/>
                         </div>
                     </div>
                 </form>
+
                 <br>
                 <br>
 
