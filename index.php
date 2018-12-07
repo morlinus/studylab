@@ -122,13 +122,15 @@ if(isset($_POST['kommentar'])) {
                             if ($postid = $dbabgleich) {
                                 echo"<br>";
                                 echo "<div class='bild-class'>";
-                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
+                                ?>
+                                    <div class="img-fluid"><?php
+                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
                                 echo "</div>";
                             }
 
-                            echo "<br>";
+
                             //Der Post Inhalt wird ausgegeben
-                            echo $content['text'] . "<br /><br />";
+                            echo $content['text'];
                             ?>
                             </div>
 
@@ -142,26 +144,41 @@ if(isset($_POST['kommentar'])) {
                             </form>
                             <br>
 
-                            <div id="zeigeKommentare"  class="kommentare ">
+
                                 <?php
                                 $post_id = $content['id'];
                                 $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                                 $kommentare->execute();
                                 while ($komm = $kommentare->fetch()) {
                                     ?>
+
                                     <div class="kommentar">
+
                                         <?php
 
+                                        $kommid=$komm['id'];
+
+                                        $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
+                                        $kommbild->execute();
+                                        while ($row_kommbild = $kommbild->fetch()){
+                                    ?> <div class="miniprofbild">
+                                            <?php
+                                            echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                            ?>
+                                        </div>
+                                        <?php
+                                        }
                                         echo $komm['Zeit'] . "<br/>";
                                         echo $komm['benutzername'] . ":<br />";
                                         echo $komm['kommentar'];
                                         ?>
                                     </div>
+
                                     <?php
                                 }
                                 ?>
 
-                            </div>
+
                             </div>
 
                             <?php

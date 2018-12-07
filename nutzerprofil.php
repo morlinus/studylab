@@ -116,9 +116,9 @@ if(isset($_POST['kommentar'])) {
                     <div class="beitrag">
                     <?php
                 while($row_header = $bild_header->fetch()){
-                            echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                    ?> <div class="miniprofbild"><?php echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>"); ?></div><?php
                             } ?> <h5> <?php echo $content['benutzername'] . ":<br />"; ?></h5> <?php
-                    echo $content['text'] . "<br /><br />";
+                    echo $content['text'];
                     ?>
                     </div>
 
@@ -128,6 +128,7 @@ if(isset($_POST['kommentar'])) {
                         $kommentare->execute();
                         while ($komm = $kommentare->fetch()) {
                             ?>
+                            <div class="kommentare">
                             <div class="kommentar">
 
                                 <?php
@@ -136,20 +137,21 @@ if(isset($_POST['kommentar'])) {
                                 $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
                                 $kommbild->execute();
                                 while ($row_kommbild = $kommbild->fetch()){
-                                    ?> <div class="kommbild">
+                                    ?> <div class="miniprofbild">
                                     <?php
                                     echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                     ?>
                                 </div>
                                     <?php
                                 }
-                                echo " ". $komm['Zeit'] . "<br/>";
-                                echo " ".  $komm['benutzername'] . ":<br />";
+
+                                ?> <h6> <?php echo " ".  $komm['benutzername'] . ":<br />"; ?></h6>
+                                <?php
                                 echo " ".  $komm['kommentar'];
                                 ?>
 
                             </div>
-
+                            </div>
                             <?php
                         }
                         ?>

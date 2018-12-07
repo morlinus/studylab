@@ -192,7 +192,7 @@ group>.btn:not(:first-child) {
 }
 
 .img-fluid {
-    border-radius: 10%;
+    border-radius: 5px;
 
 }
 
@@ -252,7 +252,7 @@ group>.btn:not(:first-child) {
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    background: rgba(209, 209, 209, 0.2);
+    background: rgba(209, 209, 209, 0.4);
     border-radius: 5px;
 
 }
@@ -311,7 +311,7 @@ group>.btn:not(:first-child) {
 }
 
 .kommentar{
-    width: auto;
+    width: 90%;
     height: 70%;
     padding: 20px;
     position: relative;
@@ -320,11 +320,14 @@ group>.btn:not(:first-child) {
     background: rgba(209, 209, 209, 0.2);
     border-radius: 5px;
     font-size: 70%;
+    left: 5%;
+
 }
 
-.kommbild{
+.miniprofbild {
     float: left;
     width:auto;
+    margin-right: 2%;
 }
 
 .kommbild{
