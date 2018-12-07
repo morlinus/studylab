@@ -39,19 +39,20 @@ while ($letzteid = $lastinsert->fetch()){
 }
 If ($postid > 0) {
 
-$name = $_FILES['myfile']['name'];
-$typ = $_FILES ['myfile']['type'];
-$datei = file_get_contents($_FILES['myfile']['tmp_name']);
-$statement_bild = $pdo->prepare("INSERT INTO bildupload_content VALUES('',?,?,?,?,?)");
-$statement_bild->bindParam(1,$postid);
-$statement_bild->bindParam(2,$id);
-$statement_bild->bindParam(3,$name);
-$statement_bild->bindParam(4,$typ);
-$statement_bild->bindParam(5,$datei);
-$statement_bild->execute();
+    $name = $_FILES['myfile']['name'];
+    $typ = $_FILES ['myfile']['type'];
+   $str = strlen($typ);
+    if ($str > 0) {
+        $datei = file_get_contents($_FILES['myfile']['tmp_name']);
+        $statement_bild = $pdo->prepare("INSERT INTO bildupload_content VALUES('',?,?,?,?,?)");
+        $statement_bild->bindParam(1, $postid);
+        $statement_bild->bindParam(2, $id);
+        $statement_bild->bindParam(3, $name);
+        $statement_bild->bindParam(4, $typ);
+        $statement_bild->bindParam(5, $datei);
+        $statement_bild->execute();
 
-echo "Klappt";
-echo $name;
-echo $typ;
-echo $datei;
+    }
 }
+header ("Location:index.php");
+

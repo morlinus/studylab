@@ -81,7 +81,7 @@ while($nachricht=$benachrichtigung->fetch()) {
 
                 <!-- Dies ist die Form, damit der User einen Post schreiben kann -->
                 <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
+                    <textarea name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
