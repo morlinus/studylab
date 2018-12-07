@@ -121,41 +121,36 @@ if(isset($_POST['kommentar'])) {
                     echo $content['text'] . "<br /><br />";
                     ?>
 
+                    <div id="zeigeKommentare"  class="kommentare ">
+                        <?php
+                        $post_id = $content['id'];
+                        $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
+                        $kommentare->execute();
+                        while ($komm = $kommentare->fetch()) {
+                            ?>
+                            <div class="shadow-sm p-3 mb-5 bg-light rounded">
 
-                    <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                        <textarea id="comment" name="comment" placeholder="Kommentieren" rows="1" class="form-control"></textarea><br>
-                        <input type="hidden" value="<?php echo $content['id'];?>" name="post_id" class="form-control">
-                        <input type="submit" class="btn btn-primary" value="Kommentieren" name="kommentar"/>
-                    </form>
-                    <br>
-                    <input type="button" name="kommentarezeigen" class="btn btn-primary" onclick="kommentare()" value="Kommentare zeigen"/>
-                    <div id="zeigeKommentare" style="display:none;" class="kommentare ">
+                                <?php
 
-                    <?php
-                    $post_id=$content['id'];
-                    $kommentare=$pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
-                    $kommentare->execute();
-                    while($komm=$kommentare->fetch()) {
-                        ?>
-                        <div class="kommentar">
+                                echo $komm['Zeit'] . "<br/>";
+                                echo $komm['benutzername'] . ":<br />";
+                                echo $komm['kommentar'];
+                                ?>
+
+                            </div>
                             <?php
+                        }
+                        ?>
 
-                        echo $komm['benutzername'] . ":<br />";
-                    echo $komm['kommentar'];
-                    ?>
-                        </div>
+                    </div>
+                </div>
+
                         <?php
                     }
                     ?>
                     </div>
                 </div>
 
-
-                <?php
-
-                }
-
-                ?>
         </div>
 
         <div class="col-3">

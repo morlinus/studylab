@@ -250,10 +250,6 @@ group>.btn:not(:first-child) {
 
 }
 
-.shadow p-3 mb-5 bg-white rounded{
-    border-radius: 10px;
-}
-
 .benutzerdaten{
     padding: 20px;
     border-radius: 10px;
