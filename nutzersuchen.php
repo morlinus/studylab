@@ -66,10 +66,16 @@ include_once 'header.php';
 
                             $studilab = $row['id'];
 
+                            $bild_suche = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$studilab'");
+                            $bild_suche->execute();
+                            $row_suche = $bild_suche->fetch();
 
 
                             echo '<ul class="suchen-tabelle">';
-                            echo '<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>';
+                            echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            echo " ";
+                            echo '<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>'."<br>". $row["name"]." ". $row ["nachname"];
+                            //echo "<br>". $row["name"]." ". $row ["nachname"];
                             echo '</ul>';
 
 

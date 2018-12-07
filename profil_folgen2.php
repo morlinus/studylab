@@ -6,8 +6,7 @@ include_once "header.php";
 $profile_id=$_GET['studylab'];
 $follower=$_SESSION["angemeldet"];
 $followerid = $_SESSION["id"];
-
-
+echo $follower;
 $bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id'");
 $bild_folgen->execute();
 $row_folgen = $bild_folgen->fetch();
@@ -46,9 +45,8 @@ $row_folgen = $bild_folgen->fetch();
                 if ($profile_id!=$_SESSION["angemeldet"]) {
 
                 // Folgen wir dem Nutzer schon?
-                $checkfollow=$pdo->prepare("SELECT follower_id FROM folgen WHERE user_id=$profile_id");
+                $checkfollow=$pdo->prepare("SELECT follower_id FROM folgen WHERE user_id=$profile_id AND follower_id = $followerid");
                 $checkfollow->execute();
-
                 $no=$checkfollow->rowCount();
                 if(!$no > 0){
                 ?>
@@ -65,6 +63,8 @@ $row_folgen = $bild_folgen->fetch();
                     $follow = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$profile_id', '$followerid') ");
                     if ($follow->execute()) {
                         echo "followed";
+                        $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11)");
+                        $insert_ben -> execute ();
                         header("location:profil_folgen2.php?studylab=$profile_id");
 
                     }
@@ -83,6 +83,7 @@ $row_folgen = $bild_folgen->fetch();
                     $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");
                     if ($unfollow->execute()) {
                         echo "unfollowed";
+
                         header("location:profil_folgen2.php?studylab=$profile_id");
 
                     }
