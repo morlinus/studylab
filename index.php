@@ -103,6 +103,7 @@ if(isset($_POST['kommentar'])) {
                             while ($row_index = $bild_index->fetch()) {
 
                                 ?>
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
                                 <div class="beitrag">
 
                                 <?php
@@ -129,7 +130,7 @@ if(isset($_POST['kommentar'])) {
                             //Der Post Inhalt wird ausgegeben
                             echo $content['text'] . "<br /><br />";
                             ?>
-
+                            </div>
 
                             <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                 <textarea id="<?php echo $content['id'];?>" name="comment" placeholder="Kommentieren" rows="1"
@@ -220,14 +221,6 @@ if(isset($_POST['kommentar'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function(){
-        $("#update").click(function(){
-            $.ajax({
-                url: "index.php",
-                type: "POST",
-            });
-        });
-    });
 
     function post(){
         var comment = document.getElementById("comment").value;
