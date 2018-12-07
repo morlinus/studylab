@@ -6,8 +6,6 @@ $id_header=$_SESSION ["id"];
 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header ->execute();
 while($row_header = $bild_header->fetch()){
-// echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
-// <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
 if (isset($_SESSION["angemeldet"]))
 {
