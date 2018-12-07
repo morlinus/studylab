@@ -55,7 +55,7 @@ if(isset($_POST['kommentar'])) {
                 <br>
 
 
-
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
                 <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
                     <textarea name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
@@ -66,6 +66,7 @@ if(isset($_POST['kommentar'])) {
                         </div>
                     </div>
                 </form>
+                </div>
 
                 <br>
                 <br>

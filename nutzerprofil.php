@@ -177,17 +177,6 @@ if(isset($_POST['kommentar'])) {
                     ?>
 
                     </div>
-        <div class="col-3">
-            <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <!-- Der User kann hier einen Post schreiben -->
-                Schreibe einen Post:
-                <form action="formular_abfrage.php" method="post">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <input class="btn btn-primary" type="submit" value="Posten">
-                </form>
-            </div>
-
-        </div>
                 </div>
 
         </div>
