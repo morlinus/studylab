@@ -70,17 +70,19 @@ if(isset($_POST['kommentar'])) {
                 <br>
 
 
-
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
                 <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
                     <textarea name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
                             <input type="file" name="myfile"/>
                         </div>
                     </div>
+                </div>
                 </form>
+
 
                 <br>
                 <br>
@@ -118,6 +120,7 @@ if(isset($_POST['kommentar'])) {
                             while ($row_index = $bild_index->fetch()) {
 
                                 ?>
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
                                 <div class="beitrag">
 
                                 <?php
@@ -134,16 +137,19 @@ if(isset($_POST['kommentar'])) {
 
                             //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                             if ($postid = $dbabgleich) {
+                                echo"<br>";
                                 echo "<div class='bild-class'>";
-                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Nutzerprofilbild' class='beitragsbild'>");
+                                ?>
+                                    <div class="img-fluid"><?php
+                                echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
                                 echo "</div>";
                             }
 
-                            echo "<br>";
-                            //Der Post Inhalt wird ausgegeben
-                            echo $content['text'] . "<br /><br />";
-                            ?>
 
+                            //Der Post Inhalt wird ausgegeben
+                            echo $content['text'];
+                            ?>
+                            </div>
 
                             <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                 <textarea id="<?php echo $content['id'];?>" name="comment" placeholder="Kommentieren" rows="1"
@@ -155,26 +161,41 @@ if(isset($_POST['kommentar'])) {
                             </form>
                             <br>
 
-                            <div id="zeigeKommentare"  class="kommentare ">
+
                                 <?php
                                 $post_id = $content['id'];
                                 $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                                 $kommentare->execute();
                                 while ($komm = $kommentare->fetch()) {
                                     ?>
+
                                     <div class="kommentar">
+
                                         <?php
 
-                                        echo $komm['Zeit'] . "<br/>";
-                                        echo $komm['benutzername'] . ":<br />";
+                                        $kommid=$komm['id'];
+
+                                        $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
+                                        $kommbild->execute();
+                                        while ($row_kommbild = $kommbild->fetch()){
+                                    ?> <div class="miniprofbild">
+                                            <?php
+                                            echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                            ?>
+                                        </div>
+                                        <?php
+                                        }
+
+                                        ?> <h6> <?php echo $komm['benutzername'] . ":<br />"; ?> </h6><?php
                                         echo $komm['kommentar'];
                                         ?>
                                     </div>
+
                                     <?php
                                 }
                                 ?>
 
-                            </div>
+
                             </div>
 
                             <?php
@@ -236,14 +257,6 @@ if(isset($_POST['kommentar'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function(){
-        $("#update").click(function(){
-            $.ajax({
-                url: "index.php",
-                type: "POST",
-            });
-        });
-    });
 
     function post(){
         var comment = document.getElementById("comment").value;

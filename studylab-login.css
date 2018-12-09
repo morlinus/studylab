@@ -8,7 +8,7 @@ body {
 .container{
     background-color: lightgrey;
     margin-top: 30px;
-    width: 300px;
+
     border-radius: 10px;
     box-shadow: 0 15px 25px rgba(0,0,0,0.5);
     background: rgba(0,0,0,0.8);
@@ -115,4 +115,24 @@ body {
     left: 0;
     color: black;
     font-size: 11px;
+}
+
+.btn {
+     color: white;
+     background-color: #e41035;
+     border-color: #e41035;
+     font-weight: 400;
+     border: 0px;
+ }
+
+.btn-primary {
+    background-color: #e41035;
+    border-color: #e41035;
+}
+
+.btn:hover{
+    color: white;
+    background-color: #e41035;
+    font-weight: bold;
+    border-color: #e41035;
 }

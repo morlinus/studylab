@@ -65,13 +65,14 @@ if(isset($_POST['kommentar'])) {
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-3 col-md-3 col-sm-12 col-">
+        <div class="col-3">
 
 
-
-            <div class="nutzerinfo">
             <div class="profilbildplusfolgen">
                 <?php
+
+                // Benutzerbild wird im Profil angezeigt
+
                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
                 }
                 ?>
@@ -95,20 +96,10 @@ if(isset($_POST['kommentar'])) {
                         }
                         ?>
             </div>
-            </div>
         </div>
 
 
-        <div class="col-lg-6 col-md-9 col-sm-12 col-">
-
-            <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <!-- Der User kann hier einen Post schreiben -->
-                Schreibe einen Post:
-                <form action="formular_abfrage.php" method="post">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <input class="btn btn-primary" type="submit" value="Posten">
-                </form>
-            </div>
+        <div class="col-6">
 
                 <?php
                 // Zeigt die Postings des User an
@@ -117,19 +108,44 @@ if(isset($_POST['kommentar'])) {
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
 
+                    $postid = $content ["id"];
+                    $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$postid");
+                    $beitrags_bild -> execute();
+                    $bilder = $beitrags_bild -> fetch();
+                    $dbabgleich = $bilder ["post_id"];
+
                 $id_header=$_SESSION ["id"];
                 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
                 $bild_header ->execute();
+                while($row_header = $bild_header->fetch()){
+
                 ?>
 
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                    <?php
-                while($row_header = $bild_header->fetch()){
-                            echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                            } ?> <h5> <?php echo $content['benutzername'] . ":<br />"; ?></h5> <?php
-                    echo $content['text'] . "<br /><br />";
-                    ?>
+                    <div class="beitrag">
 
+                        <?php
+                        //Benutzerbild wird im Beitrag angezeigt
+                    $beitragsersteller = $content['userid'];
+
+                    echo("<img src='data:" . $row_header['format'] . ";base64," . base64_encode($row_header['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                }
+                    ?>
+<?php
+                        //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                        echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
+                        echo "<br>";
+
+                        //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                        if ($postid = $dbabgleich) {
+                            echo"<br>";
+                            echo "<div class='bild-class'>";
+                            echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
+                            echo "</div>";
+                        }
+                    echo $content['text'];
+                    ?>
+                    </div>
 
                         <?php
                         $post_id = $content['id'];
@@ -137,13 +153,26 @@ if(isset($_POST['kommentar'])) {
                         $kommentare->execute();
                         while ($komm = $kommentare->fetch()) {
                             ?>
-                            <div class="beitrag">
+
+                            <div class="kommentar">
 
                                 <?php
+                                $kommid=$komm['id'];
 
-                                echo $komm['Zeit'] . "<br/>";
-                                echo $komm['benutzername'] . ":<br />";
-                                echo $komm['kommentar'];
+                                $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
+                                $kommbild->execute();
+                                while ($row_kommbild = $kommbild->fetch()){
+                                    ?> <div class="miniprofbild">
+                                    <?php
+                                    echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                    ?>
+                                </div>
+                                    <?php
+                                }
+
+                                ?> <h6> <?php echo " ".  $komm['benutzername'] . ":<br />"; ?></h6>
+                                <?php
+                                echo " ".  $komm['kommentar'];
                                 ?>
 
                             </div>
@@ -158,7 +187,6 @@ if(isset($_POST['kommentar'])) {
                     ?>
 
                     </div>
-
                 </div>
 
         </div>

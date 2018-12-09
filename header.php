@@ -26,6 +26,7 @@ while($row_header = $bild_header->fetch()){
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="studylab.css" rel="stylesheet">
@@ -41,46 +42,42 @@ while($row_header = $bild_header->fetch()){
 <body>
 
 <div id="header">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <div class="container-fluid">
-
-
-
-
-            <div class="col-12-header col-s-12 col-">
-                <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-haspopup="true" aria-label="Toggle navigation" >
+            <div class="col-6">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php">Startseite</a><br>
+                            <a class="nav-link" href="index.php">Startseite</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nutzerprofil.php">Profil</a><br>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="nutzersuchen.php">Suche</a><br>
+                            <a class="nav-link" href="nutzerprofil.php">Profil</a>
                         </li>
                     </ul>
                 </div>
 
+            </div>
 
+
+            <div class="col-6">
                 <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn btn-outline-secondary" href="nutzersuchen.php">Suche</a>
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
                         echo $benutzer_name['benutzername'];
                         ?>
                     </a>
 
+
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="profil_bearbeitung.php">Profil bearbeiten</a>
-                        <a class="dropdown-item" href="bildupload.php">Bild bearbeiten</a>
-                        <a class="dropdown-item" href="logout.php">Logout</a>
+                        <a class="dropdown-item" href="profil_bearbeitung.php">Profil bearbeiten</a><br/>
+                        <a class="dropdown-item" href="bildupload.php">Profilbild bearbeiten</a><br/>
+                        <a class="dropdown-item" href="logout.php">Logout</a><br/>
                     </div>
 
                     <?php
@@ -88,13 +85,13 @@ while($row_header = $bild_header->fetch()){
                     }
 
                     ?>
+
                 </div>
-
-
             </div>
 
         </div>
     </nav>
+
 </div>
 
 </body>
