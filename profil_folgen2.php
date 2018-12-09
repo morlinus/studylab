@@ -108,11 +108,11 @@ $row_folgen = $bild_folgen->fetch();
                     $email = $row ["email"];
                     ?>
 
-                    <h6>Benutzername:</h6> <?php echo  $benutzername . "<br /><br />"; ?>
-                    <h6>Name:</h6> <?php echo $name . "<br /><br />"; ?>
-                    <h6>Nachname:</h6><?php echo $nachname . "<br /><br />"; ?>
-                    <h6>Geburtstag:</h6> <?php echo $geburtstag . "<br /><br />"; ?>
-                    <h6>Studiengang:</h6> <?php echo  $studiengang . "<br /><br />"; ?>
+                    <h6>Benutzername</h6> <?php echo  $benutzername . "<br /><br />"; ?>
+                    <h6>Name</h6> <?php echo $name . "<br /><br />"; ?>
+                    <h6>Nachname</h6><?php echo $nachname . "<br /><br />"; ?>
+                    <h6>Geburtstag</h6> <?php echo $geburtstag . "<br /><br />"; ?>
+                    <h6>Studiengang</h6> <?php echo  $studiengang . "<br /><br />"; ?>
 
                     <a href="<?php echo $email; ?>">Sende <?php echo $benutzername; ?> eine E-Mail</a>
 
