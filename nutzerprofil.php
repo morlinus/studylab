@@ -65,11 +65,11 @@ if(isset($_POST['kommentar'])) {
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-3">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-">
 
 
 
-
+            <div class="nutzerinfo">
             <div class="profilbildplusfolgen">
                 <?php
                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
@@ -95,10 +95,20 @@ if(isset($_POST['kommentar'])) {
                         }
                         ?>
             </div>
+            </div>
         </div>
 
 
-        <div class="col-6">
+        <div class="col-lg-6 col-md-9 col-sm-12 col-">
+
+            <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                <!-- Der User kann hier einen Post schreiben -->
+                Schreibe einen Post:
+                <form action="formular_abfrage.php" method="post">
+                    <textarea name="content" class="form-control" rows="3"></textarea><br>
+                    <input class="btn btn-primary" type="submit" value="Posten">
+                </form>
+            </div>
 
                 <?php
                 // Zeigt die Postings des User an
@@ -148,17 +158,7 @@ if(isset($_POST['kommentar'])) {
                     ?>
 
                     </div>
-        <div class="col-3">
-            <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <!-- Der User kann hier einen Post schreiben -->
-                Schreibe einen Post:
-                <form action="formular_abfrage.php" method="post">
-                    <textarea name="content" class="form-control" rows="3"></textarea><br>
-                    <input class="btn btn-primary" type="submit" value="Posten">
-                </form>
-            </div>
 
-        </div>
                 </div>
 
         </div>

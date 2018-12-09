@@ -27,7 +27,7 @@ $row_folgen = $bild_folgen->fetch();
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-3">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-">
 
             <div class="profilbildplusfolgen">
 
@@ -124,7 +124,7 @@ $row_folgen = $bild_folgen->fetch();
         </div>
 
 
-        <div class="col-6">
+        <div class="col-lg-6 col-md-9 col-sm-12 col-">
 
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
@@ -146,9 +146,6 @@ $row_folgen = $bild_folgen->fetch();
 
         </div>
 
-        <div class="col-3">
-
-        </div>
     </div>
 </div>
 

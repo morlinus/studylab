@@ -12,12 +12,12 @@ include_once 'header.php';
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col-lg-3 col-md-1 col-sm-1"">
 
             </div>
 
 
-            <div class="col-6">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
                 <script>
                     $( function() {
@@ -174,7 +174,7 @@ include_once 'header.php';
                 ?>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3 col-md-1 col-sm-1"">
 
             </div>
 
