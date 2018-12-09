@@ -147,6 +147,10 @@ html, body{
     color: white;
 }
 
+.nav-item{
+    padding-right: 10px;
+}
+
 
 .newsfeed-title{
     text-transform: uppercase;
@@ -232,8 +236,9 @@ html, body{
     text-decoration: none;
     display: block;
     width: 100%;
-    padding: .3rem 0.7rem;
+    padding: .2rem 0.5rem;
     font-weight: 400;
+    font-size: small;
     white-space: nowrap;
 }
 
