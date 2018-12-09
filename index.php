@@ -60,13 +60,14 @@ if(isset($_POST['kommentar'])) {
                 <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
                     <textarea name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
                             <input type="file" name="myfile"/>
                         </div>
                     </div>
-                </form>
                 </div>
+                </form>
+
 
                 <br>
                 <br>
@@ -169,8 +170,8 @@ if(isset($_POST['kommentar'])) {
                                         </div>
                                         <?php
                                         }
-                                        echo $komm['Zeit'] . "<br/>";
-                                        echo $komm['benutzername'] . ":<br />";
+
+                                        ?> <h6> <?php echo $komm['benutzername'] . ":<br />"; ?> </h6><?php
                                         echo $komm['kommentar'];
                                         ?>
                                     </div>

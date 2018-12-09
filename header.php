@@ -67,7 +67,6 @@ while($row_header = $bild_header->fetch()){
             <div class="col-6">
                 <div class="dropdown">
                     <a class="btn btn-outline-secondary" href="nutzersuchen.php">Suche</a>
-                    <a class="btn btn-outline-secondary" href="benachrichtigung.php">Benachrichtigung</a>
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
                         echo $benutzer_name['benutzername'];

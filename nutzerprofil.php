@@ -68,10 +68,11 @@ if(isset($_POST['kommentar'])) {
         <div class="col-3">
 
 
-
-
             <div class="profilbildplusfolgen">
                 <?php
+
+                // Benutzerbild wird im Profil angezeigt
+
                 echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
                 }
                 ?>
@@ -116,23 +117,33 @@ if(isset($_POST['kommentar'])) {
                 $id_header=$_SESSION ["id"];
                 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
                 $bild_header ->execute();
+                while($row_header = $bild_header->fetch()){
+
                 ?>
 
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                     <div class="beitrag">
-                    <?php
-                while($row_header = $bild_header->fetch()){
-                    ?> <div class="miniprofbild"><?php echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>"); ?></div><?php
-                            } ?> <h5> <?php echo $content['benutzername'] . ":<br />"; ?></h5> <?php
+
+                        <?php
+                        //Benutzerbild wird im Beitrag angezeigt
+                    $beitragsersteller = $content['userid'];
+
+                    echo("<img src='data:" . $row_header['format'] . ";base64," . base64_encode($row_header['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                }
+                    ?>
+<?php
+                        //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                        echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
+                        echo "<br>";
 
                         //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                         if ($postid = $dbabgleich) {
                             echo"<br>";
+                            echo "<div class='bild-class'>";
                             echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
-                            echo"<br>";
-                            echo "<br>";
+                            echo "</div>";
                         }
-                    echo $content['text'] . "<br /><br />";
+                    echo $content['text'];
                     ?>
                     </div>
 
@@ -142,7 +153,7 @@ if(isset($_POST['kommentar'])) {
                         $kommentare->execute();
                         while ($komm = $kommentare->fetch()) {
                             ?>
-                            <div class="kommentare">
+
                             <div class="kommentar">
 
                                 <?php
@@ -164,7 +175,6 @@ if(isset($_POST['kommentar'])) {
                                 echo " ".  $komm['kommentar'];
                                 ?>
 
-                            </div>
                             </div>
                             <?php
                         }
