@@ -27,11 +27,11 @@ echo $benutzername_id
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-3">
+            <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
-            <div class="col-6">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
                 <h1>Du wurdest erfolgreich Registriert</h1>
                 <h2>Nun wähle ein Profilbild aus</h2>
@@ -86,7 +86,7 @@ echo $benutzername_id
 
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 

@@ -14,11 +14,11 @@ include_once 'header.php';
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-3">
+            <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
-            <div class="col-6">
+            <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
 
 
@@ -49,7 +49,10 @@ include_once 'header.php';
 
                 ?>
 
-                    <h5> <?php echo "Suchergebnisse: <br>";?> </h5>
+
+
+                    <h5> <?php echo "Suchergebnisse: <br>";?> </h5><br>
+
 
                 <?php
                     $benutzername = $_POST['nutzersuchen'];
@@ -70,13 +73,14 @@ include_once 'header.php';
                             $bild_suche->execute();
                             $row_suche = $bild_suche->fetch();
 
-
+                            echo '<div class="col-12">';
                             echo '<ul class="suchen-tabelle">';
                             echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             echo " ";
                             echo '<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>'."<br>". $row["name"]." ". $row ["nachname"];
                             //echo "<br>". $row["name"]." ". $row ["nachname"];
                             echo '</ul>';
+                            echo '</div>';
 
 
                         }
@@ -91,10 +95,12 @@ include_once 'header.php';
 
                 ?>
 
+
+
                 </form>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
