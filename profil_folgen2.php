@@ -105,13 +105,16 @@ $row_folgen = $bild_folgen->fetch();
                     $nachname = $row ['nachname'];
                     $geburtstag = $row ['geburtsdatum'];
                     $studiengang = $row ['studiengang'];
+                    $email = $row ["email"];
                     ?>
 
-                    <h6>Benutzername:</h6> <?php echo  $benutzername . "<br /><br />"; ?>
-                    <h6>Name:</h6> <?php echo $name . "<br /><br />"; ?>
-                    <h6>Nachname:</h6><?php echo $nachname . "<br /><br />"; ?>
-                    <h6>Geburtstag:</h6> <?php echo $geburtstag . "<br /><br />"; ?>
-                    <h6>Studiengang:</h6> <?php echo  $studiengang . "<br /><br />"; ?>
+                    <h6>Benutzername</h6> <?php echo  $benutzername . "<br /><br />"; ?>
+                    <h6>Name</h6> <?php echo $name . "<br /><br />"; ?>
+                    <h6>Nachname</h6><?php echo $nachname . "<br /><br />"; ?>
+                    <h6>Geburtstag</h6> <?php echo $geburtstag . "<br /><br />"; ?>
+                    <h6>Studiengang</h6> <?php echo  $studiengang . "<br /><br />"; ?>
+
+                    <a href="mailto:<?php echo $email; ?>">Sende <?php echo $benutzername; ?> eine E-Mail</a>
 
 
                     <?php
@@ -141,10 +144,10 @@ $row_folgen = $bild_folgen->fetch();
             $bilder = $beitrags_bild->fetch();
             $dbabgleich = $bilder ["post_id"];
 
-            $id_header = $_SESSION ["id"];
-            $bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$profile_id");
-            $bild_header->execute();
-            while ($row_header = $bild_header->fetch()){
+            $id_folgen2 = $_SESSION ["id"];
+            $bild_folgen2 = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+            $bild_folgen2->execute();
+            while ($row_folgen2 = $bild_folgen2->fetch()){
             ?>
 
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
@@ -156,7 +159,7 @@ $row_folgen = $bild_folgen->fetch();
 
                     $beitragsersteller = $content['userid'];
 
-                    echo("<img src='data:" . $row_header['format'] . ";base64," . base64_encode($row_header['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                    echo("<img src='data:" . $row_folgen2['format'] . ";base64," . base64_encode($row_folgen2['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                     }
                     ?>
                     <?php

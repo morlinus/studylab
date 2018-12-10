@@ -42,21 +42,6 @@ if(isset($_POST['kommentar'])) {
         echo $_SESSION['angemeldet']; ?>
     </title>
 
-    <style>
-
-        .kommentar{
-            padding: 20px;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            position: relative;
-            transfrom: translate(-50%, -50%);
-            box-sizing: border-box;
-            border-radius: 10px;
-            box-sizing: border-box;
-            background: rgba(0,0,0,0.2);
-        }
-
-    </style>
 </head>
 
 
@@ -65,7 +50,7 @@ if(isset($_POST['kommentar'])) {
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-3">
+        <div class="col-lg-3 col-md-3 col-sm-4">
 
 
             <div class="profilbildplusfolgen">
@@ -73,7 +58,7 @@ if(isset($_POST['kommentar'])) {
 
                 // Benutzerbild wird im Profil angezeigt
 
-                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
+                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='img-fluid'>");
                 }
                 ?>
             </div>
@@ -99,7 +84,7 @@ if(isset($_POST['kommentar'])) {
         </div>
 
 
-        <div class="col-6">
+        <div class="col-lg-6 col-md-6 col-sm-8 col-">
 
                 <?php
                 // Zeigt die Postings des User an
