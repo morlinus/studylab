@@ -41,16 +41,17 @@ while($row_header = $bild_header->fetch()){
 
 <body>
 
-<div id="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-dark bg-dark">
 
         <div class="container-fluid">
-            <div class="col-6">
-                <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+
+            <div class="col-12-header col-s-12-header">
+                <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse navbar-collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                 </button>
-                </a>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
@@ -61,16 +62,14 @@ while($row_header = $bild_header->fetch()){
                             <a class="nav-link" href="nutzerprofil.php">Profil</a><br>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link btn btn-outline-secondary" href="nutzersuchen.php">Suche</a>
+                            <a class="nav-link " href="nutzersuchen.php">Suche</a>
                         </li>
 
                     </ul>
+
+
                 </div>
 
-            </div>
-
-
-            <div class="col-6">
                 <div class="dropdown">
 
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

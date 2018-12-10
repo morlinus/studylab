@@ -50,7 +50,7 @@ if(isset($_POST['kommentar'])) {
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-3 col-md-3 col-sm-4">
+        <div class="col-lg-4 col-md-4 col-sm-4">
 
 
             <div class="profilbildplusfolgen">
@@ -84,7 +84,7 @@ if(isset($_POST['kommentar'])) {
         </div>
 
 
-        <div class="col-lg-6 col-md-6 col-sm-8 col-">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-">
 
                 <?php
                 // Zeigt die Postings des User an
@@ -173,31 +173,6 @@ if(isset($_POST['kommentar'])) {
 
                     </div>
 
-        <div class="col-lg-3 col-md-3 col-sm-12">
-
-            <?php
-            $gefolgteProfile=$pdo->prepare("SELECT folgen.*, studylab.* FROM folgen LEFT JOIN studylab ON folgen.follower_id=studylab.id WHERE folgen.user_id=$id");
-            $gefolgteProfile->execute();
-            while($follower=$gefolgteProfile->fetch())
-            {
-                echo $follower['benutzername'];
-                echo $followerbildid=$follower['follower_id'];
-
-                $gefolgteProfilbilder=$pdo->prepare("SELECT bilduplad.*, folgen.* FROM bilduplad LEFT JOIN folgen ON bilduplad.user_id=folgen.follower_id WHERE bilduplad.user_id=$followerbildid");
-                $gefolgteProfilbilder->execute();
-                while($followerprofbild = $gefolgteProfilbilder->fetch())
-                {
-                    echo "<br>";
-                    echo "<div class='bild-class'>";
-                    echo("<img src='data:" . $followerprofbild['format'] . ";base64," . base64_encode($followerprofbild['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
-                    echo "</div>";
-                }
-            }
-
-            ?>
-
-
-        </div>
                 </div>
 
 

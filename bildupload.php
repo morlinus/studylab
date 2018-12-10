@@ -2,6 +2,8 @@
 //include_once 'header.php';
 include "userdata.php";
 
+include_once 'header.php';
+
 $benutzername_id=$_GET['studylab'];
 
 $suchnutzer = $pdo->prepare("SELECT * FROM studylab WHERE benutzername = '$benutzername_id'");

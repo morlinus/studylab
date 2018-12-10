@@ -73,7 +73,7 @@ include_once 'header.php';
                             $bild_suche->execute();
                             $row_suche = $bild_suche->fetch();
 
-                            echo '<div class="col-12">';
+                            echo '<div class="col-12-ergebnisse">';
                             echo '<ul class="suchen-tabelle">';
                             echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             echo " ";
