@@ -3,6 +3,11 @@ html, body{
     background-color: whitesmoke;
 }
 
+.header{
+    max-height: 10vh;
+    width: 100%;
+}
+
 /* For mobile phones: */
 [class*="col-"] {
     width: 100%;
@@ -30,8 +35,6 @@ html, body{
         display: inline-flex;
     }
 }
-
-
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .col-1 {width: 8.33%;}

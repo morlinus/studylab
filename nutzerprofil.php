@@ -3,8 +3,20 @@
 include_once 'header.php';
 
 $id_header=$_SESSION ["id"];
-$bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
-$bild_header ->execute();
+
+$abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $id_header");
+$abonennten ->execute();
+//$abos = $abonennten ->fetch();
+$abos = $abonennten ->rowCount();
+
+if (!$abos > 0 ) {
+    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden";
+}
+
+
+
+$bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+$bild_header->execute();
 while($row_header = $bild_header->fetch()){
 
 if (isset($_SESSION["angemeldet"]))
@@ -71,10 +83,12 @@ if(isset($_POST['kommentar'])) {
                         while($daten = $profil->fetch()){
 
                             ?>
-                            <h6>Benutzername:</h6> <?php echo $daten['benutzername'] . "<br /><br />"; ?>
-                            <h6>Name:</h6> <?php echo $daten['name'] . " ". $daten['nachname'] . "<br /><br />"; ?>
-                            <h6>Geburtstag:</h6> <?php echo $daten['geburtsdatum'] . "<br /><br />"; ?>
-                            <h6>Studiengang:</h6> <?php echo $daten['studiengang'] . " ". "(Semester: ".$daten['semester'].")"; ?>
+                            <h6>Benutzername</h6> <?php echo $daten['benutzername'] . "<br /><br />"; ?>
+                            <h6>Name</h6> <?php echo $daten['name'] . " ". $daten['nachname'] . "<br /><br />"; ?>
+                            <h6>Geburtstag</h6> <?php echo $daten['geburtsdatum'] . "<br /><br />"; ?>
+                            <h6>Studiengang</h6> <?php echo $daten['studiengang'] . " ". "(Semester: ".$daten['semester'].")"."<br /><br />"; ?>
+                            <h6> Abonennten</h6> <?php echo $abos; ?>
+
 
 
                             <?php
