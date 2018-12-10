@@ -95,6 +95,10 @@ html, body{
     .col-lg-12 {width: 100%;}
 }
 
+/*
+col-md-6 col-sm-10
+*/
+
 .navbar{
     height: 10%;
     width: 100%;
@@ -343,10 +347,6 @@ group>.btn:not(:first-child) {
     border-radius: 50%;
 }
 
-.img-fluid{
-    border-radius: 1%;
-}
-
 .bild-class {
     padding: 20px;
 }
@@ -383,11 +383,10 @@ group>.btn:not(:first-child) {
     width: 100%;
     padding: 20px;
     position: relative;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
     background-color: #e41035;
-    background: rgba(209,209,209, 0.4);
-    border-radius: 5px;
+    background: rgba(255, 21, 52, 0.07);
+    border-radius: 0.25rem;
 
 }
 
@@ -444,25 +443,13 @@ group>.btn:not(:first-child) {
 }
 
 .kommentar{
-    width: 90%;
-    height: 70%;
-    position: relative;
     padding: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
-    border-radius: 5px;
+    position: relative;
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
-    background: rgba(209,209,209,0.2);
-    font-size: 70%;
-    left: 5%;
-}
-
-.miniprofbild{
-    float: left;
-    width: auto;
-    margin-right: 2%;
-}
-
-.kommbild{
-    float: left;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.2);
 }

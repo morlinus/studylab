@@ -142,7 +142,7 @@ $row_folgen = $bild_folgen->fetch();
             $dbabgleich = $bilder ["post_id"];
 
             $id_header = $_SESSION ["id"];
-            $bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+            $bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$profile_id");
             $bild_header->execute();
             while ($row_header = $bild_header->fetch()){
             ?>
