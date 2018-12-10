@@ -114,7 +114,7 @@ $row_folgen = $bild_folgen->fetch();
                     <h6>Geburtstag</h6> <?php echo $geburtstag . "<br /><br />"; ?>
                     <h6>Studiengang</h6> <?php echo  $studiengang . "<br /><br />"; ?>
 
-                    <a href="<?php echo $email; ?>">Sende <?php echo $benutzername; ?> eine E-Mail</a>
+                    <a href="mailto:<?php echo $email; ?>">Sende <?php echo $benutzername; ?> eine E-Mail</a>
 
 
                     <?php
