@@ -46,12 +46,12 @@ if(isset($_POST['kommentar'])) {
 
         <div class="row">
 
-        <div class="col-lg-2 col-md-1 col-sm-1">
+        <div class="col-lg-3 col-md-1 col-sm-1">
 
         </div>
 
 
-                <div class="col-lg-8 col-md-10 col-sm-10 col-">
+                <div class="col-lg-6 col-md-8 col-sm-8 col-">
                 <br>
                 <br>
 
@@ -130,6 +130,7 @@ if(isset($_POST['kommentar'])) {
                                 echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
                                 echo "</div>";
                             }
+                            echo "<br>";
 
 
                             //Der Post Inhalt wird ausgegeben
@@ -198,9 +199,9 @@ if(isset($_POST['kommentar'])) {
                     }
                     ?>
 
+            </div>
 
-
-            <div class="col-lg-2 col-md-1 col-sm-1">
+            <div class="col-lg-3 col-md-3 col-sm-3">
                 <?php
 
                 //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
@@ -228,7 +229,6 @@ if(isset($_POST['kommentar'])) {
                     <?php
                 }
                 ?>
-            </div>
             </div>
 
     </div>

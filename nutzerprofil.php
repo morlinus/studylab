@@ -62,7 +62,11 @@ if(isset($_POST['kommentar'])) {
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-4 col-md-4 col-sm-4">
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-">
+
+            <br>
+            <br>
 
 
             <div class="profilbildplusfolgen">
@@ -99,6 +103,9 @@ if(isset($_POST['kommentar'])) {
 
 
         <div class="col-lg-8 col-md-8 col-sm-8 col-">
+
+            <br>
+            <br>
 
                 <?php
                 // Zeigt die Postings des User an
@@ -162,10 +169,10 @@ if(isset($_POST['kommentar'])) {
                                 $kommbild->execute();
                                 while ($row_kommbild = $kommbild->fetch()){
                                     ?> <div class="miniprofbild">
-                                    <?php
-                                    echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                                    ?>
-                                </div>
+                                        <?php
+                                        echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                        ?>
+                                        </div>
                                     <?php
                                 }
 

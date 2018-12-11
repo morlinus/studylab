@@ -81,7 +81,7 @@ while($row_header = $bild_header->fetch()){
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="profil_bearbeitung.php">Profil bearbeiten</a>
-                        <a class="dropdown-item" href="bildupload.php">Profilbild bearbeiten</a>
+                        <a class="dropdown-item" href="bildupload_bearbeiten.php">Profilbild bearbeiten</a>
                         <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
 

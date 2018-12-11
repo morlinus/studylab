@@ -11,6 +11,7 @@ html, body{
 /* For mobile phones: */
 [class*="col-"] {
     width: 100%;
+    padding-left: 0px; padding-right: 0px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -58,48 +59,48 @@ html, body{
 
 
 @media only screen and (min-width: 600px) {
-    .col-sm-1 {width: 8.33%;}
-    .col-sm-2 {width: 16.66%;}
-    .col-sm-3 {width: 25%;}
-    .col-sm-4 {width: 33.33%;}
-    .col-sm-5 {width: 41.66%;}
-    .col-sm-6 {width: 50%;}
-    .col-sm-7 {width: 58.33%;}
-    .col-sm-8 {width: 66.66%;}
-    .col-sm-9 {width: 75%;}
-    .col-sm-10 {width: 83.33%;}
-    .col-sm-11 {width: 91.66%;}
-    .col-sm-12 {width: 100%;}
+    .col-sm-1 {width: 8.33%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-2 {width: 16.66%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-3 {width: 25%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-4 {width: 33.33%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-5 {width: 41.66%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-6 {width: 50%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-7 {width: 58.33%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-8 {width: 66.66%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-9 {width: 75%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-10 {width: 83.33%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-11 {width: 91.66%; padding-left: 10px; padding-right: 10px;}
+    .col-sm-12 {width: 100%; padding-left: 10px; padding-right: 10px;}
 }
 
 @media only screen and (min-width: 800px) {
-    .col-md-1 {width: 8.33%;}
-    .col-md-2 {width: 16.66%;}
-    .col-md-3 {width: 25%;}
-    .col-md-4 {width: 33.33%;}
-    .col-md-5 {width: 41.66%;}
-    .col-md-6 {width: 50%;}
-    .col-md-7 {width: 58.33%;}
-    .col-md-8 {width: 66.66%;}
-    .col-md-9 {width: 75%;}
-    .col-md-10 {width: 83.33%;}
-    .col-md-11 {width: 91.66%;}
-    .col-md-12 {width: 100%;}
+    .col-md-1 {width: 8.33%; padding-left: 10px; padding-right: 10px;}
+    .col-md-2 {width: 16.66%; padding-left: 10px; padding-right: 10px;}
+    .col-md-3 {width: 25%; padding-left: 10px; padding-right: 10px;}
+    .col-md-4 {width: 33.33%; padding-left: 10px; padding-right: 10px;}
+    .col-md-5 {width: 41.66%; padding-left: 10px; padding-right: 10px;}
+    .col-md-6 {width: 50%; padding-left: 10px; padding-right: 10px;}
+    .col-md-7 {width: 58.33%; padding-left: 10px; padding-right: 10px;}
+    .col-md-8 {width: 66.66%; padding-left: 10px; padding-right: 10px;}
+    .col-md-9 {width: 75%; padding-left: 10px; padding-right: 10px;}
+    .col-md-10 {width: 83.33%; padding-left: 10px; padding-right: 10px;}
+    .col-md-11 {width: 91.66%; padding-left: 10px; padding-right: 10px;}
+    .col-md-12 {width: 100%; padding-left: 10px; padding-right: 10px;}
 }
 
 @media only screen and (min-width: 900px) {
-    .col-lg-1 {width: 8.33%;}
-    .col-lg-2 {width: 16.66%;}
-    .col-lg-3 {width: 25%;}
-    .col-lg-4 {width: 33.33%;}
-    .col-lg-5 {width: 41.66%;}
-    .col-lg-6 {width: 50%;}
-    .col-lg-7 {width: 58.33%;}
-    .col-lg-8 {width: 66.66%;}
-    .col-lg-9 {width: 75%;}
-    .col-lg-10 {width: 83.33%;}
-    .col-lg-11 {width: 91.66%;}
-    .col-lg-12 {width: 100%;}
+    .col-lg-1 {width: 8.33%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-2 {width: 16.66%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-3 {width: 25%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-4 {width: 33.33%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-5 {width: 41.66%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-6 {width: 50%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-7 {width: 58.33%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-8 {width: 66.66%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-9 {width: 75%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-10 {width: 83.33%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-11 {width: 91.66%; padding-left: 10px; padding-right: 10px;}
+    .col-lg-12 {width: 100%; padding-left: 10px; padding-right: 10px;}
 }
 
 @media (min-width: 992px){
@@ -145,6 +146,9 @@ html, body{
     }
 }
 
+.row{
+    margin: 15px;
+}
 
 .navbar{
     position: relative;
@@ -200,6 +204,8 @@ html, body{
 .container-fluid{
     min-height: 100%;
     width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .studylab-nav-inhalt{
@@ -423,8 +429,9 @@ group>.btn:not(:first-child) {
     border-radius: 1%;
 }
 
+
 .bild-class {
-    padding: 20px;
+    padding: 0px;
 }
 
 .profilbild-folgen{
@@ -445,10 +452,6 @@ group>.btn:not(:first-child) {
     clear: both;
 }
 
-.row{
-    margin: 20px;
-}
-
 .inhalt{
     width: 80%;
     margin:100px auto;
@@ -457,14 +460,30 @@ group>.btn:not(:first-child) {
 }
 .beitrag{
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
     background-color: #e41035;
     background: rgba(209,209,209, 0.4);
     border-radius: 5px;
+}
 
+.p-3 {
+    padding: 0.5rem!important;
+}
+
+.mb-5, .my-5 {
+    margin-bottom: 2rem!important;
+}
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+.rounded {
+    border-radius: .25rem!important;
+}
+.bg-white {
+    background-color: #fff!important;
 }
 
 .benutzerdaten{
@@ -484,6 +503,10 @@ group>.btn:not(:first-child) {
     text-decoration: none;
     font-weight: 700;
     color: black;
+}
+
+.suche{
+    padding: 0px;
 }
 
 .suchfeld{
@@ -523,7 +546,7 @@ group>.btn:not(:first-child) {
     width: 90%;
     height: 70%;
     position: relative;
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 10px;
     margin-top: 10px;
     border-radius: 5px;

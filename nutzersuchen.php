@@ -20,7 +20,10 @@ include_once 'header.php';
 
             <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
+                <br>
+                <br>
 
+                <div class="suche">
 
                 <?php
                     session_start();
@@ -104,12 +107,17 @@ include_once 'header.php';
 
             </div>
 
+            </div>
 
         </div>
     </div>
 
-
-
 </body>
+
+<?php
+session_start();
+include_once 'footer.php';
+?>
+
 </html>
 

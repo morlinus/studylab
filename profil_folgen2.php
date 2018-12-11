@@ -17,8 +17,7 @@ $row_folgen = $bild_folgen->fetch();
 <meta charset="utf-8">
 <head>
     <title>
-        Profil von:<?php session_start();
-        echo $_SESSION['angemeldet']; ?>
+        Profil von:
     </title>
 
 <body>
@@ -26,7 +25,10 @@ $row_folgen = $bild_folgen->fetch();
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-3 col-md-3 col-sm-12 col-">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-">
+
+            <br>
+            <br>
 
             <div class="profilbildplusfolgen">
 
@@ -126,7 +128,10 @@ $row_folgen = $bild_folgen->fetch();
         </div>
 
 
-        <div class="col-lg-6 col-md-9 col-sm-12 col-">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-">
+
+            <br>
+            <br>
 
 
             <?php
@@ -218,6 +223,9 @@ $row_folgen = $bild_folgen->fetch();
                 }
                     ?>
 
+
+
+
         </div>
             </div>
 
@@ -228,10 +236,10 @@ $row_folgen = $bild_folgen->fetch();
 </body>
 
 <?php
+ob_end_flush();
+
 session_start();
 include_once 'footer.php';
-
-ob_end_flush();
 ?>
 
 </html>
