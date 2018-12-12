@@ -149,8 +149,8 @@ $row_folgen = $bild_folgen->fetch();
             $bilder = $beitrags_bild->fetch();
             $dbabgleich = $bilder ["post_id"];
 
-            $id_folgen2 = $_SESSION ["id"];
-            $bild_folgen2 = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
+
+            $bild_folgen2 = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$profile_id");
             $bild_folgen2->execute();
             while ($row_folgen2 = $bild_folgen2->fetch()){
             ?>
