@@ -54,6 +54,14 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
 
     </script>
 </head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/ZH103);
+        background-size: cover;
+    }
+</style>
 <body>
 
 
