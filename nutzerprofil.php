@@ -137,7 +137,7 @@ if(isset($_POST['kommentar'])) {
                     echo("<img src='data:" . $row_header['format'] . ";base64," . base64_encode($row_header['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                 }
                     ?>
-<?php
+                <?php
                         //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                         echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
                         echo "<br>";

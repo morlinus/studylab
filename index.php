@@ -134,10 +134,10 @@ if(isset($_POST['kommentar'])) {
                             echo "<br>";
 
 
-                                //Der Post Inhalt wird ausgegeben
-                                echo $content['text'];
-                                ?>
-                                </div>
+                            //Der Post Inhalt wird ausgegeben
+                            echo htmlspecialchars($content['text'],ENT_HTML401);
+                            ?>
+                            </div>
 
                                 <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                 <textarea id="<?php echo $content['id']; ?>" name="comment" placeholder="Kommentieren"
@@ -177,7 +177,7 @@ if(isset($_POST['kommentar'])) {
                                         }
 
                                         ?> <h6> <?php echo $komm['benutzername'] . ":<br />"; ?> </h6><?php
-                                        echo $komm['kommentar'];
+                                        echo htmlspecialchars($komm['kommentar'], ENT_HTML401);
                                         ?>
                                     </div>
 
