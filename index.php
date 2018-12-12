@@ -134,7 +134,7 @@ if(isset($_POST['kommentar'])) {
 
 
                             //Der Post Inhalt wird ausgegeben
-                            echo $content['text'];
+                            echo htmlspecialchars($content['text'],ENT_HTML401);
                             ?>
                             </div>
 
@@ -174,7 +174,7 @@ if(isset($_POST['kommentar'])) {
                                         }
 
                                         ?> <h6> <?php echo $komm['benutzername'] . ":<br />"; ?> </h6><?php
-                                        echo $komm['kommentar'];
+                                        echo htmlspecialchars($komm['kommentar'], ENT_HTML401);
                                         ?>
                                     </div>
 

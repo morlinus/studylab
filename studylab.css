@@ -464,7 +464,6 @@ group>.btn:not(:first-child) {
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #e41035;
     background: rgba(209,209,209, 0.4);
     border-radius: 5px;
 }
