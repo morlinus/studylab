@@ -24,7 +24,7 @@ $nutzerdaten = $statement->fetch();
     }
 
 else {
-    echo "Fehler";
+    echo "Etwas ist schief gelaufen";
 }
 
 
