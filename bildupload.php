@@ -19,7 +19,7 @@ echo $benutzername_id
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Bild Upload</title>
+    <title>Profilbild auswählen</title>
     <link href="studylab.css" rel="stylesheet">
 </head>
 <body>

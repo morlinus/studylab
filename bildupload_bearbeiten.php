@@ -21,7 +21,7 @@ echo $benutzer_name;
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Bild Bearbeiten</title>
+    <title>Profilbild bearbeiten</title>
     <link href="studylab.css" rel="stylesheet">
 </head>
 <body>

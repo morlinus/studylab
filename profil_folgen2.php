@@ -17,8 +17,7 @@ $row_folgen = $bild_folgen->fetch();
 <meta charset="utf-8">
 <head>
     <title>
-        Profil von:<?php session_start();
-        echo $_SESSION['angemeldet']; ?>
+        Nutzerprofil
     </title>
 
 <body>
