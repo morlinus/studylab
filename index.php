@@ -59,7 +59,7 @@ if(isset($_POST['kommentar'])) {
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
                 <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
-                    <textarea name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
+                    <textarea required name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div role="group" aria-label="First group">
                             <input class="btn btn-secondary" type="submit" value="Posten">
@@ -120,7 +120,7 @@ if(isset($_POST['kommentar'])) {
 
                                     <?php
                                     //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
-                                    echo htmlspecialchars('<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>', ENT_HTML401);
+                                    echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . htmlspecialchars($beitragsersteller, ENT_HTML401) . '">' . $content['benutzername'] . '</a>';
                                     echo "<br>";
 
                                     //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
@@ -141,7 +141,7 @@ if(isset($_POST['kommentar'])) {
                                     </div>
 
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                                <textarea id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
+                                <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
                                           rows="1"
                                           class="form-control"></textarea><br>
                                         <input type="hidden" value="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="post_id"
@@ -253,7 +253,7 @@ if(isset($_POST['kommentar'])) {
 
 
     function post(){
-        var comment = document.getElementById("comment").value;
+        var comment = document.getElementByName("comment").value;
 
         if(comment)
         {
@@ -269,7 +269,7 @@ if(isset($_POST['kommentar'])) {
                     },
                 success: function (response)
                 {
-                    document.getElementById("comment").value="";
+                    document.getElementsByName("comment").value="";
                 }
             });
         }

@@ -54,7 +54,7 @@ $row_folgen = $bild_folgen->fetch();
                 ?>
 
                 <div class="folgenbutton">
-                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profile_id; ?>" method="post">
+                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo htmlspecialchars($profile_id, ENT_HTML401); ?>" method="post">
                     <input class="btn-follow btn-primary-follow" type="submit" name="follow" value="Follow">
                 </form>
                 </div>
@@ -111,13 +111,13 @@ $row_folgen = $bild_folgen->fetch();
                     $email = $row ["email"];
                     ?>
 
-                    <h6>Benutzername</h6> <?php echo  $benutzername . "<br /><br />"; ?>
-                    <h6>Name</h6> <?php echo $name . "<br /><br />"; ?>
-                    <h6>Nachname</h6><?php echo $nachname . "<br /><br />"; ?>
-                    <h6>Geburtstag</h6> <?php echo $geburtstag . "<br /><br />"; ?>
-                    <h6>Studiengang</h6> <?php echo  $studiengang . "<br /><br />"; ?>
+                    <h6>Benutzername</h6> <?php echo  htmlspecialchars($benutzername, ENT_HTML401) . "<br /><br />"; ?>
+                    <h6>Name</h6> <?php echo htmlspecialchars($name, ENT_HTML401) . "<br /><br />"; ?>
+                    <h6>Nachname</h6><?php echo htmlspecialchars($nachname, ENT_HTML401) . "<br /><br />"; ?>
+                    <h6>Geburtstag</h6> <?php echo htmlspecialchars($geburtstag, ENT_HTML401) . "<br /><br />"; ?>
+                    <h6>Studiengang</h6> <?php echo  htmlspecialchars($studiengang, ENT_HTML401) . "<br /><br />"; ?>
 
-                    <a href="mailto:<?php echo $email; ?>">Sende <?php echo $benutzername; ?> eine E-Mail</a>
+                    <a href="mailto:<?php echo htmlspecialchars( $email, ENT_HTML401); ?>">Sende <?php echo htmlspecialchars($benutzername, ENT_HTML401); ?> eine E-Mail</a>
 
 
                     <?php
@@ -170,7 +170,7 @@ $row_folgen = $bild_folgen->fetch();
                     ?>
                     <?php
                     //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
-                    echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
+                    echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . htmlspecialchars($beitragsersteller, ENT_HTML401) . '">' . $content['benutzername'] . '</a>';
                     echo "<br>";
 
                     //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
@@ -180,7 +180,7 @@ $row_folgen = $bild_folgen->fetch();
                         echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                         echo "</div>";
                     }
-                    echo $content['text'];
+                    echo htmlspecialchars($content['text'], ENT_HTML401);
 
 
                     ?>
@@ -209,9 +209,9 @@ $row_folgen = $bild_folgen->fetch();
                         <?php
                     }
 
-                    ?> <h6> <?php echo " " . $komm['benutzername'] . ":<br />"; ?></h6>
+                    ?> <h6> <?php echo " " . htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?></h6>
                     <?php
-                    echo " " . $komm['kommentar'];
+                    echo " " . htmlspecialchars($komm['kommentar'], ENT_HTML401);
                     ?>
                 </div>
                     <?php
