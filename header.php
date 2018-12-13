@@ -24,9 +24,6 @@ $row_header = $bild_header->fetch()
 
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="studylab.css" rel="stylesheet">
@@ -44,30 +41,30 @@ $row_header = $bild_header->fetch()
 <body>
 
 <div class="navbar-custom shadow-sm">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <div class="container-fluid">
+        <div class="container-fluid">
 
-        <div class="col-12-header col-s-12-header">
+            <div class="col-12-header col-s-12-header">
 
-            <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="50" width="120"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Startseite</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="nutzerprofil.php">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="nutzersuchen.php">Suche</a>
-                    </li>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">Startseite</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nutzerprofil.php">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nutzersuchen.php">Suche</a>
+                        </li>
 
-                </ul>
+                    </ul>
 
                     <div class="nav-item dropdown ml-2">
                         <a class="nav-link btn btn-secondary dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,19 +80,19 @@ $row_header = $bild_header->fetch()
                         </div>
 
 
-                    <?php
-                    echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar ml-2'>");
+                        <?php
+                        echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])." 'width=' alt='nutzerprofilbild' class='profilbild-navbar ml-2'>");
 
 
-                    ?>
+                        ?>
                     </div>
 
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-</nav>
+    </nav>
 </div>
 
 </body>

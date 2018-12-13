@@ -64,7 +64,7 @@ if(isset($_POST['kommentar'])) {
     <div class="row">
 
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-">
 
             <br>
             <br>
@@ -192,6 +192,10 @@ if(isset($_POST['kommentar'])) {
                         <?php
                     }
                     ?>
+
+                    </div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-">
 
                     </div>
 

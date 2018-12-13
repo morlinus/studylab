@@ -80,7 +80,7 @@ include_once 'header.php';
                             echo '<ul class="suchen-tabelle">';
                             echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             echo " ";
-                            echo htmlspecialchars('<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>'."<br>". $row["name"]." ". $row ["nachname"], ENT_HTML401);
+                            echo ('<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>'."<br>". $row["name"]." ". $row ["nachname"]);
                             //echo "<br>". $row["name"]." ". $row ["nachname"];
                             echo '</ul>';
                             echo '</div>';

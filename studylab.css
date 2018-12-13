@@ -11,7 +11,6 @@ html, body{
 /* For mobile phones: */
     [class*="col-"] {
         width: 100%;
-        min-width: 350px
         padding-left: 0px;
         padding-right: 0px;
     }
@@ -234,7 +233,6 @@ html, body{
 
 .nav-item{
     padding-right: 10px;
-    padding-left: ;
 }
 
 
@@ -448,7 +446,7 @@ group>.btn:not(:first-child) {
     height: 15vh;
     width: 15vh;
     object-fit: cover;
-    border-radius: 5% !important;
+    border-radius: 50% !important;
 }
 
 
@@ -456,13 +454,6 @@ group>.btn:not(:first-child) {
     padding: 0px;
 }
 
-.profilbild-folgen{
-    padding: 10px;
-    position: relative;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-}
 
 .page-footer{
     background-color: #343a40;

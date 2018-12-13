@@ -34,9 +34,11 @@ $row_folgen = $bild_folgen->fetch();
                 <?php
                 //Benutzerbild wird im Profil angezeigt
 
-                echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-folgen'>");
+                echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-rund'>");
                 ?>
             </div>
+
+            <br>
 
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
