@@ -59,6 +59,9 @@ echo $benutzername_id
                     $statement->bindParam(4,$regid);
                     $statement->execute();
 
+                    $folgen = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$benutzername_id', '$benutzername_id') ");
+                    $folgen -> execute();
+
                     header ("location:login.php");
                 }
                 ?>

@@ -124,7 +124,7 @@ if(isset($_POST['kommentar'])) {
                                     echo "<br>";
 
                                     //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
-                                    if ($postid = $dbabgleich) {
+                                    if ($postid == $dbabgleich) {
                                         echo "<br>";
                                         echo "<div class='bild-class'>";
                                         ?>

@@ -14,12 +14,11 @@ $row_folgen = $bild_folgen->fetch();
 
 <!doctype html>
 <html lang="de">
-<meta charset="utf-8">
 <head>
     <title>
         Nutzerprofil
     </title>
-
+</head>
 <body>
 
 <div class="container-fluid">
@@ -173,7 +172,7 @@ $row_folgen = $bild_folgen->fetch();
                     echo "<br>";
 
                     //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
-                    if ($postid = $dbabgleich) {
+                    if ($postid == $dbabgleich) {
                         echo "<br>";
                         echo "<div class='bild-class'>";
                         echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
