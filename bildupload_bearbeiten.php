@@ -49,16 +49,15 @@ echo $benutzer_name;
             if (isset($_POST['submit'])){
                 $name = $_FILES['myfile']['name'];
                 $typ = $_FILES ['myfile']['type'];
-                // $id = $_SESSION ["id"];
 
 
                 $datei = file_get_contents($_FILES['myfile']['tmp_name']);
                 $statement = $pdo->prepare("UPDATE bilduplad SET bildname = :bildname_neu, format = :format_neu, datei = :datei_neu WHERE user_id = $benutzer_id");
-                /*$statement->bindParam("bildname_neu",$name);
+                $statement->bindParam("bildname_neu",$name);
                 $statement->bindParam("format_neu",$typ);
                 $statement->bindParam("datei_neu",$datei);
-                $statement->execute(); */
-                $statement->execute(array('bildname_neu' => $name, 'format_neu' => $typ, 'datei_neu' => $datei));
+                $statement->execute();
+                //$statement->execute(array('bildname_neu' => $name, 'format_neu' => $typ, 'datei_neu' => $datei)); //codealternative
 
                 header ("location:nutzerprofil.php");
             }
