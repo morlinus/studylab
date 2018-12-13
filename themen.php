@@ -6,4 +6,4 @@
  * Time: 22:51
  */
 echo "hallo";
-$thema = (SELECT)
+$thema = (SELECT);

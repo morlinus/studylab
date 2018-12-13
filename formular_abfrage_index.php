@@ -8,6 +8,23 @@ include 'userdata.php';
 // übergibt die User ID durch die Session
 $id = $_SESSION["id"];
 
+function hashtagfinden($htags) {
+    $tag = "#";
+    $arr = explode(" ", $htags);
+    $arrcnt = count($arr);
+    $i =0;
+
+    while($i < $arrcnt) {
+        if (substr($arr[$i],0,1) === $tag) {
+            $tagfund =$arr[$i];
+        }
+        $i++;
+    }
+    // $htags = implode(" ", $arr);
+    $htags = $tagfund;
+    return $htags;
+}
+
 
 if(!isset($_SESSION["angemeldet"]))
 {
@@ -17,10 +34,10 @@ if(!isset($_SESSION["angemeldet"]))
 
 // übernimmt den Content aus dem Formular der Index.php und fügt die Daten dann in die Datenbank ein
 $content= $_POST["content"];
+$htagsuche = hashtagfinden($content);
 
-
-    $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text)");
-    $statement->execute(array(':text' => $content, ':userid' => $id));
+    $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text, :themen)");
+    $statement->execute(array(':text' => $content, ':userid' => $id, ':themen' => $htagsuche));
 
     // Schaut wer dem Beitragsersteller folgt
     $benachrichtigung=$pdo->prepare("SELECT userid FROM folgen WHERE follower_id=$id");
