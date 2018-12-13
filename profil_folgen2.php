@@ -76,7 +76,7 @@ $row_folgen = $bild_folgen->fetch();
                 ?><!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
                 <div class="entfolgenbutton">
                 <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profile_id; ?>" method="post">
-                    <input class="btn btn-primary" type="submit" name="unfollow" value="Unfollow">
+                    <input class="btn-follow btn-primary-follow" type="submit" name="unfollow" value="Unfollow">
                 </form>
                 </div>
                     <?php
