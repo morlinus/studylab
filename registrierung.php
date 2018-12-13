@@ -27,25 +27,20 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
                 "Online- Medien- Management",
                 "Informationsdesign",
                 "Bibliothekswissenschaften",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
+                "Audiovisuelle Medien"
+                "Crossmedia-Redaktion/Public Relations"
+                "Deutsch-Chinesischer Studiengang Medien und Technologie"
+                "Informationswissenschaften"
+                "Integriertes Produktdesign"
+                "Mediapublishing"
+                "Medieninformatik"
+                "Medienwirtschaft"
+                "Mobile Medien"
+                "Print Media Technologies"
+                "Verpackungstechnik"
+                "Werbung und Marktkommunikation"
+               "Wirtschaftsinformatik und digitale Medien"
+                "Wirtschaftsingenieurwesen Medien"
             ];
             $( "#tags" ).autocomplete({
                 source: availableTags
