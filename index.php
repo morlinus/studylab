@@ -86,7 +86,7 @@ if(isset($_POST['kommentar'])) {
                         $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE content.userid= $nutzerids ORDER BY content.id DESC");
                         $statement->execute(array('beitragsid' => 1)); */
 
-                        $statement = $pdo->prepare("SELECT content.*, studylab.benutzername, folgen.follower_id FROM content LEFT JOIN studylab ON content.userid = studylab.id LEFT JOIN folgen ON studylab.id = folgen.user_id WHERE folgen.follower_id = $id ORDER BY content.id DESC");
+                        $statement = $pdo->prepare("SELECT DISTINCT content.*, studylab.benutzername, folgen.follower_id FROM content LEFT JOIN studylab ON content.userid = studylab.id LEFT JOIN folgen ON studylab.id = folgen.user_id WHERE folgen.follower_id = $id ORDER BY content.id DESC");
                         $statement->execute(array('beitragsid' => 1));
 
                         $dbtest = $statement->rowcount();
@@ -97,8 +97,6 @@ if(isset($_POST['kommentar'])) {
                                 $postid = $content ["id"];
 
 
-
-                                //if (!$array=$postid) {
 
                                     $beitrags_bild = $pdo->prepare("SELECT * FROM bildupload_content WHERE post_id=$postid");
                                     $beitrags_bild->execute();
