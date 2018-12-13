@@ -46,7 +46,38 @@ if(isset($_POST['kommentar'])) {
 
         <div class="row">
 
-        <div class="col-lg-3 col-md-1 col-sm-1">
+        <div class="col-lg-3 col-md-3 col-sm-3">
+
+                <br>
+                <br>
+
+                <?php
+
+                //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
+                $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id");
+                $benachrichtigung->execute();
+
+                //Führt die Benachrichtigung aus
+                while($nachricht=$benachrichtigung->fetch()) {
+
+                $nachrichtid=$nachricht['id'];
+                ?>
+
+
+                <div class="alert alert-success alert-dismissible" >
+                    <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
+                    <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
+                </div>
+
+                <?php
+                //Wenn die benachrichtigung gesehen wurde, wird sie in der Datenbank auf read gesetzt
+                $update=$pdo->prepare("UPDATE benachrichtigung SET $angmeldet_index = ?");
+                $update->execute(array('read'));
+                ?>
+
+                <?php
+                }
+                ?>
 
         </div>
 
@@ -72,6 +103,7 @@ if(isset($_POST['kommentar'])) {
 
                 <br>
                 <br>
+
 
                     <?php
                     /* Hier wird ausgelsen wem der angemeldete Nutzer folgt
@@ -114,7 +146,7 @@ if(isset($_POST['kommentar'])) {
                                         <?php
                                         //Benutzerbild wird im Beitrag angezeigt
                                         $beitragsersteller = $content['userid'];
-                                        echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                        echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='nutzerprofilbild' class='profilbild-navbar'>");
                                     }
                                     ?>
 
@@ -172,7 +204,7 @@ if(isset($_POST['kommentar'])) {
                                                 ?>
                                                 <div class="miniprofbild">
                                                     <?php
-                                                    echo("<img src='data:" . $row_kommbild['format'] . ";base64," . base64_encode($row_kommbild['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                                                    echo("<img src='data:" . $row_kommbild['format'] . ";base64," . base64_encode($row_kommbild['datei']) . "'width=' alt='nutzerprofilbild' class='profilbild-navbar'>");
                                                     ?>
                                                 </div>
                                                 <?php
@@ -209,35 +241,9 @@ if(isset($_POST['kommentar'])) {
 
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <?php
+        <div class="col-lg-3 col-md-1 col-sm-1 c">
 
-                //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
-                $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id");
-                $benachrichtigung->execute();
-
-                //Führt die Benachrichtigung aus
-                while($nachricht=$benachrichtigung->fetch()) {
-
-                    $nachrichtid=$nachricht['id'];
-                    ?>
-
-
-                    <div class="alert alert-success alert-dismissible" >
-                        <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
-                        <strong><a href="profil_folgen2.php?studylab=<?php echo htmlspecialchars($nachrichtid, ENT_HTML401); ?>"><?php echo htmlspecialchars($nachricht['benutzername'], ENT_HTML401);?></a></strong> Hat einen neuen Beitrag gepostet.
-                    </div>
-
-                    <?php
-                    //Wenn die benachrichtigung gesehen wurde, wird sie in der Datenbank auf read gesetzt
-                    $update=$pdo->prepare("UPDATE benachrichtigung SET $angmeldet_index = ?");
-                    $update->execute(array('read'));
-                    ?>
-
-                    <?php
-                }
-                ?>
-            </div>
+        </div>
 
     </div>
     </div>
