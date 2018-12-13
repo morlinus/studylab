@@ -225,12 +225,8 @@ $row_folgen = $bild_folgen->fetch();
                     ?>
 
 
-
-
-
-
         </div>
-            </div>
+
 
 
     </div>

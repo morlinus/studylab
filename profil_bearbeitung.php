@@ -12,7 +12,7 @@ include_once 'header.php';
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-1 col-sm-1"">
+            <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
@@ -69,13 +69,14 @@ include_once 'header.php';
                     while($row=$statement->fetch()) {
 
                         ?>
-                        <html>
+
                         <br>
                         <div class="name-bearbeitung">
                         <form action="aendern.php" method="post">
                                 <label for="Inhalt">Name:</label>
                                 <br>
                                 <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="name" value="<?php echo $row['name'];?>"/>
+                        </form>
                         </div>
                         <br>
                         <div class="nachname-bearbeitung">
@@ -160,7 +161,7 @@ include_once 'header.php';
                                 </form>
 
 
-                        </html>
+
 
                 <?php
 
@@ -174,7 +175,7 @@ include_once 'header.php';
                 ?>
             </div>
 
-            <div class="col-lg-3 col-md-1 col-sm-1"">
+            <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
