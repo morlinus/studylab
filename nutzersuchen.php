@@ -98,14 +98,11 @@ include_once 'header.php';
 
                 ?>
 
+            </div>
 
-
-                </form>
             </div>
 
             <div class="col-lg-3 col-md-1 col-sm-1">
-
-            </div>
 
             </div>
 

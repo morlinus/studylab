@@ -193,22 +193,18 @@ if(isset($_POST['kommentar'])) {
                     }
                     ?>
 
-                    </div>
+        </div>
 
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-">
-
-                    </div>
-
-                </div>
-
-
+        <div class="col-lg-1 col-md-1 col-sm-1 col-">
 
         </div>
 
+    </div>
 
-
+</div>
 
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 

@@ -177,7 +177,7 @@ if($showFormular) {
         </div>
 
         <div class="eingabefeldreg">
-      <input type="geburtsdatum" id="datepicker" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
+        <input type="geburtsdatum" id="datepicker" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
         </div>
 
         <!--
@@ -189,10 +189,10 @@ if($showFormular) {
         <input type="studiengang" size="40" maxlength="200" name="studiengang"><br><br>
 -->
         <div class="eingabefeldreg">
-        <div class="ui-widget">
-            <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"placeholder="Studiengang">
-        </div>
+            <div class="ui-widget">
+                <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"placeholder="Studiengang">
             </div>
+        </div>
         <br><br>
         <!--
                 Geschlecht: <br>

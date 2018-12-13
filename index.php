@@ -62,63 +62,64 @@ if(isset($_POST['kommentar'])) {
 
         <div class="row">
 
-        <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="col-lg-3 col-md-3 col-sm-3">
 
-                <br>
-                <br>
+                        <br>
+                        <br>
 
-                <?php
+                        <?php
 
-                //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
-                $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id");
-                $benachrichtigung->execute();
+                        //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
+                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id");
+                        $benachrichtigung->execute();
 
-                //Führt die Benachrichtigung aus
-                while($nachricht=$benachrichtigung->fetch()) {
+                        //Führt die Benachrichtigung aus
+                        while($nachricht=$benachrichtigung->fetch()) {
 
-                $nachrichtid=$nachricht['id'];
-                ?>
+                        $nachrichtid=$nachricht['id'];
+                        ?>
 
 
-                <div class="alert alert-success alert-dismissible" >
-                    <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
-                    <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
+                        <div class="alert alert-success alert-dismissible" >
+                            <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
+                            <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
+                        </div>
+
+                        <?php
+                        //Wenn die benachrichtigung gesehen wurde, wird sie in der Datenbank auf read gesetzt
+                        $update=$pdo->prepare("UPDATE benachrichtigung SET $angmeldet_index = ?");
+                        $update->execute(array('read'));
+                        ?>
+
+                        <?php
+                        }
+                        ?>
+
                 </div>
-
-                <?php
-                //Wenn die benachrichtigung gesehen wurde, wird sie in der Datenbank auf read gesetzt
-                $update=$pdo->prepare("UPDATE benachrichtigung SET $angmeldet_index = ?");
-                $update->execute(array('read'));
-                ?>
-
-                <?php
-                }
-                ?>
-
-        </div>
 
 
                 <div class="col-lg-6 col-md-8 col-sm-8 col-">
-                <br>
-                <br>
+                        <br>
+                        <br>
 
 
-                <div class="shadow-sm p-3 mb-5 bg-white rounded">
-                <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
-                <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
-                    <textarea required name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
-                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                        <div role="group" aria-label="First group">
-                            <input class="btn btn-secondary" type="submit" value="Posten">
-                            <input type="file" name="myfile"/>
+                        <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                        <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
+                        <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
+                            <textarea required name="content" class="form-control" rows="3" placeholder="Schreibe einen Beitrag oder poste ein Foto"></textarea><br>
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div role="group" aria-label="First group">
+                                    <input class="btn btn-secondary" type="submit" value="Posten">
+                                    <input type="file" name="myfile"/>
+                                </div>
+                            </div>
+                        </form>
                         </div>
-                    </div>
-                </div>
-                </form>
 
 
-                <br>
-                <br>
+
+                        <br>
+                        <br>
 
 
                     <?php
@@ -156,31 +157,31 @@ if(isset($_POST['kommentar'])) {
                                     while ($row_index = $bild_index->fetch()) {
 
                                         ?>
-                                        <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                                    <div class="shadow-sm p-3 mb-5 bg-white rounded">
                                         <div class="beitrag">
 
                                         <?php
                                         //Benutzerbild wird im Beitrag angezeigt
                                         $beitragsersteller = $content['userid'];
                                         echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='nutzerprofilbild' class='profilbild-navbar'>");
-                                    }
-                                    ?>
-
-                                    <?php
-                                    //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
-                                    echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . htmlspecialchars($beitragsersteller, ENT_HTML401) . '">' . $content['benutzername'] . '</a>';
-                                    echo "<br>";
-
-                                    //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
-                                    if ($postid == $dbabgleich) {
-                                        echo "<br>";
-                                        echo "<div class='bild-class'>";
+                                        }
                                         ?>
-                                        <div class="img-fluid"><?php
-                                        echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
-                                        echo "</div>";
-                                    }
-                                    echo "<br>";
+
+                                        <?php
+                                        //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                                        echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . htmlspecialchars($beitragsersteller, ENT_HTML401) . '">' . $content['benutzername'] . '</a>';
+                                        echo "<br>";
+
+                                        //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                                        if ($postid == $dbabgleich) {
+                                            echo "<br>";
+                                            echo "<div class='bild-class'>";
+                                            ?>
+                                            <div class="img-fluid"><?php
+                                            echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
+                                            echo "</div>";
+                                        }
+                                        echo "<br>";
 
 
                                     //Der Post Inhalt wird ausgegeben
@@ -190,7 +191,7 @@ if(isset($_POST['kommentar'])) {
                                     </div>
 
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                                <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
+                                     <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
                                           rows="1"
                                           class="form-control"></textarea><br>
                                         <input type="hidden" value="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="post_id"
@@ -233,40 +234,35 @@ if(isset($_POST['kommentar'])) {
                                         </div>
 
                                         <?php
-                                    }
-                                    ?>
+                                        }
+                                        ?>
 
 
                                     </div>
 
                                     <?php
                                // }
+                                    }
 
-
-                        }
-
-                        if (!$dbtest > 0) {
-                            ?>
-                            <div class="beitrag">
-                                <?php
-                                echo htmlspecialchars("Herzlich Willkommen $angmeldet_index, du kannst Nutzer über die Suchenfunktion finden, um deren Beiträge zu sehen oder selber Beiträge verfassen.", ENT_HTML401);
+                                    if (!$dbtest > 0) {
+                                        ?>
+                                        <div class="beitrag">
+                                            <?php
+                                            echo htmlspecialchars("Herzlich Willkommen $angmeldet_index, du kannst Nutzer über die Suchenfunktion finden, um deren Beiträge zu sehen oder selber Beiträge verfassen.", ENT_HTML401);
+                                            ?>
+                                        </div>
+                                        <?php
+                                    }
                                 ?>
-                            </div>
-                            <?php
-                        }
-                    ?>
 
-            </div>
+                </div>
 
-        <div class="col-lg-3 col-md-1 col-sm-1 c">
+                <div class="col-lg-3 col-md-1 col-sm-1 c">
+
+                </div>
 
         </div>
-
     </div>
-    </div>
-
-
-
 
 </body>
 
