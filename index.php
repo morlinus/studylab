@@ -25,11 +25,14 @@ function hashtag($htags) {
 
     while($i < $arrcnt) {
         if (substr($arr[$i],0,1) === $tagzeichen) {
-            $arr[$i] = "<a href='themen.php?themen".$arr[$i]."'>".$arr[$i]."</a>";
+            $tag2 =$arr[$i];
+            $tag3=substr($tag2,1);
+              $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
         }
         $i++;
     }
     $htags = implode(" ", $arr);
+    //$htags = substr($htags2,1)
     return $htags;
 }
 

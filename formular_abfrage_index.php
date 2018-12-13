@@ -8,20 +8,22 @@ include 'userdata.php';
 // übergibt die User ID durch die Session
 $id = $_SESSION["id"];
 
+//Die Funktion geht durch den Content, sucht alle Wörter mit #, und gibt nur die Wörter mit # aus
 function hashtagfinden($htags) {
     $tag = "#";
     $arr = explode(" ", $htags);
-    $arrcnt = count($arr);
+    $arranzahl = count($arr);
     $i =0;
-
-    while($i < $arrcnt) {
+    while($i < $arranzahl) {
         if (substr($arr[$i],0,1) === $tag) {
             $tagfund =$arr[$i];
         }
         $i++;
     }
-    // $htags = implode(" ", $arr);
-    $htags = $tagfund;
+    $htags2 = $tagfund;
+    //entfernt das hashtag vor dem Wort, für den Datenbankeintrag
+    $htags3 = substr($htags2,1);
+    $htags = $htags3;
     return $htags;
 }
 
@@ -37,7 +39,12 @@ $content= $_POST["content"];
 $htagsuche = hashtagfinden($content);
 
     $statement = $pdo->prepare("INSERT INTO content VALUES ('',:userid,:text, :themen)");
-    $statement->execute(array(':text' => $content, ':userid' => $id, ':themen' => $htagsuche));
+    //$statement->execute(array(':text' => $content, ':userid' => $id, ':themen' => $htagsuche));
+$statement->bindParam(':text', $content);
+$statement->bindParam(':userid', $id);
+$statement->bindParam(':themen', $htagsuche);
+$statement->execute();
+
 
     // Schaut wer dem Beitragsersteller folgt
     $benachrichtigung=$pdo->prepare("SELECT userid FROM folgen WHERE follower_id=$id");
