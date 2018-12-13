@@ -96,8 +96,6 @@ if(isset($_POST['kommentar'])) {
                             while ($content = $statement->fetch()) {
                                 $postid = $content ["id"];
 
-
-
                                     $beitrags_bild = $pdo->prepare("SELECT * FROM bildupload_content WHERE post_id=$postid");
                                     $beitrags_bild->execute();
                                     $bilder = $beitrags_bild->fetch();
