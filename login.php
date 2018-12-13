@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
     <title>Login</title>
-    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
@@ -12,17 +11,16 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link href="studylab-login.css" rel="stylesheet">
 
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/23598316373_de98f70881_b.jpg);
+                background-size: cover;
+            }
+        </style>
     </head>
 
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/23598316373_de98f70881_b.jpg);
-        background-size: cover;
-    }
-</style>
 <!-- Hier sollte eigentlich das Form mit Bootstrap sein,
 funktioniert aber nicht zusammen mit dem Login-Prozess-->
 <body>
@@ -37,26 +35,27 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
 -->
 
 <!-- Login-Form -->
-    <div class="fenster col-lg-3 col-md-6 col-sm-12 align-items-center">
-        <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="100" width="250">
+    <div class="fenster col-sm-12 align-items-center">
+        <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="100" width="250">
         <br>
 
         <form method="post" action="do_login.php">
 
             <div class="eingabefeld">
-                <input type="text" name="benutzername"  id="Benutzername1" aria-describedby="BenutzernameHelp" placeholder="Benutzername">
+                <input type="text" name="benutzername"  id="Benutzername1" placeholder="Benutzername" required>
                 <!--  <label for="Benutzer1">Benutzername</label> -->
 
                  <small id="emailHelp" class="form-text text-muted"></small>
              </div>
 
              <div class="eingabefeld">
-                 <input type="password" name="passwort"  id="Passwort1" placeholder="Passwort">
+                 <input type="password" name="passwort"  id="Passwort1" placeholder="Passwort" required>
                <!--  <label for="Passwort1">Passwort</label> -->
             </div>
 
             <button type="submit" class="btn btn-primary">Einloggen</button><br><br>
             Noch nicht angemeldet? <a href="registrierung.php">Registrieren</a><br><br>
+        </form>
     </div>
 </div>
 </div>

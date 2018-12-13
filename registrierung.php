@@ -53,8 +53,11 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
     body {
         margin: 0;
         padding: 0;
-        background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/ZH103);
+        background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/hdm2.jpg);
         background-size: cover;
+        height: 100vh;
+        width: 100vh;
+    }
     }
 </style>
 <body>
@@ -157,23 +160,23 @@ if(isset($_GET['register'])) {
 if($showFormular) {
 
     ?>
-<div class="fenster">
+<div class="fensterreg">
     <h2>Registrieren</h2>
     <form action="?register=1" method="post">
 
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
         <input type="name" size="40" maxlength="200" name="name" placeholder="Name"> <input type="nachname" size="40" maxlength="200" name="nachname" placeholder="Nachname">
         </div>
 
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
         <input type="benutzername" size="40" maxlength="200" name="benutzername" placeholder="Benutzername">
         </div>
 
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
         <input type="email" size="40" maxlength="200" name="email"placeholder="E-Mail">
         </div>
 
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
       <input type="geburtsdatum" id="datepicker" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
         </div>
 
@@ -185,7 +188,7 @@ if($showFormular) {
         <!-- Studiengang: <br>
         <input type="studiengang" size="40" maxlength="200" name="studiengang"><br><br>
 -->
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
         <div class="ui-widget">
             <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"placeholder="Studiengang">
         </div>
@@ -216,8 +219,8 @@ if($showFormular) {
         </table>
         <br><br>
 
-        <div class="eingabefeld">
-        <input type="semester" size = "40" maxlength="200" name="semester"><br><br>
+        <div class="eingabefeldreg">
+        <input type="semester" size = "40" maxlength="200" name="semester" placeholder="Semester"><br><br>
         </div>
 
        <!--  Position: <br>
@@ -249,11 +252,11 @@ if($showFormular) {
         </table>
         <br><br>
 
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
         <input type="password" size="40"  maxlength="200" name="passwort" placeholder="Passwort eingeben"><br>
         </div>
 
-        <div class="eingabefeld">
+        <div class="eingabefeldreg">
         <input type="password" size="40" maxlength="200" name="passwort2" placeholder="Passwort wiederholen"><br><br>
         </div>
 
