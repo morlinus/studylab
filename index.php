@@ -73,7 +73,6 @@ if(isset($_POST['kommentar'])) {
                 <br>
                 <br>
 
-
                     <?php
                     /* Hier wird ausgelsen wem der angemeldete Nutzer folgt
                     $folgt= $pdo -> prepare ("SELECT * FROM folgen WHERE follower_id = $id");
@@ -121,7 +120,7 @@ if(isset($_POST['kommentar'])) {
 
                                     <?php
                                     //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
-                                    echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
+                                    echo htmlspecialchars('<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>', ENT_HTML401);
                                     echo "<br>";
 
                                     //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
@@ -142,10 +141,10 @@ if(isset($_POST['kommentar'])) {
                                     </div>
 
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                                <textarea id="<?php echo $content['id']; ?>" name="comment" placeholder="Kommentieren"
+                                <textarea id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
                                           rows="1"
                                           class="form-control"></textarea><br>
-                                        <input type="hidden" value="<?php echo $content['id']; ?>" name="post_id"
+                                        <input type="hidden" value="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="post_id"
                                                class="form-control">
                                         <input type="submit" class="btn btn-primary" value="Kommentieren"
                                                name="kommentar"
@@ -179,7 +178,7 @@ if(isset($_POST['kommentar'])) {
                                                 <?php
                                             }
 
-                                            ?> <h6> <?php echo $komm['benutzername'] . ":<br />"; ?> </h6><?php
+                                            ?> <h6> <?php echo htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?> </h6><?php
                                             echo htmlspecialchars($komm['kommentar'], ENT_HTML401);
                                             ?>
                                         </div>
@@ -201,7 +200,7 @@ if(isset($_POST['kommentar'])) {
                             ?>
                             <div class="beitrag">
                                 <?php
-                                echo "Herzlich Willkommen $angmeldet_index, du kannst Nutzer über die Suchenfunktion finden, um deren Beiträge zu sehen oder selber Beiträge verfassen.";
+                                echo htmlspecialchars("Herzlich Willkommen $angmeldet_index, du kannst Nutzer über die Suchenfunktion finden, um deren Beiträge zu sehen oder selber Beiträge verfassen.", ENT_HTML401);
                                 ?>
                             </div>
                             <?php
@@ -226,7 +225,7 @@ if(isset($_POST['kommentar'])) {
 
                     <div class="alert alert-success alert-dismissible" >
                         <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
-                        <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
+                        <strong><a href="profil_folgen2.php?studylab=<?php echo htmlspecialchars($nachrichtid, ENT_HTML401); ?>"><?php echo htmlspecialchars($nachricht['benutzername'], ENT_HTML401);?></a></strong> Hat einen neuen Beitrag gepostet.
                     </div>
 
                     <?php
