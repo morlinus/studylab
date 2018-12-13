@@ -19,7 +19,7 @@
                 background-size: cover;
             }
         </style>
-    </head>
+</head>
 
 <!-- Hier sollte eigentlich das Form mit Bootstrap sein,
 funktioniert aber nicht zusammen mit dem Login-Prozess-->
@@ -33,7 +33,6 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
     <h3>Hier steht dann eine interessante Beschreibung der Website</h3>
 </div>
 -->
-
 <!-- Login-Form -->
     <div class="fenster col-sm-12 align-items-center">
         <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="100" width="250">
