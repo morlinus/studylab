@@ -17,6 +17,22 @@ include_once 'header.php';
 $id=$_SESSION["id"];
 $angmeldet_index = $_SESSION ["angemeldet"];
 
+function hashtag($htags) {
+    $tagzeichen = "#";
+    $arr = explode(" ", $htags);
+    $arrcnt = count($arr);
+    $i =0;
+
+    while($i < $arrcnt) {
+        if (substr($arr[$i],0,1) === $tagzeichen) {
+            $arr[$i] = "<a href='themen.php?themen".$arr[$i]."'>".$arr[$i]."</a>";
+        }
+        $i++;
+    }
+    $htags = implode(" ", $arr);
+    return $htags;
+}
+
 
 if(isset($_POST['kommentar'])) {
 
@@ -168,7 +184,8 @@ if(isset($_POST['kommentar'])) {
 
 
                                     //Der Post Inhalt wird ausgegeben
-                                    echo htmlspecialchars($content['text'], ENT_HTML401);
+                                    $inhalt = htmlspecialchars($content['text'], ENT_HTML401);
+                                    echo hashtag($inhalt);
                                     ?>
                                     </div>
 
@@ -256,7 +273,6 @@ if(isset($_POST['kommentar'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-
 
     function post(){
         var comment = document.getElementByName("comment").value;
