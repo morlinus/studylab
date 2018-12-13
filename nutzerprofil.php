@@ -74,7 +74,7 @@ if(isset($_POST['kommentar'])) {
 
                 // Benutzerbild wird im Profil angezeigt
 
-                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='img-fluid'>");
+                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='profilbild-rund'>");
                 }
                 ?>
             </div>

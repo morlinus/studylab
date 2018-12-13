@@ -11,7 +11,7 @@ $benutzer_name = $benutzername_header->fetch();
 
 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header ->execute();
-while($row_header = $bild_header->fetch()){
+$row_header = $bild_header->fetch()
 // echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
 // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
@@ -37,67 +37,68 @@ while($row_header = $bild_header->fetch()){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.mim.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 </head>
 
 <body>
 
-<div class="header">
-    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-dark bg-dark">
+<div class="navbar-custom shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <div class="container-fluid">
+    <div class="container-fluid">
 
-            <div class="col-12-header col-s-12-header">
-                <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
+        <div class="col-12-header col-s-12-header">
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse navbar-collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" height="50" width="120"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.php">Startseite</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="nutzerprofil.php">Profil</a><br>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link " href="nutzersuchen.php">Suche</a>
-                        </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Startseite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nutzerprofil.php">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nutzersuchen.php">Suche</a>
+                    </li>
 
-                    </ul>
+                </ul>
 
+                    <div class="nav-item dropdown ml-2">
+                        <a class="nav-link btn btn-secondary dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php
+                            echo $benutzer_name['benutzername'];
+                            ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="profil_bearbeitung.php">Profil bearbeiten</a>
+                            <a class="dropdown-item" href="bildupload_bearbeiten.php">Profilbild bearbeiten</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="logout.php">Logout</a>
+                        </div>
 
-                </div>
-
-                <div class="dropdown">
-
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php
-                        echo $benutzer_name['benutzername'];
-                        ?>
-                    </a>
-
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="profil_bearbeitung.php">Profil bearbeiten</a>
-                        <a class="dropdown-item" href="bildupload_bearbeiten.php">Profilbild bearbeiten</a>
-                        <a class="dropdown-item" href="logout.php">Logout</a>
-                    </div>
 
                     <?php
-                    echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                    }
+                    echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar ml-2'>");
+
 
                     ?>
+                    </div>
 
-                </div>
             </div>
 
         </div>
-    </nav>
+    </div>
 
+</nav>
 </div>
 
 </body>
+
+
 </html>
