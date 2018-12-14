@@ -71,7 +71,7 @@ $row_header = $bild_header->fetch()
                             <a class="nav-link" href="nutzerprofil.php">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="themenuebersicht.php.php">Themen</a>
+                            <a class="nav-link" href="themenuebersicht.php">Themen</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="nutzersuchen.php">Suche</a>
