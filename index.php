@@ -75,7 +75,7 @@ if(isset($_POST['kommentar'])) {
                         <?php
 
                         //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
-                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id");
+                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.*, folgen.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id LEFT JOIN folgen ON benachrichtigung.userid=folgen.user_id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id AND folgen.follower_id=$id");
                         $benachrichtigung->execute();
 
                         //Führt die Benachrichtigung aus
@@ -198,7 +198,6 @@ if(isset($_POST['kommentar'])) {
 
                                     <?php
                                     // Hier werden die Kommentare für den jeweiligen Post ausgegeben
-                                    $post_id = $content['id'];
                                     $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                                     $kommentare->execute();
                                     while ($komm = $kommentare->fetch()) {

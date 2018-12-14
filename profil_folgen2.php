@@ -9,7 +9,7 @@ $followerid = $_SESSION["id"];
 $bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id'");
 $bild_folgen->execute();
 $row_folgen = $bild_folgen->fetch();
-
+$lesen = "read";
 ?>
 
 <!doctype html>
@@ -69,6 +69,11 @@ $row_folgen = $bild_folgen->fetch();
                         echo "followed";
                         $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11) NOT NULL");
                         $insert_ben -> execute ();
+                        //$statementupdate = $pdo->prepare("UPDATE benachrichtigung SET '$follower'= :gelesen WHERE id > 0");
+                        //$statementupdate -> bindParam("gelesen",$lesen);
+                        //$statementupdate -> execute ();
+                        $update=$pdo->prepare("UPDATE benachrichtigung SET $follower = ?");
+                        $update->execute(array('read'));
                         header("location:profil_folgen2.php?studylab=$profile_id");
 
                     }
@@ -87,7 +92,6 @@ $row_folgen = $bild_folgen->fetch();
                     $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");
                     if ($unfollow->execute()) {
                         echo "unfollowed";
-
                         header("location:profil_folgen2.php?studylab=$profile_id");
 
                     }
