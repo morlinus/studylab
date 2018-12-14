@@ -439,6 +439,7 @@ group>.btn:not(:first-child) {
 
 .img-fluid{
     border-radius: 1%;
+    max-width: 400px;
 }
 
 .profilbild-rund{
@@ -556,7 +557,6 @@ group>.btn:not(:first-child) {
 
 .kommentar{
     width: 90%;
-    height: 70%;
     position: relative;
     padding: 15px;
     margin-bottom: 10px;

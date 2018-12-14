@@ -36,7 +36,7 @@ function hashtag($htags) {
     return $htags;
 }
 
-
+// trägt die Kommentare auf dem Kommentar-Form in die Datenbank ein
 if(isset($_POST['kommentar'])) {
 
     $comment=$_POST['comment'];
@@ -89,7 +89,7 @@ if(isset($_POST['kommentar'])) {
                         </div>
 
                         <?php
-                        //Wenn die benachrichtigung gesehen wurde, wird sie in der Datenbank auf read gesetzt
+                        //Wenn die Benachrichtigung gesehen wurde, wird sie in der Datenbank auf read gesetzt
                         $update=$pdo->prepare("UPDATE benachrichtigung SET $angmeldet_index = ?");
                         $update->execute(array('read'));
                         ?>
@@ -126,27 +126,14 @@ if(isset($_POST['kommentar'])) {
 
 
                     <?php
-                    /* Hier wird ausgelsen wem der angemeldete Nutzer folgt
-                    $folgt= $pdo -> prepare ("SELECT * FROM folgen WHERE follower_id = $id");
-                    $folgt -> execute ();
-                    while ($gefolgtenutzer = $folgt -> fetch ()) {
-                        $nutzerids = $gefolgtenutzer ["user_id"];
-
-
-                        // zeigt die eignen Posts aus der Datenbank an und die von den gefolgten nutzern
-                        $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE content.userid= $nutzerids ORDER BY content.id DESC");
-                        $statement->execute(array('beitragsid' => 1)); */
-
+                        // wählt aus der Datenbank alle Beiträge aus, der Personen, die der angemeldete Benutzer folgt
                         $statement = $pdo->prepare("SELECT DISTINCT content.*, studylab.benutzername, folgen.follower_id FROM content LEFT JOIN studylab ON content.userid = studylab.id LEFT JOIN folgen ON studylab.id = folgen.user_id WHERE folgen.follower_id = $id ORDER BY content.id DESC");
                         $statement->execute(array('beitragsid' => 1));
 
                         $dbtest = $statement->rowcount();
-                        //echo $nutzerids;
-
-                       // if ($dbtest > 0) {
                             while ($content = $statement->fetch()) {
                                 $postid = $content ["id"];
-
+                                    // wählt das Bild aus, welches zum jeweiligen Beitrag gehört
                                     $beitrags_bild = $pdo->prepare("SELECT * FROM bildupload_content WHERE post_id=$postid");
                                     $beitrags_bild->execute();
                                     $bilder = $beitrags_bild->fetch();
@@ -193,6 +180,7 @@ if(isset($_POST['kommentar'])) {
                                     ?>
                                     </div>
 
+                                    <!-- Hier steht das Kommentar-Form, in dem der User einen Kommentar eintragen kann -->
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                      <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
                                           rows="1"
@@ -207,6 +195,7 @@ if(isset($_POST['kommentar'])) {
 
 
                                     <?php
+                                    // Hier werden die Kommentare für den jeweiligen Post ausgegeben
                                     $post_id = $content['id'];
                                     $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                                     $kommentare->execute();
@@ -218,7 +207,7 @@ if(isset($_POST['kommentar'])) {
                                             <?php
 
                                             $kommid = $komm['id'];
-
+                                            // zu dem zugehörigen Kommentar, wird auch das dazugehörige Profilbild ausgegeben
                                             $kommbild = $pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
                                             $kommbild->execute();
                                             while ($row_kommbild = $kommbild->fetch()) {
@@ -244,9 +233,8 @@ if(isset($_POST['kommentar'])) {
                                     </div>
 
                                     <?php
-                               // }
                                     }
-
+                                    // Wenn der Nutzer noch niemandem folgt, dann wird ihm empfohlen, in der Suchfunktion Nutzer hinzuzufügen
                                     if (!$dbtest > 0) {
                                         ?>
                                         <div class="beitrag">
@@ -269,7 +257,7 @@ if(isset($_POST['kommentar'])) {
 
 </body>
 
-
+<!-- Hier wird das Script für die Kommentare und den Post implementiert -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 

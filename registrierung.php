@@ -180,33 +180,12 @@ if($showFormular) {
         <input type="geburtsdatum" id="datepicker" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
         </div>
 
-        <!--
-        <div class="eingabefeld">
-        <option id=fomat value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
-        </div> -->
-
-        <!-- Studiengang: <br>
-        <input type="studiengang" size="40" maxlength="200" name="studiengang"><br><br>
--->
         <div class="eingabefeldreg">
             <div class="ui-widget">
                 <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"placeholder="Studiengang">
             </div>
         </div>
         <br><br>
-        <!--
-                Geschlecht: <br>
-                <input type="geschlecht" size 40 maxlength="50" name="geschlecht"><br><br>
-
-
-                 Geschlecht: <br>
-
-                    <label for="männl">Männlich: </label>
-                    <input type="radio" name="geschlecht" id="männl" value="männlich">
-
-                    <label for="weibl">Weiblich: </label>
-                    <input type="radio" name="geschlecht" id="weibl" value="weiblich">
-                    <br><br> -->
 
         <table>
             <tr>
@@ -222,24 +201,6 @@ if($showFormular) {
         <div class="eingabefeldreg">
         <input type="semester" size = "40" maxlength="200" name="semester" placeholder="Semester"><br><br>
         </div>
-
-       <!--  Position: <br>
-        <input type="status" size = "40" maxlength="200" name="status"><br><br>
-
-        Position: <br>
-        <div class="widget">
-            <input type="status" value="Student" name ="status">
-            <input type="status" value="Professor" name ="status">
-
-        </div>
-        Position:
-        <br>
-        <select name="status" required>
-            <option selected hidden value="">Student</option>
-            <option value="Professor">Professor</option>
-            <option value="Student">Student</option>
-        </select>
-        <br><br> -->
 
         <table>
             <tr>
