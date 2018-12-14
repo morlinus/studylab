@@ -1,15 +1,34 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: linusmorlinghaus
- * Date: 13.12.18
- * Time: 22:51
- */
+// schaut durch die Session, ob der Nutzer angemeldet ist
+session_start();
+if (isset($_SESSION["angemeldet"]))
+{
+
+}
+else {
+    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
+    header("Location:login.php");
+}
+
 include "header.php";
 include "userdata.php";
 
 $hashtag1=$_GET["themen"];
+$id=$_SESSION['id'];
 
+// trägt die Kommentare auf dem Kommentar-Form in die Datenbank ein
+if(isset($_POST['kommentar'])) {
+
+    $comment=$_POST['comment'];
+    $postid=$_POST['post_id'];
+
+    $statement = $pdo->prepare("INSERT INTO kommentare (id, sender_id, post_id, kommentar) VALUES (' ',:sender_id, :post_id,:kommentar)");
+    if (!$statement->execute(array('sender_id'=>$id, 'post_id'=>$postid, 'kommentar'=>$comment)))
+    {
+        echo "Fehler";
+    }
+
+}
     ?>
 
 <!doctype html>
@@ -38,14 +57,14 @@ Thema <?php echo $hashtag1; ?>
             <?php
             // Zeigt die Postings aus, die den hashtag beinhalten des User an
             // wählt aus der Datenbank die entsprechenden Beiträge aus
-            $statement = $pdo->prepare("SELECT content.*, studylab.* FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE content.themen='$hashtag1' ORDER BY content.id DESC");
+            $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE content.themen='$hashtag1' ORDER BY content.id DESC");
             if (!$statement->execute(array('beitragsid' => 1))) {
                 echo "Fehler";
             }
             while ($content = $statement->fetch()) {
 
-            $postid = $content ["id"];
-            $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$postid");
+            $post_id = $content["id"];
+            $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$post_id");
             $beitrags_bild -> execute();
             $bilder = $beitrags_bild -> fetch();
             $dbabgleich = $bilder ["post_id"];
@@ -73,20 +92,36 @@ Thema <?php echo $hashtag1; ?>
                     echo "<br>";
 
                     //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
-                    if ($postid = $dbabgleich) {
+                    if ($post_id = $dbabgleich) {
                     echo"<br>";
                     echo "<div class='bild-class'>";
                     echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                     echo "</div>";
                     }
                     echo $content['text'];
+
                     ?>
                 </div>
 
+                <!-- Hier steht das Kommentar-Form, in dem der User einen Kommentar eintragen kann -->
+                <form method="post" action="" onsubmit="return post();" id="kommentarform">
+                                     <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
+                                               rows="1"
+                                               class="form-control"></textarea><br>
+                    <input type="hidden" value="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="post_id"
+                           class="form-control">
+                    <input type="submit" class="btn btn-primary" value="Kommentieren"
+                           name="kommentar"
+                           id="kommentarbtn"/>
+                </form>
+                <br>
+
                 <?php
-                $post_id = $content['id'];
+                $post_id=$content['id'];
                 $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
-                $kommentare->execute();
+                if (! $kommentare->execute()) {
+                    echo "Fehler";
+                }
                 while ($komm = $kommentare->fetch()) {
                 ?>
 
@@ -94,7 +129,6 @@ Thema <?php echo $hashtag1; ?>
 
                     <?php
                     $kommid=$komm['id'];
-
                     $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
                     $kommbild->execute();
                     while ($row_kommbild = $kommbild->fetch()){
@@ -137,25 +171,22 @@ Thema <?php echo $hashtag1; ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-    function kommentare() {
-        document.getElementById('zeigeKommentare').style.display = "block";
-    }
 
     function post(){
-        var comment = document.getElementById("comment").value;
+        var comment = document.getElementByName("comment").value;
         if(comment)
         {
             $.ajax
             ({
                 type: 'post',
-                url: 'nutzerprofil.php',
+                url: 'index.php',
                 data:
                     {
                         comment:comment,
                     },
                 success: function (response)
                 {
-                    document.getElementById("comment").value="";
+                    document.getElementByName("comment").value="";
                 }
             });
         }
