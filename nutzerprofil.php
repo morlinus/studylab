@@ -63,23 +63,25 @@ if(isset($_POST['kommentar'])) {
 <div class="container-fluid">
     <div class="row">
 
-
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-3 col-md-3 col-sm-3 col-">
 
             <br>
             <br>
 
-
+            <!-- Style des Profilbilds im Profil -->
             <div class="profilbildplusfolgen">
                 <?php
 
                 // Benutzerbild wird im Profil angezeigt
 
-                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='profilbild-rund'>");
+                echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='profilbild-profil'>");
                 }
                 ?>
             </div>
             <br>
+
+            <!-- Umrandung und Schatten der Profilinfo -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
                         <!-- Die Daten des angemeldeten Nutzers werden aus der Datenbank geholt und ausgegeben -->
@@ -105,6 +107,7 @@ if(isset($_POST['kommentar'])) {
         </div>
 
 
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-8 col-md-8 col-sm-8 col-">
 
             <br>
@@ -130,6 +133,7 @@ if(isset($_POST['kommentar'])) {
 
                 ?>
 
+                <!-- Umrandung und Schatten der Postingbox und der Beiträge -->
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                     <div class="beitrag">
 
@@ -165,6 +169,8 @@ if(isset($_POST['kommentar'])) {
                         while ($komm = $kommentare->fetch()) {
                             ?>
 
+
+                            <!-- Style des Kommentars -->
                             <div class="kommentar">
 
                                 <?php
@@ -174,11 +180,14 @@ if(isset($_POST['kommentar'])) {
                                 $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
                                 $kommbild->execute();
                                 while ($row_kommbild = $kommbild->fetch()){
-                                    ?> <div class="miniprofbild">
+                                    ?>
+
+                                    <!-- Style des Profilbilds im Beitrag -->
+                                    <div class="miniprofbild">
                                         <?php
                                         echo ("<img src='data:".$row_kommbild['format'].";base64,".base64_encode($row_kommbild['datei'])."'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                         ?>
-                                        </div>
+                                    </div>
                                     <?php
                                 }
 
@@ -200,6 +209,7 @@ if(isset($_POST['kommentar'])) {
 
         </div>
 
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-1 col-md-1 col-sm-1 col-">
 
         </div>
@@ -241,6 +251,7 @@ if(isset($_POST['kommentar'])) {
 
 </script>
 
+<!-- Einbindung des Sticky-Footers -->
 <?php
 session_start();
 include_once 'footer.php';

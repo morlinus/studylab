@@ -14,14 +14,17 @@ include_once 'header.php';
     <div class="container-fluid">
         <div class="row">
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
                 <br>
                 <br>
+
 
                 <div class="suche">
 
@@ -53,7 +56,7 @@ include_once 'header.php';
                 ?>
 
 
-
+                    <!-- hier werden die Suchergebnisse ausgegeben -->
                     <h5> <?php echo "Suchergebnisse: <br>";?> </h5><br>
 
 
@@ -76,11 +79,12 @@ include_once 'header.php';
                             $bild_suche->execute();
                             $row_suche = $bild_suche->fetch();
 
+                            // hier werden die ausgegebenen Suchergebnisse gestyled
                             echo '<div class="col-12-ergebnisse">';
                             echo '<ul class="suchen-tabelle">';
                             echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             echo " ";
-                            echo htmlspecialchars('<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.$studilab.'">' . $row['benutzername'] .'</a>'."<br>". $row["name"]." ". $row ["nachname"], ENT_HTML401);
+                            echo ('<a class="suchen-ergebnisse" href="profil_folgen2.php?studylab='.htmlspecialchars($studilab,ENT_HTML401).'">' . $row['benutzername'] .'</a>'."<br>". $row["name"]." ". $row ["nachname"]);
                             //echo "<br>". $row["name"]." ". $row ["nachname"];
                             echo '</ul>';
                             echo '</div>';
@@ -102,6 +106,7 @@ include_once 'header.php';
 
             </div>
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
@@ -111,6 +116,7 @@ include_once 'header.php';
 
 </body>
 
+<!-- Einbindung des Sticky-Footers-->
 <?php
 session_start();
 include_once 'footer.php';

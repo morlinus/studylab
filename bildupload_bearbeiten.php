@@ -1,14 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: linusmorlinghaus
- * Date: 13.12.18
- * Time: 12:37
- */
-//include_once 'header.php';
+
 ob_start();
+// stellt die Verbindung zur Datenbank her
 include "userdata.php";
-include "header.php";
+// bindet die header.php ein und damit den Header der Seite
+include_once "header.php";
 
 $benutzer_id = $_SESSION ["id"];
 $benutzer_name = $_SESSION ["angemeldet"];
@@ -32,10 +28,12 @@ while($row_header = $bild_header->fetch()){
 <div class="container-fluid">
     <div class="row">
 
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-3 col-md-3 col-sm-3">
 
         </div>
 
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-6 col-md-6 col-sm-6 col-">
 
             <br>
@@ -62,7 +60,6 @@ while($row_header = $bild_header->fetch()){
             <!-- "enctype" beschreibt wie die Datei encoded werden soll -->
             <?php
             // Stellt die Verbindung zur Datenbank her und fügt die Datei in die Datenbank ein
-
 
             echo $regid;
             echo $benutzername_id;
@@ -112,7 +109,7 @@ while($row_header = $bild_header->fetch()){
 
         </div>
 
-
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-3 col-md-3 col-sm-3">
 
         </div>
@@ -123,9 +120,12 @@ while($row_header = $bild_header->fetch()){
 </div>
 </body>
 
+
 <?php
 ob_end_flush();
 session_start();
+
+// Einbindung des Sticky-Footers
 include_once 'footer.php';
 ?>
 

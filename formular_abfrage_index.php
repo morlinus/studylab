@@ -77,3 +77,4 @@ If ($postid > 0) {
 }
 header ("Location:index.php");
 
+?>

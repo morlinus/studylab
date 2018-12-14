@@ -1,20 +1,29 @@
-
-
-<title>Profil bearbeiten</title>
 <?php
 session_start();
+
+// bindet die header.php ein und damit den Header der Seite
 include_once 'header.php';
 ?>
+
+
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<head>
+    <title>Profil bearbeiten</title>
+</head>
 
 <body>
 
     <div class="container-fluid">
         <div class="row">
+
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
-
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
                 <script>
@@ -69,6 +78,7 @@ include_once 'header.php';
 
                         ?>
 
+                        <!-- Style der Profilbearbeitung -->
                         <br>
                         <div class="name-bearbeitung">
                         <form action="aendern.php" method="post">
@@ -174,6 +184,7 @@ include_once 'header.php';
                 ?>
             </div>
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
@@ -183,6 +194,7 @@ include_once 'header.php';
 
 </body>
 
+<!-- Einbindung des Sticky-Footers -->
 <?php
 session_start();
 include_once 'footer.php';

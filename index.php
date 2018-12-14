@@ -65,6 +65,8 @@ if(isset($_POST['kommentar'])) {
 
         <div class="row">
 
+
+                <!-- Einteilung in das Grid-System -->
                 <div class="col-lg-3 col-md-3 col-sm-3">
 
                         <br>
@@ -82,7 +84,7 @@ if(isset($_POST['kommentar'])) {
                         $nachrichtid=$nachricht['id'];
                         ?>
 
-
+                        <!-- Pop-Up Benachrichtigung -->
                         <div class="alert alert-success alert-dismissible" >
                             <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
                             <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
@@ -100,12 +102,12 @@ if(isset($_POST['kommentar'])) {
 
                 </div>
 
-
+                <!-- Einteilung in das Grid-System -->
                 <div class="col-lg-6 col-md-8 col-sm-8 col-">
                         <br>
                         <br>
 
-
+                        <!-- Umrandung und Schatten der Postingbox und der Beiträge -->
                         <div class="shadow-sm p-3 mb-5 bg-white rounded">
                         <!-- Dies ist die Form, damit der User einen Post schreiben - und ein Bild auswählen kann -->
                         <form action="formular_abfrage_index.php" enctype="multipart/form-data" method="POST">
@@ -202,6 +204,8 @@ if(isset($_POST['kommentar'])) {
                                     while ($komm = $kommentare->fetch()) {
                                         ?>
 
+
+                                        <!-- Style des Kommentars -->
                                         <div class="kommentar">
 
                                             <?php
@@ -212,6 +216,8 @@ if(isset($_POST['kommentar'])) {
                                             $kommbild->execute();
                                             while ($row_kommbild = $kommbild->fetch()) {
                                                 ?>
+
+                                                <!-- Style des Profilbilds im Beitrag -->
                                                 <div class="miniprofbild">
                                                     <?php
                                                     echo("<img src='data:" . $row_kommbild['format'] . ";base64," . base64_encode($row_kommbild['datei']) . "'width=' alt='nutzerprofilbild' class='profilbild-navbar'>");
@@ -234,7 +240,7 @@ if(isset($_POST['kommentar'])) {
 
                                     <?php
                                     }
-                                    // Wenn der Nutzer noch niemandem folgt, dann wird ihm empfohlen, in der Suchfunktion Nutzer hinzuzufügen
+                                    // Wenn der Nutzer noch niemandem folgt, wird ihm empfohlen, in der Suchfunktion Nutzern zu folgen
                                     if (!$dbtest > 0) {
                                         ?>
                                         <div class="beitrag">
@@ -248,6 +254,7 @@ if(isset($_POST['kommentar'])) {
 
                 </div>
 
+                <!-- Einteilung in das Grid-System -->
                 <div class="col-lg-3 col-md-1 col-sm-1 c">
 
                 </div>
@@ -287,6 +294,7 @@ if(isset($_POST['kommentar'])) {
     }
 </script>
 
+<!-- Einbindung des Sticky-Footers -->
 <?php
 session_start();
 include_once 'footer.php';
