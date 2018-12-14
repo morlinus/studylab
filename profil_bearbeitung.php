@@ -62,6 +62,7 @@ include_once 'header.php';
                     $passwort=$_SESSION["passwort"];
                     include 'userdata.php';
 
+                // Die Daten des angemeldeten User werden ausgegeben
                 $statement = $pdo->prepare("SELECT * FROM studylab WHERE id=$id");
                 if($statement->execute()) {
                     while($row=$statement->fetch()) {
@@ -186,4 +187,3 @@ include_once 'header.php';
 session_start();
 include_once 'footer.php';
 ?>
-</html>
