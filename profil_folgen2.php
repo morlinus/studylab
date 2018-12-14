@@ -119,7 +119,7 @@ $row_folgen = $bild_folgen->fetch();
                     <h6>Geburtstag</h6> <?php echo htmlspecialchars($geburtstag, ENT_HTML401) . "<br /><br />"; ?>
                     <h6>Studiengang</h6> <?php echo  htmlspecialchars($studiengang, ENT_HTML401) . "<br /><br />"; ?>
 
-                    <a href="mailto:<?php echo htmlspecialchars( $email, ENT_HTML401); ?>">Sende <?php echo htmlspecialchars($benutzername, ENT_HTML401); ?> eine E-Mail</a>
+                    <a class="e-mail" href="mailto:<?php echo htmlspecialchars( $email, ENT_HTML401); ?>">Sende <?php echo htmlspecialchars($benutzername, ENT_HTML401); ?> eine E-Mail</a>
 
 
                     <?php

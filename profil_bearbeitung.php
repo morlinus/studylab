@@ -110,7 +110,6 @@ include_once 'header.php';
                         <div class="studiengang-bearbeitung">
                                 <label for="Inhalt">Studiengang:</label>
 
-                            <!-- Hier bin ich mir nicht sicher wie man die PHP-Datei einbindet -->
                             <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
                                 <option>Audiovisuelle Medien</option>
                                 <option>Crossmedia-Redaktion/Public Relations</option>

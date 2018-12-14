@@ -564,3 +564,14 @@ group>.btn:not(:first-child) {
 .kommbild{
     float: left;
 }
+
+.e-mail{
+    color: #e41035;
+    text-decoration: none;
+}
+
+.e-mail:hover{
+    font-weight: bold;
+    text-decoration: none;
+    color: #e41035;
+}
