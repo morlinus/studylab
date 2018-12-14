@@ -17,6 +17,25 @@ include_once 'header.php';
 $id=$_SESSION["id"];
 $angmeldet_index = $_SESSION ["angemeldet"];
 
+function hashtag($htags) {
+    $tagzeichen = "#";
+    $arr = explode(" ", $htags);
+    $arrcnt = count($arr);
+    $i =0;
+
+    while($i < $arrcnt) {
+        if (substr($arr[$i],0,1) === $tagzeichen) {
+            $tag2 =$arr[$i];
+            $tag3=substr($tag2,1);
+              $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+        }
+        $i++;
+    }
+    $htags = implode(" ", $arr);
+    //$htags = substr($htags2,1)
+    return $htags;
+}
+
 
 if(isset($_POST['kommentar'])) {
 
@@ -168,10 +187,11 @@ if(isset($_POST['kommentar'])) {
                                         echo "<br>";
 
 
-                                        //Der Post Inhalt wird ausgegeben
-                                        echo htmlspecialchars($content['text'], ENT_HTML401);
-                                        ?>
-                                        </div>
+                                    //Der Post Inhalt wird ausgegeben
+                                    $inhalt = htmlspecialchars($content['text'], ENT_HTML401);
+                                    echo hashtag($inhalt);
+                                    ?>
+                                    </div>
 
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                      <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
@@ -252,7 +272,6 @@ if(isset($_POST['kommentar'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-
 
     function post(){
         var comment = document.getElementByName("comment").value;
