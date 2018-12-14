@@ -30,7 +30,7 @@ Thema <?php echo $hashtag1; ?>
 
 </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-">
-
+            <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Hashtags 2.png" alt="" style="width:300px;">
             <br>
             <h1>#<?php echo $hashtag1;?></h1>
             <br>
