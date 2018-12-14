@@ -19,21 +19,31 @@ echo $benutzername_id
 <head>
     <meta charset="utf-8"/>
     <title>Profilbild auswählen</title>
-    <link href="studylab.css" rel="stylesheet">
+    <link href="studylab-login.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/bib2.jpg);
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid-main">
         <div class="row">
 
             <!-- Einteilung in das Grid-System -->
-            <div class="col-lg-3 col-md-1 col-sm-1">
+            <div class="row height-100 mx-auto align-items-center background-recht">
 
             </div>
 
             <!-- Einteilung in das Grid-System -->
-            <div class="col-lg-6 col-md-10 col-sm-10 col-">
-
+            <div class="fenster col-sm-12 align-items-center">
+                <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="100" width="250">
+                <br>
                 <h1>Du wurdest erfolgreich Registriert</h1>
                 <h2>Nun wähle ein Profilbild aus</h2>
 
@@ -59,8 +69,10 @@ echo $benutzername_id
                     $statement->bindParam(4,$regid);
                     $statement->execute();
 
-                    $folgen = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$benutzername_id', '$benutzername_id') ");
-                    $folgen -> execute();
+                   // $folgen = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$benutzername_id', '$benutzername_id') ");
+                   // $folgen -> execute();
+                    $folgen = $pdo->prepare("INSERT INTO folgen (id,user_id,follower_id) VALUES ('',:user_id,:follower_id)");
+                    $folgen -> execute(array(':user_id' =>$regid,':follower_id' => $regid));
 
                     header ("location:login.php");
                 }
@@ -73,26 +85,6 @@ echo $benutzername_id
                 </form>
 
                 <p></p>
-
-                <div class="bilder">
-                    <?php
-                    /*
-                    // zeigt die Bilder aus der Datenbank an
-                    $stat = $pdo->prepare("SELECT * FROM bilduplad");
-                    $stat->execute();
-                    while($row = $stat->fetch()){
-                        echo "<a target='_blank' href='bild_abrufen.php?".$row['user_id']."'>"."</a><br/>
-                    <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/>";
-                    }
-                    */
-                    ?>
-
-            </div>
-
-            <!-- Einteilung in das Grid-System -->
-            <div class="col-lg-3 col-md-1 col-sm-1">
-
-            </div>
 
         </div>
     </div>
