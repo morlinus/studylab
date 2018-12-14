@@ -1,12 +1,10 @@
+
+
+<title>Profil bearbeiten</title>
 <?php
 session_start();
 include_once 'header.php';
 ?>
-
-<html>
-<head>
-<title> Profil bearbeiten</title>
-</head>
 
 <body>
 
@@ -151,9 +149,9 @@ include_once 'header.php';
                         <div class="passwort-bearbeitung">
                                 <label for="Inhalt">Passwort ändern:</label>
                                 <br>
-                                altes Passwort:<input type="password" class="form-control" name="passwort_alt" />  <br>
+                                altes Passwort:<input  required type="password" class="form-control" name="passwort_alt" />  <br>
 
-                                neues Passwort:<input type="password" class="form-control" name="passwort_neu" />  <br><br>
+                                neues Passwort:<input  required type="password" class="form-control" name="passwort_neu" />  <br><br>
                         </div>
 
                                 <form class="form-inline my-2 my-lg-0" action="aendern.php" method="post">
@@ -188,5 +186,4 @@ include_once 'header.php';
 session_start();
 include_once 'footer.php';
 ?>
-
 </html>

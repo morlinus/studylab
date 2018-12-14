@@ -14,7 +14,6 @@ if (!$abos > 0 ) {
 }
 
 
-
 if (isset($_SESSION["angemeldet"]))
 {
 
@@ -81,6 +80,8 @@ if(isset($_POST['kommentar'])) {
             </div>
             <br>
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
+
+                
                         <?php
                         $id=$_SESSION["id"];
                         $profil=$pdo->prepare("SELECT * FROM studylab WHERE id=$id");

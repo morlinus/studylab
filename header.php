@@ -81,7 +81,7 @@ $row_header = $bild_header->fetch()
 
 
                         <?php
-                        echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])." 'width=' alt='nutzerprofilbild' class='profilbild-navbar ml-2'>");
+                        echo ("<img src= data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])." alt='nutzerprofilbild' class='profilbild-navbar ml-2'>");
 
 
                         ?>
