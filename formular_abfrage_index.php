@@ -27,13 +27,6 @@ function hashtagfinden($htags) {
     return $htags;
 }
 
-
-if(!isset($_SESSION["angemeldet"]))
-{
-    echo"nicht angemeldet.";
-    die();
-}
-
 // übernimmt den Content aus dem Formular der Index.php und fügt die Daten dann in die Datenbank ein
 $content= $_POST["content"];
 $htagsuche = hashtagfinden($content);

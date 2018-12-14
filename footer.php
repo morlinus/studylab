@@ -25,7 +25,6 @@ include 'userdata.php';
 
     <div class="footer text-center">© 2018 Copyright:
         <a href="#">StudiLAB.com</a>
-        <a href="https://mars.iuk.hdm-stuttgart.de/~as325/impressum.html">Impressum</a>
     </div>
 
 </footer>

@@ -1,10 +1,12 @@
 <?php
 session_start();
-
+// bindet den Datenbankzugriff ein
 include 'userdata.php';
 
+// übernimmt die Daten auf der Session
 $id_header=$_SESSION ["id"];
 
+// holt die ID und das dazugehörige Profilbild aus der Datenbank 
 $benutzername_header = $pdo->prepare("SELECT * FROM studylab WHERE id = '$id_header' ");
 $benutzername_header->execute();
 $benutzer_name = $benutzername_header->fetch();

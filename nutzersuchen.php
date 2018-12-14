@@ -36,7 +36,7 @@ include_once 'header.php';
                         header("Location:login.php");
                     }
                 ?>
-
+                <!-- hier kann der User den Benutzer eingeben, den er suchen möchte -->
                 <form class="form-inline my-2 my-lg-0" action="nutzersuchen.php" method="post">
                     <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="nutzersuchen" value="">
                     <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
@@ -47,7 +47,7 @@ include_once 'header.php';
 
 
                 <?php
-
+                // gibt die Sachen aus, die im Formular eingeben wurden
                 if (isset($_POST['suchen'])) {
 
                 ?>

@@ -2,11 +2,13 @@
 // bindet die header.php ein und damit den Header der Seite
 include_once 'header.php';
 
+// übernimmt aus der Session die ID
 $id_header=$_SESSION ["id"];
+$id=$_SESSION["id"];
 
+// es wird geschaut, ob der Nutzer schon jemandem folgt
 $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $id_header");
 $abonennten ->execute();
-//$abos = $abonennten ->fetch();
 $abos = $abonennten ->rowCount();
 
 if (!$abos > 0 ) {
@@ -23,13 +25,12 @@ else {
     header("Location:login.php");
 }
 
+// das Bild für den Header wird aus der Datenbank ausgegeben
 $bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header->execute();
 while($row_header = $bild_header->fetch()){
 
-
-$id=$_SESSION["id"];
-
+// Die Kommentare werden in die Datenbank eingetragen
 if(isset($_POST['kommentar'])) {
 
     $comment=$_POST['comment'];
@@ -81,7 +82,7 @@ if(isset($_POST['kommentar'])) {
             <br>
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
-                
+                        <!-- Die Daten des angemeldeten Nutzers werden aus der Datenbank geholt und ausgegeben -->
                         <?php
                         $id=$_SESSION["id"];
                         $profil=$pdo->prepare("SELECT * FROM studylab WHERE id=$id");
@@ -115,14 +116,14 @@ if(isset($_POST['kommentar'])) {
                 $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid=$id ORDER BY content.id DESC");
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
-
+                    // wählt zu den entsprechenden Beiträgen die Bilder aus
                     $postid = $content ["id"];
                     $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$postid");
                     $beitrags_bild -> execute();
                     $bilder = $beitrags_bild -> fetch();
                     $dbabgleich = $bilder ["post_id"];
 
-                $id_header=$_SESSION ["id"];
+                // Das Profilbild des jeweiligen Beitragserstellers wird ausgegeben
                 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
                 $bild_header ->execute();
                 while($row_header = $bild_header->fetch()){
@@ -157,6 +158,7 @@ if(isset($_POST['kommentar'])) {
                     </div>
 
                         <?php
+                        // Die zu dem Beitrag zugehörigen Kommentare werden ausgegeben
                         $post_id = $content['id'];
                         $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
                         $kommentare->execute();
@@ -166,6 +168,7 @@ if(isset($_POST['kommentar'])) {
                             <div class="kommentar">
 
                                 <?php
+                                // Die zu den Kommentaren zugehörigen Profilbilder werden ausgegeben
                                 $kommid=$komm['id'];
 
                                 $kommbild =$pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
@@ -206,7 +209,7 @@ if(isset($_POST['kommentar'])) {
 </div>
 
 </body>
-
+<!-- Hier wird das Script für die Kommentare und den Post implementiert -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 
