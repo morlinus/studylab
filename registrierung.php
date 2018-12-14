@@ -1,5 +1,6 @@
 <?php
 session_start();
+// bindet den Datenbankzugriff ein
 include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 ?>
 <!DOCTYPE html>

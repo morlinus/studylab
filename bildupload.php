@@ -1,5 +1,4 @@
 <?php
-//include_once 'header.php';
 include "userdata.php";
 
 $benutzername_id=$_GET['studylab'];
@@ -27,10 +26,12 @@ echo $benutzername_id
     <div class="container-fluid">
         <div class="row">
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
                 <h1>Du wurdest erfolgreich Registriert</h1>
@@ -38,9 +39,8 @@ echo $benutzername_id
 
                 <!-- "enctype" beschreibt wie die Datei encoded werden soll -->
                 <?php
+
                 // Stellt die Verbindung zur Datenbank her und fügt die Datei in die Datenbank ein
-
-
                 echo $regid;
                 echo $benutzername_id;
 
@@ -89,6 +89,7 @@ echo $benutzername_id
 
             </div>
 
+            <!-- Einteilung in das Grid-System -->
             <div class="col-lg-3 col-md-1 col-sm-1">
 
             </div>
@@ -96,10 +97,5 @@ echo $benutzername_id
         </div>
     </div>
 </body>
-
-<?php
-session_start();
-include_once 'footer.php';
-?>
 
 </html>

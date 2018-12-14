@@ -1,6 +1,6 @@
 <?php
 ob_start();
-
+// bindet die header.php ein und damit den Header der Seite
 include_once "header.php";
 
 $profile_id=$_GET['studylab'];
@@ -24,6 +24,7 @@ $row_folgen = $bild_folgen->fetch();
 <div class="container-fluid">
     <div class="row">
 
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-4 col-md-4 col-sm-4 col-">
 
             <br>
@@ -34,12 +35,13 @@ $row_folgen = $bild_folgen->fetch();
                 <?php
                 //Benutzerbild wird im Profil angezeigt
 
-                echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-rund'>");
+                echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-profil'>");
                 ?>
             </div>
 
             <br>
 
+            <!-- Umrandung und Schatten der Profilinfo -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
             <?php
@@ -117,7 +119,7 @@ $row_folgen = $bild_folgen->fetch();
                     <h6>Geburtstag</h6> <?php echo htmlspecialchars($geburtstag, ENT_HTML401) . "<br /><br />"; ?>
                     <h6>Studiengang</h6> <?php echo  htmlspecialchars($studiengang, ENT_HTML401) . "<br /><br />"; ?>
 
-                    <a href="mailto:<?php echo htmlspecialchars( $email, ENT_HTML401); ?>">Sende <?php echo htmlspecialchars($benutzername, ENT_HTML401); ?> eine E-Mail</a>
+                    <a class="e-mail" href="mailto:<?php echo htmlspecialchars( $email, ENT_HTML401); ?>">Sende <?php echo htmlspecialchars($benutzername, ENT_HTML401); ?> eine E-Mail</a>
 
 
                     <?php
@@ -128,7 +130,7 @@ $row_folgen = $bild_folgen->fetch();
             </div>
         </div>
 
-
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-8 col-md-8 col-sm-8 col-">
 
             <br>
@@ -156,6 +158,7 @@ $row_folgen = $bild_folgen->fetch();
             while ($row_folgen2 = $bild_folgen2->fetch()){
             ?>
 
+            <!-- Umrandung und Schatten der Profilinfo und der Beiträge -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <div class="beitrag">
 
@@ -192,6 +195,7 @@ $row_folgen = $bild_folgen->fetch();
                 while ($komm = $kommentare->fetch()) {
                 ?>
 
+                <!-- Style der Kommentare -->
                 <div class="kommentar">
 
                     <?php
@@ -201,6 +205,8 @@ $row_folgen = $bild_folgen->fetch();
                     $kommbild->execute();
                     while ($row_kommbild = $kommbild->fetch()) {
                         ?>
+
+                        <!-- Style des Profilbilds im Beitrag -->
                         <div class="miniprofbild">
                             <?php
                             echo("<img src='data:" . $row_kommbild['format'] . ";base64," . base64_encode($row_kommbild['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
@@ -234,6 +240,7 @@ $row_folgen = $bild_folgen->fetch();
 
 </body>
 
+<!-- Einbindung des Sticky-Footers -->
 <?php
 ob_end_flush();
 

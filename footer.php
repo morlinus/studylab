@@ -1,4 +1,5 @@
 <?php
+// Einbindung der
 include 'userdata.php';
 ?>
 
@@ -24,7 +25,7 @@ include 'userdata.php';
 <footer class="page-footer navbar-inverse">
 
     <div class="footer text-center">© 2018 Copyright:
-        <a href="#">StudiLAB.com</a>
+        <a href="index.php">StudiLAB.com</a>
     </div>
 
 </footer>

@@ -27,6 +27,6 @@ $statement->execute(array(':text'=>$content, ':userid'=>$id));
 // leitet den Nutzer nach dem Post wieder auf die Nutzerprofil.php zurück
 header ("Location:nutzerprofil.php");
 
-
+?>
 
 

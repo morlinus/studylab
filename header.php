@@ -28,12 +28,15 @@ $row_header = $bild_header->fetch()
 <head>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Einbindung Stylesheet-->
     <link href="studylab.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.mim.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
@@ -42,13 +45,19 @@ $row_header = $bild_header->fetch()
 <body>
 
 <div class="navbar-custom shadow-sm">
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <div class="container-fluid">
 
+            <!-- Einteilung Grid-System -->
             <div class="col-12-header col-s-12-header">
 
+                <!-- Wenn man auf das StudiLAB Logo klickt, wird man auf die Startseite geleitet -->
                 <a class="navbar-brand" href="index.php"><img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="50" width="120"></a>
+
+                <!-- Toggler-Item ab einer bestimmten Breite -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -67,7 +76,8 @@ $row_header = $bild_header->fetch()
 
                     </ul>
 
-                    <div class="nav-item dropdown ml-2">
+                    <!-- Dropdown-Menü -->
+                    <div class="nav-item dropdown">
                         <a class="nav-link btn btn-secondary dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php
                             echo $benutzer_name['benutzername'];
@@ -80,7 +90,7 @@ $row_header = $bild_header->fetch()
                             <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
 
-
+                        <!-- Bildeinbindung neben dem Dropdown-Menü -->
                         <?php
                         echo ("<img src= data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])." alt='nutzerprofilbild' class='profilbild-navbar ml-2'>");
 
