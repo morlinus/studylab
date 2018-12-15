@@ -1,4 +1,15 @@
 <?php
+// schaut durch die Session, ob der Nutzer angemeldet ist
+session_start();
+if (isset($_SESSION["angemeldet"]))
+{
+
+}
+else {
+    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
+    header("Location:login.php");
+}
+
 // bindet den Header in die Seite ein
 include "header.php";
 ?>

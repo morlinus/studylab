@@ -1,5 +1,4 @@
 <?php
-// bindet den Header in die Seite ein
 // schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
@@ -11,6 +10,7 @@ else {
     header("Location:login.php");
 }
 
+// bindet den Header in die Seite ein
 include "header.php";
 
 // bindet den Datenbankzugriff ein

@@ -1,4 +1,5 @@
 <?php
+//bindet die Header in die Seite ein
 include "userdata.php";
 
 $benutzername_id=$_GET['studylab'];

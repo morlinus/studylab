@@ -1,4 +1,15 @@
 <?php
+// schaut durch die Session, ob der Nutzer angemeldet ist
+session_start();
+if (isset($_SESSION["angemeldet"]))
+{
+
+}
+else {
+    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
+    header("Location:login.php");
+}
+
 // bindet die header.php ein und damit den Header der Seite
 include_once 'header.php';
 
@@ -12,17 +23,7 @@ $abonennten ->execute();
 $abos = $abonennten ->rowCount();
 
 if (!$abos > 0 ) {
-    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden.";
-}
-
-
-if (isset($_SESSION["angemeldet"]))
-{
-
-}
-else {
-    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
-    header("Location:login.php");
+    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden";
 }
 
 // das Bild für den Header wird aus der Datenbank ausgegeben

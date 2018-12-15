@@ -1,5 +1,4 @@
 <?php
-
 // schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))

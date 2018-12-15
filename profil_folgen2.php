@@ -1,4 +1,15 @@
 <?php
+// schaut durch die Session, ob der Nutzer angemeldet ist
+session_start();
+if (isset($_SESSION["angemeldet"]))
+{
+
+}
+else {
+    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
+    header("Location:login.php");
+}
+
 ob_start();
 // bindet die header.php ein und damit den Header der Seite
 include_once "header.php";
@@ -10,6 +21,7 @@ $bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id
 $bild_folgen->execute();
 $row_folgen = $bild_folgen->fetch();
 $lesen = "read";
+
 ?>
 
 <!doctype html>

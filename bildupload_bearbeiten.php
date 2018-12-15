@@ -1,4 +1,14 @@
 <?php
+// schaut durch die Session, ob der Nutzer angemeldet ist
+session_start();
+if (isset($_SESSION["angemeldet"]))
+{
+
+}
+else {
+    // Falls der Nutzer nicht angemeldet ist, wird er mit header auf die Login-Seite geleitet
+    header("Location:login.php");
+}
 
 ob_start();
 // stellt die Verbindung zur Datenbank her
@@ -13,6 +23,8 @@ $benutzer_name = $_SESSION ["angemeldet"];
 $bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header->execute();
 while($row_header = $bild_header->fetch()){
+
+
 ?>
 
 
