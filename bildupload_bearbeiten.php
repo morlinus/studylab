@@ -41,12 +41,12 @@ while($row_header = $bild_header->fetch()){
     <div class="row">
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="col-lg-3 col-md-1 col-sm-1">
 
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-6 col-md-6 col-sm-6 col-">
+        <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
             <br>
             <br>
@@ -61,14 +61,14 @@ while($row_header = $bild_header->fetch()){
 
                         <h6>Akutelles Profilbild</h6><br>
                         <div class="kommentar">
-                    <?php
+                            <?php
 
-                    // Benutzerbild wird im Profil angezeigt
-                    echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='profilbild-profil'>");
-                    }
-                    ?>
+                            // Benutzerbild wird im Profil angezeigt
+                            echo ("<img src='data:".$row_header['format'].";base64,".base64_encode($row_header['datei'])."'width=' alt='Responsive image' class='profilbild-profil'>");
+                            }
+                            ?>
                         </div>
-                    <br>
+                        <br>
 
 
 
@@ -101,7 +101,7 @@ while($row_header = $bild_header->fetch()){
                     <br>
 
                     <!-- Das Form zum hochladen der Dateien -->
-                    <form class="form-inline my-2 my-lg-0" enctype="multipart/form-data" method="POST"">
+                    <form class="form-inline my-2 my-lg-0" enctype="multipart/form-data" method="POST">
                         <input type="file" name="myfile"/>
                         <button class="btn my-2 my-sm-0" type="submit" name="submit" value="Hochladen">Hochladen</button>
                     </form>
@@ -128,7 +128,7 @@ while($row_header = $bild_header->fetch()){
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="col-lg-3 col-md-1 col-sm-1">
 
         </div>
 

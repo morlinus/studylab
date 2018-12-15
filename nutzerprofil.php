@@ -85,7 +85,7 @@ if(isset($_POST['kommentar'])) {
     <div class="row">
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-">
 
             <br>
             <br>
@@ -129,7 +129,7 @@ if(isset($_POST['kommentar'])) {
 
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-8 col-md-8 col-sm-8 col-">
+        <div class="col-lg-6 col-md-8 col-sm-8 col-">
 
             <br>
             <br>
@@ -232,7 +232,7 @@ if(isset($_POST['kommentar'])) {
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-1 col-md-1 col-sm-1 col-">
+        <div class="col-lg-3">
 
         </div>
 
