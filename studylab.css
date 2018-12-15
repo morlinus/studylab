@@ -272,6 +272,7 @@ html, body{
     margin-bottom: 0;
     list-style: none;
     text-decoration: none;
+    text-align: -webkit-right;
 }
 
 .navbar-item{
@@ -298,6 +299,7 @@ html, body{
     padding-top: 5px;
     position: relative;
     display: -webkit-box;
+    text-align: -webkit-right;
 }
 
 .dropdown-menu {
@@ -430,6 +432,10 @@ group>.btn:not(:first-child) {
     border-radius: 50%;
 }
 
+.profilbild-bearbeitung{
+    padding: 10px;
+}
+
 .beitragsbild{
     padding: 5px;
     position: relative;
@@ -447,6 +453,13 @@ group>.btn:not(:first-child) {
     width: 100%;
     object-fit: cover;
     border-radius: 1% !important;
+}
+
+.profilbearbeitung{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .bild-class {

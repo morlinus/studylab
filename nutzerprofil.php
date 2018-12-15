@@ -12,7 +12,7 @@ $abonennten ->execute();
 $abos = $abonennten ->rowCount();
 
 if (!$abos > 0 ) {
-    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden";
+    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden.";
 }
 
 
