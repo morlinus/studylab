@@ -30,12 +30,7 @@ include_once 'header.php';
                     </div>
                 </div>
 
-
-
                 <br>
-                <br>
-
-
 
                 <div class="suche">
                     <div class="shadow-suche p-3 mb-5 bg-white rounded">

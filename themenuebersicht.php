@@ -111,70 +111,69 @@ include "header.php";
 
                     <h5>Ist das richtige Thema noch nicht dabei?</h5>
                     <h5>Hier kannst du danach suchen</h5>
-                </div>
 
-                    <!-- hier kann der User den Themen eingeben,  nach denen er suchen möchte -->
-                    <form class="form-inline my-2 my-lg-0" action="themenuebersicht.php" method="post" style="width: 32%; margin:auto;">
-                        <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="themenuebersicht" value="" required>
+                    <!-- hier kann der User die Themen eingeben,  nach denen er suchen möchte -->
+                    <form class="form-inline my-2 my-lg-0" action="themenuebersicht.php" method="post" style="width: 32%; margin: auto;">
+                        <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="themenuebersicht" value="">
                         <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
                     </form>
 
                     <br>
-
+                </div>
         </div>
                     <?php
                     // gibt die Daten aus, die im Formular eingeben wurden
                     if (isset($_POST['suchen'])) {
-
-                        ?>
-
-
-        <h5 style="text-align: center"> <?php echo "Suchergebnisse: <br>";?> </h5>
-
-        <br>
+                    ?>
 
 
-        <?php
-        $suchethemen = $_POST['themenuebersicht'];
 
-        // $headline = $_POST['beitragsuchen'];
+                        <h5 style="text-align: center"> <?php echo "Suchergebnisse: <br>";?> </h5>
 
-        $themensuche = $pdo->prepare("SELECT * FROM content WHERE themen LIKE '%$suchethemen%'");
-
-        if ($themensuche->execute()) {
-
-            while ($row = $themensuche->fetch()) {
-
-                // echo $row ['benutzername'];
-
-                $themalink = $row['themen'];
-                $studilab2 = $row["userid"];
-
-                $bild_suche = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$studilab2'");
-                $bild_suche->execute();
-                $row_suche = $bild_suche->fetch();
-
-                echo '<div class="col-12-ergebnisse">';
-                echo '<ul class="kommentar2">';
-                //echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                echo ("<img src='https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_quadrat.png' width='' alt='Nutzerprofilbild' class='profilbild-navbar'>");
-                echo " ";
-                echo '<a class="suchen-ergebnisse" href="themen.php?themen='.$themalink.'">'."Beitrag zum Thema "."#". $row['themen'].'</a>';
-                //echo "<br>". $row["name"]." ". $row ["nachname"];
-                echo '</ul>';
-                echo '</div>';
-
-            }
-        }
-
-        else {
-            echo "Keine passenden Themen gefunden";
-        }
-
-        }
+                        <br>
 
 
-        ?>
+                        <?php
+                        $suchethemen = $_POST['themenuebersicht'];
+
+                        // $headline = $_POST['beitragsuchen'];
+
+                        $themensuche = $pdo->prepare("SELECT * FROM content WHERE themen LIKE '%$suchethemen%'");
+
+                        if ($themensuche->execute()) {
+
+                            while ($row = $themensuche->fetch()) {
+
+                                // echo $row ['benutzername'];
+
+                                $themalink = $row['themen'];
+                                $studilab2 = $row["userid"];
+
+                                $bild_suche = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$studilab2'");
+                                $bild_suche->execute();
+                                $row_suche = $bild_suche->fetch();
+
+                            echo '<div class="col-12-ergebnisse">';
+                            echo '<ul class="kommentar2">';
+                            //echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            echo ("<img src='https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_quadrat.png' width='' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            echo " ";
+                            echo '<a class="suchen-ergebnisse" href="themen.php?themen='.$themalink.'">'."Beitrag zum Thema "."#". $row['themen'].'</a>';
+                            //echo "<br>". $row["name"]." ". $row ["nachname"];
+                            echo '</ul>';
+                            echo '</div>';
+
+                            }
+                        }
+
+                        else {
+                            echo "Keine passenden Themen gefunden";
+                        }
+
+                    }
+
+                    ?>
+
 
     </div>
 

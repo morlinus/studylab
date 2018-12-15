@@ -26,6 +26,11 @@ include_once 'header.php';
             <!-- Einteilung in das Grid-System -->
             <div class="col-lg-6 col-md-10 col-sm-10 col-">
 
+                <br>
+                <br>
+
+                <div class="shadow-sm p-3 mb-5 bg-white rounded">
+
                 <script>
                     $( function() {
                                 $( "#datepicker" ).datepicker();
@@ -79,8 +84,7 @@ include_once 'header.php';
                         ?>
 
                         <!-- Style der Profilbearbeitung -->
-                        <br>
-                        <div class="name-bearbeitung">
+                        <div class="profilbearbeitung">
                         <form action="aendern.php" method="post">
                                 <label for="Inhalt">Name:</label>
                                 <br>
@@ -88,26 +92,37 @@ include_once 'header.php';
                         </form>
                         </div>
                         <br>
-                        <div class="nachname-bearbeitung">
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Nachname:</label>
                                 <br>
                                 <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="nachname" value="<?php echo $row['nachname'];?>"/>
                         </div>
                         <br>
-                        <div class="benutzername-bearbeitung">
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Benutzername:</label>
                                 <br>
                                 <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="benutzername" value="<?php echo $row['benutzername'];?>"/>
                         </div>
                         <br>
-                        <div class="geburtsdatum-bearbeitung">
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Geburtsdatum:</label>
                                 <br>
                                 <!-- Der Datepicker funktioniert hier noch nicht -->
                                 <input type="geburtsdatum" class="form-control" id="datepicker"  size = "40" maxlength="200" name="geburtsdatum"value="<?php echo $row['geburtsdatum'];?>">
                         </div>
                         <br>
-                        <div class="studiengang-bearbeitung">
+                        <div class="profilbearbeitung">
+                            <label for="Inhalt">Geschlecht:</label>
+                            <br>
+                            <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['geschlecht'];?>"/>
+                        </div>
+                        <br>
+                        <div class="profilbearbeitung">
+                            <label for="Inhalt">E-Mail Addresse</label>
+                            <input type="email" class="form-control" id="Inhalt" value="<?php echo $row['email'];?>">
+                        </div>
+                        <br>
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Studiengang:</label>
 
                             <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
@@ -130,24 +145,13 @@ include_once 'header.php';
                             </select>
                         </div>
                         <br>
-                        <div class="geschlecht-bearbeitung">
-                                <label for="Inhalt">Geschlecht:</label>
-                                <br>
-                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['geschlecht'];?>"/>
-                        </div>
-                        <br>
-                        <div class="email-bearbeitung">
-                                <label for="Inhalt">E-Mail Addresse</label>
-                                <input type="email" class="form-control" id="Inhalt" value="<?php echo $row['email'];?>">
-                        </div>
-                        <br>
-                        <div class="semester-bearbeitung">
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Semester:</label>
                                 <br>
                                 <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['semester'];?>"/>
                         </div>
                         <br>
-                        <div class="status-bearbeitung">
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Status:</label>
 
                             <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
@@ -156,7 +160,7 @@ include_once 'header.php';
                             </select>
                         </div>
                          <br>
-                        <div class="passwort-bearbeitung">
+                        <div class="profilbearbeitung">
                                 <label for="Inhalt">Passwort ändern:</label>
                                 <br>
                                 altes Passwort:<input  required type="password" class="form-control" name="passwort_alt" />  <br>
@@ -164,10 +168,11 @@ include_once 'header.php';
                                 neues Passwort:<input  required type="password" class="form-control" name="passwort_neu" />  <br><br>
                         </div>
 
+                        <div class="profilbearbeitung">
                                 <form class="form-inline my-2 my-lg-0" action="aendern.php" method="post">
                                     <button class="btn my-2 my-sm-0" type="submit" name="submit" value="Änderungen speichern">Änderungen speichern</button>
                                 </form>
-
+                        </div>
 
 
 
@@ -181,6 +186,8 @@ include_once 'header.php';
                     die();
                 }
                 ?>
+
+                </div>
             </div>
 
             <!-- Einteilung in das Grid-System -->
