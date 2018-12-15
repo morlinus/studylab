@@ -171,7 +171,7 @@ if(isset($_POST['kommentar'])) {
 
 
                             <!-- Style des Kommentars -->
-                            <div class="kommentar">
+                            <div class="kommentar2">
 
                                 <?php
                                 // Die zu den Kommentaren zugehörigen Profilbilder werden ausgegeben

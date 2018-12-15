@@ -243,7 +243,7 @@ if(isset($_POST['kommentar'])) {
                                     if (!$dbtest > 0) {
                                         ?>
                                         <div class="beitrag">
-                                            Herzlich Willkommen <?php echo htmlspecialchars($angmeldet_index,ENT_HTML401); ?>! Schreibe einen Beitrag oder finde Nutzer über die <a href="nutzersuchen.php">Suchfunktion</a>, um deren Beiträge zu sehen.
+                                            Herzlich Willkommen <?php echo htmlspecialchars($angmeldet_index,ENT_HTML401); ?>! Schreibe einen Beitrag oder finde Nutzer über die <a class="e-mail" href="nutzersuchen.php">Suchfunktion</a>, um deren Beiträge zu sehen.
                                         </div>
                                         <?php
                                     }
