@@ -13,10 +13,13 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link href="studylab-login.css" rel="stylesheet">
     <script>
         $( function() {
             $( "#datepicker" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
                 dateFormat: 'yy-mm-dd'
             });
         } );
@@ -28,19 +31,19 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
                 "Online- Medien- Management",
                 "Informationsdesign",
                 "Bibliothekswissenschaften",
-                "Audiovisuelle Medien"
-                "Crossmedia-Redaktion/Public Relations"
-                "Deutsch-Chinesischer Studiengang Medien und Technologie"
-                "Informationswissenschaften"
-                "Integriertes Produktdesign"
-                "Mediapublishing"
-                "Medieninformatik"
-                "Medienwirtschaft"
-                "Mobile Medien"
-                "Print Media Technologies"
-                "Verpackungstechnik"
-                "Werbung und Marktkommunikation"
-               "Wirtschaftsinformatik und digitale Medien"
+                "Audiovisuelle Medien",
+                "Crossmedia-Redaktion/Public Relations",
+                "Deutsch-Chinesischer Studiengang Medien und Technologie",
+                "Informationswissenschaften",
+                "Integriertes Produktdesign",
+                "Mediapublishing",
+                "Medieninformatik",
+                "Medienwirtschaft",
+                "Mobile Medien",
+                "Print Media Technologies",
+                "Verpackungstechnik",
+                "Werbung und Marktkommunikation",
+               "Wirtschaftsinformatik und digitale Medien",
                 "Wirtschaftsingenieurwesen Medien"
             ];
             $( "#tags" ).autocomplete({
@@ -54,7 +57,7 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
     body {
         margin: 0;
         padding: 0;
-        background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/hdm2.jpg);
+        background: url(https://mars.iuk.hdm-stuttgart.de/~lm092/würfel2.jpg);
         background-size: cover;
         height: 100vh;
         width: 100vh;
@@ -161,8 +164,16 @@ if(isset($_GET['register'])) {
 if($showFormular) {
 
     ?>
-<div class="fensterreg">
-    <h2>Registrieren</h2>
+
+<div class="container-fluid-main">
+    <div class="row height-100 mx-auto align-items-center background-recht">‚
+
+    <div class="col-lg-3 col-md-2 col-sm-0 col-lg-3 col-md-1 col-"></div>
+
+
+<div class="fensterreg col-lg-6 col-md-8 col-sm-12" >
+    <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="100" width="250">
+    <h2 style="font-family:'Helvetica Neue'">Registrieren</h2>
     <form action="?register=1" method="post">
 
         <div class="eingabefeldreg">
@@ -181,38 +192,34 @@ if($showFormular) {
         <input type="geburtsdatum" id="datepicker" size = "40" maxlength="200" name="geburtsdatum"placeholder="Geburtsdatum">
         </div>
 
+        <table>
+            <tr>
+                <td style="font-weight:bold; font-family:'Helvetica Neue';">Geschlecht </td>
+                <td style="color:darkgrey; font-family:'Helvetica Neue';">
+                    <input type="radio" name="geschlecht" value="Männlich" required> Männlich
+                    <input type="radio" name="geschlecht" value="Weiblich" required> Weiblich
+                </td>
+                <td style="font-weight:bold; font-family:'Helvetica Neue';">        Position </td>
+                <td style="color:darkgrey; font-family:'Helvetica Neue';">
+                    <input type="radio" name="status" value="Student" required> Student
+                    <input type="radio" name="status" value="Professor" required> Professor
+                </td>
+            </tr>
+        </table>
+        <br>
+
         <div class="eingabefeldreg">
             <div class="ui-widget">
                 <input id="tags" size="40" maxlength="200" name="studiengang" type="studiengang"placeholder="Studiengang">
             </div>
         </div>
-        <br><br>
-
-        <table>
-            <tr>
-                <td>Geschlecht :</td>
-                <td>
-                    <input type="radio" name="geschlecht" value="Männlich" required>Männlich
-                    <input type="radio" name="geschlecht" value="Weiblich" required>Weiblich
-                </td>
-            </tr>
-        </table>
-        <br><br>
 
         <div class="eingabefeldreg">
         <input type="semester" size = "40" maxlength="200" name="semester" placeholder="Semester"><br><br>
         </div>
 
-        <table>
-            <tr>
-                <td>Position :</td>
-                <td>
-                    <input type="radio" name="status" value="Student" required>Student
-                    <input type="radio" name="status" value="Professor" required>Professor
-                </td>
-            </tr>
-        </table>
-        <br><br>
+
+
 
         <div class="eingabefeldreg">
         <input type="password" size="40"  maxlength="200" name="passwort" placeholder="Passwort eingeben"><br>
@@ -222,9 +229,16 @@ if($showFormular) {
         <input type="password" size="40" maxlength="200" name="passwort2" placeholder="Passwort wiederholen"><br><br>
         </div>
 
-        <input type="submit" value="Abschicken">
+        <button type="submit" value="Abschicken" class="btn btn-primary">Registrieren</button><br><br>
+        Schon Registriert? <a href="login.php">Zum Login</a><br><br>
     </form>
 
+</div>
+
+
+    <div class="col-lg-3 col-md-2 col-sm-0 col-lg-3 col-md-1 col-"></div>
+
+    </div>
 </div>
 
     <?php
