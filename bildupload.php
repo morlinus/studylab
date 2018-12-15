@@ -51,7 +51,7 @@ $row_get = $suchnutzer->fetch();
                 if (isset($_POST['submit'])){
                     $name = $_FILES['myfile']['name'];
                     $typ = $_FILES ['myfile']['type'];
-                   // $id = $_SESSION ["id"];
+
 
                     $datei = file_get_contents($_FILES['myfile']['tmp_name']);
                     $statement = $pdo->prepare("INSERT INTO bilduplad VALUES('',?,?,?,?)");
@@ -61,8 +61,7 @@ $row_get = $suchnutzer->fetch();
                     $statement->bindParam(4,$regid);
                     $statement->execute();
 
-                   // $folgen = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$benutzername_id', '$benutzername_id') ");
-                   // $folgen -> execute();
+                    // Der Nutzer folgt sich hier selbst, damit ihm auf der Index-Seite seine eigenen Beiträge angezeigt werden
                     $folgen = $pdo->prepare("INSERT INTO folgen (id,user_id,follower_id) VALUES ('',:user_id,:follower_id)");
                     $folgen -> execute(array(':user_id' =>$regid,':follower_id' => $regid));
 

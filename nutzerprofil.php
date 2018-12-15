@@ -28,7 +28,7 @@ function hashtag($htags) {
         if (substr($arr[$i],0,1) === $tagzeichen) {
             $tag2 =$arr[$i];
             $tag3=substr($tag2,1);
-            $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+            $arr[$i]= "<a class='e-mail' href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
         }
         $i++;
     }
@@ -85,6 +85,11 @@ if(isset($_POST['kommentar'])) {
     <div class="row">
 
         <!-- Einteilung in das Grid-System -->
+        <div class="col-lg-1">
+
+        </div>
+
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-">
 
             <br>
@@ -105,6 +110,8 @@ if(isset($_POST['kommentar'])) {
             <!-- Umrandung und Schatten der Profilinfo -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
+                <div class="rand">
+
                         <!-- Die Daten des angemeldeten Nutzers werden aus der Datenbank geholt und ausgegeben -->
                         <?php
                         $id=$_SESSION["id"];
@@ -124,12 +131,12 @@ if(isset($_POST['kommentar'])) {
                             <?php
                         }
                         ?>
+                </div>
             </div>
         </div>
 
-
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-6 col-md-8 col-sm-8 col-">
+        <div class="col-lg-7 col-md-8 col-sm-8 col-">
 
             <br>
             <br>
@@ -176,9 +183,12 @@ if(isset($_POST['kommentar'])) {
                             echo "<div class='bild-class'>";
                             echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                             echo "</div>";
-                            echo"<br>";
+
                         }
+
+                    echo"<br>";
                     $inhaltpost = htmlspecialchars($content['text'], ENT_HTML401);
+
                         echo hashtag($inhaltpost);
                     ?>
                     </div>
@@ -193,7 +203,7 @@ if(isset($_POST['kommentar'])) {
 
 
                             <!-- Style des Kommentars -->
-                            <div class="kommentar2">
+                            <div class="kommentar">
 
                                 <?php
                                 // Die zu den Kommentaren zugehörigen Profilbilder werden ausgegeben
@@ -228,11 +238,6 @@ if(isset($_POST['kommentar'])) {
                         <?php
                     }
                     ?>
-
-        </div>
-
-        <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-3">
 
         </div>
 

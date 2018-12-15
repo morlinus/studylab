@@ -34,7 +34,7 @@ function hashtag($htags) {
         if (substr($arr[$i],0,1) === $tagzeichen) {
             $tag2 =$arr[$i];
             $tag3=substr($tag2,1);
-            $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+            $arr[$i]= "<a class='e-mail' href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
         }
         $i++;
     }
@@ -58,7 +58,12 @@ function hashtag($htags) {
     <div class="row">
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-">
+        <div class="col-lg-1">
+
+        </div>
+
+        <!-- Einteilung in das Grid-System -->
+        <div class="col-lg-3 col-md-4 col-sm-4 col-">
 
             <br>
             <br>
@@ -77,6 +82,8 @@ function hashtag($htags) {
             <!-- Umrandung und Schatten der Profilinfo -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
+
+            <div class="rand">
             <?php
                 // Fremdes Profil?
                 if ($profile_id!=$_SESSION["angemeldet"]) {
@@ -102,9 +109,7 @@ function hashtag($htags) {
                         echo "followed";
                         $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11) NOT NULL");
                         $insert_ben -> execute ();
-                        //$statementupdate = $pdo->prepare("UPDATE benachrichtigung SET '$follower'= :gelesen WHERE id > 0");
-                        //$statementupdate -> bindParam("gelesen",$lesen);
-                        //$statementupdate -> execute ();
+                        // Alle Beiträge werden auf read gesetzt, damit man nur die Benachrichtigungen bekommt, ab dem Moment, wo man dem Nutzer folgt
                         $update=$pdo->prepare("UPDATE benachrichtigung SET $follower = ?");
                         $update->execute(array('read'));
                         header("location:profil_folgen2.php?studylab=$profile_id");
@@ -176,10 +181,11 @@ function hashtag($htags) {
 
             ?>
             </div>
+            </div>
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-8 col-md-8 col-sm-8 col-">
+        <div class="col-lg-7 col-md-8 col-sm-8 col-">
 
             <br>
             <br>
@@ -231,6 +237,7 @@ function hashtag($htags) {
                         echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                         echo "</div>";
                     }
+                    echo "<br>";
 
                     $inhaltp = htmlspecialchars($content['text'], ENT_HTML401);
                     echo hashtag($inhaltp);

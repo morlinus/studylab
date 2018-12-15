@@ -77,10 +77,6 @@ while($row_header = $bild_header->fetch()){
                     <?php
                     // Stellt die Verbindung zur Datenbank her und fügt die Datei in die Datenbank ein
 
-                    echo $regid;
-                    echo $benutzername_id;
-
-
                     if (isset($_POST['submit'])){
                         $name = $_FILES['myfile']['name'];
                         $typ = $_FILES ['myfile']['type'];
@@ -107,21 +103,6 @@ while($row_header = $bild_header->fetch()){
                     </form>
 
                     <p></p>
-
-                    <div class="bilder">
-                        <?php
-                        /*
-                        // zeigt die Bilder aus der Datenbank an
-                        $stat = $pdo->prepare("SELECT * FROM bilduplad");
-                        $stat->execute();
-                        while($row = $stat->fetch()){
-                            echo "<a target='_blank' href='bild_abrufen.php?".$row['user_id']."'>"."</a><br/>
-                        <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/>";
-                        }
-                        */
-                        ?>
-
-                    </div>
 
                 </div>
             </div>

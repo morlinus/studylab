@@ -27,7 +27,7 @@ function hashtag($htags) {
         if (substr($arr[$i],0,1) === $tagzeichen) {
             $tag2 =$arr[$i];
             $tag3=substr($tag2,1);
-              $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+              $arr[$i]= "<a class='e-mail' href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
         }
         $i++;
     }
@@ -169,27 +169,26 @@ if(isset($_POST['kommentar'])) {
                                             echo "<br>";
                                             echo "<div class='bild-class'>";
                                             ?>
-                                            <div class="img-fluid"><?php
+
+                                            <div class="img-fluid">
+                                            <?php
                                             echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
                                             echo "</div>";
-                                            echo "</br>";
                                         }
-
+                                        echo "<br>";
 
                                     //Der Post Inhalt wird ausgegeben
                                     $inhalt = htmlspecialchars($content['text'], ENT_HTML401);
-                                        echo "<br>";
                                     echo hashtag($inhalt);
                                     ?>
                                     </div>
                                     <br>
-
                                     <!-- Hier steht das Kommentar-Form, in dem der User einen Kommentar eintragen kann -->
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
-                                     <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"
+                                     <textarea required id="<?php echo $content['id'] ?>" name="comment" placeholder="Kommentieren"
                                           rows="1"
                                           class="form-control"></textarea><br>
-                                        <input type="hidden" value="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="post_id"
+                                        <input type="hidden" value="<?php echo $content['id']?>" name="post_id"
                                                class="form-control">
                                         <input type="submit" class="btn btn-primary" value="Kommentieren"
                                                name="kommentar"
@@ -200,7 +199,7 @@ if(isset($_POST['kommentar'])) {
 
                                     <?php
                                     // Hier werden die Kommentare für den jeweiligen Post ausgegeben
-                                    $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
+                                    $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$postid");
                                     $kommentare->execute();
                                     while ($komm = $kommentare->fetch()) {
                                         ?>
@@ -213,7 +212,7 @@ if(isset($_POST['kommentar'])) {
 
                                             $kommid = $komm['id'];
                                             // zu dem zugehörigen Kommentar, wird auch das dazugehörige Profilbild ausgegeben
-                                            $kommbild = $pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$post_id AND kommentare.id=$kommid");
+                                            $kommbild = $pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$postid AND kommentare.id=$kommid");
                                             $kommbild->execute();
                                             while ($row_kommbild = $kommbild->fetch()) {
                                                 ?>
@@ -227,7 +226,8 @@ if(isset($_POST['kommentar'])) {
                                                 <?php
                                             }
 
-                                            ?> <h6> <?php echo htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?> </h6><?php
+                                            ?> <h6> <?php echo htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?> </h6>
+                                            <?php
                                             echo htmlspecialchars($komm['kommentar'], ENT_HTML401);
                                             ?>
                                         </div>
