@@ -580,10 +580,22 @@ group>.btn:not(:first-child) {
 }
 
 .beitrag-suche{
-    padding: 15px;
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
-    background: rgba(209,209,209, 0.4);
     border-radius: 5px;
+    text-align: center;
+}
+
+.kommentar2{
+    width: 90%;
+    position: relative;
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: rgba(209,209,209,0.2);
+    font-size: 100%;
+    left: 5%;
 }

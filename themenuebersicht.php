@@ -12,6 +12,7 @@ include "header.php";
 
 
 <body>
+
 <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
     <div class="" style="">
         <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Themen.png" alt="" style="width: 350px;">
@@ -21,7 +22,7 @@ include "header.php";
 <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
 
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/hdm.jpg" alt="">
+        <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/hdm.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#HdM</h5>
             <p class="card-text">Beiträge, die allgemein die HdM betreffen.</p>
@@ -49,6 +50,7 @@ include "header.php";
             <a href="themen.php?themen=mensa" class="btn btn-primary">Alle Beiträge</a>
         </div>
     </div>
+
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/hilfe.jpg" alt="Card image cap">
         <div class="card-body">
@@ -57,7 +59,6 @@ include "header.php";
             <a href="themen.php?themen=hilfe" class="btn btn-primary">Alle Beiträge</a>
         </div>
     </div>
-
 
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/wg.jpg" alt="Card image cap">
@@ -85,31 +86,34 @@ include "header.php";
             <a href="themen.php?themen=suche" class="btn btn-primary">Alle Beiträge</a>
         </div>
     </div>
+
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/veranstalktungen.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Veranstaltungen</h5>
             <p class="card-text">Alles zum Thema Veranstaltungen.</p>
-            <a href="veranstaltung" class="btn btn-primary">Alle Beiträge</a>
+            <a href="themen.php?themen=veranstaltung" class="btn btn-primary">Alle Beiträge</a>
         </div>
     </div>
 
 </div>
 
 
-<div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+<div class="row">
 
     <div class="col-lg-1 col-md-1 col-sm-1">
 
     </div>
 
     <div class="col-lg-10 col-md-10 col-sm-10 col-">
-            <div class="shadow-sm p-3 mb-5 bg-white rounded ">
+        <div class="shadow-sm p-3 mb-5 bg-white rounded">
                 <div class="beitrag-suche">
-                    <h5>Ist das richtige Thema noch nicht dabei? Hier kannst du danach suchen</h5>
+
+                    <h5>Ist das richtige Thema noch nicht dabei?</h5>
+                    <h5>Hier kannst du danach suchen</h5>
 
                     <!-- hier kann der User den Themen eingeben,  nach denen er suchen möchte -->
-                    <form class="form-inline my-2 my-lg-0" action="themenuebersicht.php" method="post">
+                    <form class="form-inline my-2 my-lg-0" action="themenuebersicht.php" method="post" style="width: 32%; margin:auto;">
                         <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="themenuebersicht" value="" required>
                         <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
                     </form>
@@ -120,10 +124,13 @@ include "header.php";
                     if (isset($_POST['suchen'])) {
 
                         ?>
+                </div>
+        </div>
 
 
+                        <h5 style="text-align: center"> <?php echo "Suchergebnisse: <br>";?> </h5>
 
-                        <h5> <?php echo "Suchergebnisse: <br>";?> </h5><br>
+                        <br>
 
 
                         <?php
@@ -146,8 +153,8 @@ include "header.php";
                                 $bild_suche->execute();
                                 $row_suche = $bild_suche->fetch();
 
-                                echo '<div class="col-12-ergebnisse">';
-                                echo '<ul class="suchen-tabelle">';
+                                echo '<div class="col-12-ergebnisse" style="width: 40%; margin:auto;">';
+                                echo '<ul class="kommentar2">';
                                 //echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                 echo ("<img src='https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_quadrat.png' width='' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                 echo " ";
@@ -167,8 +174,6 @@ include "header.php";
 
                     ?>
 
-                </div>
-            </div>
 
     </div>
 
