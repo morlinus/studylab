@@ -155,6 +155,16 @@ function hashtag($htags) {
                     $geburtstag = $row ['geburtsdatum'];
                     $studiengang = $row ['studiengang'];
                     $email = $row ["email"];
+
+                    // es wird geschaut, ob der Nutzer schon jemandem folgt
+                    $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $profile_id");
+                    $abonennten ->execute();
+                    $abos = $abonennten ->rowCount();
+
+                    if (!$abos > 0 ) {
+                        $abos = "'$benutzername' hat noch keine Abonennten";
+                    }
+
                     ?>
 
                     <h6>Benutzername</h6> <?php echo  htmlspecialchars($benutzername, ENT_HTML401) . "<br /><br />"; ?>
@@ -162,6 +172,7 @@ function hashtag($htags) {
                     <h6>Nachname</h6><?php echo htmlspecialchars($nachname, ENT_HTML401) . "<br /><br />"; ?>
                     <h6>Geburtstag</h6> <?php echo htmlspecialchars($geburtstag, ENT_HTML401) . "<br /><br />"; ?>
                     <h6>Studiengang</h6> <?php echo  htmlspecialchars($studiengang, ENT_HTML401) . "<br /><br />"; ?>
+                    <h6>Abonennten</h6> <?php echo  htmlspecialchars($abos, ENT_HTML401) . "<br /><br />"; ?>
 
                     <a class="e-mail" href="mailto:<?php echo htmlspecialchars( $email, ENT_HTML401); ?>">Sende <?php echo htmlspecialchars($benutzername, ENT_HTML401); ?> eine E-Mail</a>
 
