@@ -21,7 +21,7 @@ include "header.php";
 
 <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/hdm.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#HdM</h5>
@@ -32,7 +32,7 @@ include "header.php";
 
 
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/bib3.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Bib</h5>
@@ -42,7 +42,7 @@ include "header.php";
     </div>
 
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/mensa.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Mensa</h5>
@@ -51,7 +51,7 @@ include "header.php";
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/hilfe.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Hilfe</h5>
@@ -60,7 +60,7 @@ include "header.php";
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/wg.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Wg</h5>
@@ -69,7 +69,7 @@ include "header.php";
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/fundbüro.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Fundbüro</h5>
@@ -78,7 +78,7 @@ include "header.php";
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/suche.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Suche</h5>
@@ -87,7 +87,7 @@ include "header.php";
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/veranstalktungen.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Veranstaltungen</h5>
