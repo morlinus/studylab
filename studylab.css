@@ -432,6 +432,10 @@ group>.btn:not(:first-child) {
     border-radius: 50%;
 }
 
+.profilbild-bearbeitung{
+    padding: 10px;
+}
+
 .beitragsbild{
     padding: 5px;
     position: relative;
