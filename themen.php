@@ -134,6 +134,7 @@ if(isset($_POST['kommentar'])) {
                     echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                     echo "</div>";
                     }
+                    echo("<br>");
                     $inhalte= $content['text'];
                     echo hashtag($inhalte);
 

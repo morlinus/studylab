@@ -25,7 +25,7 @@ include 'userdata.php';
 <footer class="page-footer navbar-inverse">
 
     <div class="footer text-center">© 2018 Copyright:
-        <a href="index.php">StudiLAB.com</a>
+        <a class="e-mail" href="index.php">StudiLAB.com</a>
     </div>
 
 </footer>

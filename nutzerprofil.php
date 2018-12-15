@@ -85,6 +85,11 @@ if(isset($_POST['kommentar'])) {
     <div class="row">
 
         <!-- Einteilung in das Grid-System -->
+        <div class="col-lg-1">
+
+        </div>
+
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-3 col-md-4 col-sm-4 col-">
 
             <br>
@@ -105,6 +110,8 @@ if(isset($_POST['kommentar'])) {
             <!-- Umrandung und Schatten der Profilinfo -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
+                <div class="rand">
+
                         <!-- Die Daten des angemeldeten Nutzers werden aus der Datenbank geholt und ausgegeben -->
                         <?php
                         $id=$_SESSION["id"];
@@ -124,12 +131,12 @@ if(isset($_POST['kommentar'])) {
                             <?php
                         }
                         ?>
+                </div>
             </div>
         </div>
 
-
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-6 col-md-8 col-sm-8 col-">
+        <div class="col-lg-7 col-md-8 col-sm-8 col-">
 
             <br>
             <br>
@@ -229,11 +236,6 @@ if(isset($_POST['kommentar'])) {
                         <?php
                     }
                     ?>
-
-        </div>
-
-        <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-3">
 
         </div>
 
