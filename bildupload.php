@@ -8,12 +8,7 @@ $suchnutzer->execute();
 $row_get = $suchnutzer->fetch();
 
         $regid = $row_get ['id'];
-
-echo $regid;
-echo $benutzername_id
 ?>
-
-
 
 <html>
 <head>
@@ -44,22 +39,18 @@ echo $benutzername_id
             <div class="fenster col-sm-12 align-items-center">
                 <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="100" width="250">
                 <br>
-                <h1>Du wurdest erfolgreich Registriert</h1>
-                <h2>Nun wähle ein Profilbild aus</h2>
+                <h2 style=" font-family:'Helvetica Neue';">Du wurdest erfolgreich Registriert</h2>
+                <h3 style="color:darkgrey; font-family:'Helvetica Neue';">Nun wähle ein Profilbild aus</h3>
 
                 <!-- "enctype" beschreibt wie die Datei encoded werden soll -->
                 <?php
 
                 // Stellt die Verbindung zur Datenbank her und fügt die Datei in die Datenbank ein
-                echo $regid;
-                echo $benutzername_id;
-
 
                 if (isset($_POST['submit'])){
                     $name = $_FILES['myfile']['name'];
                     $typ = $_FILES ['myfile']['type'];
                    // $id = $_SESSION ["id"];
-
 
                     $datei = file_get_contents($_FILES['myfile']['tmp_name']);
                     $statement = $pdo->prepare("INSERT INTO bilduplad VALUES('',?,?,?,?)");
