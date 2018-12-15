@@ -44,44 +44,6 @@ include_once 'header.php';
 
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
-                <script>
-                    $( function() {
-                                $( "#datepicker" ).datepicker();
-                                $( "#format" ).on( "change", function() {
-                                    $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
-                                });
-                            } );
-
-                    $( function() {
-                var availableTags = [
-                "Online- Medien- Management",
-                "Informationsdesign",
-                "Bibliothekswissenschaften",
-                "Anni Wissenschaften",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-                ];
-                $( "#tags" ).autocomplete({
-                source: availableTags
-                });
-                </script>
-
                 <?php
                     session_start();
                     $_SESSION["angemeldet"];
@@ -132,7 +94,7 @@ include_once 'header.php';
                         <br>
                         <div class="profilbearbeitung">
                             <label for="Inhalt">E-Mail Addresse</label>
-                            <input type="email" class="form-control" id="Inhalt" value="<?php echo $row['email'];?>">
+                            <input type="email" class="form-control" name="email" id="Inhalt" value="<?php echo $row['email'];?>">
                         </div>
                         <br>
                         <div class="profilbearbeitung">

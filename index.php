@@ -226,7 +226,8 @@ if(isset($_POST['kommentar'])) {
                                                 <?php
                                             }
 
-                                            ?> <h6> <?php echo htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?> </h6><?php
+                                            ?> <h6> <?php echo htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?> </h6>
+                                            <?php
                                             echo htmlspecialchars($komm['kommentar'], ENT_HTML401);
                                             ?>
                                         </div>

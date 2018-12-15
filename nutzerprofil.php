@@ -183,8 +183,10 @@ if(isset($_POST['kommentar'])) {
                             echo "<div class='bild-class'>";
                             echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                             echo "</div>";
-                            echo"<br>";
+
                         }
+
+                    echo"<br>";
                     $inhaltpost = htmlspecialchars($content['text'], ENT_HTML401);
 
                         echo hashtag($inhaltpost);
@@ -201,7 +203,7 @@ if(isset($_POST['kommentar'])) {
 
 
                             <!-- Style des Kommentars -->
-                            <div class="kommentar2">
+                            <div class="kommentar">
 
                                 <?php
                                 // Die zu den Kommentaren zugehörigen Profilbilder werden ausgegeben
