@@ -115,7 +115,7 @@ include "header.php";
 
                     <!-- hier kann der User den Themen eingeben,  nach denen er suchen möchte -->
                     <form class="form-inline my-2 my-lg-0" action="themenuebersicht.php" method="post" style="width: 32%; margin:auto;">
-                        <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="themenuebersicht" value="">
+                        <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="themenuebersicht" value="" required>
                         <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
                     </form>
 

@@ -57,8 +57,18 @@ html, body{
     .col-12-ergebnisse {
         width: 40%;
         margin:auto;
-    padding: 0px;}
+    padding: 0px;
+    }
+    .col-12-suche {
+        width: 100%;
+        margin:auto;
+        padding: 0px;
+    }
+
+
 }
+
+
 
 
 @media only screen and (min-width: 600px) {
