@@ -186,6 +186,7 @@ if(isset($_POST['kommentar'])) {
                             echo"<br>";
                         }
                     $inhaltpost = htmlspecialchars($content['text'], ENT_HTML401);
+
                         echo hashtag($inhaltpost);
                     ?>
                     </div>

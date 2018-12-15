@@ -156,7 +156,7 @@ if(isset($_POST['kommentar'])) {
 
                 <?php
                 $post_id=$content['id'];
-                $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id ORDER BY kommentare.id DESC");
+                $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id");
                 if (! $kommentare->execute()) {
                     echo "Fehler";
                 }
