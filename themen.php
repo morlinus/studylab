@@ -56,10 +56,19 @@ if(isset($_POST['kommentar'])) {
 
         <!-- Einteilung in das Grid-System -->
         <div class="col-lg-8 col-md-8 col-sm-8 col-">
-            <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Hashtags 2.png" alt="" style="width:300px;">
-            <br>
-            <h1>#<?php echo $hashtag1;?></h1>
-            <br>
+
+
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+                <div class="" style="">
+                    <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Hashtags 2.png" alt="" style="width: 350px;">
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+                <div class="" style="">
+                    <h1>#<?php echo $hashtag1;?></h1>
+                </div>
+            </div>
 
             <?php
             // Zeigt die Postings aus, die den hashtag beinhalten des User an
