@@ -1,4 +1,5 @@
 <?php
+// bindet den Header in die Seite ein
 // schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
@@ -11,10 +12,13 @@ else {
 }
 
 include "header.php";
+
+// bindet den Datenbankzugriff ein
 include "userdata.php";
 
 $hashtag1=$_GET["themen"];
 $id=$_SESSION['id'];
+
 
 // trägt die Kommentare auf dem Kommentar-Form in die Datenbank ein
 if(isset($_POST['kommentar'])) {
@@ -36,8 +40,8 @@ if(isset($_POST['kommentar'])) {
 <meta charset="utf-8">
 <head>
     <title>
-Thema <?php echo $hashtag1; ?>
-</title>
+        Thema <?php echo $hashtag1; ?>
+    </title>
 
 </head>
 <body>
@@ -45,14 +49,26 @@ Thema <?php echo $hashtag1; ?>
 <div class="container-fluid">
     <div class="row">
 
-<div class="cal-lg-2">
+        <!-- Einteilung in das Grid-System -->
+        <div class="col-lg-2">
 
-</div>
+        </div>
+
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-8 col-md-8 col-sm-8 col-">
-            <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Hashtags 2.png" alt="" style="width:300px;">
-            <br>
-            <h1>#<?php echo $hashtag1;?></h1>
-            <br>
+
+
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+                <div class="" style="">
+                    <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Hashtags 2.png" alt="" style="width: 350px;">
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+                <div class="" style="">
+                    <h1>#<?php echo $hashtag1;?></h1>
+                </div>
+            </div>
 
             <?php
             // Zeigt die Postings aus, die den hashtag beinhalten des User an
@@ -158,6 +174,7 @@ Thema <?php echo $hashtag1; ?>
 
         </div>
 
+        <!-- Einteilung in das Grid-System -->
         <div class="col-lg-1 col-md-1 col-sm-1 col-">
 
         </div>
@@ -196,6 +213,7 @@ Thema <?php echo $hashtag1; ?>
 
 </script>
 
+<!-- Einbindung des Sticky-Footers -->
 <?php
 include_once 'footer.php';
 ?>
