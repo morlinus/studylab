@@ -28,7 +28,7 @@ function hashtag($htags) {
         if (substr($arr[$i],0,1) === $tagzeichen) {
             $tag2 =$arr[$i];
             $tag3=substr($tag2,1);
-            $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+            $arr[$i]= "<a class='e-mail' href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
         }
         $i++;
     }
@@ -179,6 +179,7 @@ if(isset($_POST['kommentar'])) {
                             echo"<br>";
                         }
                     $inhaltpost = htmlspecialchars($content['text'], ENT_HTML401);
+
                         echo hashtag($inhaltpost);
                     ?>
                     </div>
