@@ -53,7 +53,7 @@ funktioniert aber nicht zusammen mit dem Login-Prozess-->
                 </div>
 
                 <button type="submit" class="btn btn-primary">Einloggen</button><br><br>
-                Noch nicht angemeldet? <a href="registrierung.php">Registrieren</a><br><br>
+                Noch nicht angemeldet? <a class="registrierung" href="registrierung.php">Registrieren</a><br><br>
             </form>
         </div>
     </div>

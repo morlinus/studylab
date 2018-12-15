@@ -119,6 +119,19 @@
     border: 0px;
 }
 
+.btn {
+    font-size: larger;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 .btn-primary {
     background-color: #e41035;
     border-color: #e41035;
@@ -153,6 +166,14 @@
     border-bottom: 1px solid #fff;
     outline: none;
     background: transparent;
+}
 
+.registrierung{
+    color: #e41035;
+    text-decoration: none;
+}
 
+.registrierung:hover{
+    color: #e41035;
+    text-decoration: none;
 }

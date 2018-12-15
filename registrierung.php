@@ -62,7 +62,7 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
         height: 100vh;
         width: 100vh;
     }
-    }
+
 </style>
 <body>
 
@@ -199,6 +199,13 @@ if($showFormular) {
                     <input type="radio" name="geschlecht" value="Männlich" required> Männlich
                     <input type="radio" name="geschlecht" value="Weiblich" required> Weiblich
                 </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
                 <td style="font-weight:bold; font-family:'Helvetica Neue';">        Position </td>
                 <td style="color:darkgrey; font-family:'Helvetica Neue';">
                     <input type="radio" name="status" value="Student" required> Student
@@ -229,8 +236,9 @@ if($showFormular) {
         <input type="password" size="40" maxlength="200" name="passwort2" placeholder="Passwort wiederholen"><br><br>
         </div>
 
-        <button type="submit" value="Abschicken" class="btn btn-primary">Registrieren</button><br><br>
-        Schon Registriert? <a href="login.php">Zum Login</a><br><br>
+        <button style="font-family:'Helvetica Neue'" type="submit" value="Abschicken" class="btn btn-primary">Registrieren</button><br><br>
+        <a style="font-family:'Helvetica Neue'">Schon Registriert?</a>
+        <a class="registrierung" href="login.php" style="font-family:'Helvetica Neue'">Zum Login</a><br><br>
     </form>
 
 </div>
