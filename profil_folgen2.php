@@ -109,9 +109,7 @@ function hashtag($htags) {
                         echo "followed";
                         $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11) NOT NULL");
                         $insert_ben -> execute ();
-                        //$statementupdate = $pdo->prepare("UPDATE benachrichtigung SET '$follower'= :gelesen WHERE id > 0");
-                        //$statementupdate -> bindParam("gelesen",$lesen);
-                        //$statementupdate -> execute ();
+                        // Alle Beiträge werden auf read gesetzt, damit man nur die Benachrichtigungen bekommt, ab dem Moment, wo man dem Nutzer folgt
                         $update=$pdo->prepare("UPDATE benachrichtigung SET $follower = ?");
                         $update->execute(array('read'));
                         header("location:profil_folgen2.php?studylab=$profile_id");
