@@ -64,7 +64,7 @@ include_once 'header.php';
 
                         <div class="suche-formular">
                 <!-- hier kann der User den Benutzer eingeben, den er suchen möchte -->
-                <form class="form-inline my-2 my-lg-0" action="nutzersuchen.php" method="post" style="width: 40%; margin:auto;">
+                <form class="form-inline my-2 my-lg-0" action="nutzersuchen.php" method="post" style="width: fit-content; margin:auto;">
                     <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="nutzersuchen" value="">
                     <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
                 </form>
