@@ -54,7 +54,9 @@ html, body{
     .col-12-header {width: 100%;
         display: inline-flex;
     }
-    .col-12-ergebnisse {width: 100%;
+    .col-12-ergebnisse {
+        width: 40%;
+        margin:auto;
     padding: 0px;}
 }
 

@@ -153,12 +153,12 @@ include "header.php";
                                 $bild_suche->execute();
                                 $row_suche = $bild_suche->fetch();
 
-                                echo '<div class="col-12-ergebnisse" style="width: 40%; margin:auto;">';
+                                echo '<div class="col-12-ergebnisse">';
                                 echo '<ul class="kommentar2">';
                                 //echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                 echo ("<img src='https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_quadrat.png' width='' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                                 echo " ";
-                                echo ('<a class="suchen-ergebnisse" href="themen.php?themen='.$themalink.'">'."Beitrag zum Thema "."#". $row['themen']);
+                                echo '<a class="suchen-ergebnisse" href="themen.php?themen='.$themalink.'">'."Beitrag zum Thema "."#". $row['themen'].'</a>';
                                 //echo "<br>". $row["name"]." ". $row ["nachname"];
                                 echo '</ul>';
                                 echo '</div>';
