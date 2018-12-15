@@ -92,7 +92,7 @@ include_once 'header.php';
                             $row_suche = $bild_suche->fetch();
 
                             // hier werden die ausgegebenen Suchergebnisse gestyled
-                            echo '<div class="col-12-ergebnisse">';
+                            echo '<div class="col-12-suche">';
                             echo '<ul class="kommentar2">';
                             echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             echo " ";
