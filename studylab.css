@@ -446,6 +446,8 @@ group>.btn:not(:first-child) {
 
 .img-fluid{
     border-radius: 1%;
+    width: 100%;
+    height: auto;
 }
 
 .profilbild-profil{
@@ -642,4 +644,8 @@ group>.btn:not(:first-child) {
     background: rgba(209,209,209,0.2);
     font-size: 100%;
     left: 5%;
+}
+
+.rand{
+    padding: 15px;
 }

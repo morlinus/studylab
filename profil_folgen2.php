@@ -58,7 +58,12 @@ function hashtag($htags) {
     <div class="row">
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-">
+        <div class="col-lg-1">
+
+        </div>
+
+        <!-- Einteilung in das Grid-System -->
+        <div class="col-lg-3 col-md-4 col-sm-4 col-">
 
             <br>
             <br>
@@ -77,6 +82,8 @@ function hashtag($htags) {
             <!-- Umrandung und Schatten der Profilinfo -->
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
+
+            <div class="rand">
             <?php
                 // Fremdes Profil?
                 if ($profile_id!=$_SESSION["angemeldet"]) {
@@ -165,10 +172,11 @@ function hashtag($htags) {
 
             ?>
             </div>
+            </div>
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-8 col-md-8 col-sm-8 col-">
+        <div class="col-lg-7 col-md-8 col-sm-8 col-">
 
             <br>
             <br>

@@ -169,11 +169,13 @@ if(isset($_POST['kommentar'])) {
                                             echo "<br>";
                                             echo "<div class='bild-class'>";
                                             ?>
-                                            <div class="img-fluid"><?php
+
+                                            <div class="img-fluid">
+                                            <?php
                                             echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
                                             echo "</div>";
                                         }
-
+                                        echo "<br>";
 
                                     //Der Post Inhalt wird ausgegeben
                                     $inhalt = htmlspecialchars($content['text'], ENT_HTML401);
