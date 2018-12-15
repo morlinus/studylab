@@ -19,7 +19,7 @@ include "userdata.php";
 $hashtag1=$_GET["themen"];
 $id=$_SESSION['id'];
 
-?>
+
 // trägt die Kommentare auf dem Kommentar-Form in die Datenbank ein
 if(isset($_POST['kommentar'])) {
 
