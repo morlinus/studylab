@@ -34,7 +34,7 @@ function hashtag($htags) {
         if (substr($arr[$i],0,1) === $tagzeichen) {
             $tag2 =$arr[$i];
             $tag3=substr($tag2,1);
-            $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+            $arr[$i]= "<a class='e-mail' href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
         }
         $i++;
     }
@@ -239,6 +239,7 @@ function hashtag($htags) {
                         echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                         echo "</div>";
                     }
+                    echo "<br>";
 
                     $inhaltp = htmlspecialchars($content['text'], ENT_HTML401);
                     echo hashtag($inhaltp);
