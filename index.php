@@ -173,7 +173,6 @@ if(isset($_POST['kommentar'])) {
                                             echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>"); ?></div><?php
                                             echo "</div>";
                                         }
-                                        echo "<br>";
 
 
                                     //Der Post Inhalt wird ausgegeben
@@ -181,6 +180,7 @@ if(isset($_POST['kommentar'])) {
                                     echo hashtag($inhalt);
                                     ?>
                                     </div>
+                                    <br>
 
                                     <!-- Hier steht das Kommentar-Form, in dem der User einen Kommentar eintragen kann -->
                                     <form method="post" action="" onsubmit="return post();" id="kommentarform">
