@@ -10,6 +10,27 @@ $bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id
 $bild_folgen->execute();
 $row_folgen = $bild_folgen->fetch();
 $lesen = "read";
+
+//Inhalt wird in wörter unterteilt, noch hashtags untersucht und alle wörter mit hahstag werden als link wieder ausgegeben
+function hashtag($htags) {
+    $tagzeichen = "#";
+    $arr = explode(" ", $htags);
+    $arrcnt = count($arr);
+    $i =0;
+
+    while($i < $arrcnt) {
+        if (substr($arr[$i],0,1) === $tagzeichen) {
+            $tag2 =$arr[$i];
+            $tag3=substr($tag2,1);
+            $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+        }
+        $i++;
+    }
+    $htags = implode(" ", $arr);
+    //$htags = substr($htags2,1)
+    return $htags;
+}
+
 ?>
 
 <!doctype html>
@@ -187,7 +208,9 @@ $lesen = "read";
                         echo("<img src='data:" . $bilder['format'] . ";base64," . base64_encode($bilder['datei']) . "'width=' alt='Responsive image' class='img-fluid'>");
                         echo "</div>";
                     }
-                    echo htmlspecialchars($content['text'], ENT_HTML401);
+
+                    $inhaltp = htmlspecialchars($content['text'], ENT_HTML401);
+                    echo hashtag($inhaltp);
 
 
                     ?>

@@ -17,6 +17,7 @@ include_once 'header.php';
 $id=$_SESSION["id"];
 $angmeldet_index = $_SESSION ["angemeldet"];
 
+//Inhalt wird in wörter unterteilt, noch hashtags untersucht und alle wörter mit hahstag werden als link wieder ausgegeben
 function hashtag($htags) {
     $tagzeichen = "#";
     $arr = explode(" ", $htags);
