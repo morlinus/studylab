@@ -25,7 +25,7 @@ $nutzerdaten = $statement->fetch();
     }
 
 else {
-    echo "Etwas ist schief gelaufen";
+    header("Location:login.php");;
 }
 ?>
 

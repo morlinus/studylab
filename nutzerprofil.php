@@ -17,6 +17,26 @@ include_once 'header.php';
 $id_header=$_SESSION ["id"];
 $id=$_SESSION["id"];
 
+//Inhalt wird in wörter unterteilt, noch hashtags untersucht und alle wörter mit hahstag werden als link wieder ausgegeben
+function hashtag($htags) {
+    $tagzeichen = "#";
+    $arr = explode(" ", $htags);
+    $arrcnt = count($arr);
+    $i =0;
+
+    while($i < $arrcnt) {
+        if (substr($arr[$i],0,1) === $tagzeichen) {
+            $tag2 =$arr[$i];
+            $tag3=substr($tag2,1);
+            $arr[$i]= "<a href='themen.php?themen=".$tag3."'>".$arr[$i]."</a>";
+        }
+        $i++;
+    }
+    $htags = implode(" ", $arr);
+    //$htags = substr($htags2,1)
+    return $htags;
+}
+
 // es wird geschaut, ob der Nutzer schon jemandem folgt
 $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $id_header");
 $abonennten ->execute();
@@ -158,7 +178,8 @@ if(isset($_POST['kommentar'])) {
                             echo "</div>";
                             echo"<br>";
                         }
-                    echo $content['text'];
+                    $inhaltpost = htmlspecialchars($content['text'], ENT_HTML401);
+                        echo hashtag($inhaltpost);
                     ?>
                     </div>
 
