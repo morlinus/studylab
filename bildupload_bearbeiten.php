@@ -35,6 +35,10 @@ while($row_header = $bild_header->fetch()){
 
         <!-- Einteilung in das Grid-System -->
         <div class="col-lg-6 col-md-6 col-sm-6 col-">
+
+            <br>
+            <br>
+
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
             <h4>Profilbild ändern</h4>
