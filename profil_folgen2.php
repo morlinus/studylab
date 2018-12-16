@@ -196,7 +196,7 @@ function hashtag($htags) {
             // wählt aus der Datenbank die entsprechenden Beiträge aus
             if($no > 0) {
             //wenn dem Benutzer gefolgt wird, werden aus der Datenbank die entsprechenden Beiträge ausgewählt
-            $beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profile_id");
+            $beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profile_id ORDER BY content.id DESC ");
             $beiträge->execute(array('beitragsid' => 1));
             while ($content = $beiträge->fetch()) {
 
@@ -271,8 +271,8 @@ function hashtag($htags) {
                         </div>
                         <?php
                     }
-
-                    ?> <h6> <?php echo " " . htmlspecialchars($komm['benutzername'], ENT_HTML401) . ":<br />"; ?></h6>
+                    $kommersteller=$komm['sender_id'];
+                    ?> <h6> <?php echo '<a style="font-size:98%;" class="benutzername-post" href="profil_folgen2.php?studylab=' . $kommersteller . '">' .  $komm['benutzername'] . '</a>'.":<br />"; ?></h6>
                     <?php
                     echo " " . htmlspecialchars($komm['kommentar'], ENT_HTML401);
                     ?>

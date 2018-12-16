@@ -222,8 +222,8 @@ if(isset($_POST['kommentar'])) {
                                     </div>
                                     <?php
                                 }
-
-                                ?> <h6> <?php echo " ".  $komm['benutzername'] . ":<br />"; ?></h6>
+                                $kommersteller=$komm['sender_id'];
+                                ?> <h6><?php echo '<a style="font-size:98%;" class="benutzername-post" href="profil_folgen2.php?studylab=' . $kommersteller . '">' .  $komm['benutzername'] . '</a>'.":<br />"; ?></h6>
                                 <?php
                                 echo " ".  $komm['kommentar'];
                                 ?>
