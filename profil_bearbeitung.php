@@ -46,7 +46,7 @@ include_once 'header.php';
 
                 <?php
                     session_start();
-                    $_SESSION["angemeldet"];
+                    $bname= $_SESSION["angemeldet"];
                     $id=$_SESSION["id"];
                     $passwort=$_SESSION["passwort"];
                     include 'userdata.php';
@@ -64,7 +64,7 @@ include_once 'header.php';
                                 <label for="Inhalt">Name:</label>
                                 <br>
                                 <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="name" value="<?php echo $row['name'];?>"/>
-                        </form>
+
                         </div>
                         <br>
                         <div class="profilbearbeitung">
@@ -83,24 +83,20 @@ include_once 'header.php';
                                 <label for="Inhalt">Geburtsdatum:</label>
                                 <br>
                                 <!-- Der Datepicker funktioniert hier noch nicht -->
-                                <input type="geburtsdatum" class="form-control" id="datepicker"  size = "40" maxlength="200" name="geburtsdatum"value="<?php echo $row['geburtsdatum'];?>">
-                        </div>
-                        <br>
-                        <div class="profilbearbeitung">
-                            <label for="Inhalt">Geschlecht:</label>
-                            <br>
-                            <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['geschlecht'];?>"/>
+                                <input type="geburtsdatum" class="form-control" id="datepicker"  size = "40" maxlength="200" name="geburtsdatum" value="<?php echo $row['geburtsdatum'];?>">
                         </div>
                         <br>
                         <div class="profilbearbeitung">
                             <label for="Inhalt">E-Mail Addresse</label>
-                            <input type="email" class="form-control" name="email" id="Inhalt" value="<?php echo $row['email'];?>">
+                            <input type="email" name="email" class="form-control" id="Inhalt" value="<?php echo $row['email'];?>">
                         </div>
                         <br>
                         <div class="profilbearbeitung">
                                 <label for="Inhalt">Studiengang:</label>
+                            <input type="studiengang" name="studiengang" class="form-control" id="Inhalt" value="<?php echo $row['studiengang'];?>">
+                        </div>
 
-                            <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
+                            <!--<select class="form-control" name="studiengang" id="Inhalt" value="<?php //echo $row['studiengang'];?>">
                                 <option>Audiovisuelle Medien</option>
                                 <option>Crossmedia-Redaktion/Public Relations</option>
                                 <option>Deutsch-Chinesischer Studiengang Medien und Technologie</option>
@@ -120,27 +116,20 @@ include_once 'header.php';
                             </select>
                         </div>
                         <br>
+                        -->
                         <div class="profilbearbeitung">
                                 <label for="Inhalt">Semester:</label>
                                 <br>
-                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="studiengang" value="<?php echo $row['semester'];?>"/>
+                                <input type="text" class="form-control" autocomplete="off" size="40" maxlength="200" name="semester" value="<?php echo $row['semester'];?>"/>
                         </div>
-                        <br>
-                        <div class="profilbearbeitung">
-                                <label for="Inhalt">Status:</label>
 
-                            <select class="form-control" id="Inhalt" value="<?php echo $row['semester'];?>">
-                                <option>Student</option>
-                                <option>Professor</option>
-                            </select>
-                        </div>
                          <br>
                         <div class="profilbearbeitung">
                                 <label for="Inhalt">Passwort ändern:</label>
                                 <br>
-                                altes Passwort:<input  required type="password" class="form-control" name="passwort_alt" />  <br>
+                                altes Passwort:<input  type="password" class="form-control" name="passwort_alt" />  <br>
 
-                                neues Passwort:<input  required type="password" class="form-control" name="passwort_neu" />  <br><br>
+                                neues Passwort:<input  type="password" class="form-control" name="passwort_neu" />  <br><br>
                         </div>
 
                         <div class="profilbearbeitung">
@@ -148,6 +137,7 @@ include_once 'header.php';
                                     <button class="btn my-2 my-sm-0" type="submit" name="submit" value="Änderungen speichern">Änderungen speichern</button>
                                 </form>
                         </div>
+                        </form>
 
 
 
