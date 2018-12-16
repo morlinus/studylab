@@ -2,13 +2,13 @@
 // Dies ist die gleiche Formular-Abfrage für die Postings-Funktion nur für die Startseite
 
 session_start();
-// stellt die Verbindung zur Datenbank her
+// Stellt die Verbindung zur Datenbank her
 include 'userdata.php';
 
-// übergibt die User ID durch die Session
+// Übergibt die User ID durch die Session
 $id = $_SESSION["id"];
 
-//Die Funktion geht durch den Content, sucht alle Wörter mit #, und gibt nur die Wörter mit # aus
+// Die Funktion geht durch den Content, sucht alle Wörter mit # und gibt nur die Wörter mit # aus
 function hashtagfinden($htags) {
     $tag = "#";
     $arr = explode(" ", $htags);
@@ -27,7 +27,7 @@ function hashtagfinden($htags) {
     return $htags;
 }
 
-// übernimmt den Content aus dem Formular der Index.php und fügt die Daten dann in die Datenbank ein
+// Übernimmt den Content aus dem Formular der Index.php und fügt die Daten dann in die Datenbank ein
 $content= $_POST["content"];
 $htagsuche = hashtagfinden($content);
 
@@ -43,13 +43,13 @@ $statement->execute();
     $benachrichtigung=$pdo->prepare("SELECT userid FROM folgen WHERE follower_id=$id");
     $benachrichtigung->execute();
 
-    //Holt die zuletzt einegfügte postid aus der Datenbank
+    // Holt die zuletzt eingfügte postid aus der Datenbank
 $lastinsert = $pdo->prepare("SELECT max(id) AS id FROM content");
 $lastinsert->execute();
 while ($letzteid = $lastinsert->fetch()){
 
     $postid=$letzteid['id'];
-    //Trägt für alle die den Beitragsersteller folgen eine Benachrichtigung in die Datenbank ein
+    // Trägt für alle die dem Beitragsersteller folgen eine Benachrichtigung in die Datenbank ein
             $eintragen = $pdo->prepare("INSERT INTO benachrichtigung (id, userid, post_id) VALUES ('',:userid,:post_id)");
             if (!$eintragen->execute(array(':userid' => $id, ':post_id' =>$postid)))
             {
@@ -58,10 +58,10 @@ while ($letzteid = $lastinsert->fetch()){
 }
 If ($postid > 0) {
 
-    //holt die Bilddaten aus dem Formular
+    // Holt die Bilddaten aus dem Formular
     $name = $_FILES['myfile']['name'];
     $typ = $_FILES ['myfile']['type'];
-    //überprpüft ob Bilddaten übergeben wurden und fügt diese im Falle in die Datenbank ein
+    // Überprpüft ob Bilddaten übergeben wurden und fügt diese im Falle in die Datenbank ein
    $str = strlen($typ);
     if ($str > 0) {
         $datei = file_get_contents($_FILES['myfile']['tmp_name']);

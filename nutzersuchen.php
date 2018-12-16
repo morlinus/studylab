@@ -1,5 +1,5 @@
 <?php
-// schaut durch die Session, ob der Nutzer angemeldet ist
+// Schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
 {
@@ -10,7 +10,7 @@ else {
     header("Location:login.php");
 }
 
-// bindet den Header in die Seite ein
+// Bindet den Header in die Seite ein
 include_once 'header.php';
 
 
@@ -63,7 +63,7 @@ include_once 'header.php';
                         </div>
 
                         <div class="suche-formular">
-                <!-- hier kann der User den Benutzer eingeben, den er suchen möchte -->
+                <!-- Hier kann der User den Benutzer eingeben, den er suchen möchte -->
                 <form class="form-inline my-2 my-lg-0" action="nutzersuchen.php" method="post" style="width: fit-content; margin:auto;">
                     <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="nutzersuchen" value="">
                     <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
@@ -75,13 +75,13 @@ include_once 'header.php';
 
 
                 <?php
-                // gibt die Sachen aus, die im Formular eingeben wurden
+                // Gibt die Sachen aus, die im Formular eingeben wurden
                 if (isset($_POST['suchen'])) {
 
                 ?>
 
 
-                    <!-- hier werden die Suchergebnisse ausgegeben -->
+                    <!-- Hier werden die Suchergebnisse ausgegeben -->
                     <h5> <?php echo "Suchergebnisse: <br>";?> </h5><br>
 
 
@@ -104,7 +104,7 @@ include_once 'header.php';
                             $bild_suche->execute();
                             $row_suche = $bild_suche->fetch();
 
-                            // hier werden die ausgegebenen Suchergebnisse gestyled
+                            // Hier werden die ausgegebenen Suchergebnisse gestyled
                             echo '<div class="col-12-suche">';
                             echo '<ul class="kommentar2">';
                             echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");

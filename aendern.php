@@ -1,5 +1,5 @@
 <?php
-//Diese Seite hängt mit der Profil_bearbeitung.php zusammen
+// Diese Seite hängt mit der Profil_bearbeitung.php zusammen
 // Die Session wird gestartet und es wird übergeben, ob der Nutzer eingeloggt ist, was seine ID und sein Passwort ist
 session_start();
 $_SESSION["angemeldet"];
@@ -26,7 +26,7 @@ if ($nachname2 > 0) {
     $statement = $pdo->prepare("UPDATE studylab SET nachname = ?  WHERE id=$id");
     $statement->execute(array($_POST["nachname"]));
 }
-// Der Benutzerame wird durch Post übergeben und wird dann in der Datenbank bei Veränderung überschrieben
+// Der Benutzername wird durch Post übergeben und wird dann in der Datenbank bei Veränderung überschrieben
 $benutzername= $_POST["benutzername"];
 
 $benutzername2= count($benutzername);
@@ -74,13 +74,13 @@ if ($status2 > 0) {
     $statement = $pdo->prepare("UPDATE studylab SET semester = ?  WHERE id=$id");
     $statement->execute(array($_POST["status"]));
 }
-//Das alte und das neue Passwort wird durch Post übergeben
+// Das alte und das neue Passwort wird durch Post übergeben
 $passwort_alt=$_POST["passwort_alt"];
 $passwort_neu=$_POST["passwort_neu"];
 $passwortneu2= strlen($passwort_neu);
 if ($passwortneu2 > 0) {
     $passwort_hash = password_hash($passwort_neu, PASSWORD_DEFAULT); //passwort hashen
-// wählt aus der Datenbank den Benutzernamen aus und gleich den Benutzernamen mit eingegebenen Passwort und dem Passwort in der Datenabank ab
+// Wählt aus der Datenbank den Benutzernamen aus und gleich den Benutzernamen mit eingegebenen Passwort und dem Passwort in der Datenabank ab
     $statement = $pdo->prepare("SELECT * FROM studylab WHERE id = $id");
     $statement->execute();
     $nutzerdaten = $statement->fetch();
@@ -89,7 +89,7 @@ if ($passwortneu2 > 0) {
     if (password_verify($passwort_alt, $nutzerdaten['passwort'])) {
         $statement = $pdo->prepare("UPDATE studylab SET passwort = :passwortneu WHERE id=$id");
         $statement->bindParam("passwortneu", $passwort_hash);
-//$statement->execute(array($_POST["passwort_neu"]));
+// $statement->execute(array($_POST["passwort_neu"]));
         $statement->execute();
     }
 

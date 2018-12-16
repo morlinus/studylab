@@ -1,6 +1,6 @@
 <?php
 session_start();
-// bindet den Datenbankzugriff ein
+// Bindet den Datenbankzugriff ein
 include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 ?>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
 
 <?php
 
-$showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
+$showFormular = true; // Variable ob das Registrierungsformular angezeigt werden soll
 
 if(isset($_GET['register'])) {
     $error = false;
@@ -91,16 +91,16 @@ if(isset($_GET['register'])) {
         echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
         $error = true;
     }
-    if(strlen($passwort) == 0) { // Überprüfung, ob eingabe getätigt
+    if(strlen($passwort) == 0) { // Überprüfung, ob Eingabe getätigt
         echo 'Bitte ein Passwort angeben<br>';
         $error = true;
     }
-    if($passwort != $passwort2) { // überprüfung, ob passwörter identisch sind
+    if($passwort != $passwort2) { // Überprüfung, ob Passwörter identisch sind
         echo 'Die Passwörter müssen übereinstimmen<br>';
         $error = true;
     }
 
-    //Hier wird überprüft, ob die E-Mail-Adresse noch nicht registriert wurde
+    // Hier wird überprüft, ob die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
         $statement = $pdo->prepare("SELECT * FROM studylab WHERE email = :email");
         $result = $statement->execute(array('email' => $email));
@@ -114,7 +114,7 @@ if(isset($_GET['register'])) {
         }
     }
 
-    //Hier wird überprüft, ob der benutzername noch nicht registriert wurde
+    // Hier wird überprüft, ob der benutzername noch nicht registriert wurde
     if(!$error) {
         $statement = $pdo->prepare("SELECT * FROM studylab WHERE benutzername = :benutzername");
         $result = $statement->execute(array('benutzername' => $benutzername));
@@ -128,7 +128,7 @@ if(isset($_GET['register'])) {
         }
     }
 
-    //wenn keine Fehler vorliegen, wird hier der Nutzer registriert
+    // Wenn keine Fehler vorliegen, wird hier der Nutzer registriert
     if(!$error) {
        $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT); //passwort hashen
 
@@ -246,7 +246,7 @@ if($showFormular) {
 </div>
 
     <?php
-} //Ende von if($showFormular)
+} // Ende von if($showFormular)
 ?>
 
 </body>

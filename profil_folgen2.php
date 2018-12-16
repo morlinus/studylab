@@ -1,5 +1,5 @@
 <?php
-// schaut durch die Session, ob der Nutzer angemeldet ist
+// Schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
 {
@@ -11,7 +11,7 @@ else {
 }
 
 ob_start();
-// bindet die header.php ein und damit den Header der Seite
+// Bindet die header.php ein und damit den Header der Seite
 include_once "header.php";
 
 $profile_id=$_GET['studylab'];
@@ -71,7 +71,7 @@ function hashtag($htags) {
             <div class="profilbildplusfolgen">
 
                 <?php
-                //Benutzerbild wird im Profil angezeigt
+                // Benutzerbild wird im Profil angezeigt
 
                 echo("<img src='data:" . $row_folgen['format'] . ";base64," . base64_encode($row_folgen['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-profil'>");
                 ?>
@@ -109,7 +109,7 @@ function hashtag($htags) {
                         echo "followed";
                         $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11) NOT NULL");
                         $insert_ben -> execute ();
-                        // Alle Beiträge werden auf read gesetzt, damit man nur die Benachrichtigungen bekommt, ab dem Moment, wo man dem Nutzer folgt
+                        // Alle Beiträge werden auf read gesetzt, damit man nur die Benachrichtigungen bekommt, ab dem Moment, ab dem man dem Nutzer folgt
                         $update=$pdo->prepare("UPDATE benachrichtigung SET $follower = ?");
                         $update->execute(array('read'));
                         header("location:profil_folgen2.php?studylab=$profile_id");
@@ -125,7 +125,7 @@ function hashtag($htags) {
                 </form>
                 </div>
                     <?php
-                // entfolgen Befehl
+                // Entfolgen Befehl
                 if (isset($_POST['unfollow'])) {
                     $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");
                     if ($unfollow->execute()) {
@@ -142,7 +142,7 @@ function hashtag($htags) {
                 ?>
 
             <?php
-            // Profildaten von dem fremden Nutzer aufrufen
+            // Profildaten des fremden Nutzers aufrufen
             $nutzersuche = $pdo->prepare("SELECT * FROM studylab WHERE id = $profile_id");
             if ($nutzersuche->execute()) {
                 while ($row = $nutzersuche->fetch()) {
@@ -154,7 +154,7 @@ function hashtag($htags) {
                     $studiengang = $row ['studiengang'];
                     $email = $row ["email"];
 
-                    // es wird geschaut, ob der Nutzer schon jemandem folgt
+                    // Es wird geschaut, ob der Nutzer schon jemandem folgt
                     $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $profile_id");
                     $abonennten ->execute();
                     $abos = $abonennten ->rowCount();
@@ -193,9 +193,9 @@ function hashtag($htags) {
 
             <?php
             // Zeigt die Postings des User an
-            // wählt aus der Datenbank die entsprechenden Beiträge aus
+            // Wählt aus der Datenbank die entsprechenden Beiträge aus
             if($no > 0) {
-            //wenn dem Benutzer gefolgt wird, werden aus der Datenbank die entsprechenden Beiträge ausgewählt
+            // Wenn dem Benutzer gefolgt wird, werden aus der Datenbank die entsprechenden Beiträge ausgewählt
             $beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profile_id ORDER BY content.id DESC ");
             $beiträge->execute(array('beitragsid' => 1));
             while ($content = $beiträge->fetch()) {
@@ -218,7 +218,7 @@ function hashtag($htags) {
 
                     <?php
 
-                    //Benutzerbild wird im Beitrag angezeigt
+                    // Benutzerbild wird im Beitrag angezeigt
 
                     $beitragsersteller = $content['userid'];
 
@@ -226,11 +226,11 @@ function hashtag($htags) {
                     }
                     ?>
                     <?php
-                    //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                    // Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                     echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . htmlspecialchars($beitragsersteller, ENT_HTML401) . '">' . $content['benutzername'] . '</a>';
                     echo "<br>";
 
-                    //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                    // Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                     if ($postid == $dbabgleich) {
                         echo "<br>";
                         echo "<div class='bild-class'>";

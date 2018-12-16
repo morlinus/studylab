@@ -21,18 +21,11 @@
     </style>
 </head>
 
-<!-- Hier sollte eigentlich das Form mit Bootstrap sein,
-funktioniert aber nicht zusammen mit dem Login-Prozess-->
 <body>
 
 <div class="container-fluid-main">
     <div class="row height-100 mx-auto align-items-center background-recht">‚
-        <!--
-    <div class = "height-100 background-startseite col-lg-6 col-sm-12">
 
-        <h3>Hier steht dann eine interessante Beschreibung der Website</h3>
-    </div>
-    -->
         <!-- Login-Form -->
         <div class="fenster col-sm-12 align-items-center">
             <img src="https://mars.iuk.hdm-stuttgart.de/~as325/Studylab.png" alt="" height="100" width="250">

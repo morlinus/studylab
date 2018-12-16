@@ -1,5 +1,5 @@
 <?php
-//bindet die Header in die Seite ein
+// Stellt die Verbindung zur Datenbank her
 include "userdata.php";
 
 $benutzername_id=$_GET['studylab'];
@@ -11,7 +11,8 @@ $row_get = $suchnutzer->fetch();
         $regid = $row_get ['id'];
 ?>
 
-<html>
+<!doctype html>
+<html lang="de">
 <head>
     <meta charset="utf-8"/>
     <title>Profilbild auswählen</title>

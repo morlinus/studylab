@@ -1,5 +1,5 @@
 <?php
-// schaut durch die Session, ob der Nutzer angemeldet ist
+// Schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
 {
@@ -10,16 +10,16 @@ else {
     header("Location:login.php");
 }
 
-// bindet den Header in die Seite ein
+// Bindet den Header in die Seite ein
 include "header.php";
 
-// bindet den Datenbankzugriff ein
+// Bindet den Datenbankzugriff ein
 include "userdata.php";
 
 $hashtag1=$_GET["themen"];
 $id=$_SESSION['id'];
 
-//Inhalt wird in wörter unterteilt, noch hashtags untersucht und alle wörter mit hahstag werden als link wieder ausgegeben
+// Inhalt wird in Wörter unterteilt, nach Hashtags untersucht und alle Wörter mit Hahstag werden als Link wieder ausgegeben
 function hashtag($htags) {
     $tagzeichen = "#";
     $arr = explode(" ", $htags);
@@ -40,7 +40,7 @@ function hashtag($htags) {
 }
 
 
-// trägt die Kommentare auf dem Kommentar-Form in die Datenbank ein
+// Trägt die Kommentare aus dem Kommentar-Form in die Datenbank ein
 if(isset($_POST['kommentar'])) {
 
     $comment=$_POST['comment'];
@@ -91,8 +91,8 @@ if(isset($_POST['kommentar'])) {
             </div>
 
             <?php
-            // Zeigt die Postings aus, die den hashtag beinhalten des User an
-            // wählt aus der Datenbank die entsprechenden Beiträge aus
+            // Zeigt die Postings, die den Hashtag beinhalten, dem User an
+            // Wählt aus der Datenbank die entsprechenden Beiträge aus
             $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE content.themen='$hashtag1' ORDER BY content.id DESC");
             if (!$statement->execute(array('beitragsid' => 1))) {
                 echo "Fehler";
@@ -116,18 +116,18 @@ if(isset($_POST['kommentar'])) {
                 <div class="beitrag">
 
                     <?php
-                    //Benutzerbild wird im Beitrag angezeigt
+                    // Benutzerbild wird im Beitrag angezeigt
                     $beitragsersteller = $content['userid'];
 
                     echo("<img src='data:" . $row_header['format'] . ";base64," . base64_encode($row_header['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                     }
                     ?>
                 <?php
-                    //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                    // Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                     echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
                     echo "<br>";
 
-                    //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                    // Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                     if ($post_id = $dbabgleich) {
                     echo"<br>";
                     echo "<div class='bild-class'>";

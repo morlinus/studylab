@@ -1,16 +1,13 @@
 <?php
-// Einbindung der
+// Stellt die Verbindung zur Datenbank her
 include 'userdata.php';
 ?>
 
 
 <!doctype html>
 <html lang="de">
-<meta charset="utf-8">
-
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
