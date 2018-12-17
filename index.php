@@ -75,19 +75,22 @@ if(isset($_POST['kommentar'])) {
                         <?php
 
                         //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
-                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.*, folgen.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id LEFT JOIN folgen ON benachrichtigung.userid=folgen.user_id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id AND folgen.follower_id=$id");
+                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.*, studylab.*, folgen.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id LEFT JOIN folgen ON benachrichtigung.userid=folgen.user_id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id AND folgen.follower_id=$id");
                         $benachrichtigung->execute();
 
                         //Führt die Benachrichtigung aus
                         while($nachricht=$benachrichtigung->fetch()) {
 
                         $nachrichtid=$nachricht['id'];
+                        $nachrichtuser=$nachricht['userid'];
                         ?>
 
                         <!-- Pop-Up Benachrichtigung -->
-                        <div class="alert alert-success alert-dismissible" >
+
+
+                            <div class="alert alert-info">
                             <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
-                            <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
+                            <strong><a style="color:#2f4f4f;" href="profil_folgen2.php?studylab=<?php echo $nachrichtuser; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
                         </div>
 
                         <?php

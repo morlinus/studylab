@@ -621,6 +621,18 @@ group>.btn:not(:first-child) {
     color: #e41035;
 }
 
+.e-mail2{
+    color: #2f4f4f;
+    text-decoration: none;
+}
+
+.e-mail2:hover{
+    font-weight: bold;
+    text-decoration: none;
+    color: #2f4f4f;
+}
+
+
 .card{
     margin: 20px;
 }
