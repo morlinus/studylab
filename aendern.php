@@ -16,6 +16,7 @@ $name= $_POST["name"];
 $name2= count($name);
 if ($name2 > 0) {
     $statement = $pdo->prepare("UPDATE studylab SET name = ?  WHERE id=$id");
+    //$statement -> bindParam ()
     $statement->execute(array($_POST["name"]));
 }
 // Der Nachname wird durch Post übergeben und wird dann in der Datenbank bei Veränderung überschrieben
@@ -33,6 +34,12 @@ $benutzername2= count($benutzername);
 if ($benutzername2 > 0) {
     $statement = $pdo->prepare("UPDATE studylab SET benutzername = ?  WHERE id=$id");
     $statement->execute(array($_POST["benutzername"]));
+    //Benachrichtigungsfunktion wird auf den neuen Benutzernamen aktiviert
+    $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $benutzername VARCHAR(11) NOT NULL");
+    $insert_ben -> execute ();
+    // Alle Beiträge werden auf read gesetzt, damit man nur die Benachrichtigungen bekommt, ab dem Moment, ab dem man dem Nutzer folgt
+    $update=$pdo->prepare("UPDATE benachrichtigung SET $benutzername = ?");
+    $update->execute(array('read'));
 }
 // Das Geburtsdatum wird durch Post übergeben und wird dann in der Datenbank bei Veränderung überschrieben
 $geburtsdatum= $_POST["geburtsdatum"];
