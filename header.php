@@ -1,12 +1,12 @@
 <?php
 session_start();
-// bindet den Datenbankzugriff ein
+// Bindet den Datenbankzugriff ein
 include 'userdata.php';
 
-// übernimmt die Daten auf der Session
+// Übernimmt die Daten auf der Session
 $id_header=$_SESSION ["id"];
 
-// holt die ID und das dazugehörige Profilbild aus der Datenbank 
+// Holt die ID und das dazugehörige Profilbild aus der Datenbank
 $benutzername_header = $pdo->prepare("SELECT * FROM studylab WHERE id = '$id_header' ");
 $benutzername_header->execute();
 $benutzer_name = $benutzername_header->fetch();
@@ -17,13 +17,13 @@ $row_header = $bild_header->fetch()
 // echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
 // <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
 
+
 ?>
 
 
 <!doctype html>
 <html lang="de">
 <meta charset="utf-8">
-
 
 <head>
     <!-- Bootstrap CSS -->

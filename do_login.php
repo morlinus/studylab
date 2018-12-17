@@ -1,5 +1,5 @@
 <?php
-// startet die Session
+// Startet die Session
 session_start();
 if(isset($_POST["benutzername"]) AND isset($_POST["passwort"]))
 {
@@ -7,10 +7,10 @@ if(isset($_POST["benutzername"]) AND isset($_POST["passwort"]))
     $passwort=$_POST["passwort"];
 }
 
-// stellt die Verbindung zur Datenbank her
+// Stellt die Verbindung zur Datenbank her
 include 'userdata.php';
 
-// wählt aus der Datenbank den Benutzernamen aus und gleich den Benutzernamen mit eingegebenen Passwort und dem Passwort in der Datenabnk ab
+// Wählt aus der Datenbank den Benutzernamen aus und gleich den Benutzernamen mit eingegebenen Passwort und dem Passwort in der Datenbank ab
 $statement = $pdo->prepare("SELECT * FROM studylab WHERE benutzername = '$benutzername'");
 $statement -> execute ();
 $nutzerdaten = $statement->fetch();

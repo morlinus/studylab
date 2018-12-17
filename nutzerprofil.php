@@ -1,5 +1,5 @@
 <?php
-// schaut durch die Session, ob der Nutzer angemeldet ist
+// Schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
 {
@@ -10,14 +10,14 @@ else {
     header("Location:login.php");
 }
 
-// bindet die header.php ein und damit den Header der Seite
+// Bindet die header.php ein und damit den Header der Seite
 include_once 'header.php';
 
-// übernimmt aus der Session die ID
+// Übernimmt aus der Session die ID
 $id_header=$_SESSION ["id"];
 $id=$_SESSION["id"];
 
-//Inhalt wird in wörter unterteilt, noch hashtags untersucht und alle wörter mit hahstag werden als link wieder ausgegeben
+// Inhalt wird in Wörter unterteilt, nach hashtags untersucht und alle Wörter mit hahstag werden als Link wieder ausgegeben
 function hashtag($htags) {
     $tagzeichen = "#";
     $arr = explode(" ", $htags);
@@ -37,16 +37,16 @@ function hashtag($htags) {
     return $htags;
 }
 
-// es wird geschaut, ob der Nutzer schon jemandem folgt
+// Es wird geschaut, ob der Nutzer schon jemandem folgt
 $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $id_header");
 $abonennten ->execute();
 $abos = $abonennten ->rowCount();
 
 if (!$abos > 0 ) {
-    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden";
+    $abos = "Du hast noch keine Abonennten. Folge Nutzern, damit sie auf dich aufmerksam werden.";
 }
 
-// das Bild für den Header wird aus der Datenbank ausgegeben
+// Das Bild für den Header wird aus der Datenbank ausgegeben
 $bild_header = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header->execute();
 while($row_header = $bild_header->fetch()){
@@ -142,12 +142,12 @@ if(isset($_POST['kommentar'])) {
             <br>
 
                 <?php
-                // Zeigt die Postings des User an
-                // wählt aus der Datenbank die entsprechenden Beiträge aus
+                // Zeigt die Postings des Users an
+                // Wählt aus der Datenbank die entsprechenden Beiträge aus
                 $statement = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid=$id ORDER BY content.id DESC");
                 $statement->execute(array('beitragsid' => 1));
                 while ($content = $statement->fetch()) {
-                    // wählt zu den entsprechenden Beiträgen die Bilder aus
+                    // Wählt zu den entsprechenden Beiträgen die Bilder aus
                     $postid = $content ["id"];
                     $beitrags_bild = $pdo -> prepare ("SELECT * FROM bildupload_content WHERE post_id=$postid");
                     $beitrags_bild -> execute();
@@ -161,23 +161,23 @@ if(isset($_POST['kommentar'])) {
 
                 ?>
 
-                <!-- Umrandung und Schatten der Postingbox und der Beiträge -->
+                <!-- Umrandung und Schatten der Beiträge -->
                 <div class="shadow-sm p-3 mb-5 bg-white rounded">
                     <div class="beitrag">
 
                         <?php
-                        //Benutzerbild wird im Beitrag angezeigt
+                        // Benutzerbild wird im Beitrag angezeigt
                     $beitragsersteller = $content['userid'];
 
                     echo("<img src='data:" . $row_header['format'] . ";base64," . base64_encode($row_header['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                 }
                     ?>
                 <?php
-                        //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                        // Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                         echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . $beitragsersteller . '">' . $content['benutzername'] . '</a>';
                         echo "<br>";
 
-                        //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                        // Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                         if ($postid = $dbabgleich) {
                             echo"<br>";
                             echo "<div class='bild-class'>";

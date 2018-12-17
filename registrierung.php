@@ -1,6 +1,6 @@
 <?php
 session_start();
-// bindet den Datenbankzugriff ein
+// Bindet den Datenbankzugriff ein
 include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 ?>
 <!DOCTYPE html>
@@ -23,8 +23,6 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
                 dateFormat: 'yy-mm-dd'
             });
         } );
-
-
 
         $( function() {
             var availableTags = [
@@ -50,6 +48,9 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
                 source: availableTags
             });
         } );
+        $( function() {
+            $( "#dialog" ).dialog();
+        } );
 
     </script>
 </head>
@@ -69,7 +70,7 @@ include 'userdata.php'; //anstatt $pdo = new PDO('mysql:host=localhost;dbname=te
 
 <?php
 
-$showFormular = true; //Variable ob das Registrierungsformular angezeigt werden soll
+$showFormular = true; // Variable ob das Registrierungsformular angezeigt werden soll
 
 if(isset($_GET['register'])) {
     $error = false;
@@ -90,65 +91,60 @@ if(isset($_GET['register'])) {
         echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
         $error = true;
     }
-    if(strlen($passwort) == 0) { // Überprüfung, ob eingabe getätigt
+    if(strlen($passwort) == 0) { // Überprüfung, ob Eingabe getätigt
         echo 'Bitte ein Passwort angeben<br>';
         $error = true;
     }
-    if($passwort != $passwort2) { // überprüfung, ob passwörter identisch sind
+    if($passwort != $passwort2) { // Überprüfung, ob Passwörter identisch sind
         echo 'Die Passwörter müssen übereinstimmen<br>';
         $error = true;
     }
-    if(strlen($benutzername) == 0) {
-        echo 'Bitte einen Benutzernamen angeben<br>';
-        $error = true;
-    }
-    if(strlen($name) == 0) {
-        echo 'Bitte einen Vornamen angeben<br>';
-        $error = true;
-    }
-    if(strlen($nachname) == 0) {
-        echo 'Bitte einen Nachnamen angeben<br>';
-        $error = true;
-    }if(strlen($geburtsdatum) == 0) {
-        echo 'Bitte ein Geburtsdatum angeben<br>';
-        $error = true;
-    }
-   /* if(strlen($studiengang) == 0) {
-        echo 'Bitte einen Studiengang angeben<br>';
-        $error = true;
-   } */
-    if(strlen($geschlecht) == 0) {
-        echo 'Bitte Geschlecht angeben<br>';
-        $error = true;
-    }
-   /* if(strlen($semester) == 0) {
-      echo 'Bitte Ihr aktuelles Semester angeben<br>';
-      $error = true;
-    } */
-    if(strlen($status) == 0) {
-        echo 'Bitte Ihre Position angeben<br>';
-        $error = true;
-    }
 
-
-    //Hier wird überprüft, ob die E-Mail-Adresse noch nicht registriert wurde
+    // Hier wird überprüft, ob die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
         $statement = $pdo->prepare("SELECT * FROM studylab WHERE email = :email");
         $result = $statement->execute(array('email' => $email));
         $user = $statement->fetch();
 
         if($user !== false) {
-            echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
+            echo '<div id="dialog" title="E-Mail-Adresse">
+  <p>Diese E-Mail Adresse ist leider bereits vergeben. Bitte registriere dich erneut</p>
+</div>';
             $error = true;
         }
     }
 
-    //wenn keine Fehler vorliegen, wird hier der Nutzer registriert
+    // Hier wird überprüft, ob der benutzername noch nicht registriert wurde
+    if(!$error) {
+        $statement = $pdo->prepare("SELECT * FROM studylab WHERE benutzername = :benutzername");
+        $result = $statement->execute(array('benutzername' => $benutzername));
+        $user = $statement->fetch();
+
+        if($user !== false) {
+            echo '<div id="dialog" title="Benutzername">
+  <p>Dieser Benutzername ist leider bereits vergeben. Bitte registriere dich erneut</p>
+</div>';
+            $error = true;
+        }
+    }
+
+    // Wenn keine Fehler vorliegen, wird hier der Nutzer registriert
     if(!$error) {
        $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT); //passwort hashen
 
         $statement = $pdo->prepare("INSERT INTO studylab (email, passwort, benutzername, name, nachname, geburtsdatum, studiengang, geschlecht, semester, status) VALUES (:email, :passwort, :benutzername, :name, :nachname, :geburtsdatum, :studiengang, :geschlecht, :semester, :status)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
+        $statement -> bindParam("email",$email);
+        $statement -> bindParam("passwort",$passwort_hash);
+        $statement -> bindParam("benutzername",$benutzername);
+        $statement -> bindParam("name",$name);
+        $statement -> bindParam("nachname",$nachname);
+        $statement -> bindParam("geburtsdatum",$geburtsdatum);
+        $statement -> bindParam("studiengang",$studiengang);
+        $statement -> bindParam("geschlecht",$geschlecht);
+        $statement -> bindParam("semester",$semester);
+        $statement -> bindParam("status",$status);
+        $result = $statement -> execute();
+        //$result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
         //$result = $statement->execute(array('email' => $email, 'passwort' => $passwort, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
 
         if($result) {
@@ -177,15 +173,15 @@ if($showFormular) {
     <form action="?register=1" method="post">
 
         <div class="eingabefeldreg">
-        <input type="name" size="40" maxlength="200" name="name" placeholder="Name"> <input type="nachname" size="40" maxlength="200" name="nachname" placeholder="Nachname">
+        <input type="name" size="40" maxlength="200" name="name" placeholder="Name"> <input type="nachname" size="40" maxlength="200" name="nachname" placeholder="Nachname" required>
         </div>
 
         <div class="eingabefeldreg">
-        <input type="benutzername" size="40" maxlength="200" name="benutzername" placeholder="Benutzername">
+        <input type="benutzername" size="40" maxlength="200" name="benutzername" placeholder="Benutzername" required>
         </div>
 
         <div class="eingabefeldreg">
-        <input type="email" size="40" maxlength="200" name="email"placeholder="E-Mail">
+        <input type="email" size="40" maxlength="200" name="email"placeholder="E-Mail" required>
         </div>
 
         <div class="eingabefeldreg">
@@ -229,11 +225,11 @@ if($showFormular) {
 
 
         <div class="eingabefeldreg">
-        <input type="password" size="40"  maxlength="200" name="passwort" placeholder="Passwort eingeben"><br>
+        <input type="password" size="40"  maxlength="200" name="passwort" placeholder="Passwort eingeben" required><br>
         </div>
 
         <div class="eingabefeldreg">
-        <input type="password" size="40" maxlength="200" name="passwort2" placeholder="Passwort wiederholen"><br><br>
+        <input type="password" size="40" maxlength="200" name="passwort2" placeholder="Passwort wiederholen" required><br><br>
         </div>
 
         <button style="font-family:'Helvetica Neue'" type="submit" value="Abschicken" class="btn btn-primary">Registrieren</button><br><br>
@@ -250,7 +246,7 @@ if($showFormular) {
 </div>
 
     <?php
-} //Ende von if($showFormular)
+} // Ende von if($showFormular)
 ?>
 
 </body>

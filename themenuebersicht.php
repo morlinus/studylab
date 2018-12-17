@@ -1,5 +1,5 @@
 <?php
-// schaut durch die Session, ob der Nutzer angemeldet ist
+// Schaut durch die Session, ob der Nutzer angemeldet ist
 session_start();
 if (isset($_SESSION["angemeldet"]))
 {
@@ -10,7 +10,7 @@ else {
     header("Location:login.php");
 }
 
-// bindet den Header in die Seite ein
+// Bindet den Header in die Seite ein
 include "header.php";
 ?>
 
@@ -123,7 +123,7 @@ include "header.php";
                     <h5>Ist das richtige Thema noch nicht dabei?</h5>
                     <h5>Hier kannst du danach suchen</h5>
 
-                    <!-- hier kann der User die Themen eingeben,  nach denen er suchen möchte -->
+                    <!-- Hier kann der User die Themen eingeben,  nach denen er suchen möchte -->
                     <form class="form-inline my-2 my-lg-0" action="themenuebersicht.php" method="post" style="width: fit-content; margin: auto;">
                         <input class="suchfeld form-control mr-sm-2" type="text" placeholder="" name="themenuebersicht" value="" required>
                         <button class="suchfeld btn btn-secondary" type="submit" name="suchen" value="Suchen">Suchen</button>
@@ -133,7 +133,7 @@ include "header.php";
                 </div>
         </div>
                     <?php
-                    // gibt die Daten aus, die im Formular eingeben wurden
+                    // Gibt die Daten aus, die im Formular eingeben wurden
                     if (isset($_POST['suchen'])) {
                     ?>
 
