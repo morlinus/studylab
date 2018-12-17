@@ -16,7 +16,7 @@ include_once 'header.php';
 $id=$_SESSION["id"];
 $angmeldet_index = $_SESSION ["angemeldet"];
 
-//Inhalt wird in wörter unterteilt, noch hashtags untersucht und alle wörter mit hahstag werden als link wieder ausgegeben
+//Inhalt wird in Wörter unterteilt, nach hashtags untersucht und alle Wörter mit hahstag werden als Link wieder ausgegeben
 function hashtag($htags) {
     $tagzeichen = "#";
     $arr = explode(" ", $htags);
@@ -35,7 +35,7 @@ function hashtag($htags) {
     return $htags;
 }
 
-// trägt die Kommentare auf dem Kommentar-Form in die Datenbank ein
+// trägt die Kommentare aus dem Kommentar-Form in die Datenbank ein
 if(isset($_POST['kommentar'])) {
 
     $comment=$_POST['comment'];
@@ -74,19 +74,22 @@ if(isset($_POST['kommentar'])) {
                         <?php
 
                         //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
-                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.$angmeldet_index, studylab.*, folgen.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id LEFT JOIN folgen ON benachrichtigung.userid=folgen.user_id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id AND folgen.follower_id=$id");
+                        $benachrichtigung=$pdo->prepare("SELECT benachrichtigung.*, studylab.*, folgen.* FROM benachrichtigung LEFT JOIN studylab ON benachrichtigung.userid = studylab.id LEFT JOIN folgen ON benachrichtigung.userid=folgen.user_id WHERE benachrichtigung.$angmeldet_index = ' ' AND benachrichtigung.userid<>$id AND folgen.follower_id=$id");
                         $benachrichtigung->execute();
 
                         //Führt die Benachrichtigung aus
                         while($nachricht=$benachrichtigung->fetch()) {
 
                         $nachrichtid=$nachricht['id'];
+                        $nachrichtuser=$nachricht['userid'];
                         ?>
 
                         <!-- Pop-Up Benachrichtigung -->
-                        <div class="alert alert-success alert-dismissible" >
+
+
+                            <div class="alert alert-info">
                             <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
-                            <strong><a href="profil_folgen2.php?studylab=<?php echo $nachrichtid; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
+                            <strong><a style="color:#2f4f4f;" href="profil_folgen2.php?studylab=<?php echo $nachrichtuser; ?>"><?php echo $nachricht['benutzername'];?></a></strong> Hat einen neuen Beitrag gepostet.
                         </div>
 
                         <?php
@@ -127,21 +130,21 @@ if(isset($_POST['kommentar'])) {
 
 
                     <?php
-                        // wählt aus der Datenbank alle Beiträge aus, der Personen, die der angemeldete Benutzer folgt
+                        // Wählt aus der Datenbank alle Beiträge der Personen aus, denen der angemeldete Benutzer folgt
                         $statement = $pdo->prepare("SELECT DISTINCT content.*, studylab.benutzername, folgen.follower_id FROM content LEFT JOIN studylab ON content.userid = studylab.id LEFT JOIN folgen ON studylab.id = folgen.user_id WHERE folgen.follower_id = $id ORDER BY content.id DESC");
                         $statement->execute(array('beitragsid' => 1));
 
                         $dbtest = $statement->rowcount();
                             while ($content = $statement->fetch()) {
                                 $postid = $content ["id"];
-                                    // wählt das Bild aus, welches zum jeweiligen Beitrag gehört
+                                    // Wählt das Bild aus, welches zum jeweiligen Beitrag gehört
                                     $beitrags_bild = $pdo->prepare("SELECT * FROM bildupload_content WHERE post_id=$postid");
                                     $beitrags_bild->execute();
                                     $bilder = $beitrags_bild->fetch();
                                     $dbabgleich = $bilder ["post_id"];
 
 
-                                    //Holt das Bild von dem User, der den betrag gepostet hat, aus der Datenbank
+                                    // Holt das Bild von dem User, der den Beitrag gepostet hat, aus der Datenbank
                                     $id_index = $content ["userid"];
                                     $bild_index = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$id_index");
                                     $bild_index->execute();
@@ -152,18 +155,18 @@ if(isset($_POST['kommentar'])) {
                                         <div class="beitrag">
 
                                         <?php
-                                        //Benutzerbild wird im Beitrag angezeigt
+                                        // Benutzerbild wird im Beitrag angezeigt
                                         $beitragsersteller = $content['userid'];
                                         echo("<img src='data:" . $row_index['format'] . ";base64," . base64_encode($row_index['datei']) . "'width=' alt='nutzerprofilbild' class='profilbild-navbar'>");
                                         }
                                         ?>
 
                                         <?php
-                                        //Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
+                                        // Der Benutzername des Beitrags lässt sich anklicken und leitet auf die Profilseite um
                                         echo '<a class="benutzername-post" href="profil_folgen2.php?studylab=' . htmlspecialchars($beitragsersteller, ENT_HTML401) . '">' . $content['benutzername'] . '</a>';
                                         echo "<br>";
 
-                                        //Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
+                                        // Es wird überprüft ob es ein Bild zu dem Beitrag gibt und im Falle ausgegeben
                                         if ($postid == $dbabgleich) {
                                             echo "<br>";
                                             echo "<div class='bild-class'>";
@@ -176,7 +179,7 @@ if(isset($_POST['kommentar'])) {
                                         }
                                         echo "<br>";
 
-                                    //Der Post Inhalt wird ausgegeben
+                                    // Der Post Inhalt wird ausgegeben
                                     $inhalt = htmlspecialchars($content['text'], ENT_HTML401);
                                     echo hashtag($inhalt);
                                     ?>
@@ -210,7 +213,7 @@ if(isset($_POST['kommentar'])) {
                                             <?php
 
                                             $kommid = $komm['id'];
-                                            // zu dem zugehörigen Kommentar, wird auch das dazugehörige Profilbild ausgegeben
+                                            // Zu dem zugehörigen Kommentar, wird auch das dazugehörige Profilbild ausgegeben
                                             $kommbild = $pdo->prepare("SELECT bilduplad.*, kommentare.* FROM bilduplad LEFT JOIN kommentare ON bilduplad.user_id=kommentare.sender_id WHERE post_id=$postid AND kommentare.id=$kommid");
                                             $kommbild->execute();
                                             while ($row_kommbild = $kommbild->fetch()) {
@@ -224,7 +227,7 @@ if(isset($_POST['kommentar'])) {
                                                 </div>
                                                 <?php
                                             }
-$kommersteller=$komm['sender_id'];
+                                            $kommersteller=$komm['sender_id'];
                                             ?> <h6> <?php echo '<a style="font-size:98%;" class="benutzername-post" href="profil_folgen2.php?studylab=' . $kommersteller . '">' .  $komm['benutzername'] . '</a>'.":<br />"; ?> </h6>
                                             <?php
                                             echo htmlspecialchars($komm['kommentar'], ENT_HTML401);
@@ -240,7 +243,7 @@ $kommersteller=$komm['sender_id'];
 
                                     <?php
                                     }
-                                    // Wenn der Nutzer noch niemandem folgt, wird ihm empfohlen, in der Suchfunktion Nutzern zu folgen
+                                    // Wenn der Nutzer noch niemandem folgt, wird ihm empfohlen, in der Suchfunktion anderen Nutzern zu folgen
                                     if (!$dbtest > 0) {
                                         ?>
                                         <div class="beitrag">
