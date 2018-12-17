@@ -13,7 +13,7 @@ else {
 ob_start();
 // Bindet die header.php ein und damit den Header der Seite
 include_once "header.php";
-
+$id=$_SESSION['id'];
 $profil_id=$_GET['studylab'];
 $follower=$_SESSION["angemeldet"];
 $followerid = $_SESSION["id"];
@@ -41,6 +41,19 @@ function hashtag($htags) {
     $htags = implode(" ", $arr);
     //$htags = substr($htags2,1)
     return $htags;
+}
+
+if(isset($_POST['kommentar'])) {
+
+    $comment=$_POST['comment'];
+    $post_id=$_POST['post_id'];
+
+    $statement = $pdo->prepare("INSERT INTO kommentare (id, sender_id, post_id, kommentar) VALUES (' ',:sender_id, :post_id,:kommentar)");
+    if (!$statement->execute(array('sender_id'=>$id, 'post_id'=>$post_id, 'kommentar'=>$comment)))
+    {
+        echo "Fehler";
+    }
+
 }
 
 ?>
@@ -244,6 +257,20 @@ function hashtag($htags) {
 
                     ?>
                 </div>
+                <br>
+                <!-- Hier steht das Kommentar-Form, in dem der User einen Kommentar eintragen kann -->
+                <form method="post" action="" onsubmit="return post();" id="kommentarform">
+                                     <textarea required id="<?php echo $content['id'] ?>" name="comment" placeholder="Kommentieren"
+                                               rows="1"
+                                               class="form-control"></textarea><br>
+                    <input type="hidden" value="<?php echo $content['id']?>" name="post_id"
+                           class="form-control">
+                    <input type="submit" class="btn btn-primary" value="Kommentieren"
+                           name="kommentar"
+                           id="kommentarbtn"/>
+                </form>
+                <br>
+
                 <?php
                 $post_id = $content['id'];
                 $kommentare = $pdo->prepare("SELECT kommentare.*, studylab.benutzername FROM kommentare LEFT JOIN studylab ON kommentare.sender_id = studylab.id WHERE post_id=$post_id");
@@ -295,6 +322,36 @@ function hashtag($htags) {
 </div>
 
 </body>
+
+<!-- Hier wird das Script für die Kommentare und den Post implementiert -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function post(){
+        var comment = document.getElementByName("comment").value;
+
+        if(comment)
+        {
+            var postid = sessionStorage.getItem('post_id');
+
+            $.ajax
+            ({
+                type: 'post',
+                url: 'profil_folgen2.php',
+                data:
+                    {
+                        comment:comment,
+                    },
+                success: function (response)
+                {
+                    document.getElementsByName("comment").value="";
+                }
+            });
+        }
+        return false;
+
+    }
+</script>
 
 <!-- Einbindung des Sticky-Footers -->
 <?php

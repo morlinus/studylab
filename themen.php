@@ -140,7 +140,7 @@ if(isset($_POST['kommentar'])) {
 
                     ?>
                 </div>
-
+<br>
                 <!-- Hier steht das Kommentar-Form, in dem der User einen Kommentar eintragen kann -->
                 <form method="post" action="" onsubmit="return post();" id="kommentarform">
                                      <textarea required id="<?php echo htmlspecialchars($content['id'], ENT_HTML401); ?>" name="comment" placeholder="Kommentieren"

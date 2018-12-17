@@ -70,7 +70,8 @@ if(isset($_POST['kommentar'])) {
 
                         <br>
                         <br>
-
+                    <br>
+                    <br>
                         <?php
 
                         //Schaut nach ob ein Nutzer, dem man folgt, etwas neues gepostet hat
@@ -85,8 +86,7 @@ if(isset($_POST['kommentar'])) {
                         ?>
 
                         <!-- Pop-Up Benachrichtigung -->
-                        <br>
-                            <br>
+
 
                             <div class="alert alert-info">
                             <button class="close" data-dismiss="alert" id="update" aria-label="close">&times;</button>
