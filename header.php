@@ -16,7 +16,6 @@ $bild_header ->execute();
 $row_header = $bild_header->fetch()
 
 
-
 ?>
 
 

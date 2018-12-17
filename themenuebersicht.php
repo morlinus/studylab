@@ -23,6 +23,7 @@ include "header.php";
 
 
 <body>
+<!-- 8 Themen Div Boxen
 
 <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center mt-3">
     <div class="" style="">
@@ -139,7 +140,6 @@ include "header.php";
                     // Gibt die Daten aus, die im Formular eingeben wurden
                     if (isset($_POST['suchen'])) {
                     ?>
-
 
 
                         <h5 style="text-align: center"> <?php echo "Suchergebnisse: <br>";?> </h5>
