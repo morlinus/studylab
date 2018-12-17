@@ -71,7 +71,7 @@ $row_get = $suchnutzer->fetch();
 
                 <!-- Das Form zum hochladen der Dateien -->
                 <form class="form-inline my-2 my-lg-0" enctype="multipart/form-data" method="POST">
-                    <input type="file" name="myfile"/>
+                    <input type="file" name="myfile"/><br>
                     <button class="btn my-2 my-sm-0" type="submit" name="submit" value="Hochladen">Hochladen</button>
                 </form>
 

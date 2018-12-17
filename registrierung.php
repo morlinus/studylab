@@ -222,8 +222,6 @@ if($showFormular) {
         </div>
 
 
-
-
         <div class="eingabefeldreg">
         <input type="password" size="40"  maxlength="200" name="passwort" placeholder="Passwort eingeben" required><br>
         </div>

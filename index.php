@@ -32,7 +32,6 @@ function hashtag($htags) {
         $i++;
     }
     $htags = implode(" ", $arr);
-    //$htags = substr($htags2,1)
     return $htags;
 }
 

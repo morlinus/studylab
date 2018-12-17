@@ -14,10 +14,10 @@ ob_start();
 // bindet die header.php ein und damit den Header der Seite
 include_once "header.php";
 
-$profile_id=$_GET['studylab'];
+$profil_id=$_GET['studylab'];
 $follower=$_SESSION["angemeldet"];
 $followerid = $_SESSION["id"];
-$bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profile_id'");
+$bild_folgen = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id='$profil_id'");
 $bild_folgen->execute();
 $row_folgen = $bild_folgen->fetch();
 $lesen = "read";
@@ -86,17 +86,17 @@ function hashtag($htags) {
             <div class="rand">
             <?php
                 // Fremdes Profil?
-                if ($profile_id!=$_SESSION["angemeldet"]) {
+                if ($profil_id!=$_SESSION["angemeldet"]) {
 
                 // Folgen wir dem Nutzer schon?
-                $checkfollow=$pdo->prepare("SELECT follower_id FROM folgen WHERE user_id=$profile_id AND follower_id = $followerid");
-                $checkfollow->execute();
-                $no=$checkfollow->rowCount();
-                if(!$no > 0){
+                $checkabo=$pdo->prepare("SELECT follower_id FROM folgen WHERE user_id=$profil_id AND follower_id = $followerid");
+                $checkabo->execute();
+                $check=$checkabo->rowCount();
+                if(!$check > 0){
                 ?>
 
                 <div class="folgenbutton">
-                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo htmlspecialchars($profile_id, ENT_HTML401); ?>" method="post">
+                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo htmlspecialchars($profil_id, ENT_HTML401); ?>" method="post">
                     <input class="btn-follow btn-primary-follow" type="submit" name="follow" value="Follow">
                 </form>
                 </div>
@@ -104,7 +104,7 @@ function hashtag($htags) {
 
                 <?php
                 if (isset($_POST['follow'])) {
-                    $follow = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$profile_id', '$followerid') ");
+                    $follow = $pdo->prepare("INSERT INTO folgen (`user_id`, `follower_id`) VALUES ('$profil_id', '$followerid') ");
                     if ($follow->execute()) {
                         echo "followed";
                         $insert_ben = $pdo -> prepare ("ALTER TABLE benachrichtigung ADD $follower VARCHAR(11) NOT NULL");
@@ -112,7 +112,7 @@ function hashtag($htags) {
                         // Alle Beiträge werden auf read gesetzt, damit man nur die Benachrichtigungen bekommt, ab dem Moment, wo man dem Nutzer folgt
                         $update=$pdo->prepare("UPDATE benachrichtigung SET $follower = ?");
                         $update->execute(array('read'));
-                        header("location:profil_folgen2.php?studylab=$profile_id");
+                        header("location:profil_folgen2.php?studylab=$profil_id");
 
                     }
                 }
@@ -120,17 +120,17 @@ function hashtag($htags) {
                 else {
                 ?><!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
                 <div class="entfolgenbutton">
-                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profile_id; ?>" method="post">
+                <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profil_id; ?>" method="post">
                     <input class="btn-follow btn-primary-follow" type="submit" name="unfollow" value="Unfollow">
                 </form>
                 </div>
                     <?php
                 // entfolgen Befehl
                 if (isset($_POST['unfollow'])) {
-                    $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profile_id' AND follower_id='$followerid'");
+                    $unfollow = $pdo->prepare("DELETE FROM folgen WHERE user_id='$profil_id' AND follower_id='$followerid'");
                     if ($unfollow->execute()) {
                         echo "unfollowed";
-                        header("location:profil_folgen2.php?studylab=$profile_id");
+                        header("location:profil_folgen2.php?studylab=$profil_id");
 
                     }
                 }
@@ -143,7 +143,7 @@ function hashtag($htags) {
 
             <?php
             // Profildaten von dem fremden Nutzer aufrufen
-            $nutzersuche = $pdo->prepare("SELECT * FROM studylab WHERE id = $profile_id");
+            $nutzersuche = $pdo->prepare("SELECT * FROM studylab WHERE id = $profil_id");
             if ($nutzersuche->execute()) {
                 while ($row = $nutzersuche->fetch()) {
 
@@ -155,7 +155,7 @@ function hashtag($htags) {
                     $email = $row ["email"];
 
                     // es wird geschaut, ob der Nutzer schon jemandem folgt
-                    $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $profile_id");
+                    $abonennten = $pdo ->prepare ("SELECT * FROM folgen WHERE user_id = $profil_id");
                     $abonennten ->execute();
                     $abos = $abonennten ->rowCount();
 
@@ -194,9 +194,9 @@ function hashtag($htags) {
             <?php
             // Zeigt die Postings des User an
             // wählt aus der Datenbank die entsprechenden Beiträge aus
-            if($no > 0) {
+            if($check > 0) {
             //wenn dem Benutzer gefolgt wird, werden aus der Datenbank die entsprechenden Beiträge ausgewählt
-            $beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profile_id ORDER BY content.id DESC ");
+            $beiträge = $pdo->prepare("SELECT content.*, studylab.benutzername FROM content LEFT JOIN studylab ON content.userid = studylab.id WHERE userid= $profil_id ORDER BY content.id DESC ");
             $beiträge->execute(array('beitragsid' => 1));
             while ($content = $beiträge->fetch()) {
 
@@ -207,7 +207,7 @@ function hashtag($htags) {
             $dbabgleich = $bilder ["post_id"];
 
 
-            $bild_folgen2 = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$profile_id");
+            $bild_folgen2 = $pdo->prepare("SELECT * FROM bilduplad WHERE user_id=$profil_id");
             $bild_folgen2->execute();
             while ($row_folgen2 = $bild_folgen2->fetch()){
             ?>

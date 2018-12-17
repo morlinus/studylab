@@ -14,8 +14,7 @@ $benutzer_name = $benutzername_header->fetch();
 $bild_header = $pdo -> prepare("SELECT * FROM bilduplad WHERE user_id=$id_header");
 $bild_header ->execute();
 $row_header = $bild_header->fetch()
-// echo "<li><a target='_blank' href='bild_abrufen.php?".$row['id']."'>".$row['name']."</a><br/>
-// <embed src='data:".$row['format'].";base64,".base64_encode($row['datei'])."' width=''/></li>";
+
 
 ?>
 

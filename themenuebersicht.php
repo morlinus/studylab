@@ -145,9 +145,10 @@ include "header.php";
 
 
                         <?php
+                        //Themensuche wird ausgeführt
+
                         $suchethemen = $_POST['themenuebersicht'];
 
-                        // $headline = $_POST['beitragsuchen'];
 
                         $themensuche = $pdo->prepare("SELECT * FROM content WHERE themen LIKE '%$suchethemen%'");
 
@@ -155,7 +156,6 @@ include "header.php";
 
                             while ($row = $themensuche->fetch()) {
 
-                                // echo $row ['benutzername'];
 
                                 $themalink = $row['themen'];
                                 $studilab2 = $row["userid"];
@@ -166,7 +166,7 @@ include "header.php";
 
                             echo '<div class="col-12-ergebnisse">';
                             echo '<ul class="kommentar2">';
-                            //echo("<img src='data:" . $row_suche['format'] . ";base64," . base64_encode($row_suche['datei']) . "'width=' alt='Nutzerprofilbild' class='profilbild-navbar'>");
+                            //Suchergebnisse werden ausgegeben und dargestellt
                             echo ("<img src='https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_quadrat.png' width='' alt='Nutzerprofilbild' class='profilbild-navbar'>");
                             echo " ";
                             echo '<a class="suchen-ergebnisse" href="themen.php?themen='.$themalink.'">'."Beitrag zum Thema "."#". $row['themen'].'</a>';
