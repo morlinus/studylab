@@ -110,7 +110,7 @@ if(isset($_POST['kommentar'])) {
 
                 <div class="folgenbutton">
                 <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo htmlspecialchars($profil_id, ENT_HTML401); ?>" method="post">
-                    <input class="btn-follow btn-primary-follow" type="submit" name="follow" value="Follow">
+                    <input class="btn-follow btn-primary-follow" type="submit" name="follow" value="Folgen">
                 </form>
                 </div>
 
@@ -134,7 +134,7 @@ if(isset($_POST['kommentar'])) {
                 ?><!-- Wenn schon Abonniert, möglichkeit zu deabonnieren -->
                 <div class="entfolgenbutton">
                 <form class="btn btn-outline-secondary" action="profil_folgen2.php?studylab=<?php echo $profil_id; ?>" method="post">
-                    <input class="btn-follow btn-primary-follow" type="submit" name="unfollow" value="Unfollow">
+                    <input class="btn-follow btn-primary-follow" type="submit" name="unfollow" value="Entfolgen">
                 </form>
                 </div>
                     <?php

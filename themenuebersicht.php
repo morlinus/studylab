@@ -106,7 +106,7 @@ include "header.php";
         <img class="card-img-top" src="https://mars.iuk.hdm-stuttgart.de/~lm092/veranstalktungen.jpg" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">#Veranstaltungen</h5>
-            <p class="card-text">Alles zum Thema Veranstaltungen.</p>
+            <p class="card-text">Alles zum Thema Veranstaltungen und Terminen.</p>
             <a href="themen.php?themen=veranstaltung" class="btn btn-primary">Alle Beiträge</a>
         </div>
     </div>
