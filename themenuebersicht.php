@@ -23,7 +23,7 @@ include "header.php";
 
 
 <body>
-<!-- 8 Themen Div Boxen
+<!-- 8 Themen Div Boxen-->
 
 <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center mt-3">
     <div class="" style="">
