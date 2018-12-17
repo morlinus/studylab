@@ -144,8 +144,6 @@ if(isset($_GET['register'])) {
         $statement -> bindParam("semester",$semester);
         $statement -> bindParam("status",$status);
         $result = $statement -> execute();
-        //$result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
-        //$result = $statement->execute(array('email' => $email, 'passwort' => $passwort, 'benutzername' => $benutzername, 'name' => $name, 'nachname' => $nachname, 'geburtsdatum' => $geburtsdatum, 'studiengang' => $studiengang, 'geschlecht' => $geschlecht, 'semester' => $semester,'status' => $status));
 
         if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
@@ -156,7 +154,7 @@ if(isset($_GET['register'])) {
         }
     }
 }
-
+//Eingabefelder der Registrierung
 if($showFormular) {
 
     ?>
