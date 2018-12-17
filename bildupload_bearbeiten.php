@@ -46,11 +46,11 @@ while($row_header = $bild_header->fetch()){
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-6 col-md-10 col-sm-10 col-">
+        <div class="col-lg-6 col-md-10 col-sm-10 col- mt-5">
 
             <br>
             <br>
-
+            
             <div class="shadow-sm p-3 mb-5 bg-white rounded">
 
                 <div class="profilbild-bearbeitung">

@@ -35,7 +35,9 @@ include_once 'header.php';
             </div>
 
             <!-- Einteilung in das Grid-System -->
-            <div class="col-lg-6 col-md-10 col-sm-10 col-">
+            <div class="col-lg-6 col-md-10 col-sm-10 col- mt-5">
+
+
 
                 <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
                     <div class="" style="">

@@ -24,8 +24,11 @@ include "header.php";
 
 <body>
 
-<div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+<div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center mt-3">
     <div class="" style="">
+        <br>
+        <br>
+        <br>
         <img src="https://mars.iuk.hdm-stuttgart.de/~lm092/Studylab_Themen.png" alt="" style="width: 350px;">
     </div>
 </div>

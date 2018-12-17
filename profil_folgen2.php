@@ -63,7 +63,7 @@ function hashtag($htags) {
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-3 col-md-4 col-sm-4 col-">
+        <div class="col-lg-3 col-md-4 col-sm-4 col- mt-5">
 
             <br>
             <br>
@@ -185,11 +185,10 @@ function hashtag($htags) {
         </div>
 
         <!-- Einteilung in das Grid-System -->
-        <div class="col-lg-7 col-md-8 col-sm-8 col-">
+        <div class="col-lg-7 col-md-8 col-sm-8 col- mt-5">
 
             <br>
             <br>
-
 
             <?php
             // Zeigt die Postings des User an

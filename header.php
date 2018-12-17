@@ -43,7 +43,7 @@ $row_header = $bild_header->fetch()
 
 <body>
 
-<div class="navbar-custom shadow-sm">
+<div class="navbar-custom shadow-sm fixed-top">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
