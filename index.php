@@ -42,7 +42,10 @@ if(isset($_POST['kommentar'])) {
     $post_id=$_POST['post_id'];
 
     $statement = $pdo->prepare("INSERT INTO kommentare (id, sender_id, post_id, kommentar) VALUES (' ',:sender_id, :post_id,:kommentar)");
-    if (!$statement->execute(array('sender_id'=>$id, 'post_id'=>$post_id, 'kommentar'=>$comment)))
+    $statement -> bindParam("sender_id",$id);
+    $statement -> bindParam("post_id",$post_id);
+    $statement -> bindParam("kommentar",$comment);
+    if (!$statement->execute())
     {
         echo "Fehler";
     }
